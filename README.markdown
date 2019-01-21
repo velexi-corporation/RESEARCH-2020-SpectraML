@@ -109,9 +109,7 @@ See `requirements.txt` for list of Python packages required for this project.
 3 References
 ------------
 
-* J. Whitmore.
-  ["Jupyter Notebook Best Practices for Data Science"][#whitmore-2016]
-  (2016/09).
+* TODO
 
 ------------------------------------------------------------------------------
 
