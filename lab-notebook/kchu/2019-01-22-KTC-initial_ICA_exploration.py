@@ -5,6 +5,14 @@
 # 
 # ### Authors
 # * Kevin Chu (kevin@velexi.com)
+# 
+# ### Notes
+# 
+# * In theory, ICA should "learn" spectra features that are common across multiple materials. Projection of a new spectra onto these "component spectra" could be used to construct the input vector to a supervised learning system.
+# 
+# * The independent components can be computed from the mixing matrix (FastICA.mixing_). Note that FastICA automatically "whitens" the training dataset, so the mean spectra (FastICA.mean_) needs to be added to each column of the mixing matrix.
+# 
+# * To compute the representation (i.e., coefficients) of a spectra with respect to the independent components, multiply the spectra by the unmixing matrix (FastICA.components_).
 
 # ## Preparations
 
@@ -113,7 +121,7 @@ for material_name, material_id in materials.items():
 # --- Generate ICA model
 
 # ICA Parameters
-num_components = 3
+num_components = 5
 
 # Create FastICA object
 ica = FastICA(n_components=num_components)
@@ -121,14 +129,35 @@ ica = FastICA(n_components=num_components)
 # Fit ICA model
 X = spectra_data.values.T
 S = ica.fit_transform(X)
-components = ica.mixing_  # Estimated independent components (mixing matrix)
 
+# Compute independent spectra components
+# Note: mixing (not unmixing) matrix holds independent components
+mean_spectra = ica.mean_.reshape([spectrum_length, 1])
+spectra_components = ica.mixing_ + numpy.tile(mean_spectra, [1, num_components])
+
+# Display results
 print("Number of components generated:", num_components)
-print("Number of iterations:", ica.n_iter_)
+print("Number of fitting iterations:", ica.n_iter_)
 
-# Display independent components
-for i in range(components.shape[1]):
+# Display independent spectra components
+for i in range(spectra_components.shape[1]):
     plt.title('Component {}'.format(i))
-    plt.plot(components[:, i] + ica.mean_)
+    plt.plot(spectra_components[:, i])
     plt.figure()
+
+
+# In[6]:
+
+
+# --- Compute representation for spectra
+
+# Get unmixing matrix
+unmixing_matrix = ica.components_
+
+# spectra_data[0]
+print("Coefficients from fit_transform():", S[0, :])
+coefficients = numpy.dot(unmixing_matrix,
+                         X[0, :].reshape([spectrum_length, 1]) - mean_spectra).T
+print("Coefficients from multiplying by unmixing matrix:", coefficients)
+      
 
