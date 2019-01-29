@@ -1,0 +1,8 @@
+# Automatically normalize line endings (convert crlf =&gt; lf) for these files
+*.html text=auto
+*.ipynb text=auto
+*.markdown text=auto
+*.md text=auto
+*.py text=auto
+*.txt text=auto
+LICENSE text=auto
