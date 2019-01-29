@@ -1,4 +1,5 @@
 # Automatically normalize line endings (convert crlf =&gt; lf) for these files
+*.csv text=auto
 *.html text=auto
 *.ipynb text=auto
 *.markdown text=auto
