@@ -19,3 +19,6 @@ data/*
 # Jupyter files
 .ipynb_checkpoints
 .jupyter/migrated
+
+# macOS files
+.DS_Store
