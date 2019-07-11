@@ -10,4 +10,4 @@ LICENSE text=auto
 
 # linguist overrides
 *.ipynb linguist-language=python
-lab-notebook/**/*.html linguist-documentation
+lab-notebook/*/*.html linguist-documentation
