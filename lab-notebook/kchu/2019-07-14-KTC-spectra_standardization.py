@@ -36,7 +36,7 @@ import pandas
 
 # Data directory
 data_dir = os.environ['DATA_DIR']
-splib07_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
+splib07a_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
 
 # Spectrometers
 spectrometers = {
@@ -127,13 +127,13 @@ target_abscissas = numpy.linspace(min_abscissa, max_abscissa, num_abscissas)
 
 for metadata in spectrometers.values():
     metadata['abscissas'] = pandas.read_csv(
-        os.path.join(splib07_dir, metadata['abscissas_file'])).values.flatten()
+        os.path.join(splib07a_dir, metadata['abscissas_file'])).values.flatten()
 
 # --- Load raw test spectra data
 
 for spectra_data in test_spectra.values():
     raw_data = pandas.read_csv(
-        os.path.join(splib07_dir, spectra_data['path']))
+        os.path.join(splib07a_dir, spectra_data['path']))
     raw_data[raw_data < 0] = 0.0
     spectra_data['raw_data'] = raw_data.values.flatten()
 
