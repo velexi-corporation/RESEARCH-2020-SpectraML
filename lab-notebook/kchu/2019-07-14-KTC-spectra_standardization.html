@@ -13140,7 +13140,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># --- Imports</span>
@@ -13161,7 +13161,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># --- Configuration Parameters</span>
@@ -13241,8 +13241,8 @@ div#notebook {
 <span class="c1"># Spectra Standardization Parameters</span>
 <span class="n">abscissa_type</span> <span class="o">=</span> <span class="s1">&#39;wavelength&#39;</span>
 <span class="n">num_abscissas</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">min_abscissa</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">spectrometer</span><span class="p">[</span><span class="s1">&#39;abscissa_min&#39;</span><span class="p">]</span> \
-                    <span class="k">for</span> <span class="n">spectrometer</span> <span class="ow">in</span> <span class="n">spectrometers</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> \
+<span class="n">min_abscissa</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">spectrometer</span><span class="p">[</span><span class="s1">&#39;abscissa_min&#39;</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">spectrometer</span> <span class="ow">in</span> <span class="n">spectrometers</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                     <span class="k">if</span> <span class="n">spectrometer</span><span class="p">[</span><span class="s1">&#39;abscissa_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">abscissa_type</span><span class="p">])</span>
 <span class="n">max_abscissa</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">spectrometer</span><span class="p">[</span><span class="s1">&#39;abscissa_max&#39;</span><span class="p">]</span>
                     <span class="k">for</span> <span class="n">spectrometer</span> <span class="ow">in</span> <span class="n">spectrometers</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
@@ -13264,7 +13264,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># --- Load spectrometer abscissas</span>
@@ -13296,7 +13296,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">spectrometer</span><span class="p">,</span> <span class="n">metadata</span> <span class="ow">in</span> <span class="n">spectrometers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -13343,7 +13343,7 @@ code=BECK, type=wavelength, units=microns, range=(0.2, 3.0)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">spectrometer</span> <span class="ow">in</span> <span class="n">spectrometers</span><span class="p">:</span>
@@ -13360,7 +13360,7 @@ code=BECK, type=wavelength, units=microns, range=(0.2, 3.0)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot original and standardized spectra</span>

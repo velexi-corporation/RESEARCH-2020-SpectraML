@@ -15,7 +15,7 @@
 
 # ## Preparations
 
-# In[7]:
+# In[1]:
 
 
 # --- Imports
@@ -29,7 +29,7 @@ import numpy
 import pandas
 
 
-# In[8]:
+# In[2]:
 
 
 # --- Configuration Parameters
@@ -109,7 +109,9 @@ test_spectra = {
 # Spectra Standardization Parameters
 abscissa_type = 'wavelength'
 num_abscissas = 1000
-min_abscissa = min([spectrometer['abscissa_min']                     for spectrometer in spectrometers.values()                     if spectrometer['abscissa_type'] == abscissa_type])
+min_abscissa = min([spectrometer['abscissa_min']
+                    for spectrometer in spectrometers.values()
+                    if spectrometer['abscissa_type'] == abscissa_type])
 max_abscissa = max([spectrometer['abscissa_max']
                     for spectrometer in spectrometers.values()
                     if spectrometer['abscissa_type'] == abscissa_type])
@@ -118,7 +120,7 @@ target_abscissas = numpy.linspace(min_abscissa, max_abscissa, num_abscissas)
 
 # ### Data Preparation
 
-# In[9]:
+# In[3]:
 
 
 # --- Load spectrometer abscissas
@@ -138,7 +140,7 @@ for spectra_data in test_spectra.values():
 
 # ## Data Exploration
 
-# In[10]:
+# In[4]:
 
 
 for spectrometer, metadata in spectrometers.items():
@@ -151,7 +153,7 @@ for spectrometer, metadata in spectrometers.items():
 
 # ## Spectra Standardization
 
-# In[11]:
+# In[5]:
 
 
 for spectrometer in spectrometers:
@@ -160,7 +162,7 @@ for spectrometer in spectrometers:
     test_spectra[spectrometer]['standardized_data'] =         numpy.interp(target_abscissas, spectrometer_abscissas, raw_spectra)
 
 
-# In[12]:
+# In[6]:
 
 
 # Plot original and standardized spectra
