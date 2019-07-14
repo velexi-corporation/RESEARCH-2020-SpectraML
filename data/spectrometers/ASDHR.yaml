@@ -1,0 +1,9 @@
+description: 'High-resolution ASD field portable spectrometer'
+
+abscissas:
+    wavelengths:
+        unit: micron
+        min: 0.35
+        max: 2.5
+        abscissas_file: splib07a_Wavelengths_ASD_0.35-2.5_microns_2151_ch.txt
+        bandpass_file: splib07a_Bandpass_(FWHM)_ASDHR_High-Resolution.txt
