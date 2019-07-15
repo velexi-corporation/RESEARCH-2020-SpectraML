@@ -17,7 +17,7 @@ import yaml
 
 # --- Public Functions
 
-def load_spectra(spectra_path, spectrometers):
+def load_spectra(spectra_path, spectrometer):
     """
     Load spectra data.
 
@@ -26,24 +26,20 @@ def load_spectra(spectra_path, spectrometers):
     spectra_path: str
         path to spectra data file
 
-    spectrometers: dict
-        metadata and abscissa values for available spectrometers
+    spectrometer: dict
+        metadata and abscissa values for spectrometer
 
     Return value
     ------------
     spectra: pandas.DataFrame
-        spectra loaded from spectra_file with wavelength values for
-        spectrometer (inferred) that produced the spectra
+        DataFrame containing spectra data indexed by wavelength
     """
     # --- Check arguments
 
-    if not os.path.isfile(path):
-        error = "'path' (='{}') is not a valid file".format(path)
+    if not os.path.isfile(spectra_path):
+        error = "'spectra_path' (='{}') is not a valid file" \
+            .format(spectra_path)
         raise ValueError(error)
-
-    # --- Preparations
-
-    spectra = pd.DataFrame()
 
     # --- Load spectra data
 
@@ -56,6 +52,7 @@ def load_spectra(spectra_path, spectrometers):
     # --- Return spectra
 
     return spectra
+
 
 def load_spectrometers(spectometers_path, splib07a_dir):
     """
@@ -117,14 +114,12 @@ def load_spectrometers(spectometers_path, splib07a_dir):
         for abscissa in metadata['abscissas'].values():
             # Load values
             abscissa['values'] = pd.read_csv(
-                os.path.join(splib07a_dir, abscissa['abscissas_file'])) \
-                .values.flatten()
+                os.path.join(splib07a_dir, abscissa['abscissas_file']))
 
             # Load bandpass values
-            if 'bandpass' in abscissa:
+            if 'bandpass_file' in abscissa:
                 abscissa['bandpass_values'] = pd.read_csv(
-                    os.path.join(splib07a_dir, abscissa['bandpass_file'])) \
-                    .values.flatten()
+                    os.path.join(splib07a_dir, abscissa['bandpass_file']))
 
     # --- Return results
 
