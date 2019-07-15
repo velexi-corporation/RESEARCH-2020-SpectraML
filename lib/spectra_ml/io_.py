@@ -17,13 +17,53 @@ import yaml
 
 # --- Public Functions
 
-def load_spectrometers(metadata_dir, splib07a_dir):
+def load_spectra(spectra_path, spectrometers):
+    """
+    Load spectra data.
+
+    Parameters
+    ----------
+    spectra_path: str
+        path to spectra data file
+
+    spectrometers: dict
+        metadata and abscissa values for available spectrometers
+
+    Return value
+    ------------
+    spectra: pandas.DataFrame
+        spectra loaded from spectra_file with wavelength values for
+        spectrometer (inferred) that produced the spectra
+    """
+    # --- Check arguments
+
+    if not os.path.isfile(path):
+        error = "'path' (='{}') is not a valid file".format(path)
+        raise ValueError(error)
+
+    # --- Preparations
+
+    spectra = pd.DataFrame()
+
+    # --- Load spectra data
+
+    # TODO
+
+    # --- Clean spectra data
+
+    # TODO
+
+    # --- Return spectra
+
+    return spectra
+
+def load_spectrometers(spectometers_path, splib07a_dir):
     """
     Load all spectrometer data contained in specified directory.
 
     Parameters
     ----------
-    metadata_dir: str
+    spectrometers_dir: str
         path to directory containing spectrometer metadata
 
     splib07a_dir: str
@@ -36,9 +76,9 @@ def load_spectrometers(metadata_dir, splib07a_dir):
     """
     # --- Check arguments
 
-    if not os.path.isdir(metadata_dir):
-        error = "'metadata_dir' (='{}') is not a valid directory" \
-            .format(metadata_dir)
+    if not os.path.isdir(spectometers_path):
+        error = "'spectometers_path' (='{}') is not a valid directory" \
+            .format(spectometers_path)
         raise ValueError(error)
 
     if not os.path.isdir(splib07a_dir):
@@ -55,10 +95,10 @@ def load_spectrometers(metadata_dir, splib07a_dir):
 
     # Load metadata
     spectrometer_file_paths = \
-        [os.path.join(metadata_dir, filename)
-         for filename in os.listdir(metadata_dir)
+        [os.path.join(spectometers_path, filename)
+         for filename in os.listdir(spectometers_path)
          if not filename.startswith('.') and
-         os.path.isfile(os.path.join(metadata_dir, filename))]
+         os.path.isfile(os.path.join(spectometers_path, filename))]
 
     for file_path in spectrometer_file_paths:
         name, _ = os.path.splitext(os.path.basename(file_path))

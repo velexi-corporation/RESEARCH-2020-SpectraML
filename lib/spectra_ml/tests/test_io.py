@@ -27,12 +27,12 @@ class io_tests(unittest.TestCase):  # pylint: disable=invalid-name
         # --- Preparations
 
         data_dir = os.environ['DATA_DIR']
-        metadata_dir = os.path.join(data_dir, 'spectrometers')
+        spectrometers_dir = os.path.join(data_dir, 'spectrometers')
         splib07a_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
 
         # --- Exercise functionality and check results
 
-        spectrometers = io.load_spectrometers(metadata_dir,
+        spectrometers = io.load_spectrometers(spectrometers_dir,
                                               splib07a_dir)
 
         for spectrometer in spectrometers.values():
