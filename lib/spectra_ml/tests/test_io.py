@@ -7,6 +7,9 @@ Test spectra_ml.io module.
 import os
 import unittest
 
+# External packages
+import pandas as pd
+
 # SpectraML
 from spectra_ml import io
 
@@ -42,8 +45,13 @@ class io_tests(unittest.TestCase):  # pylint: disable=invalid-name
             abscissas = spectrometer['abscissas']
             assert 'wavelengths' in abscissas
 
-            wavelengths = abscissas['wavelengths']
-            assert 'unit' in wavelengths
-            assert 'min' in wavelengths
-            assert 'max' in wavelengths
-            assert 'values' in wavelengths
+            for abscissa in abscissas.values():
+                assert 'unit' in abscissa
+                assert 'min' in abscissa
+                assert 'max' in abscissa
+                assert 'values' in abscissa
+                assert isinstance(abscissa['values'], pd.DataFrame)
+
+                if 'bandpass_values' in abscissa:
+                    assert isinstance(abscissa['bandpass_values'],
+                                      pd.DataFrame)
