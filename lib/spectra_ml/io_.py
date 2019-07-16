@@ -31,7 +31,7 @@ def load_spectrum(spectrum_path, spectrometer):
 
     Return value
     ------------
-    spectrum : pandas.DataFrame
+    spectrum : DataFrame
         DataFrame containing spectrum data indexed by wavelength
 
     spectrum_metadata: dict
