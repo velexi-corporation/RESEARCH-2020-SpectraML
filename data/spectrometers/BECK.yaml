@@ -1,0 +1,9 @@
+description: 'Beckman 5270'
+
+abscissas:
+    wavelengths:
+        unit: micron
+        min: 0.2
+        max: 3.0
+        abscissas_file: splib07a_Wavelengths_BECK_Beckman_0.2-3.0_microns.txt
+        bandpass_file: splib07a_Bandpass_(FWHM)_BECK_Beckman_in_microns.txt

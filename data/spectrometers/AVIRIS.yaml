@@ -1,0 +1,9 @@
+description: 'NASA Airborne Visible/Infra-Red Imaging Spectrometer AVIRIS'
+
+abscissas:
+    wavelengths:
+        unit: micron
+        min: 0.37
+        max: 2.5
+        abscissas_file: splib07a_Wavelengths_AVIRIS_1996_0.37-2.5_microns.txt
+        bandpass_file: splib07a_Bandpass_(FWHM)_AVIRIS_1996_in_microns.txt
