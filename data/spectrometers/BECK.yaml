@@ -1,7 +1,7 @@
 description: 'Beckman 5270'
 
-abscissas:
-    wavelengths:
+x-axis:
+    wavelength:
         unit: micron
         min: 0.2
         max: 3.0

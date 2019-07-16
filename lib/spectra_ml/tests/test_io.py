@@ -111,18 +111,20 @@ class io_tests(unittest.TestCase):  # pylint: disable=invalid-name
 
         for spectrometer in spectrometers.values():
             assert 'description' in spectrometer
-            assert 'abscissas' in spectrometer
+            assert 'x-axis' in spectrometer
 
-            abscissas = spectrometer['abscissas']
-            assert 'wavelengths' in abscissas
+            x_axis_options = spectrometer['x-axis']
+            assert 'wavelength' in x_axis_options
 
-            for abscissa in abscissas.values():
-                assert 'unit' in abscissa
-                assert 'min' in abscissa
-                assert 'max' in abscissa
-                assert 'values' in abscissa
-                assert isinstance(abscissa['values'], pd.DataFrame)
+            for axis_type, axis in x_axis_options.items():
+                assert 'unit' in axis
+                assert 'min' in axis
+                assert 'max' in axis
+                assert 'values' in axis
+                assert isinstance(axis['values'], pd.DataFrame)
+                assert axis['values'].columns == [axis_type]
 
-                if 'bandpass_values' in abscissa:
-                    assert isinstance(abscissa['bandpass_values'],
+                if 'bandpass_values' in axis:
+                    assert isinstance(axis['bandpass_values'],
                                       pd.DataFrame)
+                    assert axis['bandpass_values'].columns == ['bandpass']
