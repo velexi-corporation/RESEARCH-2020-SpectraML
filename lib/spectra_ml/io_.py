@@ -17,41 +17,80 @@ import yaml
 
 # --- Public Functions
 
-def load_spectra(spectra_path, spectrometer):
+def load_spectrum(spectrum_path, spectrometer):
     """
-    Load spectra data.
+    Load spectrum data.
 
     Parameters
     ----------
-    spectra_path: str
-        path to spectra data file
+    spectrum_path: str
+        path to spectrum data file
 
     spectrometer: dict
         metadata and abscissa values for spectrometer
 
     Return value
     ------------
-    spectra: pandas.DataFrame
-        DataFrame containing spectra data indexed by wavelength
+    spectrum : pandas.DataFrame
+        DataFrame containing spectrum data indexed by wavelength
+
+    spectrum_metadata: dict
+        metadata for spectrum
     """
     # --- Check arguments
 
-    if not os.path.isfile(spectra_path):
-        error = "'spectra_path' (='{}') is not a valid file" \
-            .format(spectra_path)
+    if not os.path.isfile(spectrum_path):
+        error = "'spectrum_path' (='{}') is not a valid file" \
+            .format(spectrum_path)
         raise ValueError(error)
 
-    # --- Load spectra data
+    # --- Load spectrum data
 
-    # TODO
+    # Load spectrum
+    spectrum = pd.read_csv(spectrum_path)
 
-    # --- Clean spectra data
+    # Add wavelengths to DataFrame
+    wavelengths = spectrometer['abscissas']['wavelengths']['values']
+    if len(wavelengths) != len(spectrum):
+        raise RuntimeError("Mismatch between spectrum length and "
+                           "spectrometer wavelengths")
 
-    # TODO
+    spectrum['wavelength'] = spectrometer['abscissas']['wavelengths']['values']
 
-    # --- Return spectra
+    # Extract metadata string
+    metadata_str = spectrum.columns[0]
 
-    return spectra
+    # --- Fill in missing values
+
+    # Set index to 'wavelength' column
+    spectrum.set_index('wavelength', inplace=True)
+
+    # Rename columns
+    column_names = {spectrum.columns[0]: 'reflectance'}
+    spectrum.rename(columns=column_names, inplace=True)
+
+    # Interpolate to fill in missing values
+    spectrum.interpolate(method='values', inplace=True)
+
+    # --- Parse spectrum metadata
+
+    metadata_parts = metadata_str.split()
+    record_id = metadata_parts[1].split('=')[-1].strip(':').strip()
+    material = ' '.join(metadata_parts[2:-2])
+    spectrometer_purity_code = metadata_parts[-2]
+    measurement_type = metadata_parts[-1]
+
+    # TODO: split spectrometer_code into spectrometer code and purity code
+    spectrum_metadata = {
+        'id': record_id,
+        'material': material,
+        'spectrometer_purity_code': spectrometer_purity_code,
+        'measurement_type': measurement_type,
+        }
+
+    # --- Return spectrrum
+
+    return spectrum, spectrum_metadata
 
 
 def load_spectrometers(spectometers_path, splib07a_dir):
