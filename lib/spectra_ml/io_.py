@@ -29,8 +29,8 @@ def load_spectrum(spectrum_path, spectrometer):
     spectrometer: dict
         metadata and abscissa values for spectrometer
 
-    Return value
-    ------------
+    Return values
+    -------------
     spectrum : DataFrame
         DataFrame containing spectrum data indexed by wavelength
 
@@ -88,7 +88,7 @@ def load_spectrum(spectrum_path, spectrometer):
         'measurement_type': measurement_type,
         }
 
-    # --- Return spectrrum
+    # --- Return spectrum and metadata
 
     return spectrum, spectrum_metadata
 
