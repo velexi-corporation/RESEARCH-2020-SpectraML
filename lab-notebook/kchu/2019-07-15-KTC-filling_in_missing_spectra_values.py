@@ -81,25 +81,30 @@ for spectra_data in test_spectra.values():
 # --- Fill in missing values
 
 for spectrometer in spectrometers:
-    raw_spectra = test_spectra[spectrometer]['raw_data']
-    cleaned_spectra = raw_spectra.copy()
+    raw_spectrum = test_spectra[spectrometer]['raw_data']
+    cleaned_spectrum = raw_spectrum.copy()
     
-    # --- Process raw_data
+    # --- Process raw spectrum
 
     # Set negative values to 0 (for visualization purposes)
-    raw_spectra[raw_spectra < 0] = 0
+    raw_spectrum[raw_spectrum < 0] = 0
     
-    # --- Process cleaned_data
-    
+    # --- Process cleaned spectrum
+
+    # Set index to wavelength
+    wavelengths = spectrometers[spectrometer]['abscissas']['wavelengths']['values']
+    cleaned_spectrum['wavelength'] = wavelengths
+    cleaned_spectrum.set_index('wavelength', inplace=True)
+
     # Set negative values to NaN
-    cleaned_spectra[cleaned_spectra < 0] = np.NaN
+    cleaned_spectrum[cleaned_spectrum < 0] = np.NaN
     
     # Use pandas.DataFrame.interpolate() to fill in NaNs
-    cleaned_spectra.interpolate(method='linear', inplace=True)
+    cleaned_spectrum.interpolate(method='values', inplace=True)
 
     # Convert spectra data to numpy arrays
-    test_spectra[spectrometer]['raw_data'] = raw_spectra.values.flatten()
-    test_spectra[spectrometer]['cleaned_data'] = cleaned_spectra.values.flatten()
+    test_spectra[spectrometer]['raw_data'] = raw_spectrum
+    test_spectra[spectrometer]['cleaned_data'] = cleaned_spectrum
 
 
 # ## Plot Results
@@ -112,19 +117,19 @@ for spectrometer in spectrometers:
 for spectrometer in spectrometers:
     # Get spectra data
     spectrometer_abscissas = spectrometers[spectrometer]['abscissas']['wavelengths']['values']
-    raw_spectra = test_spectra[spectrometer]['raw_data']
-    clean_spectra = test_spectra[spectrometer]['cleaned_data']
+    raw_spectrum = test_spectra[spectrometer]['raw_data']
+    clean_spectrum = test_spectra[spectrometer]['cleaned_data']
 
     # Plot spectra
     print(spectrometer, test_spectra[spectrometer]['path'])
     
     plt.figure()
     plt.subplot(2, 1, 1)
-    plt.plot(spectrometer_abscissas, raw_spectra)
+    plt.plot(spectrometer_abscissas, raw_spectrum)
     plt.show()
     
     plt.subplot(2, 1, 2)
-    plt.plot(spectrometer_abscissas, clean_spectra)
+    plt.plot(spectrometer_abscissas, clean_spectrum)
     
     plt.show()
 
