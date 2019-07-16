@@ -10,18 +10,7 @@ import numpy as np
 import pandas as pd
 
 
-# --- Constants
-
-# Default parameter values
-DEFAULT_NUM_ABSCISSAS = 1000
-
-
 # --- Public Functions
-
-# abscissa_type=DEFAULT_ABSCISSA_TYPE,
-# num_abscissas=DEFAULT_NUM_ABSCISSAS):
-
-# --- Spectra Functions
 
 def resample_spectrum(spectrum, wavelengths):
     """
