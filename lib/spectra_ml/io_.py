@@ -159,13 +159,13 @@ def load_spectrometers(spectometers_path, splib07a_dir):
             # Load values
             axis['values'] = pd.read_csv(
                 os.path.join(splib07a_dir, axis['abscissas_file']),
-                header=0, names=[axis_type])
+                delimiter='\t', header=0, names=[axis_type])
 
             # Load bandpass values
             if 'bandpass_file' in axis:
                 axis['bandpass_values'] = pd.read_csv(
                     os.path.join(splib07a_dir, axis['bandpass_file']),
-                    header=0, names=['bandpass'])
+                    delimiter='\t', header=0, names=['bandpass'])
 
     # --- Return results
 
