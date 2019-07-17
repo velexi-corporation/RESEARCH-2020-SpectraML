@@ -56,6 +56,17 @@ def main(raw_data_dir, spectrometers_dir, output_dir,
     """
     Standardize all spectra in RAW_DATA_DIR using spectrometers defined in
     SPECTROMETERS_DIR.
+
+    OUTPUTS
+
+    * 'spectra-metadata.csv': CSV-formatted database of spectra metadata. Each
+      row is uniquely identified by a spectrum id (primary key) and contains
+      fields such as: material description, spectrometer code, purity code,
+      measurement type, and path (relative to RAW_DATA_DIR).
+
+    * 'XXXXX.csv': CSV-formatted spectrum data. Each file is named by the id
+      of the spectrum (identical to the id in 'spectra-metadata.csv' file).
+      Each row contains a wavelength and a reflectance value.
     """
     # pylint: disable=too-many-arguments
 
