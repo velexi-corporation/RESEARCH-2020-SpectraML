@@ -58,11 +58,11 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     -------
     * 'spectra-metadata.csv': CSV-formatted database of spectra metadata. Each
       row is uniquely identified by a spectrum id (primary key) and contains
-      fields such as: material description, spectrometer code, purity code, and
-      measurement type.
+      fields such as: material description, spectrometer code, purity code,
+      measurement type, and path (relative to raw_data_dir).
 
     * 'XXXXX.csv': CSV-formatted spectrum data. Each file is named by the id
-      of the spectrum (identical with the id in 'spectra-metadata.csv' file).
+      of the spectrum (identical to the id in 'spectra-metadata.csv' file).
       Each row contains a wavelength and a reflectance value.
 
     Parameters
@@ -152,7 +152,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     spectra_metadata_db = []
     spectra_metadata_db_columns = ['id', 'material',
                                    'spectrometer_purity_code',
-                                   'measurement_type']
+                                   'measurement_type',
+                                   'path']
     spectra_metadata_db_path = os.path.join(output_dir,
                                             'spectra-metadata.csv')
 
@@ -198,6 +199,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
             t_start = time.time()
 
             spectrum, metadata = io.load_spectrum(path, spectrometer)
+            metadata['path'] = os.path.relpath(path, raw_data_dir)
             spectra_metadata_db.append(metadata)
 
             timing_data['Load raw spectra'] += time.time() - t_start
