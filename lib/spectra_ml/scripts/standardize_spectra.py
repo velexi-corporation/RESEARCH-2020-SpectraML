@@ -29,8 +29,8 @@ from spectra_ml import io
 # --- Constants
 
 # Default x-axis parameters
-DEFAULT_X_LO = 0.37  # wavelength in microns
-DEFAULT_X_HI = 2.5  # wavelength in microns
+DEFAULT_X_LOWER = 0.37  # wavelength in microns
+DEFAULT_X_UPPER = 2.5  # wavelength in microns
 DEFAULT_NUM_GRID_POINTS = 1000  # number of grid points along x-axis
 
 
@@ -48,8 +48,8 @@ class ExitStatus(enum.IntEnum):
 # --- Main program
 
 def run(output_dir, raw_data_dir, spectrometers_dir,
-        x_lo=DEFAULT_X_LO,
-        x_hi=DEFAULT_X_HI,
+        x_lower=DEFAULT_X_LOWER,
+        x_upper=DEFAULT_X_UPPER,
         num_grid_points=DEFAULT_NUM_GRID_POINTS):
     """
     Standardize all spectra in specified directory.
@@ -80,11 +80,11 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
         Paths to abscissas files are expected to be relative to the
         'raw_data_dir' directory.
 
-    x_lo: float
-        low end of x-axis
+    x_lower: float
+        lower end of x-axis
 
-    x_hi: float
-        high end of x-axis
+    x_upper: float
+        upper end of x-axis
 
     num_grid_points: int
         number of grid points along x-axis
@@ -113,17 +113,18 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
             .format(spectrometers_dir)
         raise ValueError(error)
 
-    if not isinstance(x_lo, (int, float)):
-        raise ValueError("'x_lo' should be an int or float")
+    if not isinstance(x_lower, (int, float)):
+        raise ValueError("'x_lower' should be an int or float")
 
-    if not isinstance(x_hi, (int, float)):
-        raise ValueError("'x_hi' should be an int or float")
+    if not isinstance(x_upper, (int, float)):
+        raise ValueError("'x_upper' should be an int or float")
 
     if not isinstance(num_grid_points, int):
-        raise ValueError("'x_hi' should be an int")
+        raise ValueError("'x_upper' should be an int")
 
-    if x_lo > x_hi:
-        raise ValueError("'x_hi' should be greater than or equal to 'x_lo'")
+    if x_lower > x_upper:
+        raise ValueError("'x_upper' should be greater than or equal to "
+                         "'x_lower'")
 
     if num_grid_points <= 0:
         raise ValueError("'num_grid_points' should be a positive integer")
@@ -145,7 +146,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     spectrometer_codes = spectrometers.keys()
 
     # Generate x-axis grid
-    abscissas = pd.Series(np.linspace(x_lo, x_hi, num_grid_points))
+    abscissas = pd.Series(np.linspace(x_lower, x_upper, num_grid_points))
 
     # Initialize spectra metadata database
     spectra_metadata_db = []

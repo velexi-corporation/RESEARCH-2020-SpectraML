@@ -38,14 +38,27 @@ EXIT_STATUS_ERROR_CREATING_OUTPUT_DIRECTORY = -2
               "'.standardized' suffix appended to it. If the output "
               "directory does not already exist, it is automatically "
               "created.")
+@click.option('--wavelength-lower',
+              default=standardize_spectra.DEFAULT_X_LOWER,
+              help="lower end of wavelength axis")
+@click.option('--wavelength-upper',
+              default=standardize_spectra.DEFAULT_X_UPPER,
+              help="upper end of wavelength axis")
+@click.option('--num-wavelengths',
+              default=standardize_spectra.DEFAULT_NUM_GRID_POINTS,
+              help="number of grid points along wavelength axis")
 @click.option('-l', '--log-level',
               default='INFO',
               help='set log level')
-def main(raw_data_dir, spectrometers_dir, output_dir, log_level):
+def main(raw_data_dir, spectrometers_dir, output_dir,
+         wavelength_lower, wavelength_upper, num_wavelengths,
+         log_level):
     """
     Standardize all spectra in RAW_DATA_DIR using spectrometers defined in
     SPECTROMETERS_DIR.
     """
+    # pylint: disable=too-many-arguments
+
     # --- Preparations
 
     # Set log level
@@ -77,8 +90,11 @@ def main(raw_data_dir, spectrometers_dir, output_dir, log_level):
 
     # --- Standardize spectra
 
-    exit_status = standardize_spectra.run(output_dir,
-                                          raw_data_dir, spectrometers_dir)
+    exit_status = standardize_spectra.run(
+        output_dir, raw_data_dir, spectrometers_dir,
+        x_lower=wavelength_lower,
+        x_upper=wavelength_upper,
+        num_grid_points=num_wavelengths)
 
     # --- Clean up
 
