@@ -153,7 +153,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     spectra_metadata_db_columns = ['id', 'material',
                                    'spectrometer_purity_code',
                                    'measurement_type',
-                                   'path']
+                                   'raw_data_path']
     spectra_metadata_db_path = os.path.join(output_dir,
                                             'spectra-metadata.csv')
 
@@ -199,7 +199,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
             t_start = time.time()
 
             spectrum, metadata = io.load_spectrum(path, spectrometer)
-            metadata['path'] = os.path.relpath(path, raw_data_dir)
+            metadata['raw_data_path'] = os.path.relpath(path, raw_data_dir)
             spectra_metadata_db.append(metadata)
 
             timing_data['Load raw spectra'] += time.time() - t_start
