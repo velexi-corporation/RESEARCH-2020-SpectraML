@@ -16,6 +16,10 @@ jupyter
 # Basic utility packages
 PyYAML
 
+# CLI packages
+click
+progress
+
 # Data science packages
 matplotlib
 numpy

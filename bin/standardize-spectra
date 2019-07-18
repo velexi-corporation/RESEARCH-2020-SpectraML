@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+"""
+Script to standardize all of the spectra contained in a directory.
+"""
+# pylint: disable=invalid-name
+
+# --- Imports
+
+# Standard library
+import logging
+import os
+import sys
+
+# External packages
+import click
+
+# SpectraML
+from spectra_ml.scripts import standardize_spectra
+
+
+# --- Constants
+
+# Exit statuses
+EXIT_STATUS_INVALID_LOG_LEVEL = -1
+EXIT_STATUS_ERROR_CREATING_OUTPUT_DIRECTORY = -2
+
+
+# --- Main program
+
+@click.command()
+@click.argument('raw_data_dir')
+@click.argument('spectrometers_dir')
+@click.option('-o', '--output-dir',
+              default=None,
+              help="directory where standardized spectra files will be "
+              "placed. If not specified, the name of the output directory "
+              "is set to the raw data directory name with the "
+              "'.standardized' suffix appended to it. If the output "
+              "directory does not already exist, it is automatically "
+              "created.")
+@click.option('--wavelength-lower',
+              default=standardize_spectra.DEFAULT_X_LOWER,
+              help="lower end of wavelength axis")
+@click.option('--wavelength-upper',
+              default=standardize_spectra.DEFAULT_X_UPPER,
+              help="upper end of wavelength axis")
+@click.option('--num-wavelengths',
+              default=standardize_spectra.DEFAULT_NUM_GRID_POINTS,
+              help="number of grid points along wavelength axis")
+@click.option('-l', '--log-level',
+              default='INFO',
+              help='set log level')
+def main(raw_data_dir, spectrometers_dir, output_dir,
+         wavelength_lower, wavelength_upper, num_wavelengths,
+         log_level):
+    """
+    Standardize all spectra in RAW_DATA_DIR using spectrometers defined in
+    SPECTROMETERS_DIR.
+
+    OUTPUTS
+
+    * 'spectra-metadata.csv': CSV-formatted database of spectra metadata. Each
+      row is uniquely identified by a spectrum id (primary key) and contains
+      fields such as: material description, spectrometer code, purity code,
+      measurement type, and path (relative to RAW_DATA_DIR).
+
+    * 'XXXXX.csv': CSV-formatted spectrum data. Each file is named by the id
+      of the spectrum (identical to the id in 'spectra-metadata.csv' file).
+      Each row contains a wavelength and a reflectance value.
+    """
+    # pylint: disable=too-many-arguments
+
+    # --- Preparations
+
+    # Set log level
+    try:
+        log_level = getattr(logging, log_level.upper())
+    except AttributeError:
+        msg = "\nERROR: invalid log level '{}'.\n".format(log_level.upper())
+        print(msg, file=sys.stderr)
+        sys.exit(EXIT_STATUS_INVALID_LOG_LEVEL)
+
+    format_ = '[%(asctime)s]%(levelname)s:%(funcName)s():%(message)s'
+    logging.basicConfig(level=log_level, format=format_)
+
+    # Create output directory
+    if output_dir is None:
+        output_dir = "{}.standardized".format(raw_data_dir)
+
+    if not os.path.isdir(output_dir):
+        try:
+            os.makedirs(output_dir)
+        except Exception as err:  # pylint: disable=broad-except
+            msg = "\nERROR: failed to create output directory.\n  {}" \
+                  .format(err)
+            print(msg, file=sys.stderr)
+            sys.exit(EXIT_STATUS_ERROR_CREATING_OUTPUT_DIRECTORY)
+
+    # Emit output directory to log
+    logging.info('Output directory:%s', output_dir)
+
+    # --- Standardize spectra
+
+    exit_status = standardize_spectra.run(
+        output_dir, raw_data_dir, spectrometers_dir,
+        x_lower=wavelength_lower,
+        x_upper=wavelength_upper,
+        num_grid_points=num_wavelengths)
+
+    # --- Clean up
+
+    sys.exit(exit_status)
+
+
+if __name__ == '__main__':
+
+    # Run main() function
+    main()  # pylint: disable=no-value-for-parameter

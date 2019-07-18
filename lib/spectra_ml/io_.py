@@ -17,7 +17,7 @@ import yaml
 
 # --- Public Functions
 
-def load_spectrum(spectrum_path, spectrometer):
+def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     """
     Load spectrum data.
 
@@ -27,7 +27,10 @@ def load_spectrum(spectrum_path, spectrometer):
         path to spectrum data file
 
     spectrometer: dict
-        metadata and abscissa values for spectrometer
+        metadata for spectrometer
+
+    fill_in_missing_values: bool
+        True if missing values should be filled in; False otherwise
 
     Return values
     -------------
@@ -44,23 +47,21 @@ def load_spectrum(spectrum_path, spectrometer):
             .format(spectrum_path)
         raise ValueError(error)
 
-    # --- Load spectrum data
+    # --- Load spectrum data to a DataFrame indexed by wavelength
 
     # Load spectrum
     spectrum = pd.read_csv(spectrum_path)
 
     # Add wavelengths to DataFrame
-    wavelengths = spectrometer['abscissas']['wavelengths']['values']
+    wavelengths = spectrometer['x-axis']['wavelength']['values']
     if len(wavelengths) != len(spectrum):
         raise RuntimeError("Mismatch between spectrum length and "
                            "spectrometer wavelengths")
 
-    spectrum['wavelength'] = spectrometer['abscissas']['wavelengths']['values']
+    spectrum['wavelength'] = spectrometer['x-axis']['wavelength']['values']
 
     # Extract metadata string
     metadata_str = spectrum.columns[0]
-
-    # --- Fill in missing values
 
     # Set index to 'wavelength' column
     spectrum.set_index('wavelength', inplace=True)
@@ -68,9 +69,6 @@ def load_spectrum(spectrum_path, spectrometer):
     # Rename columns
     column_names = {spectrum.columns[0]: 'reflectance'}
     spectrum.rename(columns=column_names, inplace=True)
-
-    # Interpolate to fill in missing values
-    spectrum.interpolate(method='values', inplace=True)
 
     # --- Parse spectrum metadata
 
@@ -87,6 +85,13 @@ def load_spectrum(spectrum_path, spectrometer):
         'spectrometer_purity_code': spectrometer_purity_code,
         'measurement_type': measurement_type,
         }
+
+    # --- Fill in missing values
+
+    if fill_in_missing_values:
+
+        # Interpolate to fill in missing values
+        spectrum.interpolate(method='values', inplace=True)
 
     # --- Return spectrum and metadata
 
@@ -108,7 +113,7 @@ def load_spectrometers(spectometers_path, splib07a_dir):
     Return value
     ------------
     spectrometers: dict
-        metadata and abscissa values for spectrometers
+        metadata and x-axis values for spectrometers
     """
     # --- Check arguments
 
@@ -142,23 +147,25 @@ def load_spectrometers(spectometers_path, splib07a_dir):
         with open(file_path, 'r') as file_:
             spectrometers[name] = yaml.safe_load(file_)
 
-    # Load abscissas
+    # Load x-axis
     for spectrometer, metadata in spectrometers.items():
         # Check for required values
-        if 'abscissas' not in metadata:
-            error = "'abscissas' missing from '{}' spectrometer" \
+        if 'x-axis' not in metadata:
+            error = "'x-axis' missing from '{}' spectrometer" \
                 .format(spectrometer)
             raise RuntimeError(error)
 
-        for abscissa in metadata['abscissas'].values():
+        for axis_type, axis in metadata['x-axis'].items():
             # Load values
-            abscissa['values'] = pd.read_csv(
-                os.path.join(splib07a_dir, abscissa['abscissas_file']))
+            axis['values'] = pd.read_csv(
+                os.path.join(splib07a_dir, axis['abscissas_file']),
+                delimiter='\t', header=0, names=[axis_type])
 
             # Load bandpass values
-            if 'bandpass_file' in abscissa:
-                abscissa['bandpass_values'] = pd.read_csv(
-                    os.path.join(splib07a_dir, abscissa['bandpass_file']))
+            if 'bandpass_file' in axis:
+                axis['bandpass_values'] = pd.read_csv(
+                    os.path.join(splib07a_dir, axis['bandpass_file']),
+                    delimiter='\t', header=0, names=['bandpass'])
 
     # --- Return results
 

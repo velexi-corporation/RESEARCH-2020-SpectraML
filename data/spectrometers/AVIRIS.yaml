@@ -1,7 +1,7 @@
 description: 'NASA Airborne Visible/Infra-Red Imaging Spectrometer AVIRIS'
 
-abscissas:
-    wavelengths:
+x-axis:
+    wavelength:
         unit: micron
         min: 0.37
         max: 2.5
