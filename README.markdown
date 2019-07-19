@@ -2,8 +2,9 @@ SpectraML Project
 =================
 
 ___Authors___  
-Bonita Song  
 Kevin T. Chu `<kevin@velexi.com>`
+Bonita Song
+Srikar Munukutla
 
 ------------------------------------------------------------------------------
 
@@ -22,7 +23,7 @@ Table of Contents
 
    2.1. [Python Environment][#2.1]
 
-   2.2: [Spectra Data][#2.2]
+   2.2: [Preparing Spectra Data][#2.2]
 
 3. [References][#3]
 
@@ -30,7 +31,19 @@ Table of Contents
 
 ## 1. Overview
 
-TODO
+The SpectraML project team researches applications of machine learning to
+the analysis of spectroscopic data. We are currently focused on the following
+core areas:
+
+* feature engineering (e.g., preprocessing algorithms for spectra);
+
+* machine learning algorithms (e.g., artificial neural networks, CNNs); and
+
+* performance evaluation framework (e.g., bootstrap, k-fold cross-validation).
+
+As a model problem, we are developing a machine learning system for
+classifying reflectance spectra from the USGS Spectral Library Version 7
+dataset.
 
 ### 1.1 Software Dependencies
 
@@ -52,6 +65,7 @@ See `requirements.txt` for list of Python packages required for this project.
 
     README.markdown
     requirements.txt
+    bin/
     config/
     data/
     docs/
@@ -62,16 +76,20 @@ See `requirements.txt` for list of Python packages required for this project.
 * `README.markdown`: this file
 
 * `requirements.txt`: `pip` requirements file containing Python packages for
-  data science, testing, and assessing code quality.
+  data science, testing, and assessing code quality
 
 * `bin`: directory containing utility programs
 
 * `config`: directory containing template configuration files (e.g., `autoenv`
   configuration file)
 
-* `data`: directory where project data should be placed. TODO
+* `data`: directory where project datasets should be placed. __Note__: in
+  general, datasets should not be committed to the git repository. Instead,
+  datasets should be placed into this directory (either manually or using
+  automation scripts) and referenced by Jupyter notebooks. See
+  [Section 2][#2.2] for details.
 
-* `docs`: directory containing project documentation and notes.
+* `docs`: directory containing project documentation and notes
 
 * `lab-notebook`: directory containing Jupyter notebooks used for
   experimentation and development. Jupyter notebooks saved in this directory
@@ -114,9 +132,81 @@ When appropriate, they should be renamed (with the 'template' suffix removed).
 
   - Set template variables in `.env` (indicated by `{{ }}` notation).
 
-## 2.2. Spectra Data
+### 2.2. Preparing Spectra Data
 
-* TODO: add instructions on how to generate standardized spectra data
+A zip file containing the full USGS Spectra Library (Version 7) is included
+in the `data` directory. To prepare the spectra data for use in Jupyter
+notebooks, use following instructions.
+
+* Extract the data files in `ASCIIdata_splib07a.zip`.
+
+  ```bash
+  $ cd data
+  $ unzip ASCIIdata_splib07a.zip
+  ```
+
+* Generate standardized version of spectra by using the `standardize-spectra`
+  script. `standardize-spectra` carries out the following operations:
+
+  - fills in missing data points with interpolated values;
+
+  - resamples spectra so that they all have the same abscissa values;
+
+  - saves spectra to CSV files containing wavelength and reflectance values;
+
+  - generate the `spectra-metadata.csv` database containing metadata for each
+    spectrum; and
+
+  - names each spectrum file using the unique ID (in `spectra-metadata.csv`)
+    associated with the spectrum.
+
+  ___Usage___
+
+  The following provide several examples of how to use `standardize-spectra`.
+  __Note__: if the `standardize-spectra` command cannot be found, check that
+  `bin` is on your path.
+
+  - Show help message.
+
+    ```bash
+    $ standardize-spectra --help
+    ```
+
+  - Basic usage uses default output directory and wavelength values.
+
+    ```bash
+    $ cd data
+    $ standardize-spectra ASCIIdata_splib07a spectrometers
+    ```
+
+  - Set custom output directory by using the `-o OUTPUT_DIR` option.
+
+    ```bash
+    $ cd data
+    $ standardize-spectra ASCIIdata_splib07a spectrometers -o custom-location
+    ```
+
+  - Set number of wavelengths in spectra directory by using the
+    `--num-wavelengths NUM_WAVELENGTHS` option.
+
+    ```bash
+    $ cd data
+    $ standardize-spectra ASCIIdata_splib07a spectrometers \
+      --num-wavelengths 2000
+    ```
+
+* Use lists of spectra IDs to define collections of spectra. Within Jupyter
+  notebook, use the following directory paths to facilitate access to spectra
+  files.
+
+  ```python
+  # Data directories
+  data_dir = os.environ['DATA_DIR']
+  spectra_data_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
+
+  # Path to data file for spectra with ID=12345
+  spectrum_path = os.path.join(spectra_data_dir, '12345.csv')
+  ```
 
 ------------------------------------------------------------------------------
 
@@ -137,7 +227,7 @@ When appropriate, they should be renamed (with the 'template' suffix removed).
 
 [#2]: #2-setting-up
 [#2.1]: #21-python-environment
-[#2.2]: #22-spectra-data
+[#2.2]: #22-preparing-spectra-data
 
 [#3]: #3-references
 
