@@ -1,7 +1,19 @@
+# --- Activate virtual Python environment
+
+#TARGET_VIRTUALENV={{ VIRTUALENV_NAME }}
+#virtualenvwrapper_verify_active_environment 2> /dev/null
+#if [ $? -ne 0 ]; then
+#    workon $TARGET_VIRTUALENV
+#else
+#    if [ `basename $VIRTUAL_ENV` != "$TARGET_VIRTUALENV" ]; then
+#        workon $TARGET_VIRTUALENV
+#    fi
+#fi
+
 # --- Configure environment
 
 # Find top-level directory
-TOP_DIR=`dirname "${BASH_SOURCE[0]}"`
+TOP_DIR=`echo $(dirname "${BASH_SOURCE[0]}")`
 
 # Data directory
 export DATA_DIR=$TOP_DIR/data
@@ -29,3 +41,8 @@ fi
 
 # Jupyter aliases
 alias jn='jupyter notebook'
+
+# --- Clean up
+
+#unset TARGET_VIRTUALENV
+unset TOP_DIR
