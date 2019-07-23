@@ -10,6 +10,9 @@ data/*
 # compiled source
 *.pyc
 
+# autoenv
+.env
+
 # testing files
 .cache
 .coverage
