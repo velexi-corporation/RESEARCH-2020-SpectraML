@@ -14,7 +14,6 @@ import enum
 import glob
 import logging
 import os
-import re
 import time
 
 # External packages
@@ -184,6 +183,10 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
         # Initialize spectra metadata
         for path in spectra_files:
 
+            # Emit log message
+            message = "Processing '{}'".format(path)
+            logging.debug(message)
+
             # --- Load raw spectra
 
             # Identify spectrometer
@@ -211,7 +214,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
             t_start = time.time()
 
-            spectrum_standardized = data.resample_spectrum(spectrum, abscissas)
+            spectrum_standardized = data.resample_spectrum(
+                spectrum, abscissas, column=metadata['value_type'])
 
             timing_data['Standardize spectra'] += time.time() - t_start
 
@@ -220,10 +224,12 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
             t_start = time.time()
 
             # Construct filename for CSV file
-            if not re.search('errorbars', path):
+            if metadata['value_type'] == 'reflectance':
                 filename = '{}.csv'.format(metadata['id'])
-            else:
+            elif metadata['value_type'] == 'errorbar':
                 filename = '{}-errorbars.csv'.format(metadata['id'])
+            else:
+                raise RuntimeError("Invalid 'value_type'")
 
             spectrum_standardized.to_csv(os.path.join(output_dir, filename))
 
