@@ -12,7 +12,7 @@ import pandas as pd
 
 # --- Public Functions
 
-def resample_spectrum(spectrum, wavelengths):
+def resample_spectrum(spectrum, wavelengths, column='reflectance'):
     """
     Compute (approximate) values of spectrum at specified wavelengths.
 
@@ -23,6 +23,9 @@ def resample_spectrum(spectrum, wavelengths):
 
     wavelengths: DataFrame or Series
         ordered list of wavelengths to sample spectrum at
+
+    column: str
+        name of column to resample
 
     Return values
     -------------
@@ -37,8 +40,9 @@ def resample_spectrum(spectrum, wavelengths):
     if spectrum.index.name != 'wavelength':
         raise ValueError("'spectrum.index' should be named 'wavelength'")
 
-    if 'reflectance' not in spectrum.columns:
-        raise ValueError("'reflectance' should be a column in 'spectrum'")
+    if column not in spectrum.columns:
+        error = "column '{}' should be a column in 'spectrum'".format(column)
+        raise ValueError(error)
 
     if not isinstance(wavelengths, (pd.DataFrame, pd.Series)):
         raise ValueError("'wavelengths' should be a DataFrame or Series")
@@ -51,8 +55,8 @@ def resample_spectrum(spectrum, wavelengths):
 
     resampled_spectrum = pd.DataFrame()
     resampled_spectrum['wavelength'] = wavelengths.copy()
-    resampled_spectrum['reflectance'] = \
-        np.interp(wavelengths, spectrum.index, spectrum.reflectance)
+    resampled_spectrum[column] = \
+        np.interp(wavelengths, spectrum.index, spectrum[column])
     resampled_spectrum.set_index('wavelength', inplace=True)
 
     # --- Return results

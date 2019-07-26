@@ -7,6 +7,7 @@ data.
 
 # Standard library
 import os
+import re
 
 # External packages
 import pandas as pd
@@ -47,7 +48,7 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
             .format(spectrum_path)
         raise ValueError(error)
 
-    # --- Load spectrum data to a DataFrame indexed by wavelength
+    # --- Load spectrum data to a DataFrame
 
     # Load spectrum
     spectrum = pd.read_csv(spectrum_path)
@@ -60,23 +61,20 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
 
     spectrum['wavelength'] = spectrometer['x-axis']['wavelength']['values']
 
+    # --- Parse spectrum metadata
+
     # Extract metadata string
     metadata_str = spectrum.columns[0]
-
-    # Set index to 'wavelength' column
-    spectrum.set_index('wavelength', inplace=True)
-
-    # Rename columns
-    column_names = {spectrum.columns[0]: 'reflectance'}
-    spectrum.rename(columns=column_names, inplace=True)
-
-    # --- Parse spectrum metadata
 
     metadata_parts = metadata_str.split(':')
     record_id = metadata_parts[0].split('=')[-1]
     material = ' '.join(metadata_parts[1])
     spectrometer_purity_code = metadata_parts[-2]
     measurement_type = metadata_parts[-1]
+    if re.search('Error', metadata_parts[0]):
+        value_type = 'errorbar'
+    else:
+        value_type = 'reflectance'
 
     # TODO: split spectrometer_code into spectrometer code and purity code
     spectrum_metadata = {
@@ -84,7 +82,18 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
         'material': material,
         'spectrometer_purity_code': spectrometer_purity_code,
         'measurement_type': measurement_type,
+        'value_type': value_type,
         }
+
+    # --- Set index DataFrame to wavelength and set data column name
+
+    # Set index to 'wavelength' column
+    spectrum.set_index('wavelength', inplace=True)
+
+    # Rename data column
+    column_names = {spectrum.columns[0]: spectrum_metadata['value_type']}
+
+    spectrum.rename(columns=column_names, inplace=True)
 
     # --- Fill in missing values
 
