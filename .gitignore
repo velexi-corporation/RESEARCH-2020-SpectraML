@@ -1,17 +1,20 @@
+# --- Project files
+
 # data directory
 data/*
 
 # log files
 *.log
 
-# temporary files
-.*.swp
+# --- Jupyter files
+
+.ipynb_checkpoints
+.jupyter/migrated
+
+# --- Python files
 
 # compiled source
 *.pyc
-
-# autoenv
-.env
 
 # testing files
 .cache
@@ -19,9 +22,13 @@ data/*
 .coverage.*
 .pytest_cache
 
-# Jupyter files
-.ipynb_checkpoints
-.jupyter/migrated
+# --- Miscellaneous
+
+# autoenv files
+.env
+
+# vim files
+.*.swp
 
 # macOS files
-.DS_Store
+.DS_Store*
