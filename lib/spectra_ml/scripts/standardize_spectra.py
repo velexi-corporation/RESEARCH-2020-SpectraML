@@ -169,10 +169,6 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     spectra_dirs = [path for path in glob.glob(os.path.join(raw_data_dir, '*'))
                     if os.path.isdir(path)]
 
-    # Remove errorbars directories
-    spectra_dirs = [path for path
-                    in spectra_dirs if not re.search('errorbars', path)]
-
     # Get list of all spectra files in raw data directory
     spectra_files = []
     for spectra_dir in spectra_dirs:
@@ -187,6 +183,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
         # Initialize spectra metadata
         for path in spectra_files:
+
             # --- Load raw spectra
 
             # Identify spectrometer
@@ -200,7 +197,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
             timing_data['Miscellaneous'] += time.time() - t_start
 
-            # Load spectrum
+            # --- Load spectrum
+
             t_start = time.time()
 
             spectrum, metadata = io.load_spectrum(path, spectrometer)
@@ -209,17 +207,24 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
             timing_data['Load raw spectra'] += time.time() - t_start
 
-            # Standardize spectra
+            # --- Standardize spectra
+
             t_start = time.time()
 
             spectrum_standardized = data.resample_spectrum(spectrum, abscissas)
 
             timing_data['Standardize spectra'] += time.time() - t_start
 
-            # Save standardized spectra
+            # --- Save standardized spectra
+
             t_start = time.time()
 
-            filename = '{}.csv'.format(metadata['id'])
+            # Construct filename for CSV file
+            if not re.search('errorbars', path):
+                filename = '{}.csv'.format(metadata['id'])
+            else:
+                filename = '{}-errorbars.csv'.format(metadata['id'])
+
             spectrum_standardized.to_csv(os.path.join(output_dir, filename))
 
             timing_data['Save standardized spectra'] += time.time() - t_start

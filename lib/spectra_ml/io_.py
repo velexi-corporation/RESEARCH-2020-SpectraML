@@ -72,9 +72,9 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
 
     # --- Parse spectrum metadata
 
-    metadata_parts = metadata_str.split()
-    record_id = metadata_parts[1].split('=')[-1].strip(':').strip()
-    material = ' '.join(metadata_parts[2:-2])
+    metadata_parts = metadata_str.split(':')
+    record_id = metadata_parts[0].split('=')[-1]
+    material = ' '.join(metadata_parts[1])
     spectrometer_purity_code = metadata_parts[-2]
     measurement_type = metadata_parts[-1]
 
