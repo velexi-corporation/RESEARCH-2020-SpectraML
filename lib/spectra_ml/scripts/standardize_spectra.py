@@ -14,6 +14,7 @@ import enum
 import glob
 import logging
 import os
+import re
 import time
 
 # External packages
@@ -168,6 +169,10 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
     spectra_dirs = [path for path in glob.glob(os.path.join(raw_data_dir, '*'))
                     if os.path.isdir(path)]
 
+    # Remove errorbars directories
+    spectra_dirs = [path for path
+                    in spectra_dirs if not re.search('errorbars', path)]
+
     # Get list of all spectra files in raw data directory
     spectra_files = []
     for spectra_dir in spectra_dirs:
@@ -176,7 +181,7 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
     # ------ Process spectra
 
-    suffix = '%(index)d/%(max)d, (ETA:%(eta)ds)'
+    suffix = '%(index)d/%(max)d (ETA:%(eta)ds)'
     with Bar('Processing spectra', max=len(spectra_files), suffix=suffix) \
             as progress_bar:
 
