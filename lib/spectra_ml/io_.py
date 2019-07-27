@@ -10,6 +10,7 @@ import os
 import re
 
 # External packages
+import numpy as np
 import pandas as pd
 import yaml
 
@@ -91,13 +92,16 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     spectrum.set_index('wavelength', inplace=True)
 
     # Rename data column
-    column_names = {spectrum.columns[0]: spectrum_metadata['value_type']}
+    column_names = {spectrum.columns[0]: value_type}
 
     spectrum.rename(columns=column_names, inplace=True)
 
     # --- Fill in missing values
 
     if fill_in_missing_values:
+
+        # Set negative values to NaN
+        spectrum[spectrum[value_type] < 0] = np.NaN
 
         # Interpolate to fill in missing values
         spectrum.interpolate(method='values', inplace=True)
