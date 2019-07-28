@@ -89,6 +89,7 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
         'material': material,
         'spectrometer_purity_code': spectrometer_purity_code,
         'measurement_type': measurement_type,
+        'raw_data_path': spectrum_path,
         }
 
     # --- Set index DataFrame to wavelength and set data column name

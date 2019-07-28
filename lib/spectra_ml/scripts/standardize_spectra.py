@@ -150,7 +150,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
     # Initialize spectra metadata database
     spectra_metadata_db = []
-    spectra_metadata_db_columns = ['id', 'material',
+    spectra_metadata_db_columns = ['spectrum_id', 'value_type',
+                                   'material',
                                    'spectrometer_purity_code',
                                    'measurement_type',
                                    'raw_data_path']
