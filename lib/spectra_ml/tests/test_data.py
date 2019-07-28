@@ -66,8 +66,32 @@ class data_tests(unittest.TestCase):  # pylint: disable=invalid-name
         resampled_spectrum = \
             data.resample_spectrum(self.spectrum, wavelengths)
 
-        # Check results
+        # Check data structure
         assert isinstance(resampled_spectrum, pd.DataFrame)
         assert resampled_spectrum.index.name == 'wavelength'
         assert (resampled_spectrum.index == wavelengths).all()
         assert len(resampled_spectrum) == len(wavelengths)
+
+        # Check data values
+        assert (resampled_spectrum['reflectance'] >= 0).all()
+
+    def test_resample_spectrum_2(self):
+        """
+        Test resample_spectrum(). Check resampled values.
+        """
+        # --- Preparations
+
+        # Create test spectrum to resample
+        # TODO: 5 wavelengths
+
+        # Set wavelengths to resample at
+        # TODO: 10 wavelengths
+
+        # --- Exercise functionality and check results
+
+        # TODO: fix as needed
+        resampled_spectrum = \
+            data.resample_spectrum(self.spectrum, wavelengths)
+
+        # Check values of resampled spectrum
+        # TODO
