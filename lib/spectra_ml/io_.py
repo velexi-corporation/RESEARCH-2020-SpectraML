@@ -42,6 +42,8 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     spectrum_metadata: dict
         metadata for spectrum
     """
+    # pylint: disable=too-many-locals
+
     # --- Check arguments
 
     if not os.path.isfile(spectrum_path):
@@ -67,9 +69,11 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     # Extract metadata string
     metadata_str = spectrum.columns[0]
 
-    metadata_parts = metadata_str.split(':')
-    record_id = metadata_parts[0].split('=')[-1]
-    material = ' '.join(metadata_parts[1])
+    split_by_colon = metadata_str.split(':')
+    record_id = split_by_colon[0].split('=')[-1]
+
+    metadata_parts = split_by_colon[1].split()
+    material = ' '.join(metadata_parts[0:-2])
     spectrometer_purity_code = metadata_parts[-2]
     measurement_type = metadata_parts[-1]
     if re.search('Error', metadata_parts[0]):
@@ -77,7 +81,8 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     else:
         value_type = 'reflectance'
 
-    # TODO: split spectrometer_code into spectrometer code and purity code
+    # TODO: split spectrometer_purity_code into spectrometer code and
+    # purity code
     spectrum_metadata = {
         'id': record_id,
         'material': material,
