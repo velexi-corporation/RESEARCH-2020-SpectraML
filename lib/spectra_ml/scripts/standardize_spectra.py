@@ -226,9 +226,9 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
             # Construct filename for CSV file
             if metadata['value_type'] == 'reflectance':
-                filename = '{}.csv'.format(metadata['id'])
+                filename = '{}.csv'.format(metadata['spectrum_id'])
             elif metadata['value_type'] == 'errorbar':
-                filename = '{}-errorbars.csv'.format(metadata['id'])
+                filename = '{}-errorbars.csv'.format(metadata['spectrum_id'])
             else:
                 raise RuntimeError("Invalid 'value_type'")
 
