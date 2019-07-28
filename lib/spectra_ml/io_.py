@@ -70,13 +70,13 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     metadata_str = spectrum.columns[0]
 
     split_by_colon = metadata_str.split(':')
-    record_id = split_by_colon[0].split('=')[-1]
+    spectrum_id = split_by_colon[0].split('=')[-1]
 
     metadata_parts = split_by_colon[1].split()
     material = ' '.join(metadata_parts[0:-2])
     spectrometer_purity_code = metadata_parts[-2]
     measurement_type = metadata_parts[-1]
-    if re.search('Error', metadata_parts[0]):
+    if re.search('Error', split_by_colon[0]):
         value_type = 'errorbar'
     else:
         value_type = 'reflectance'
@@ -84,11 +84,11 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     # TODO: split spectrometer_purity_code into spectrometer code and
     # purity code
     spectrum_metadata = {
-        'id': record_id,
+        'spectrum_id': spectrum_id,
+        'value_type': value_type,
         'material': material,
         'spectrometer_purity_code': spectrometer_purity_code,
         'measurement_type': measurement_type,
-        'value_type': value_type,
         }
 
     # --- Set index DataFrame to wavelength and set data column name

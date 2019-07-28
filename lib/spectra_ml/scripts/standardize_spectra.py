@@ -240,7 +240,6 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
         # Save spectra metadata database
         spectra_metadata_db = pd.DataFrame(spectra_metadata_db,
                                            columns=spectra_metadata_db_columns)
-        spectra_metadata_db.set_index('id', inplace=True)
         spectra_metadata_db.to_csv(spectra_metadata_db_path, sep='|')
 
     # --- Emit timing data to log
