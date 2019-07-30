@@ -85,7 +85,7 @@ class data_tests(unittest.TestCase):  # pylint: disable=invalid-name
         spectrum = pd.DataFrame({'reflectance': [0.8, 0.76, 0.64, 0.52, 0.44],
                                 'wavelength': [1, 2, 5, 8, 10]})
         spectrum.set_index('wavelength', inplace=True)
-        
+
         # Set wavelengths to resample at
         num_wavelengths = 10
         wavelength_min = 1
@@ -109,3 +109,20 @@ class data_tests(unittest.TestCase):  # pylint: disable=invalid-name
         assert len(resampled_spectrum) == len(wavelengths)
         assert np.allclose(resampled_spectrum['reflectance'].to_numpy(),
                            expected_reflectances)
+
+#    def test_resample_spectrum_3(self):
+#        # Set data paths
+#        data_dir = os.environ['DATA_DIR']
+#        spectrometers_dir = os.path.join(data_dir, 'spectrometers')
+#        splib07a_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
+#
+#        # Get spectrometer for tests
+#        spectrometers = io.load_spectrometers(spectrometers_dir, splib07a_dir)
+#        spectrometer = spectrometers['ASDFR']
+#
+#        # Get spectrum for tests
+#        spectrum_path = os.path.join(
+#            splib07a_dir, 'ChapterM_Minerals',
+#            'splib07a_Stilbite_HS482.1B_Zeolite_ASDFRb_AREF.txt')
+#
+#        self.spectrum, _ = io.load_spectrum(spectrum_path, spectrometer)
