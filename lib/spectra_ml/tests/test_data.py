@@ -85,10 +85,7 @@ class data_tests(unittest.TestCase):  # pylint: disable=invalid-name
         spectrum = pd.DataFrame({'reflectance': [0.8, 0.76, 0.64, 0.52, 0.44],
                                 'wavelength': [1, 2, 5, 8, 10]})
         spectrum.set_index('wavelength', inplace=True)
-#        spectrum.index.name = 'wavelength'
-#        array = np.array([1, 2, 5, 8, 10])
-#        wavelengths = pd.Series(array)
-
+        
         # Set wavelengths to resample at
         num_wavelengths = 10
         wavelength_min = 1
