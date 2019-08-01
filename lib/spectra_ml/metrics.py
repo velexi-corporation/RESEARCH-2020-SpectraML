@@ -22,9 +22,11 @@ def split(num_samples):
 
 #TODO
 def aggregate():
+    test = 3
+    return test
 
 #TODO
-def bootstrap(model,X,y, num_epochs)
+def bootstrap(model,X,y, num_epochs):
 # --- bootstrap loop
 
 # -select bootstrap sets
