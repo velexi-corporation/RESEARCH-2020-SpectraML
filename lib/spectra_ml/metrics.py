@@ -21,10 +21,10 @@ def split(num_samples):
     return (train_population_indices, dev_population_indices, test_population_indices)
 
 #TODO
-def aggregate()
+def aggregate():
 
 #TODO
-def bootstrap(model,X,y)
+def bootstrap(model,X,y, num_epochs)
 # --- bootstrap loop
 
 # -select bootstrap sets
