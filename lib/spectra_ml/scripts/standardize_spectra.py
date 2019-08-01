@@ -150,7 +150,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
     # Initialize spectra metadata database
     spectra_metadata_db = []
-    spectra_metadata_db_columns = ['id', 'material',
+    spectra_metadata_db_columns = ['spectrum_id', 'value_type',
+                                   'material',
                                    'spectrometer_purity_code',
                                    'measurement_type',
                                    'raw_data_path']
@@ -225,9 +226,9 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
 
             # Construct filename for CSV file
             if metadata['value_type'] == 'reflectance':
-                filename = '{}.csv'.format(metadata['id'])
+                filename = '{}.csv'.format(metadata['spectrum_id'])
             elif metadata['value_type'] == 'errorbar':
-                filename = '{}-errorbars.csv'.format(metadata['id'])
+                filename = '{}-errorbars.csv'.format(metadata['spectrum_id'])
             else:
                 raise RuntimeError("Invalid 'value_type'")
 
@@ -240,8 +241,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
         # Save spectra metadata database
         spectra_metadata_db = pd.DataFrame(spectra_metadata_db,
                                            columns=spectra_metadata_db_columns)
-        spectra_metadata_db.set_index('id', inplace=True)
-        spectra_metadata_db.to_csv(spectra_metadata_db_path, sep='|')
+        spectra_metadata_db.to_csv(spectra_metadata_db_path,
+                                   sep='|', index=False)
 
     # --- Emit timing data to log
 

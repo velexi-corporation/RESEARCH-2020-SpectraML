@@ -66,8 +66,63 @@ class data_tests(unittest.TestCase):  # pylint: disable=invalid-name
         resampled_spectrum = \
             data.resample_spectrum(self.spectrum, wavelengths)
 
-        # Check results
+        # Check data structure
         assert isinstance(resampled_spectrum, pd.DataFrame)
         assert resampled_spectrum.index.name == 'wavelength'
         assert (resampled_spectrum.index == wavelengths).all()
         assert len(resampled_spectrum) == len(wavelengths)
+
+        # Check data values
+        assert (resampled_spectrum['reflectance'] >= 0).all()
+
+    def test_resample_spectrum_2(self):
+        """
+        Test resample_spectrum(). Check resampled values.
+        """
+        # --- Preparations
+
+        # Create test spectrum to resample
+        spectrum = pd.DataFrame({'reflectance': [0.8, 0.76, 0.64, 0.52, 0.44],
+                                'wavelength': [1, 2, 5, 8, 10]})
+        spectrum.set_index('wavelength', inplace=True)
+
+        # Set wavelengths to resample at
+        num_wavelengths = 10
+        wavelength_min = 1
+        wavelength_max = 10
+        wavelengths = pd.Series(np.linspace(wavelength_min, wavelength_max,
+                                            num_wavelengths))
+
+        # Set expected reflectances
+        expected_reflectances = np.array([0.8, 0.76, 0.72, 0.68, 0.64, 0.60,
+                                          0.56, 0.52, 0.48, 0.44])
+
+        # --- Exercise functionality and check results
+
+        resampled_spectrum = \
+            data.resample_spectrum(spectrum, wavelengths)
+
+        # Check values of resampled spectrum
+        assert isinstance(resampled_spectrum, pd.DataFrame)
+        assert resampled_spectrum.index.name == 'wavelength'
+        assert (resampled_spectrum.index == wavelengths).all()
+        assert len(resampled_spectrum) == len(wavelengths)
+        assert np.allclose(resampled_spectrum['reflectance'].to_numpy(),
+                           expected_reflectances)
+
+#    def test_resample_spectrum_3(self):
+#        # Set data paths
+#        data_dir = os.environ['DATA_DIR']
+#        spectrometers_dir = os.path.join(data_dir, 'spectrometers')
+#        splib07a_dir = os.path.join(data_dir, 'ASCIIdata_splib07a')
+#
+#        # Get spectrometer for tests
+#        spectrometers = io.load_spectrometers(spectrometers_dir, splib07a_dir)
+#        spectrometer = spectrometers['ASDFR']
+#
+#        # Get spectrum for tests
+#        spectrum_path = os.path.join(
+#            splib07a_dir, 'ChapterM_Minerals',
+#            'splib07a_Stilbite_HS482.1B_Zeolite_ASDFRb_AREF.txt')
+#
+#        self.spectrum, _ = io.load_spectrum(spectrum_path, spectrometer)
