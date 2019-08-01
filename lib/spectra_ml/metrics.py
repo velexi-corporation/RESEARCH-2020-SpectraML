@@ -26,7 +26,7 @@ def aggregate():
     return test
 
 #TODO
-def bootstrap(model,X,y, num_epochs):
+def bootstrap(model,X,y,num_bootstrap_runs):
 # --- bootstrap loop
 
 # -select bootstrap sets
