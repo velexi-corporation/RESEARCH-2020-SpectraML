@@ -7,6 +7,10 @@
 import numpy as np
 import random
 
+# TensorFlow and tf.keras
+import tensorflow as tf
+from tensorflow import keras
+
 def split(num_samples):
     sample_indices = list(range(0, num_samples))
     random.seed(0)
@@ -26,7 +30,7 @@ def aggregate():
     return test
 
 #TODO
-def bootstrap(model,X,y,num_bootstrap_runs):
+def bootstrap(model,X,y,num_epochs, num_bootstrap_runs):
 # --- bootstrap loop
 
 # -select bootstrap sets
@@ -42,7 +46,8 @@ def bootstrap(model,X,y,num_bootstrap_runs):
     #split data into populations
     itrain,idev,itest = split(num_samples)
     train_population_indices = itrain   #name support
-    dev_set_indices = idev              #name support
+    dev_population_indices = idev        #name support
+    dev_set_indices = dev_population_indices
 
     #array for results
     num_tests = 2                       #train, dev
@@ -59,17 +64,14 @@ def bootstrap(model,X,y,num_bootstrap_runs):
 
         # draw with replacement from the train population
         # make the validation and test sets the same as their populations
-        train_set_indices = random.choices(train_population_indices, k=train_set_size)
+        train_set_indices = random.choices(train_population_indices, k=len(train_population_indices))
         dev_set_indices = dev_population_indices
-        test_set_indices = test_population_indices
 
         # make train and test sets
         train_set = spectra[train_set_indices, :]
         train_set_labels = y[train_set_indices, :]
         dev_set = spectra[dev_set_indices, :]
         dev_set_labels = y[dev_set_indices,:]
-        test_set = spectra[test_set_indices, :]
-        test_set_labels = y[test_set_indices, :]
 
         # train
         History = model.fit(train_set, train_set_labels, epochs=num_epochs)
