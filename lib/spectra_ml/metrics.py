@@ -69,16 +69,11 @@ def bootstrap(model,X,y)
         test_set = spectra[test_set_indices, :]
         test_set_labels = y[test_set_indices, :]
 
-        # use model from test cell
-
         # train
         History = model.fit(train_set, train_set_labels, epochs=num_epochs)
 
         acc = History.history['acc']
         bresults[itrain, run] = acc[num_epochs-1]   #record final epoch, plain nn train result, acc[...]), for each run
-
-        #testcode
-        #print(bruns)    # --- test plain nn on dev set
 
         # test on dev set
         dev_loss, dev_acc = model.evaluate(dev_set, dev_set_labels)
