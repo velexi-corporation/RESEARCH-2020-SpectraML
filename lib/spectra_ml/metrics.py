@@ -30,7 +30,7 @@ def aggregate():
     return test
 
 #TODO
-def bootstrap(model,X,y,num_epochs, num_bootstrap_runs):
+def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
 # --- bootstrap loop
 
 # -select bootstrap sets
@@ -74,10 +74,11 @@ def bootstrap(model,X,y,num_epochs, num_bootstrap_runs):
         dev_set_labels = y[dev_set_indices,:]
 
         # train
-        History = model.fit(train_set, train_set_labels, epochs=num_epochs)
-
+        History = model.fit(train_set, train_labels, batch_size=BATCH_SIZE,\
+         epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
         acc = History.history['acc']
-        bresults[itrain, run] = acc[num_epochs-1]   #record final epoch, plain nn train result, acc[...]), for each run
+        bresults[itrain, run] = acc[num_epochs-1]
+        #record final epoch, plain nn train result, acc[...]), for each run
 
         # test on dev set
         dev_loss, dev_acc = model.evaluate(dev_set, dev_set_labels)
