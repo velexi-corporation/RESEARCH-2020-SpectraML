@@ -57,8 +57,8 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
 
     #array for results
     num_tests = 2                       #train, dev
-    itrain = 0                          #row index of train results
-    idev = 1                            #row index of dev results
+    itrainresults = 0                          #row index of train results
+    idevresults = 1                            #row index of dev results
     bresults = np.zeros((num_tests, num_bootstrap_runs))
 
     ## TODO:
@@ -87,11 +87,11 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
         History = model.fit(train_set, train_set_labels, batch_size=BATCH_SIZE,\
          epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_set_labels))
         acc = History.history['acc']
-        bresults[itrain, run] = acc[num_epochs-1]
+        bresults[itrainresults, run] = acc[num_epochs-1]
         #record final epoch, plain nn train result, acc[...]), for each run
 
         # test on dev set
         dev_loss, dev_acc = model.evaluate(dev_set, dev_set_labels)
-        bresults[idev,run] = dev_acc
+        bresults[idevresults,run] = dev_acc
 
-        return bresults
+    return bresults
