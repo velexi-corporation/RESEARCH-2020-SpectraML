@@ -10,6 +10,7 @@ import random
 # TensorFlow and tf.keras
 import tensorflow as tf
 from tensorflow import keras
+import keras
 
 def split(num_samples):
     sample_indices = list(range(0, num_samples))
@@ -43,11 +44,16 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
     spectra = X                 #name support
     num_samples = X.shape[0]
 
+    y_old = y
+    y = keras.utils.to_categorical(y)
+
     #split data into populations
     itrain,idev,itest = split(num_samples)
     train_population_indices = itrain   #name support
     dev_population_indices = idev        #name support
     dev_set_indices = dev_population_indices
+    BATCH_SIZE=batch_size               #name support
+    EPOCHS = num_epochs                 #name support
 
     #array for results
     num_tests = 2                       #train, dev
@@ -73,9 +79,13 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
         dev_set = spectra[dev_set_indices, :]
         dev_set_labels = y[dev_set_indices,:]
 
+        train_set = np.reshape(train_set, (train_set.shape[0], train_set.shape[1], 1))
+        dev_set = np.reshape(dev_set, (dev_set.shape[0], train_set.shape[1], 1))
+
+
         # train
-        History = model.fit(train_set, train_labels, batch_size=BATCH_SIZE,\
-         epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
+        History = model.fit(train_set, train_set_labels, batch_size=BATCH_SIZE,\
+         epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_set_labels))
         acc = History.history['acc']
         bresults[itrain, run] = acc[num_epochs-1]
         #record final epoch, plain nn train result, acc[...]), for each run
