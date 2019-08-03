@@ -78,7 +78,7 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
     #split data into populations
     itrain,idev,itest = split(num_samples)
     train_population_indices = itrain   #name support
-    dev_set_indices           = idev        #name support
+    dev_set_indices = idev              #name support
     BATCH_SIZE=batch_size               #name support
     EPOCHS = num_epochs                 #name support
 
