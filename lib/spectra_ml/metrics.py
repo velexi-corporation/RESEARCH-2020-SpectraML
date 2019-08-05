@@ -98,7 +98,6 @@ def bootstrap(model,X,y,num_epochs, batch_size, num_bootstrap_runs):
         # draw with replacement from the train population
         # make the validation and test sets the same as their populations
         train_set_indices = random.choices(train_population_indices, k=len(train_population_indices))
-        dev_set_indices = dev_population_indices
 
         # make train and test sets
         train_set = spectra[train_set_indices, :]
