@@ -20,7 +20,7 @@ def addchannel(X):
 
 def split(num_samples):
     sample_indices = list(range(0, num_samples))
-    random.seed(0)
+    random.seed(None)
     random.shuffle(sample_indices)
     train_population_size = 3*(num_samples//5) + (num_samples - 5*(num_samples//5))
     dev_population_size = (num_samples//5)
