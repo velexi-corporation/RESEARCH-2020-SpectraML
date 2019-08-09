@@ -22,8 +22,9 @@ progress
 
 # Data science packages
 matplotlib
-numpy
+numpy<1.17.0
 pandas
 scikit-learn
 scipy
 seaborn
+tensorflow
