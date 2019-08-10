@@ -220,39 +220,27 @@ random.shuffle(sample_indices)
 train_set_size = 3*(num_samples//5)
 dev_set_size = (num_samples//5)
 test_set_size = num_samples-dev_set_size - train_set_size
-print(train_set_size)
-print(test_set_size)
-print(dev_set_size)
 
 train_set_indices = sample_indices[:train_set_size]
 dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]
 test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]
-print(train_set_indices)
-print(test_set_indices)
-print(dev_set_indices)
 
 # Training dataset
 train_set = spectra[train_set_indices, :]
-#train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
 
 train_labels = y[train_set_indices, :].flatten()
-#train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
 train_labels = to_categorical(train_labels)
 
 # Dev dataset
 dev_set = spectra[dev_set_indices, :]
-#dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
 
 dev_labels = y[dev_set_indices, :].flatten()
-#dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
 dev_labels = to_categorical(dev_labels)
 
 # Test dataset
 test_set = spectra[test_set_indices, :]
-#test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
 
 test_labels = y[test_set_indices, :].flatten()
-#test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
 test_labels = to_categorical(test_labels)
 
 
@@ -262,18 +250,6 @@ test_labels = to_categorical(test_labels)
 print(train_set.shape)
 model = Sequential()
 model.add(Dense(32, input_shape=(train_set.shape[1],)))
-
-# model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
-#model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
-#model.add(Conv1D(64, 25, activation='relu'))
-#model.add(MaxPooling1D(4)) # 108 by 64 so far
-#model.add(Conv1D(100, 25, activation='relu'))
-#model.add(Conv1D(100, 25, activation='relu'))
-#model.add(MaxPooling1D(4))
-# model.add(Dropout(0.5))
-# model.add(GlobalAveragePooling1D())
-#model.add(Flatten())
-
 model.add(Dense(3, activation='softmax'))
 print(model.summary())
 

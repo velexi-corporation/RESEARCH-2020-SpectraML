@@ -13461,39 +13461,27 @@ Number of Chlorite samples:  25
 <span class="n">train_set_size</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">num_samples</span><span class="o">//</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">dev_set_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_samples</span><span class="o">//</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">test_set_size</span> <span class="o">=</span> <span class="n">num_samples</span><span class="o">-</span><span class="n">dev_set_size</span> <span class="o">-</span> <span class="n">train_set_size</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_set_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test_set_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dev_set_size</span><span class="p">)</span>
 
 <span class="n">train_set_indices</span> <span class="o">=</span> <span class="n">sample_indices</span><span class="p">[:</span><span class="n">train_set_size</span><span class="p">]</span>
 <span class="n">dev_set_indices</span> <span class="o">=</span> <span class="n">sample_indices</span><span class="p">[</span><span class="n">train_set_size</span><span class="p">:</span> <span class="n">train_set_size</span><span class="o">+</span><span class="n">dev_set_size</span><span class="p">]</span>
 <span class="n">test_set_indices</span><span class="o">=</span> <span class="n">sample_indices</span><span class="p">[</span><span class="n">train_set_size</span><span class="o">+</span><span class="n">dev_set_size</span><span class="p">:</span> <span class="n">num_samples</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train_set_indices</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test_set_indices</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dev_set_indices</span><span class="p">)</span>
 
 <span class="c1"># Training dataset</span>
 <span class="n">train_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-<span class="c1">#train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))</span>
 
 <span class="n">train_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="c1">#train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))</span>
 <span class="n">train_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
 
 <span class="c1"># Dev dataset</span>
 <span class="n">dev_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">dev_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-<span class="c1">#dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))</span>
 
 <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">dev_set_indices</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="c1">#dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))</span>
 <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">dev_labels</span><span class="p">)</span>
 
 <span class="c1"># Test dataset</span>
 <span class="n">test_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-<span class="c1">#test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))</span>
 
 <span class="n">test_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="c1">#test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))</span>
 <span class="n">test_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
 </pre></div>
 
@@ -13512,12 +13500,6 @@ Number of Chlorite samples:  25
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>76
-45
-16
-15
-[73, 52, 29, 11, 47, 63, 37, 1, 70, 67, 55, 40, 32, 74, 14, 42, 36, 24, 7, 10, 15, 50, 31, 58, 54, 25, 41, 12, 26, 23, 2, 0, 3, 56, 72, 28, 44, 60, 13, 20, 71, 22, 75, 35, 30]
-[48, 8, 18, 17, 64, 27, 45, 61, 38, 51, 62, 65, 33, 5, 53, 49]
-[21, 43, 4, 46, 59, 19, 9, 68, 57, 66, 34, 16, 69, 39, 6]
 </pre>
 </div>
 </div>
@@ -13534,18 +13516,6 @@ Number of Chlorite samples:  25
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)))</span>
-
-<span class="c1"># model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))</span>
-<span class="c1">#model.add(Conv1D(64, 25, activation=&#39;relu&#39;, input_shape=(train_set.shape[1], 1)))</span>
-<span class="c1">#model.add(Conv1D(64, 25, activation=&#39;relu&#39;))</span>
-<span class="c1">#model.add(MaxPooling1D(4)) # 108 by 64 so far</span>
-<span class="c1">#model.add(Conv1D(100, 25, activation=&#39;relu&#39;))</span>
-<span class="c1">#model.add(Conv1D(100, 25, activation=&#39;relu&#39;))</span>
-<span class="c1">#model.add(MaxPooling1D(4))</span>
-<span class="c1"># model.add(Dropout(0.5))</span>
-<span class="c1"># model.add(GlobalAveragePooling1D())</span>
-<span class="c1">#model.add(Flatten())</span>
-
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -13565,7 +13535,7 @@ Number of Chlorite samples:  25
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>WARNING: Logging before flag parsing goes to stderr.
-W0809 18:57:46.519166 4392822208 deprecation.py:506] From /Users/kchu/.virtualenvs/vlxi-spectra-ml/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+W0809 21:50:34.624274 4576761280 deprecation.py:506] From /Users/kchu/.virtualenvs/vlxi-spectra-ml/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
 </pre>
@@ -13629,105 +13599,105 @@ None
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 45 samples, validate on 15 samples
 Epoch 1/50
-45/45 [==============================] - 0s 2ms/sample - loss: 1.5867 - acc: 0.3111 - val_loss: 1.1425 - val_acc: 0.2000
+45/45 [==============================] - 0s 2ms/sample - loss: 1.9978 - acc: 0.2889 - val_loss: 0.5652 - val_acc: 0.8667
 Epoch 2/50
-45/45 [==============================] - 0s 257us/sample - loss: 1.0263 - acc: 0.4222 - val_loss: 0.5254 - val_acc: 0.7333
+45/45 [==============================] - 0s 163us/sample - loss: 1.2104 - acc: 0.3778 - val_loss: 0.4050 - val_acc: 0.8000
 Epoch 3/50
-45/45 [==============================] - 0s 183us/sample - loss: 0.8331 - acc: 0.5778 - val_loss: 0.3098 - val_acc: 0.8667
+45/45 [==============================] - 0s 153us/sample - loss: 0.7157 - acc: 0.6444 - val_loss: 0.7781 - val_acc: 0.5333
 Epoch 4/50
-45/45 [==============================] - 0s 238us/sample - loss: 0.6793 - acc: 0.6444 - val_loss: 0.5561 - val_acc: 0.8000
+45/45 [==============================] - 0s 130us/sample - loss: 0.8044 - acc: 0.6222 - val_loss: 0.4015 - val_acc: 0.8000
 Epoch 5/50
-45/45 [==============================] - 0s 254us/sample - loss: 0.6386 - acc: 0.6889 - val_loss: 0.4174 - val_acc: 0.8000
+45/45 [==============================] - 0s 243us/sample - loss: 0.5612 - acc: 0.7333 - val_loss: 0.2425 - val_acc: 0.9333
 Epoch 6/50
-45/45 [==============================] - 0s 255us/sample - loss: 0.5279 - acc: 0.7111 - val_loss: 0.2523 - val_acc: 0.8667
+45/45 [==============================] - 0s 162us/sample - loss: 0.6161 - acc: 0.6889 - val_loss: 0.2487 - val_acc: 0.9333
 Epoch 7/50
-45/45 [==============================] - 0s 220us/sample - loss: 0.5817 - acc: 0.6667 - val_loss: 0.2697 - val_acc: 0.8667
+45/45 [==============================] - 0s 195us/sample - loss: 0.5105 - acc: 0.6889 - val_loss: 0.3158 - val_acc: 0.8000
 Epoch 8/50
-45/45 [==============================] - 0s 231us/sample - loss: 0.4850 - acc: 0.7778 - val_loss: 0.2706 - val_acc: 0.8000
+45/45 [==============================] - 0s 275us/sample - loss: 0.5045 - acc: 0.7111 - val_loss: 0.3590 - val_acc: 0.8000
 Epoch 9/50
-45/45 [==============================] - 0s 250us/sample - loss: 0.5130 - acc: 0.6889 - val_loss: 0.3133 - val_acc: 0.8000
+45/45 [==============================] - 0s 252us/sample - loss: 0.4890 - acc: 0.7333 - val_loss: 0.2917 - val_acc: 0.8667
 Epoch 10/50
-45/45 [==============================] - 0s 275us/sample - loss: 0.4751 - acc: 0.7556 - val_loss: 0.2764 - val_acc: 0.9333
+45/45 [==============================] - 0s 195us/sample - loss: 0.4598 - acc: 0.7556 - val_loss: 0.2213 - val_acc: 0.9333
 Epoch 11/50
-45/45 [==============================] - 0s 235us/sample - loss: 0.4483 - acc: 0.8000 - val_loss: 0.2443 - val_acc: 0.8000
+45/45 [==============================] - 0s 200us/sample - loss: 0.4747 - acc: 0.7333 - val_loss: 0.2099 - val_acc: 0.9333
 Epoch 12/50
-45/45 [==============================] - 0s 216us/sample - loss: 0.4577 - acc: 0.7556 - val_loss: 0.2342 - val_acc: 0.9333
+45/45 [==============================] - 0s 264us/sample - loss: 0.4513 - acc: 0.7778 - val_loss: 0.2500 - val_acc: 0.9333
 Epoch 13/50
-45/45 [==============================] - 0s 215us/sample - loss: 0.4318 - acc: 0.8444 - val_loss: 0.2568 - val_acc: 0.9333
+45/45 [==============================] - 0s 241us/sample - loss: 0.4380 - acc: 0.8000 - val_loss: 0.2700 - val_acc: 0.8000
 Epoch 14/50
-45/45 [==============================] - 0s 251us/sample - loss: 0.4322 - acc: 0.7556 - val_loss: 0.2222 - val_acc: 0.9333
+45/45 [==============================] - 0s 181us/sample - loss: 0.4462 - acc: 0.7333 - val_loss: 0.2619 - val_acc: 0.9333
 Epoch 15/50
-45/45 [==============================] - 0s 274us/sample - loss: 0.4155 - acc: 0.8222 - val_loss: 0.2229 - val_acc: 0.9333
+45/45 [==============================] - 0s 236us/sample - loss: 0.4315 - acc: 0.8000 - val_loss: 0.2082 - val_acc: 0.9333
 Epoch 16/50
-45/45 [==============================] - 0s 245us/sample - loss: 0.4211 - acc: 0.8222 - val_loss: 0.2120 - val_acc: 0.9333
+45/45 [==============================] - 0s 282us/sample - loss: 0.4219 - acc: 0.8222 - val_loss: 0.1944 - val_acc: 0.9333
 Epoch 17/50
-45/45 [==============================] - 0s 240us/sample - loss: 0.3936 - acc: 0.8444 - val_loss: 0.2153 - val_acc: 0.9333
+45/45 [==============================] - 0s 236us/sample - loss: 0.4197 - acc: 0.7778 - val_loss: 0.2346 - val_acc: 0.9333
 Epoch 18/50
-45/45 [==============================] - 0s 220us/sample - loss: 0.3923 - acc: 0.8667 - val_loss: 0.1975 - val_acc: 0.9333
+45/45 [==============================] - 0s 220us/sample - loss: 0.4133 - acc: 0.8444 - val_loss: 0.2198 - val_acc: 0.9333
 Epoch 19/50
-45/45 [==============================] - 0s 244us/sample - loss: 0.3918 - acc: 0.8667 - val_loss: 0.2132 - val_acc: 0.9333
+45/45 [==============================] - 0s 198us/sample - loss: 0.4075 - acc: 0.8000 - val_loss: 0.1914 - val_acc: 0.9333
 Epoch 20/50
-45/45 [==============================] - 0s 285us/sample - loss: 0.4163 - acc: 0.8000 - val_loss: 0.2333 - val_acc: 0.9333
+45/45 [==============================] - 0s 270us/sample - loss: 0.3919 - acc: 0.8889 - val_loss: 0.2032 - val_acc: 0.9333
 Epoch 21/50
-45/45 [==============================] - 0s 263us/sample - loss: 0.4026 - acc: 0.8222 - val_loss: 0.1833 - val_acc: 0.9333
+45/45 [==============================] - 0s 246us/sample - loss: 0.3896 - acc: 0.8889 - val_loss: 0.1997 - val_acc: 0.9333
 Epoch 22/50
-45/45 [==============================] - 0s 255us/sample - loss: 0.3833 - acc: 0.8444 - val_loss: 0.1979 - val_acc: 0.9333
+45/45 [==============================] - 0s 214us/sample - loss: 0.3852 - acc: 0.8667 - val_loss: 0.1828 - val_acc: 0.9333
 Epoch 23/50
-45/45 [==============================] - 0s 230us/sample - loss: 0.3944 - acc: 0.8000 - val_loss: 0.1982 - val_acc: 0.9333
+45/45 [==============================] - 0s 198us/sample - loss: 0.3786 - acc: 0.8667 - val_loss: 0.1733 - val_acc: 0.9333
 Epoch 24/50
-45/45 [==============================] - 0s 215us/sample - loss: 0.3562 - acc: 0.8889 - val_loss: 0.1866 - val_acc: 0.9333
+45/45 [==============================] - 0s 270us/sample - loss: 0.3877 - acc: 0.8444 - val_loss: 0.1639 - val_acc: 1.0000
 Epoch 25/50
-45/45 [==============================] - 0s 282us/sample - loss: 0.3440 - acc: 0.8889 - val_loss: 0.1801 - val_acc: 0.9333
+45/45 [==============================] - 0s 227us/sample - loss: 0.3695 - acc: 0.8889 - val_loss: 0.1869 - val_acc: 0.9333
 Epoch 26/50
-45/45 [==============================] - 0s 271us/sample - loss: 0.3558 - acc: 0.8667 - val_loss: 0.1671 - val_acc: 0.9333
+45/45 [==============================] - 0s 197us/sample - loss: 0.3630 - acc: 0.9111 - val_loss: 0.1832 - val_acc: 0.9333
 Epoch 27/50
-45/45 [==============================] - 0s 250us/sample - loss: 0.3410 - acc: 0.9111 - val_loss: 0.1472 - val_acc: 0.9333
+45/45 [==============================] - 0s 191us/sample - loss: 0.3605 - acc: 0.8444 - val_loss: 0.1543 - val_acc: 0.9333
 Epoch 28/50
-45/45 [==============================] - 0s 245us/sample - loss: 0.3670 - acc: 0.8444 - val_loss: 0.1723 - val_acc: 0.9333
+45/45 [==============================] - 0s 272us/sample - loss: 0.3701 - acc: 0.8222 - val_loss: 0.1602 - val_acc: 0.9333
 Epoch 29/50
-45/45 [==============================] - 0s 201us/sample - loss: 0.3528 - acc: 0.8889 - val_loss: 0.1753 - val_acc: 0.9333
+45/45 [==============================] - 0s 244us/sample - loss: 0.3449 - acc: 0.8667 - val_loss: 0.1423 - val_acc: 0.9333
 Epoch 30/50
-45/45 [==============================] - 0s 249us/sample - loss: 0.3214 - acc: 0.8889 - val_loss: 0.1257 - val_acc: 1.0000
+45/45 [==============================] - 0s 189us/sample - loss: 0.3666 - acc: 0.8444 - val_loss: 0.1903 - val_acc: 0.9333
 Epoch 31/50
-45/45 [==============================] - 0s 265us/sample - loss: 0.3299 - acc: 0.8667 - val_loss: 0.1255 - val_acc: 1.0000
+45/45 [==============================] - 0s 187us/sample - loss: 0.3529 - acc: 0.8889 - val_loss: 0.1588 - val_acc: 0.9333
 Epoch 32/50
-45/45 [==============================] - 0s 249us/sample - loss: 0.3236 - acc: 0.9111 - val_loss: 0.1363 - val_acc: 0.9333
+45/45 [==============================] - 0s 275us/sample - loss: 0.3309 - acc: 0.9111 - val_loss: 0.1286 - val_acc: 1.0000
 Epoch 33/50
-45/45 [==============================] - 0s 243us/sample - loss: 0.3054 - acc: 0.9111 - val_loss: 0.1500 - val_acc: 0.8667
+45/45 [==============================] - 0s 272us/sample - loss: 0.3282 - acc: 0.9111 - val_loss: 0.1356 - val_acc: 1.0000
 Epoch 34/50
-45/45 [==============================] - 0s 210us/sample - loss: 0.3263 - acc: 0.8889 - val_loss: 0.1432 - val_acc: 0.9333
+45/45 [==============================] - 0s 247us/sample - loss: 0.3220 - acc: 0.9111 - val_loss: 0.1241 - val_acc: 1.0000
 Epoch 35/50
-45/45 [==============================] - 0s 284us/sample - loss: 0.3080 - acc: 0.9111 - val_loss: 0.1308 - val_acc: 0.9333
+45/45 [==============================] - 0s 204us/sample - loss: 0.3266 - acc: 0.8889 - val_loss: 0.1182 - val_acc: 1.0000
 Epoch 36/50
-45/45 [==============================] - 0s 277us/sample - loss: 0.3147 - acc: 0.9111 - val_loss: 0.1216 - val_acc: 0.9333
+45/45 [==============================] - 0s 215us/sample - loss: 0.3152 - acc: 0.9111 - val_loss: 0.1563 - val_acc: 0.9333
 Epoch 37/50
-45/45 [==============================] - 0s 227us/sample - loss: 0.2883 - acc: 0.9333 - val_loss: 0.1110 - val_acc: 1.0000
+45/45 [==============================] - 0s 257us/sample - loss: 0.3206 - acc: 0.8889 - val_loss: 0.1118 - val_acc: 1.0000
 Epoch 38/50
-45/45 [==============================] - 0s 256us/sample - loss: 0.2954 - acc: 0.8889 - val_loss: 0.1288 - val_acc: 0.9333
+45/45 [==============================] - 0s 228us/sample - loss: 0.3213 - acc: 0.9111 - val_loss: 0.1059 - val_acc: 1.0000
 Epoch 39/50
-45/45 [==============================] - 0s 184us/sample - loss: 0.3213 - acc: 0.8889 - val_loss: 0.1160 - val_acc: 0.9333
+45/45 [==============================] - 0s 187us/sample - loss: 0.3168 - acc: 0.8889 - val_loss: 0.1193 - val_acc: 1.0000
 Epoch 40/50
-45/45 [==============================] - 0s 213us/sample - loss: 0.2919 - acc: 0.9333 - val_loss: 0.0868 - val_acc: 1.0000
+45/45 [==============================] - 0s 202us/sample - loss: 0.3116 - acc: 0.8667 - val_loss: 0.1231 - val_acc: 1.0000
 Epoch 41/50
-45/45 [==============================] - 0s 191us/sample - loss: 0.2814 - acc: 0.9333 - val_loss: 0.1112 - val_acc: 1.0000
+45/45 [==============================] - 0s 198us/sample - loss: 0.3327 - acc: 0.9111 - val_loss: 0.0943 - val_acc: 1.0000
 Epoch 42/50
-45/45 [==============================] - 0s 180us/sample - loss: 0.2781 - acc: 0.9111 - val_loss: 0.1144 - val_acc: 0.9333
+45/45 [==============================] - 0s 173us/sample - loss: 0.2869 - acc: 0.9111 - val_loss: 0.1094 - val_acc: 1.0000
 Epoch 43/50
-45/45 [==============================] - 0s 194us/sample - loss: 0.2792 - acc: 0.8889 - val_loss: 0.0982 - val_acc: 1.0000
+45/45 [==============================] - 0s 202us/sample - loss: 0.2876 - acc: 0.9111 - val_loss: 0.1064 - val_acc: 1.0000
 Epoch 44/50
-45/45 [==============================] - 0s 171us/sample - loss: 0.2651 - acc: 0.9111 - val_loss: 0.0875 - val_acc: 1.0000
+45/45 [==============================] - 0s 189us/sample - loss: 0.2904 - acc: 0.8889 - val_loss: 0.1008 - val_acc: 1.0000
 Epoch 45/50
-45/45 [==============================] - 0s 203us/sample - loss: 0.3134 - acc: 0.8889 - val_loss: 0.0854 - val_acc: 1.0000
+45/45 [==============================] - 0s 175us/sample - loss: 0.3010 - acc: 0.8889 - val_loss: 0.0940 - val_acc: 1.0000
 Epoch 46/50
-45/45 [==============================] - 0s 194us/sample - loss: 0.3010 - acc: 0.8889 - val_loss: 0.1132 - val_acc: 1.0000
+45/45 [==============================] - 0s 202us/sample - loss: 0.2973 - acc: 0.9111 - val_loss: 0.0804 - val_acc: 1.0000
 Epoch 47/50
-45/45 [==============================] - 0s 182us/sample - loss: 0.2481 - acc: 0.9111 - val_loss: 0.0833 - val_acc: 1.0000
+45/45 [==============================] - 0s 184us/sample - loss: 0.2730 - acc: 0.9111 - val_loss: 0.1230 - val_acc: 1.0000
 Epoch 48/50
-45/45 [==============================] - 0s 211us/sample - loss: 0.2877 - acc: 0.8889 - val_loss: 0.0761 - val_acc: 1.0000
+45/45 [==============================] - 0s 211us/sample - loss: 0.2713 - acc: 0.8889 - val_loss: 0.0933 - val_acc: 1.0000
 Epoch 49/50
-45/45 [==============================] - 0s 202us/sample - loss: 0.2376 - acc: 0.9333 - val_loss: 0.1059 - val_acc: 1.0000
+45/45 [==============================] - 0s 193us/sample - loss: 0.2741 - acc: 0.9111 - val_loss: 0.0846 - val_acc: 1.0000
 Epoch 50/50
-45/45 [==============================] - 0s 183us/sample - loss: 0.2609 - acc: 0.9111 - val_loss: 0.0748 - val_acc: 1.0000
+45/45 [==============================] - 0s 170us/sample - loss: 0.2524 - acc: 0.9556 - val_loss: 0.0826 - val_acc: 1.0000
 </pre>
 </div>
 </div>
@@ -13740,7 +13710,7 @@ Epoch 50/50
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow.python.keras.callbacks.History at 0x141db9ed0&gt;</pre>
+<pre>&lt;tensorflow.python.keras.callbacks.History at 0x14a587e50&gt;</pre>
 </div>
 
 </div>
@@ -13774,22 +13744,22 @@ Epoch 50/50
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[8.2398564e-02, 1.2379150e-03, 9.1636354e-01],
-       [3.8479981e-01, 4.7416931e-01, 1.4103085e-01],
-       [3.1272683e-03, 9.9677926e-01, 9.3565533e-05],
-       [1.0630196e-02, 9.8872697e-01, 6.4282451e-04],
-       [9.9414366e-01, 1.8852635e-03, 3.9710449e-03],
-       [2.2845909e-01, 3.4456844e-03, 7.6809525e-01],
-       [6.3491516e-02, 4.1653667e-04, 9.3609190e-01],
-       [1.5064366e-03, 9.9842864e-01, 6.4879452e-05],
-       [7.7867657e-01, 8.9880748e-04, 2.2042459e-01],
-       [7.3843300e-01, 1.4732359e-02, 2.4683455e-01],
-       [7.7682972e-02, 3.6713170e-04, 9.2194986e-01],
-       [1.7498143e-01, 1.2155410e-03, 8.2380301e-01],
-       [2.1668237e-03, 9.9755007e-01, 2.8314404e-04],
-       [2.8119270e-02, 1.2048325e-04, 9.7176027e-01],
-       [2.8636542e-03, 9.9679393e-01, 3.4247997e-04],
-       [2.0392393e-03, 9.9772006e-01, 2.4067867e-04]], dtype=float32)</pre>
+<pre>array([[2.3539093e-01, 3.0831255e-03, 7.6152593e-01],
+       [4.3522066e-01, 5.1202291e-01, 5.2756358e-02],
+       [2.9435477e-03, 9.9702471e-01, 3.1684696e-05],
+       [8.0728028e-03, 9.9166626e-01, 2.6088580e-04],
+       [9.9516356e-01, 1.6700831e-03, 3.1662851e-03],
+       [3.4658492e-01, 4.1987235e-03, 6.4921641e-01],
+       [1.4257631e-01, 6.6117168e-04, 8.5676253e-01],
+       [1.4541728e-03, 9.9852669e-01, 1.9222000e-05],
+       [8.5145813e-01, 7.6317147e-04, 1.4777863e-01],
+       [8.4298790e-01, 1.7390905e-02, 1.3962118e-01],
+       [2.2293708e-01, 8.1282784e-04, 7.7625000e-01],
+       [2.6568505e-01, 1.5834186e-03, 7.3273152e-01],
+       [1.9393369e-03, 9.9794012e-01, 1.2052031e-04],
+       [5.6189731e-02, 1.8438157e-04, 9.4362593e-01],
+       [2.5733702e-03, 9.9734169e-01, 8.4943531e-05],
+       [1.8171574e-03, 9.9812180e-01, 6.1055514e-05]], dtype=float32)</pre>
 </div>
 
 </div>
@@ -13820,7 +13790,7 @@ Epoch 50/50
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>16/16 [==============================] - 0s 43us/sample - loss: 0.3008 - acc: 0.8750
+<pre>16/16 [==============================] - 0s 90us/sample - loss: 0.2593 - acc: 0.8750
 </pre>
 </div>
 </div>
@@ -13833,7 +13803,7 @@ Epoch 50/50
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.3007686734199524, 0.875]</pre>
+<pre>[0.2592919170856476, 0.875]</pre>
 </div>
 
 </div>
