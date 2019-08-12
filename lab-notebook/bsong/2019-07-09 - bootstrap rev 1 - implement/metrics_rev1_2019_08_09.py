@@ -12,43 +12,13 @@ import tensorflow as tf
 from tensorflow import keras
 import keras
 
-from sklearn.cross_validation import train_test_split
-
-#Functions
-
-def makedatasets(num_samples, use_case_parameter, random_state_parameter)
-#(stratify)
-#generate indices
-#random seed
-random.seed(None)
-
-#make test set
-sklearn.model_selection.train_test_split(*arrays, **options)
-#make val set
-sklearn.model_selection.train_test_split(*arrays, **options)
-#make train population
-
-#make bootstrap train sets
-
-#return (trainpop, valpop, testpop, trainsamples, valsamples, testsamples)
-
-
-
-def comparemodels()
-
-
-
-
-
-
-
 def addchannel(X):
     X = np.reshape(X, (X.shape[0], X.shape[1], 1))
     #train_set = np.reshape(train_set, (train_set.shape[0], train_set.shape[1], 1))
     #dev_set = np.reshape(dev_set, (dev_set.shape[0], train_set.shape[1], 1))
     return X
 
-def split_old(num_samples):
+def split(num_samples):
     sample_indices = list(range(0, num_samples))
     random.seed(None)
     random.shuffle(sample_indices)
