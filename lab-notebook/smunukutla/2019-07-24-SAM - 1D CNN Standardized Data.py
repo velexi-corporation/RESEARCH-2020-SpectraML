@@ -24,7 +24,7 @@ os.chdir(directory)
 # print(os.getcwd())
 
 
-# In[27]:
+# In[2]:
 
 
 stddata_path = os.path.join(directory,"Srikar-Standardized")
@@ -32,7 +32,7 @@ metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|
 metadata.head()
 
 
-# In[28]:
+# In[3]:
 
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
@@ -40,7 +40,7 @@ metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata.shape
 
 
-# In[29]:
+# In[4]:
 
 
 # def find_record(string):
@@ -48,7 +48,7 @@ metadata.shape
 #     return string[:ind]
 
 
-# In[30]:
+# In[5]:
 
 
 # data = metadata.iloc[0]
@@ -57,7 +57,7 @@ metadata.shape
 # metadata[metadata["material"].str.match("Chlor")].shape[0]
 
 
-# In[31]:
+# In[6]:
 
 
 record_nums = []
@@ -96,7 +96,7 @@ print(aln)
 print(chl)
 
 
-# In[32]:
+# In[7]:
 
 
 spectrum_len = 500
@@ -106,7 +106,7 @@ wavelengths = np.zeros((1,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[33]:
+# In[8]:
 
 
 # import shutil
@@ -119,7 +119,7 @@ wavelengths = np.zeros((1,spectrum_len))
 #     shutil.copy2(stddata_path+"/{}.csv".format(num), directory+"/Std_Chlorite")
 
 
-# In[34]:
+# In[9]:
 
 
 num_neg = 0

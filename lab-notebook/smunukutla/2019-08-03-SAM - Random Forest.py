@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[1]:
 
 
 import numpy as np
@@ -17,7 +17,7 @@ directory = os.path.join(directory, "plots")
 os.chdir(directory)
 
 
-# In[4]:
+# In[2]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -26,7 +26,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[5]:
+# In[3]:
 
 
 def convertimg(img):
@@ -38,7 +38,7 @@ def convertimg(img):
     return newimg
 
 
-# In[26]:
+# In[4]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -56,26 +56,32 @@ for name in os.listdir():
     i += 1
 
 
-# In[27]:
+# In[5]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[28]:
+# In[6]:
 
 
 spectra.shape
 
 
-# In[29]:
+# In[7]:
 
 
 y = np.reshape(y, (len(y), 1))
 y.shape
 
 
-# In[30]:
+# In[8]:
+
+
+random.seed(0)
+
+
+# In[9]:
 
 
 sample_indices = list(range(0, num_samples))
@@ -102,7 +108,7 @@ test_set = spectra[test_set_indices, :]
 test_labels = y[test_set_indices, :]
 
 
-# In[31]:
+# In[10]:
 
 
 train_labels = train_labels.flatten()
@@ -110,14 +116,14 @@ dev_labels = dev_labels.flatten()
 test_labels = test_labels.flatten()
 
 
-# In[35]:
+# In[11]:
 
 
 from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(bootstrap=True, criterion='entropy')
 
 
-# In[36]:
+# In[12]:
 
 
 from sklearn.model_selection import train_test_split
@@ -128,7 +134,7 @@ X_train, X_test, y_train, y_test = train_test_split(spectra, y, test_size=0.2, r
 clf.fit(X_train, y_train)
 
 
-# In[37]:
+# In[13]:
 
 
 from sklearn.metrics import accuracy_score
