@@ -308,13 +308,13 @@ for i in range(i2):
 plt.show()
 
 
-# In[130]:
+# In[153]:
 
 
-random.seed(737)
+random.seed(148)
 
 
-# In[131]:
+# In[154]:
 
 
 sample_indices = list(range(0, num_samples))
@@ -341,7 +341,7 @@ test_set = spectra[test_set_indices, :]
 test_labels = y[test_set_indices, :]
 
 
-# In[121]:
+# In[155]:
 
 
 train_labels = train_labels.flatten()
@@ -350,7 +350,7 @@ test_labels = test_labels.flatten()
 # type(train_labels)
 
 
-# In[122]:
+# In[156]:
 
 
 # len(train_set)
@@ -358,7 +358,7 @@ test_labels = test_labels.flatten()
 print(test_set.shape)
 
 
-# In[123]:
+# In[157]:
 
 
 train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -374,13 +374,13 @@ dev_labels = to_categorical(dev_labels)
 test_labels = to_categorical(test_labels)
 
 
-# In[124]:
+# In[158]:
 
 
 print(train_labels)
 
 
-# In[125]:
+# In[159]:
 
 
 model = Sequential()
@@ -398,7 +398,7 @@ model.add(Dense(3, activation='softmax'))
 print(model.summary())
 
 
-# In[126]:
+# In[160]:
 
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -410,20 +410,20 @@ print(train_labels.shape)
 model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[127]:
+# In[161]:
 
 
 y_pred = model.predict(test_set)
 y_pred
 
 
-# In[128]:
+# In[162]:
 
 
 test_labels
 
 
-# In[129]:
+# In[163]:
 
 
 model.evaluate(test_set, test_labels)

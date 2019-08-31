@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[17]:
+# In[26]:
 
 
 import numpy as np
@@ -17,14 +17,14 @@ directory = os.path.join(directory, "plots")
 os.chdir(directory)
 
 
-# In[18]:
+# In[27]:
 
 
 for i in range(10):
     print(random.randint(0, 1000))
 
 
-# In[19]:
+# In[28]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -33,7 +33,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[20]:
+# In[29]:
 
 
 def convertimg(img):
@@ -45,7 +45,7 @@ def convertimg(img):
     return newimg
 
 
-# In[25]:
+# In[30]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -64,32 +64,32 @@ for name in os.listdir():
     i += 1
 
 
-# In[22]:
+# In[31]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[23]:
+# In[32]:
 
 
 spectra.shape
 
 
-# In[24]:
+# In[33]:
 
 
 y = np.reshape(y, (len(y), 1))
 y.shape
 
 
-# In[8]:
+# In[34]:
 
 
 random.seed(0)
 
 
-# In[9]:
+# In[35]:
 
 
 sample_indices = list(range(0, num_samples))
@@ -116,7 +116,7 @@ test_set = spectra[test_set_indices, :]
 test_labels = y[test_set_indices, :]
 
 
-# In[10]:
+# In[36]:
 
 
 train_labels = train_labels.flatten()
@@ -124,14 +124,14 @@ dev_labels = dev_labels.flatten()
 test_labels = test_labels.flatten()
 
 
-# In[11]:
+# In[37]:
 
 
 from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(bootstrap=True, criterion='entropy')
 
 
-# In[12]:
+# In[38]:
 
 
 from sklearn.model_selection import train_test_split
@@ -142,7 +142,7 @@ X_train, X_test, y_train, y_test = train_test_split(spectra, y, test_size=0.2, r
 clf.fit(X_train, y_train)
 
 
-# In[13]:
+# In[39]:
 
 
 from sklearn.metrics import accuracy_score

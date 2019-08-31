@@ -13705,10 +13705,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="prompt input_prompt">In&nbsp;[153]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">737</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">148</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13718,7 +13718,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[131]:</div>
+<div class="prompt input_prompt">In&nbsp;[154]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">))</span>
@@ -13763,9 +13763,9 @@ div#notebook {
 24
 8
 8
-[16, 9, 10, 1, 11, 24, 5, 38, 34, 25, 32, 14, 15, 28, 20, 19, 4, 22, 23, 6, 26, 30, 7, 13]
-[17, 21, 35, 37, 39, 12, 36, 0]
-[8, 2, 33, 18, 3, 29, 27, 31]
+[27, 11, 33, 19, 3, 23, 28, 1, 29, 16, 15, 5, 14, 4, 24, 9, 30, 32, 0, 37, 10, 13, 7, 36]
+[12, 6, 17, 18, 22, 39, 2, 25]
+[35, 21, 34, 26, 8, 38, 20, 31]
 </pre>
 </div>
 </div>
@@ -13776,7 +13776,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[121]:</div>
+<div class="prompt input_prompt">In&nbsp;[155]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
@@ -13792,7 +13792,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[122]:</div>
+<div class="prompt input_prompt">In&nbsp;[156]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># len(train_set)</span>
@@ -13825,7 +13825,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[123]:</div>
+<div class="prompt input_prompt">In&nbsp;[157]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectrum_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -13848,7 +13848,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="prompt input_prompt">In&nbsp;[158]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
@@ -13870,26 +13870,26 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[[1. 0. 0.]
  [1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]
+ [0. 1. 0.]
+ [0. 0. 1.]
+ [1. 0. 0.]
+ [0. 0. 1.]
  [1. 0. 0.]
  [0. 0. 1.]
  [1. 0. 0.]
  [0. 0. 1.]
+ [0. 1. 0.]
+ [1. 0. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 1. 0.]
  [0. 0. 1.]
  [1. 0. 0.]
  [1. 0. 0.]
  [0. 1. 0.]
- [1. 0. 0.]
- [1. 0. 0.]
  [0. 1. 0.]
- [0. 1. 0.]
- [0. 1. 0.]
- [0. 0. 1.]
- [0. 1. 0.]
- [0. 1. 0.]
- [0. 0. 1.]
- [0. 1. 0.]
- [0. 1. 0.]
- [1. 0. 0.]
  [1. 0. 0.]
  [0. 1. 0.]]
 </pre>
@@ -13902,7 +13902,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[125]:</div>
+<div class="prompt input_prompt">In&nbsp;[159]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -13934,25 +13934,25 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Model: &#34;sequential_8&#34;
+<pre>Model: &#34;sequential_11&#34;
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-conv1d_32 (Conv1D)           (None, 476, 64)           1664      
+conv1d_44 (Conv1D)           (None, 476, 64)           1664      
 _________________________________________________________________
-conv1d_33 (Conv1D)           (None, 452, 64)           102464    
+conv1d_45 (Conv1D)           (None, 452, 64)           102464    
 _________________________________________________________________
-max_pooling1d_16 (MaxPooling (None, 113, 64)           0         
+max_pooling1d_22 (MaxPooling (None, 113, 64)           0         
 _________________________________________________________________
-conv1d_34 (Conv1D)           (None, 89, 100)           160100    
+conv1d_46 (Conv1D)           (None, 89, 100)           160100    
 _________________________________________________________________
-conv1d_35 (Conv1D)           (None, 65, 100)           250100    
+conv1d_47 (Conv1D)           (None, 65, 100)           250100    
 _________________________________________________________________
-max_pooling1d_17 (MaxPooling (None, 16, 100)           0         
+max_pooling1d_23 (MaxPooling (None, 16, 100)           0         
 _________________________________________________________________
-flatten_8 (Flatten)          (None, 1600)              0         
+flatten_11 (Flatten)         (None, 1600)              0         
 _________________________________________________________________
-dense_8 (Dense)              (None, 3)                 4803      
+dense_11 (Dense)             (None, 3)                 4803      
 =================================================================
 Total params: 519,131
 Trainable params: 519,131
@@ -13969,7 +13969,7 @@ None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="prompt input_prompt">In&nbsp;[160]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
@@ -13998,118 +13998,118 @@ None
 <pre>(24, 3)
 Train on 24 samples, validate on 8 samples
 Epoch 1/50
-24/24 [==============================] - 1s 23ms/sample - loss: 1.3657 - acc: 0.3750 - val_loss: 1.1017 - val_acc: 0.2500
+24/24 [==============================] - 1s 27ms/sample - loss: 1.1252 - acc: 0.2083 - val_loss: 1.0569 - val_acc: 0.6250
 Epoch 2/50
-24/24 [==============================] - 0s 8ms/sample - loss: 1.0509 - acc: 0.5417 - val_loss: 1.0937 - val_acc: 0.5000
+24/24 [==============================] - 0s 10ms/sample - loss: 1.0804 - acc: 0.5417 - val_loss: 1.0087 - val_acc: 0.6250
 Epoch 3/50
-24/24 [==============================] - 0s 8ms/sample - loss: 1.0617 - acc: 0.5417 - val_loss: 1.0985 - val_acc: 0.6250
+24/24 [==============================] - 0s 11ms/sample - loss: 1.0335 - acc: 0.5833 - val_loss: 0.9681 - val_acc: 0.6250
 Epoch 4/50
-24/24 [==============================] - 0s 8ms/sample - loss: 1.0029 - acc: 0.7083 - val_loss: 1.1973 - val_acc: 0.6250
+24/24 [==============================] - 0s 13ms/sample - loss: 0.9478 - acc: 0.5417 - val_loss: 0.8370 - val_acc: 0.6250
 Epoch 5/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.9775 - acc: 0.7083 - val_loss: 1.3905 - val_acc: 0.6250
+24/24 [==============================] - 0s 12ms/sample - loss: 0.7947 - acc: 0.6667 - val_loss: 0.7107 - val_acc: 0.6250
 Epoch 6/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.9285 - acc: 0.7083 - val_loss: 1.2937 - val_acc: 0.5000
+24/24 [==============================] - 0s 12ms/sample - loss: 0.6156 - acc: 0.6667 - val_loss: 0.5550 - val_acc: 0.6250
 Epoch 7/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.8290 - acc: 0.7083 - val_loss: 1.0593 - val_acc: 0.5000
+24/24 [==============================] - 0s 11ms/sample - loss: 0.8745 - acc: 0.7083 - val_loss: 0.5642 - val_acc: 0.7500
 Epoch 8/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.7706 - acc: 0.7500 - val_loss: 0.9216 - val_acc: 0.6250
+24/24 [==============================] - 0s 9ms/sample - loss: 0.6708 - acc: 0.7500 - val_loss: 0.8930 - val_acc: 0.6250
 Epoch 9/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.7030 - acc: 0.7917 - val_loss: 0.8990 - val_acc: 0.6250
+24/24 [==============================] - 0s 8ms/sample - loss: 0.8159 - acc: 0.6667 - val_loss: 0.6180 - val_acc: 0.6250
 Epoch 10/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.5483 - acc: 0.7917 - val_loss: 0.7551 - val_acc: 0.6250
+24/24 [==============================] - 0s 10ms/sample - loss: 0.5103 - acc: 0.7500 - val_loss: 0.5757 - val_acc: 0.8750
 Epoch 11/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.4367 - acc: 0.7917 - val_loss: 0.4825 - val_acc: 0.7500
+24/24 [==============================] - 0s 9ms/sample - loss: 0.5496 - acc: 0.6667 - val_loss: 0.7479 - val_acc: 0.5000
 Epoch 12/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.3913 - acc: 0.9167 - val_loss: 0.7378 - val_acc: 0.6250
+24/24 [==============================] - 0s 10ms/sample - loss: 0.5861 - acc: 0.6250 - val_loss: 0.6549 - val_acc: 0.7500
 Epoch 13/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.3887 - acc: 0.7917 - val_loss: 0.4761 - val_acc: 0.7500
+24/24 [==============================] - 0s 17ms/sample - loss: 0.5230 - acc: 0.7500 - val_loss: 0.5306 - val_acc: 0.7500
 Epoch 14/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.4465 - acc: 0.7917 - val_loss: 0.4589 - val_acc: 0.7500
+24/24 [==============================] - 0s 11ms/sample - loss: 0.4827 - acc: 0.7500 - val_loss: 0.4912 - val_acc: 0.6250
 Epoch 15/50
-24/24 [==============================] - 1s 26ms/sample - loss: 0.4192 - acc: 0.8333 - val_loss: 0.7631 - val_acc: 0.6250
+24/24 [==============================] - 0s 9ms/sample - loss: 0.4335 - acc: 0.8333 - val_loss: 0.4534 - val_acc: 0.8750
 Epoch 16/50
-24/24 [==============================] - 0s 11ms/sample - loss: 0.5987 - acc: 0.7500 - val_loss: 0.3149 - val_acc: 0.8750
+24/24 [==============================] - 0s 9ms/sample - loss: 0.4280 - acc: 0.7500 - val_loss: 0.4973 - val_acc: 0.7500
 Epoch 17/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.3168 - acc: 0.9167 - val_loss: 0.4074 - val_acc: 0.7500
+24/24 [==============================] - 0s 12ms/sample - loss: 0.3554 - acc: 0.7917 - val_loss: 0.5182 - val_acc: 0.7500
 Epoch 18/50
-24/24 [==============================] - 0s 11ms/sample - loss: 0.3354 - acc: 0.9167 - val_loss: 0.3329 - val_acc: 0.8750
+24/24 [==============================] - 0s 14ms/sample - loss: 0.3486 - acc: 0.7917 - val_loss: 0.4470 - val_acc: 0.7500
 Epoch 19/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.2408 - acc: 0.9583 - val_loss: 0.3291 - val_acc: 0.7500
+24/24 [==============================] - 0s 11ms/sample - loss: 0.2873 - acc: 0.8750 - val_loss: 0.2988 - val_acc: 0.8750
 Epoch 20/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.2356 - acc: 0.9167 - val_loss: 0.4282 - val_acc: 0.7500
+24/24 [==============================] - 0s 15ms/sample - loss: 0.2674 - acc: 0.8750 - val_loss: 0.2385 - val_acc: 1.0000
 Epoch 21/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.2324 - acc: 0.9167 - val_loss: 0.3979 - val_acc: 0.7500
+24/24 [==============================] - 0s 12ms/sample - loss: 0.2026 - acc: 0.9583 - val_loss: 0.2797 - val_acc: 0.8750
 Epoch 22/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.2183 - acc: 0.9583 - val_loss: 0.2641 - val_acc: 0.8750
+24/24 [==============================] - 0s 16ms/sample - loss: 0.1753 - acc: 0.9167 - val_loss: 0.2734 - val_acc: 0.8750
 Epoch 23/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.2082 - acc: 0.9583 - val_loss: 0.2803 - val_acc: 0.8750
+24/24 [==============================] - 0s 10ms/sample - loss: 0.1382 - acc: 0.9583 - val_loss: 0.1345 - val_acc: 1.0000
 Epoch 24/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.1685 - acc: 0.9583 - val_loss: 0.2336 - val_acc: 0.8750
+24/24 [==============================] - 0s 9ms/sample - loss: 0.2446 - acc: 0.8333 - val_loss: 0.2731 - val_acc: 0.8750
 Epoch 25/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.2268 - acc: 0.8750 - val_loss: 0.3306 - val_acc: 0.8750
+24/24 [==============================] - 0s 11ms/sample - loss: 0.2119 - acc: 0.9167 - val_loss: 0.1076 - val_acc: 1.0000
 Epoch 26/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.3420 - acc: 0.9167 - val_loss: 0.5876 - val_acc: 0.7500
+24/24 [==============================] - 0s 15ms/sample - loss: 0.2288 - acc: 0.8750 - val_loss: 0.4623 - val_acc: 0.8750
 Epoch 27/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.3425 - acc: 0.9167 - val_loss: 0.3026 - val_acc: 0.7500
+24/24 [==============================] - 0s 10ms/sample - loss: 0.0828 - acc: 0.9583 - val_loss: 1.3689 - val_acc: 0.7500
 Epoch 28/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.2222 - acc: 0.9167 - val_loss: 0.8632 - val_acc: 0.6250
+24/24 [==============================] - 0s 12ms/sample - loss: 0.1983 - acc: 0.9167 - val_loss: 1.4317 - val_acc: 0.7500
 Epoch 29/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.3681 - acc: 0.8750 - val_loss: 0.7493 - val_acc: 0.7500
+24/24 [==============================] - 0s 11ms/sample - loss: 0.3025 - acc: 0.8750 - val_loss: 0.4225 - val_acc: 0.8750
 Epoch 30/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.2624 - acc: 0.9167 - val_loss: 0.2713 - val_acc: 0.8750
+24/24 [==============================] - 0s 10ms/sample - loss: 0.1172 - acc: 0.9167 - val_loss: 0.2252 - val_acc: 0.8750
 Epoch 31/50
-24/24 [==============================] - 0s 21ms/sample - loss: 0.2732 - acc: 0.8750 - val_loss: 0.2172 - val_acc: 0.8750
+24/24 [==============================] - 0s 9ms/sample - loss: 0.1107 - acc: 0.9583 - val_loss: 0.2824 - val_acc: 0.8750
 Epoch 32/50
-24/24 [==============================] - 1s 23ms/sample - loss: 0.1423 - acc: 1.0000 - val_loss: 0.6531 - val_acc: 0.7500
+24/24 [==============================] - 0s 9ms/sample - loss: 0.1256 - acc: 0.9583 - val_loss: 0.4355 - val_acc: 0.8750
 Epoch 33/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.2630 - acc: 0.9583 - val_loss: 0.5675 - val_acc: 0.7500
+24/24 [==============================] - 0s 9ms/sample - loss: 0.0642 - acc: 1.0000 - val_loss: 0.2569 - val_acc: 0.8750
 Epoch 34/50
-24/24 [==============================] - 0s 16ms/sample - loss: 0.2215 - acc: 0.9583 - val_loss: 0.2304 - val_acc: 0.8750
+24/24 [==============================] - 0s 9ms/sample - loss: 0.0589 - acc: 1.0000 - val_loss: 0.1829 - val_acc: 0.8750
 Epoch 35/50
-24/24 [==============================] - 0s 11ms/sample - loss: 0.1653 - acc: 0.9167 - val_loss: 0.2721 - val_acc: 0.8750
+24/24 [==============================] - 0s 9ms/sample - loss: 0.0623 - acc: 1.0000 - val_loss: 0.0685 - val_acc: 1.0000
 Epoch 36/50
-24/24 [==============================] - 0s 12ms/sample - loss: 0.1745 - acc: 0.9583 - val_loss: 0.2090 - val_acc: 0.8750
+24/24 [==============================] - 0s 10ms/sample - loss: 0.0412 - acc: 1.0000 - val_loss: 0.0418 - val_acc: 1.0000
 Epoch 37/50
-24/24 [==============================] - 0s 11ms/sample - loss: 0.1066 - acc: 0.9583 - val_loss: 0.3481 - val_acc: 0.7500
+24/24 [==============================] - 0s 9ms/sample - loss: 0.0321 - acc: 1.0000 - val_loss: 0.0556 - val_acc: 1.0000
 Epoch 38/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.2026 - acc: 0.9583 - val_loss: 0.2604 - val_acc: 0.8750
+24/24 [==============================] - 0s 11ms/sample - loss: 0.0180 - acc: 1.0000 - val_loss: 0.2510 - val_acc: 0.8750
 Epoch 39/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.0760 - acc: 1.0000 - val_loss: 0.2087 - val_acc: 0.8750
+24/24 [==============================] - 0s 11ms/sample - loss: 0.0157 - acc: 1.0000 - val_loss: 0.4950 - val_acc: 0.8750
 Epoch 40/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.0992 - acc: 1.0000 - val_loss: 0.1558 - val_acc: 0.8750
+24/24 [==============================] - 0s 15ms/sample - loss: 0.0117 - acc: 1.0000 - val_loss: 0.4892 - val_acc: 0.8750
 Epoch 41/50
-24/24 [==============================] - 1s 22ms/sample - loss: 0.0825 - acc: 0.9583 - val_loss: 0.1338 - val_acc: 1.0000
+24/24 [==============================] - 0s 12ms/sample - loss: 0.0069 - acc: 1.0000 - val_loss: 0.4526 - val_acc: 0.8750
 Epoch 42/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.0645 - acc: 0.9583 - val_loss: 0.0982 - val_acc: 1.0000
+24/24 [==============================] - 0s 14ms/sample - loss: 0.0079 - acc: 1.0000 - val_loss: 0.4432 - val_acc: 0.8750
 Epoch 43/50
-24/24 [==============================] - 0s 16ms/sample - loss: 0.0443 - acc: 1.0000 - val_loss: 0.0871 - val_acc: 1.0000
+24/24 [==============================] - 0s 15ms/sample - loss: 0.0054 - acc: 1.0000 - val_loss: 0.5561 - val_acc: 0.8750
 Epoch 44/50
-24/24 [==============================] - 0s 12ms/sample - loss: 0.0455 - acc: 1.0000 - val_loss: 0.0625 - val_acc: 1.0000
+24/24 [==============================] - 0s 13ms/sample - loss: 0.0025 - acc: 1.0000 - val_loss: 0.7351 - val_acc: 0.8750
 Epoch 45/50
-24/24 [==============================] - 0s 11ms/sample - loss: 0.0339 - acc: 1.0000 - val_loss: 0.0735 - val_acc: 1.0000
+24/24 [==============================] - 0s 15ms/sample - loss: 0.0033 - acc: 1.0000 - val_loss: 0.8813 - val_acc: 0.8750
 Epoch 46/50
-24/24 [==============================] - 1s 25ms/sample - loss: 0.0230 - acc: 1.0000 - val_loss: 0.0364 - val_acc: 1.0000
+24/24 [==============================] - 1s 22ms/sample - loss: 0.0026 - acc: 1.0000 - val_loss: 0.9811 - val_acc: 0.8750
 Epoch 47/50
-24/24 [==============================] - 0s 13ms/sample - loss: 0.0139 - acc: 1.0000 - val_loss: 0.0280 - val_acc: 1.0000
+24/24 [==============================] - 1s 31ms/sample - loss: 0.0015 - acc: 1.0000 - val_loss: 1.0843 - val_acc: 0.8750
 Epoch 48/50
-24/24 [==============================] - 0s 9ms/sample - loss: 0.0130 - acc: 1.0000 - val_loss: 0.0293 - val_acc: 1.0000
+24/24 [==============================] - 0s 18ms/sample - loss: 0.0012 - acc: 1.0000 - val_loss: 1.0793 - val_acc: 0.8750
 Epoch 49/50
-24/24 [==============================] - 0s 10ms/sample - loss: 0.0059 - acc: 1.0000 - val_loss: 0.0454 - val_acc: 1.0000
+24/24 [==============================] - 0s 18ms/sample - loss: 0.0011 - acc: 1.0000 - val_loss: 1.0507 - val_acc: 0.8750
 Epoch 50/50
-24/24 [==============================] - 0s 8ms/sample - loss: 0.0092 - acc: 1.0000 - val_loss: 0.0255 - val_acc: 1.0000
+24/24 [==============================] - 0s 18ms/sample - loss: 7.5436e-04 - acc: 1.0000 - val_loss: 1.0931 - val_acc: 0.8750
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[126]:</div>
+    <div class="prompt output_prompt">Out[160]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow.python.keras.callbacks.History at 0x1354caeb8&gt;</pre>
+<pre>&lt;tensorflow.python.keras.callbacks.History at 0x1365b1f28&gt;</pre>
 </div>
 
 </div>
@@ -14120,7 +14120,7 @@ Epoch 50/50
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[161]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
@@ -14137,20 +14137,20 @@ Epoch 50/50
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[127]:</div>
+    <div class="prompt output_prompt">Out[161]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[6.0412841e-04, 7.6961079e-26, 9.9939585e-01],
-       [2.0880438e-03, 2.9388818e-24, 9.9791199e-01],
-       [9.9999058e-01, 2.7212379e-27, 9.4445286e-06],
-       [8.8713658e-01, 1.6239159e-08, 1.1286345e-01],
-       [1.0245274e-14, 1.0000000e+00, 2.0537666e-18],
-       [7.9472941e-20, 1.0000000e+00, 2.0862626e-23],
-       [2.4445832e-03, 5.2056332e-12, 9.9755543e-01],
-       [1.0000000e+00, 1.6316943e-25, 2.9556326e-09]], dtype=float32)</pre>
+<pre>array([[7.4677719e-03, 1.3519224e-14, 9.9253219e-01],
+       [9.9988031e-01, 1.5656021e-24, 1.1965949e-04],
+       [2.3758398e-06, 9.9999762e-01, 2.3879615e-13],
+       [1.0000000e+00, 9.7707973e-26, 4.4108486e-09],
+       [7.6127970e-01, 2.1701930e-20, 2.3872034e-01],
+       [5.6776473e-17, 1.0000000e+00, 1.4168342e-26],
+       [9.9967051e-01, 5.5479981e-25, 3.2953796e-04],
+       [1.2409818e-06, 9.9999881e-01, 3.8139574e-12]], dtype=float32)</pre>
 </div>
 
 </div>
@@ -14161,7 +14161,7 @@ Epoch 50/50
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="prompt input_prompt">In&nbsp;[162]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_labels</span>
@@ -14177,20 +14177,20 @@ Epoch 50/50
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[128]:</div>
+    <div class="prompt output_prompt">Out[162]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>array([[0., 0., 1.],
-       [0., 0., 1.],
+       [1., 0., 0.],
+       [0., 1., 0.],
        [1., 0., 0.],
        [1., 0., 0.],
        [0., 1., 0.],
-       [0., 1., 0.],
-       [0., 0., 1.],
-       [1., 0., 0.]], dtype=float32)</pre>
+       [1., 0., 0.],
+       [0., 1., 0.]], dtype=float32)</pre>
 </div>
 
 </div>
@@ -14201,7 +14201,7 @@ Epoch 50/50
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[129]:</div>
+<div class="prompt input_prompt">In&nbsp;[163]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
@@ -14221,20 +14221,20 @@ Epoch 50/50
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8/8 [==============================] - 0s 4ms/sample - loss: 0.0156 - acc: 1.0000
+<pre>8/8 [==============================] - 0s 5ms/sample - loss: 0.0351 - acc: 1.0000
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[129]:</div>
+    <div class="prompt output_prompt">Out[163]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.01561348419636488, 1.0]</pre>
+<pre>[0.035087887197732925, 1.0]</pre>
 </div>
 
 </div>
