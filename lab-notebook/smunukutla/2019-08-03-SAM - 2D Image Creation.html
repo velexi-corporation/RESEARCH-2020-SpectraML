@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># environment set up</span>
@@ -13139,7 +13139,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[99]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stddata_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="s2">&quot;Srikar-Standardized&quot;</span><span class="p">)</span>
@@ -13157,7 +13157,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[99]:</div>
 
 
 
@@ -13247,11 +13247,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;value_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">]</span>
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="o">~</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spectrometer_purity_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;NIC4&quot;</span><span class="p">)]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;raw_data_path&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;ChapterM&quot;</span><span class="p">)]</span> <span class="c1"># add in ChapterS Soils and Mixtures later</span>
 <span class="n">metadata</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
@@ -13265,13 +13266,13 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[100]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(1810, 6)</pre>
+<pre>(887, 6)</pre>
 </div>
 
 </div>
@@ -13282,7 +13283,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">record_nums</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13335,12 +13336,12 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>76
-76
+<pre>40
+40
 &lt;class &#39;numpy.ndarray&#39;&gt;
-19
-32
-25
+16
+13
+11
 </pre>
 </div>
 </div>
@@ -13351,7 +13352,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectrum_len</span> <span class="o">=</span> <span class="mi">500</span>
@@ -13366,7 +13367,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_neg</span> <span class="o">=</span> <span class="mi">0</span>
@@ -13411,7 +13412,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[111]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># --- plot the classes</span>
@@ -13506,7 +13507,7 @@ div#notebook {
     <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 <span class="c1">#     fig.patch.set_visible(False)</span>
 <span class="c1">#     plt.show()</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s2">&quot;plots/&quot;</span> <span class="o">+</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">,</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
@@ -13522,7 +13523,7 @@ div#notebook {
     <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 <span class="c1">#     fig.patch.set_visible(False)</span>
 <span class="c1">#     plt.show()</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s2">&quot;plots/&quot;</span> <span class="o">+</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">,</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
@@ -13538,13 +13539,683 @@ div#notebook {
     <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 <span class="c1">#     fig.patch.set_visible(False)</span>
 <span class="c1">#     plt.show()</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s2">&quot;plots/&quot;</span> <span class="o">+</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">,</span> <span class="n">mineral_names</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 <span class="c1"># plt.legend(bbox_to_anchor=(1.1, 1.05))</span>
 <span class="c1"># plt.show()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_neg</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">stddata_path</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stddata_path</span><span class="p">,</span><span class="n">file</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="n">num_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">continue</span>
+<span class="c1">#     for j in range(len(arr)):</span>
+<span class="c1">#         if np.isnan(arr[j]):</span>
+<span class="c1">#             print(file)</span>
+<span class="c1">#             num_neg += 1</span>
+<span class="c1">#             break</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_neg</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>21242.csv
+10921.csv
+6796.csv
+8750.csv
+10706.csv
+1984.csv
+753.csv
+21068.csv
+5710.csv
+4432.csv
+2043.csv
+960.csv
+6543.csv
+10510.csv
+11785.csv
+7932.csv
+18945.csv
+11034.csv
+15246.csv
+9062.csv
+4963.csv
+7517.csv
+8142.csv
+15078.csv
+5329.csv
+6620.csv
+9513.csv
+15723.csv
+395.csv
+1198.csv
+22158.csv
+10303.csv
+8369.csv
+1365.csv
+18950.csv
+9117.csv
+785.csv
+2718.csv
+5936.csv
+6581.csv
+5088.csv
+12676.csv
+8962.csv
+4816.csv
+3148.csv
+4592.csv
+3216.csv
+11751.csv
+12073.csv
+14402.csv
+10664.csv
+1170.csv
+7267.csv
+20994.csv
+9706.csv
+2121.csv
+802.csv
+2684.csv
+625.csv
+976.csv
+21081.csv
+18614.csv
+6025.csv
+7449.csv
+1776.csv
+8949.csv
+6970.csv
+2290.csv
+9306.csv
+10072.csv
+5272.csv
+769.csv
+21046.csv
+9662.csv
+10264.csv
+21085.csv
+5851.csv
+5689.csv
+5892.csv
+11768.csv
+3950.csv
+423.csv
+5448.csv
+9272.csv
+5312.csv
+8636.csv
+13341.csv
+3010.csv
+344.csv
+20985.csv
+22162.csv
+4541.csv
+4353.csv
+18639.csv
+11184.csv
+740.csv
+7855.csv
+8031.csv
+12857.csv
+3199.csv
+1017.csv
+8999.csv
+1567.csv
+2697.csv
+18940.csv
+6432.csv
+7710.csv
+1407.csv
+1836.csv
+12935.csv
+3990.csv
+22175.csv
+9728.csv
+5648.csv
+10474.csv
+18955.csv
+21093.csv
+9890.csv
+2735.csv
+7881.csv
+8595.csv
+7315.csv
+6779.csv
+582.csv
+12101.csv
+6792.csv
+240.csv
+22072.csv
+3841.csv
+6093.csv
+5571.csv
+21584.csv
+15386.csv
+12364.csv
+21619.csv
+7010.csv
+11725.csv
+2632.csv
+7992.csv
+6332.csv
+8684.csv
+2381.csv
+5363.csv
+1887.csv
+9570.csv
+4929.csv
+8849.csv
+21624.csv
+8242.csv
+11136.csv
+2948.csv
+719.csv
+6737.csv
+22098.csv
+1716.csv
+6938.csv
+19967.csv
+525.csv
+1927.csv
+1066.csv
+8724.csv
+11322.csv
+9412.csv
+2786.csv
+7629.csv
+12415.csv
+9957.csv
+6480.csv
+11901.csv
+4268.csv
+6866.csv
+7563.csv
+12987.csv
+7211.csv
+6899.csv
+14306.csv
+4725.csv
+3062.csv
+11243.csv
+8862.csv
+11055.csv
+15227.csv
+685.csv
+5188.csv
+11096.csv
+646.csv
+2750.csv
+915.csv
+15409.csv
+1271.csv
+6293.csv
+4645.csv
+2234.csv
+19019.csv
+4679.csv
+21579.csv
+21223.csv
+15186.csv
+10798.csv
+20883.csv
+13285.csv
+21233.csv
+10950.csv
+8090.csv
+16460.csv
+12612.csv
+7189.csv
+6526.csv
+5007.csv
+4319.csv
+13054.csv
+10401.csv
+3099.csv
+4912.csv
+1300.csv
+3265.csv
+3311.csv
+8522.csv
+9827.csv
+7822.csv
+3675.csv
+10992.csv
+9370.csv
+2543.csv
+10010.csv
+7349.csv
+20892.csv
+22077.csv
+12836.csv
+7405.csv
+10748.csv
+8285.csv
+5992.csv
+7161.csv
+7607.csv
+7954.csv
+5831.csv
+899.csv
+4520.csv
+16729.csv
+5616.csv
+4044.csv
+10614.csv
+9206.csv
+2421.csv
+13321.csv
+5414.csv
+10601.csv
+8327.csv
+21609.csv
+4455.csv
+14705.csv
+9617.csv
+16847.csv
+293.csv
+15631.csv
+11457.csv
+21594.csv
+2597.csv
+8909.csv
+21228.csv
+6059.csv
+8048.csv
+21599.csv
+16447.csv
+4100.csv
+6501.csv
+6267.csv
+21604.csv
+3531.csv
+11076.csv
+10354.csv
+21837.csv
+5168.csv
+7233.csv
+1118.csv
+8129.csv
+15985.csv
+14443.csv
+1131.csv
+1680.csv
+5380.csv
+6460.csv
+10433.csv
+15205.csv
+7971.csv
+7795.csv
+8505.csv
+2982.csv
+5035.csv
+2969.csv
+10584.csv
+3487.csv
+1737.csv
+3120.csv
+1086.csv
+7385.csv
+260.csv
+4842.csv
+3863.csv
+20874.csv
+4895.csv
+22087.csv
+12636.csv
+4498.csv
+706.csv
+15367.csv
+10237.csv
+672.csv
+7032.csv
+9989.csv
+2162.csv
+855.csv
+11288.csv
+10627.csv
+6106.csv
+12743.csv
+8664.csv
+2349.csv
+20915.csv
+4738.csv
+1867.csv
+9591.csv
+5397.csv
+7769.csv
+9750.csv
+14642.csv
+10381.csv
+883.csv
+13878.csv
+12435.csv
+11869.csv
+5208.csv
+2201.csv
+15602.csv
+8927.csv
+8933.csv
+10971.csv
+6711.csv
+22082.csv
+7369.csv
+20865.csv
+7427.csv
+3641.csv
+5230.csv
+8264.csv
+1446.csv
+20044.csv
+8112.csv
+7585.csv
+10192.csv
+2827.csv
+1533.csv
+4477.csv
+9147.csv
+13510.csv
+4878.csv
+12803.csv
+8065.csv
+10769.csv
+5958.csv
+2004.csv
+9637.csv
+5743.csv
+21629.csv
+1492.csv
+8449.csv
+13116.csv
+10153.csv
+9541.csv
+9233.csv
+6666.csv
+3736.csv
+11503.csv
+3045.csv
+5346.csv
+3079.csv
+8892.csv
+463.csv
+8879.csv
+3904.csv
+8306.csv
+1322.csv
+21614.csv
+5756.csv
+21589.csv
+10032.csv
+21238.csv
+9391.csv
+10900.csv
+7495.csv
+3817.csv
+6990.csv
+4177.csv
+10727.csv
+996.csv
+12291.csv
+12520.csv
+14623.csv
+18596.csv
+7293.csv
+6827.csv
+13399.csv
+22150.csv
+2466.csv
+3778.csv
+12723.csv
+11564.csv
+3023.csv
+4980.csv
+10685.csv
+10861.csv
+22179.csv
+8348.csv
+6359.csv
+18965.csv
+9917.csv
+1387.csv
+3590.csv
+10530.csv
+4412.csv
+4374.csv
+8214.csv
+21060.csv
+8943.csv
+5295.csv
+3800.csv
+12696.csv
+8014.csv
+11406.csv
+3169.csv
+6005.csv
+14973.csv
+2075.csv
+21089.csv
+3237.csv
+4216.csv
+10644.csv
+6170.csv
+8175.csv
+8808.csv
+5135.csv
+3544.csv
+6399.csv
+6560.csv
+12330.csv
+5055.csv
+5914.csv
+9684.csv
+1596.csv
+3395.csv
+2504.csv
+15107.csv
+9479.csv
+10094.csv
+8978.csv
+8777.csv
+6216.csv
+21098.csv
+8561.csv
+5723.csv
+1237.csv
+5864.csv
+7915.csv
+2662.csv
+12240.csv
+8415.csv
+1343.csv
+11013.csv
+2892.csv
+12056.csv
+4011.csv
+11204.csv
+4776.csv
+3970.csv
+16580.csv
+14778.csv
+1550.csv
+3435.csv
+9130.csv
+7684.csv
+5508.csv
+9440.csv
+10052.csv
+3186.csv
+211.csv
+11366.csv
+5250.csv
+11831.csv
+2926.csv
+21064.csv
+944.csv
+11164.csv
+7651.csv
+7080.csv
+603.csv
+5668.csv
+8827.csv
+1625.csv
+4946.csv
+12901.csv
+1816.csv
+22154.csv
+16742.csv
+164.csv
+18960.csv
+3350.csv
+13766.csv
+14960.csv
+13941.csv
+5537.csv
+6758.csv
+1037.csv
+560.csv
+1962.csv
+515
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;value_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="o">~</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spectrometer_purity_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;NIC4&quot;</span><span class="p">)]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;raw_data_path&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;ChapterM&quot;</span><span class="p">)]</span>
+<span class="n">metadata</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">record_nums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mineral_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">record_nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mineral_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_neg</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">record_nums</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">record_nums</span><span class="p">)):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stddata_path</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record_nums</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">record_nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">mineral_names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">num_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">continue</span>
+<span class="c1">#     for j in range(len(arr)):</span>
+<span class="c1">#         if np.isnan(arr[j]):</span>
+<span class="c1">#             print(file)</span>
+<span class="c1">#             num_neg += 1</span>
+<span class="c1">#             break</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_neg</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>887
+8927
+Psilomelane HS139.1B
+8962
+Psilomelane HS139.4B
+6792
+Mascagnite GDS65.b (fr)
+8943
+Psilomelane HS139.3B
+8933
+Psilomelane HS139.2B
+5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># os.listdir(stddata_path)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data = pd.read_csv(os.path.join(stddata_path,&quot;211.csv&quot;))</span>
+<span class="c1"># arr = data.iloc[:, 1].to_numpy()</span>
+<span class="c1"># for j in range(spectrum_len):</span>
+<span class="c1">#     print(type(arr[j]))</span>
 </pre></div>
 
     </div>

@@ -37,6 +37,7 @@ metadata.head()
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
 metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
 metadata.shape
 
 
@@ -307,13 +308,13 @@ for i in range(i2):
 plt.show()
 
 
-# In[12]:
+# In[130]:
 
 
-random.seed(0)
+random.seed(737)
 
 
-# In[13]:
+# In[131]:
 
 
 sample_indices = list(range(0, num_samples))
@@ -340,7 +341,7 @@ test_set = spectra[test_set_indices, :]
 test_labels = y[test_set_indices, :]
 
 
-# In[14]:
+# In[121]:
 
 
 train_labels = train_labels.flatten()
@@ -349,7 +350,7 @@ test_labels = test_labels.flatten()
 # type(train_labels)
 
 
-# In[15]:
+# In[122]:
 
 
 # len(train_set)
@@ -357,7 +358,7 @@ test_labels = test_labels.flatten()
 print(test_set.shape)
 
 
-# In[16]:
+# In[123]:
 
 
 train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -373,13 +374,13 @@ dev_labels = to_categorical(dev_labels)
 test_labels = to_categorical(test_labels)
 
 
-# In[17]:
+# In[124]:
 
 
 print(train_labels)
 
 
-# In[18]:
+# In[125]:
 
 
 model = Sequential()
@@ -397,7 +398,7 @@ model.add(Dense(3, activation='softmax'))
 print(model.summary())
 
 
-# In[19]:
+# In[126]:
 
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -409,20 +410,20 @@ print(train_labels.shape)
 model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[20]:
+# In[127]:
 
 
 y_pred = model.predict(test_set)
 y_pred
 
 
-# In[21]:
+# In[128]:
 
 
 test_labels
 
 
-# In[22]:
+# In[129]:
 
 
 model.evaluate(test_set, test_labels)

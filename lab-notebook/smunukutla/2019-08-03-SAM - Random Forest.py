@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[17]:
 
 
 import numpy as np
@@ -17,7 +17,14 @@ directory = os.path.join(directory, "plots")
 os.chdir(directory)
 
 
-# In[2]:
+# In[18]:
+
+
+for i in range(10):
+    print(random.randint(0, 1000))
+
+
+# In[19]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -26,7 +33,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[3]:
+# In[20]:
 
 
 def convertimg(img):
@@ -38,37 +45,38 @@ def convertimg(img):
     return newimg
 
 
-# In[4]:
+# In[25]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
 y = []
 i = 0
 for name in os.listdir():
+    print(name)
     if name.find("Actinolite") != -1:
         y.append(int(0))
     elif name.find("Alunite") != -1:
         y.append(int(1))
     else:
         y.append(int(2))
-    img = mpimg.imread(os.path.join(directory,name)) # os.path.join here, look into timeit, pickle file
+    img = plt.imread(os.path.join(directory,name)) # os.path.join here, look into timeit, pickle file
     spectra[i] = convertimg(img)
     i += 1
 
 
-# In[5]:
+# In[22]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[6]:
+# In[23]:
 
 
 spectra.shape
 
 
-# In[7]:
+# In[24]:
 
 
 y = np.reshape(y, (len(y), 1))

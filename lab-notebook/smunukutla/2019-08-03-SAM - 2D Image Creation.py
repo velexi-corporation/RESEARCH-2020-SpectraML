@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[90]:
 
 
 # environment set up
@@ -18,7 +18,7 @@ data_dir = os.environ['DATA_DIR']
 os.chdir(data_dir)
 
 
-# In[3]:
+# In[99]:
 
 
 stddata_path = os.path.join(data_dir,"Srikar-Standardized")
@@ -26,15 +26,16 @@ metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|
 metadata.head()
 
 
-# In[4]:
+# In[100]:
 
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
 metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in ChapterS Soils and Mixtures later
 metadata.shape
 
 
-# In[5]:
+# In[101]:
 
 
 record_nums = []
@@ -73,7 +74,7 @@ print(aln)
 print(chl)
 
 
-# In[6]:
+# In[102]:
 
 
 spectrum_len = 500
@@ -81,7 +82,7 @@ spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[10]:
+# In[103]:
 
 
 num_neg = 0
@@ -101,7 +102,7 @@ for i in range(num_samples):
 print(num_neg)
 
 
-# In[11]:
+# In[111]:
 
 
 # --- plot the classes
@@ -196,7 +197,7 @@ for i in range(i0):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = data_dir + "plots/" + mineral_names[0] + str(i+1) + ".png"
+    path = os.path.join(data_dir, "plots", mineral_names[0] + str(i+1) + ".png")
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
@@ -212,7 +213,7 @@ for i in range(i1):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = data_dir + "plots/" + mineral_names[1] + str(i+1) + ".png"
+    path = os.path.join(data_dir, "plots", mineral_names[1] + str(i+1) + ".png")
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
@@ -228,13 +229,86 @@ for i in range(i2):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = data_dir + "plots/" + mineral_names[2] + str(i+1) + ".png"
+    path = os.path.join(data_dir, "plots", mineral_names[2] + str(i+1) + ".png")
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
     plt.close(fig)
 # plt.legend(bbox_to_anchor=(1.1, 1.05))
 # plt.show()
+
+
+# In[106]:
+
+
+num_neg = 0
+for file in os.listdir(stddata_path):
+    data = pd.read_csv(os.path.join(stddata_path,file))
+    if data.shape[1] == 2:
+        arr = data.iloc[:, 1].to_numpy()
+    if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
+        print(file)
+        num_neg += 1
+        continue
+#     for j in range(len(arr)):
+#         if np.isnan(arr[j]):
+#             print(file)
+#             num_neg += 1
+#             break
+print(num_neg)
+
+
+# In[107]:
+
+
+metadata = metadata[metadata['value_type'] == "reflectance"]
+metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
+metadata.shape
+
+record_nums = []
+mineral_names = []
+for i in range(metadata.shape[0]):
+    data = metadata.iloc[i, :]
+    record_nums.append(data[0])
+    mineral_names.append(data[2])
+
+
+# In[108]:
+
+
+num_neg = 0
+print(len(record_nums))
+for i in range(len(record_nums)):
+    data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
+    if data.shape[1] == 2:
+        arr = data.iloc[:, 1].to_numpy()
+    if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
+        print(record_nums[i])
+        print(mineral_names[i])
+        num_neg += 1
+        continue
+#     for j in range(len(arr)):
+#         if np.isnan(arr[j]):
+#             print(file)
+#             num_neg += 1
+#             break
+print(num_neg)
+
+
+# In[109]:
+
+
+# os.listdir(stddata_path)
+
+
+# In[110]:
+
+
+# data = pd.read_csv(os.path.join(stddata_path,"211.csv"))
+# arr = data.iloc[:, 1].to_numpy()
+# for j in range(spectrum_len):
+#     print(type(arr[j]))
 
 
 # In[ ]:
