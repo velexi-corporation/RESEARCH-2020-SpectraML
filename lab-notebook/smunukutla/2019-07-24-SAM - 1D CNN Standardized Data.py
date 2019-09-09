@@ -89,12 +89,12 @@ for i in range(metadata.shape[0]):
 
 y = np.reshape(y, (len(y), 1))
 num_samples = len(record_nums)
-print(num_samples)
-print(len(y))
-print(type(y))
-print(act)
-print(aln)
-print(chl)
+# print(num_samples)
+# print(len(y))
+# print(type(y))
+# print(act)
+# print(aln)
+# print(chl)
 
 
 # In[7]:
@@ -123,21 +123,21 @@ wavelengths = np.zeros((1,spectrum_len))
 # In[9]:
 
 
-num_neg = 0
-for i in range(num_samples):
-    hasnegative = False
-    data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
-    if i == 0:
-        wavelengths[i,:] = data.iloc[:, 0].to_numpy()
-    spectra[i,:] = data.iloc[:, 1].to_numpy()
-    for j in range(spectrum_len):
-        if spectra[i,j] < 0:
-            hasnegative = True
-            spectra[i,j] = 0
-    if hasnegative:
-        print(record_nums[i])
-        num_neg += 1
-print(num_neg)
+# num_neg = 0
+# for i in range(num_samples):
+#     hasnegative = False
+#     data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
+#     if i == 0:
+#         wavelengths[i,:] = data.iloc[:, 0].to_numpy()
+#     spectra[i,:] = data.iloc[:, 1].to_numpy()
+#     for j in range(spectrum_len):
+#         if spectra[i,j] < 0:
+#             hasnegative = True
+#             spectra[i,j] = 0
+#     if hasnegative:
+#         print(record_nums[i])
+#         num_neg += 1
+# print(num_neg)
 # wavelengths
 # print(record_nums[43])
 # print(spectra[43])
@@ -197,7 +197,7 @@ print(num_neg)
 #     i+=1
 
 
-# In[164]:
+# In[11]:
 
 
 # --- plot the classes
@@ -283,107 +283,149 @@ for i in range(num_samples):
         i2 +=1
 
 # plot each class-specific database separately
-for i in range(i0):
+# for i in range(i0):
 #     fig = plt.figure()
 #     plt.plot(range(1, spectrum_len+1), spectra0[i,:], label = labels0[i], linewidth = linewidth0[i]) # remove linewidth for all mixtures/minerals to be standard
-    plt.plot(wavelengths[0,:], spectra0[i,:]) # remove linewidth for all mixtures/minerals to be standard
+#     plt.plot(wavelengths[0,:], spectra0[i,:]) # remove linewidth for all mixtures/minerals to be standard
 #     plt.xticks([])
 #     plt.yticks([])
 #     plt.show()
 #     path = "/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/plots/" + mineral_names[0] + str(i) + ".png"
 #     fig.savefig(path, format = "PNG")
 # plt.legend(bbox_to_anchor=(1.1, 1.05))
-plt.show()
+# plt.show()
 
-for i in range(i1):
+# for i in range(i1):
 #     plt.plot(range(1, spectrum_len+1), spectra1[i,:], label = labels1[i], linewidth = linewidth1[i])
-    plt.plot(wavelengths[0,:], spectra1[i,:])
+#     plt.plot(wavelengths[0,:], spectra1[i,:])
 # plt.legend(bbox_to_anchor=(1.1, 1.05))
-plt.show()
+# plt.show()
 
-for i in range(i2):
+# for i in range(i2):
 #     plt.plot(range(1, spectrum_len+1), spectra2[i,:], label = labels2[i], linewidth = linewidth2[i])
-    plt.plot(wavelengths[0,:], spectra2[i,:])
+#     plt.plot(wavelengths[0,:], spectra2[i,:])
 # plt.legend(bbox_to_anchor=(1.1, 1.05))
-plt.show()
+# plt.show()
 
 
-# In[211]:
+# In[12]:
 
 
-random.seed(660)
+# random.seed(660)
 
 
-# In[212]:
+# In[ ]:
 
 
-sample_indices = list(range(0, num_samples))
-print(num_samples)
-random.shuffle(sample_indices) # stratified sklearn split
-train_set_size = 3*(num_samples//5)
-dev_set_size = (num_samples//5)
-test_set_size= num_samples-dev_set_size - train_set_size
-print(train_set_size)
-print(test_set_size)
-print(dev_set_size)
-train_set_indices = sample_indices[:train_set_size]
-dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]
-test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]
-print(train_set_indices)
-print(test_set_indices)
-print(dev_set_indices)
+os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
+fi = open("indices.txt", "r")
 
-train_set = spectra[train_set_indices, :]
-train_labels = y[train_set_indices, :]
-dev_set = spectra[dev_set_indices, :]
-dev_labels = y[dev_set_indices, :]
-test_set = spectra[test_set_indices, :]
-test_labels = y[test_set_indices, :]
+for i in range(10):
+    train_set_indices = ast.literal_eval(fi.readline())
+    test_set_indices = ast.literal_eval(fi.readline())
+    dev_set_indices = ast.literal_eval(fi.readline())
+    
+    for j in train_set_indices:
+        j = int(j)
+    for j in test_set_indices:
+        j = int(j)
+    for j in dev_set_indices:
+        j = int(j)
+    
+    train_set = spectra[train_set_indices, :]
+    train_labels = y[train_set_indices, :]
+    dev_set = spectra[dev_set_indices, :]
+    dev_labels = y[dev_set_indices, :]
+    test_set = spectra[test_set_indices, :]
+    test_labels = y[test_set_indices, :]
+
+    train_labels = train_labels.flatten()
+    dev_labels = dev_labels.flatten()
+    test_labels = test_labels.flatten()
+    
+    train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
+    dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
+    test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
+
+    train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
+    dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
+    test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+
+    train_labels = to_categorical(train_labels)
+    dev_labels = to_categorical(dev_labels)
+    test_labels = to_categorical(test_labels)
 
 
-# In[213]:
+# In[13]:
 
 
-train_labels = train_labels.flatten()
-dev_labels = dev_labels.flatten()
-test_labels = test_labels.flatten()
+# sample_indices = list(range(0, num_samples))
+# print(num_samples)
+# random.shuffle(sample_indices) # stratified sklearn split
+# train_set_size = 3*(num_samples//5)
+# dev_set_size = (num_samples//5)
+# test_set_size= num_samples-dev_set_size - train_set_size
+# print(train_set_size)
+# print(test_set_size)
+# print(dev_set_size)
+# train_set_indices = sample_indices[:train_set_size]
+# dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]
+# test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]
+# print(train_set_indices)
+# print(test_set_indices)
+# print(dev_set_indices)
+
+# train_set = spectra[train_set_indices, :]
+# train_labels = y[train_set_indices, :]
+# dev_set = spectra[dev_set_indices, :]
+# dev_labels = y[dev_set_indices, :]
+# test_set = spectra[test_set_indices, :]
+# test_labels = y[test_set_indices, :]
+
+
+# In[14]:
+
+
+# train_labels = train_labels.flatten()
+# dev_labels = dev_labels.flatten()
+# test_labels = test_labels.flatten()
 # type(train_labels)
 
 
-# In[214]:
+# In[15]:
 
 
 # len(train_set)
 # len(train_set[17])
-print(test_set.shape)
+# print(test_set.shape)
 
 
-# In[215]:
+# In[16]:
 
 
-train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
-dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
-test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
+# train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
+# dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
+# test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
 
-train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
-dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
-test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+# train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
+# dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
+# test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
 
-train_labels = to_categorical(train_labels)
-dev_labels = to_categorical(dev_labels)
-test_labels = to_categorical(test_labels)
-
-
-# In[216]:
+# train_labels = to_categorical(train_labels)
+# dev_labels = to_categorical(dev_labels)
+# test_labels = to_categorical(test_labels)
 
 
-print(dev_set)
+# In[17]:
+
+
+# print(dev_set)
 
 
 # In[217]:
 
 
-random.seed()
+# random.seed()
 model = Sequential()
 # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
 model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
