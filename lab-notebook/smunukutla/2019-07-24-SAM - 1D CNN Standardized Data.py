@@ -197,7 +197,7 @@ print(num_neg)
 #     i+=1
 
 
-# In[11]:
+# In[164]:
 
 
 # --- plot the classes
@@ -308,18 +308,18 @@ for i in range(i2):
 plt.show()
 
 
-# In[153]:
+# In[211]:
 
 
-random.seed(148)
+random.seed(660)
 
 
-# In[154]:
+# In[212]:
 
 
 sample_indices = list(range(0, num_samples))
 print(num_samples)
-random.shuffle(sample_indices)
+random.shuffle(sample_indices) # stratified sklearn split
 train_set_size = 3*(num_samples//5)
 dev_set_size = (num_samples//5)
 test_set_size= num_samples-dev_set_size - train_set_size
@@ -341,7 +341,7 @@ test_set = spectra[test_set_indices, :]
 test_labels = y[test_set_indices, :]
 
 
-# In[155]:
+# In[213]:
 
 
 train_labels = train_labels.flatten()
@@ -350,7 +350,7 @@ test_labels = test_labels.flatten()
 # type(train_labels)
 
 
-# In[156]:
+# In[214]:
 
 
 # len(train_set)
@@ -358,7 +358,7 @@ test_labels = test_labels.flatten()
 print(test_set.shape)
 
 
-# In[157]:
+# In[215]:
 
 
 train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -374,15 +374,16 @@ dev_labels = to_categorical(dev_labels)
 test_labels = to_categorical(test_labels)
 
 
-# In[158]:
+# In[216]:
 
 
-print(train_labels)
+print(dev_set)
 
 
-# In[159]:
+# In[217]:
 
 
+random.seed()
 model = Sequential()
 # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
 model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
@@ -398,7 +399,7 @@ model.add(Dense(3, activation='softmax'))
 print(model.summary())
 
 
-# In[160]:
+# In[218]:
 
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -410,20 +411,20 @@ print(train_labels.shape)
 model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[161]:
+# In[188]:
 
 
 y_pred = model.predict(test_set)
 y_pred
 
 
-# In[162]:
+# In[189]:
 
 
 test_labels
 
 
-# In[163]:
+# In[190]:
 
 
 model.evaluate(test_set, test_labels)
