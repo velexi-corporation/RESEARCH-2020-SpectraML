@@ -110,7 +110,8 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
         spectrum[spectrum[value_type] < 0] = np.NaN
 
         # Interpolate to fill in missing values
-        spectrum.interpolate(method='values', inplace=True)
+        spectrum.interpolate(method='values', limit_direction='both',
+                             inplace=True)
 
     # --- Return spectrum and metadata
 
