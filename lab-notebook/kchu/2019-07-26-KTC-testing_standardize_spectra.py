@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## 2019-07-26: Testing standarize-specta
+# ## 2019-07-26: Testing standardize-specta
 # 
 # ### Authors
 # * Kevin Chu (kevin@velexi.com)
