@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## 2019-09-10: Testing standardize-specta - extrapolated values
+# ## 2019-09-11: Testing standardize-specta - extrapolated values
 # 
 # ### Authors
 # * Kevin Chu (kevin@velexi.com)
 # 
 # ### Notes
-# * In this Jupyter notebook, we check that standardize spectra is correctly setting values that require extrapolation for the spectra with id=8927.
-# 
-#   - ChapterM_Minerals/splib07a_Chlorite_SMR-13.c_45-60um_BECKa_AREF.txt
+# * In this Jupyter notebook, we check that standardize spectra is correctly setting values that require extrapolation to NaN.
 # 
 
 # ## Preparations
@@ -51,6 +49,15 @@ metadata_path = os.path.join(splib07a_standardized_dir, 'spectra-metadata.csv')
 
 # Test spectrum
 test_spectrum_id = 8927
+spectrometer = 'ASDFR'
+
+test_spectrum_id = 6792
+spectrometer = 'BECK'
+
+test_spectrum_id = 8943
+spectrometer = 'ASDFR'
+
+test_spectrum_id = 8933
 spectrometer = 'ASDFR'
 
 
@@ -103,9 +110,6 @@ plt.show()
 # In[5]:
 
 
-# Check that there are no NaN values
-if standardized_spectrum['reflectance'].isnull().any():
-    print("FAILED: NaNs found in 'reflectance' data")
-else:
-    print("PASSED: no NaNs found in 'reflectance' data")
+# Check that there are NaN values are only at ends of wavelength range.
+print(standardized_spectrum[standardized_spectrum['reflectance'].isnull()])
 
