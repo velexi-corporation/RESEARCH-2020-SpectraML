@@ -70,7 +70,7 @@ def load_spectrum(spectrum_path, spectrometer, fill_in_missing_values=True):
     metadata_str = spectrum.columns[0]
 
     split_by_colon = metadata_str.split(':')
-    spectrum_id = split_by_colon[0].split('=')[-1]
+    spectrum_id = split_by_colon[0].split('=')[-1].zfill(5)
 
     metadata_parts = split_by_colon[1].split()
     material = ' '.join(metadata_parts[0:-2])

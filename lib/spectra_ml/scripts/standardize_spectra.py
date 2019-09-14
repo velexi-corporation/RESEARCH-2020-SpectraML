@@ -9,6 +9,7 @@ Notes
 # --- Imports
 
 # Standard library
+import csv
 from collections import OrderedDict
 import enum
 import glob
@@ -242,7 +243,8 @@ def run(output_dir, raw_data_dir, spectrometers_dir,
         spectra_metadata_db = pd.DataFrame(spectra_metadata_db,
                                            columns=spectra_metadata_db_columns)
         spectra_metadata_db.to_csv(spectra_metadata_db_path,
-                                   sep='|', index=False)
+                                   sep='|', quoting=csv.QUOTE_NONNUMERIC,
+                                   index=False)
 
     # --- Emit timing data to log
 
