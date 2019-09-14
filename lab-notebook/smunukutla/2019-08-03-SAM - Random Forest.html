@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13139,21 +13139,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for i in range(10):</span>
-<span class="c1">#     print(random.randint(0, 1000))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
@@ -13166,53 +13152,10 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1411</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1412</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">from</span> PIL <span class="ansi-green-fg">import</span> Image
-<span class="ansi-green-intense-fg ansi-bold">   1413</span>         <span class="ansi-green-fg">except</span> ImportError<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;PIL&#39;
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-9-f124f473cdae&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> num_samples <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>listdir<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>getcwd<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>img <span class="ansi-blue-fg">=</span> mpimg<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>directory<span class="ansi-blue-fg">,</span>os<span class="ansi-blue-fg">.</span>listdir<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>getcwd<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> spectrum_height <span class="ansi-blue-fg">=</span> img<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> spectrum_width <span class="ansi-blue-fg">=</span> img<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1414</span>             raise ValueError(&#39;Only know how to handle extensions: %s; &#39;
-<span class="ansi-green-intense-fg ansi-bold">   1415</span>                              <span class="ansi-blue-fg">&#39;with Pillow installed matplotlib can handle &#39;</span>
-<span class="ansi-green-fg">-&gt; 1416</span><span class="ansi-red-fg">                              &#39;more images&#39; % list(handlers))
-</span><span class="ansi-green-intense-fg ansi-bold">   1417</span>         <span class="ansi-green-fg">with</span> Image<span class="ansi-blue-fg">.</span>open<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> image<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1418</span>             <span class="ansi-green-fg">return</span> pil_to_array<span class="ansi-blue-fg">(</span>image<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ValueError</span>: Only know how to handle extensions: [&#39;png&#39;]; with Pillow installed matplotlib can handle more images</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -13231,14 +13174,105 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">record_nums</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">spectrum_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[54]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;158Actinolite.png&#39;,
+ &#39;833Alunite.png&#39;,
+ &#39;195Actinolite.png&#39;,
+ &#39;.DS_Store&#39;,
+ &#39;2660Chlorite.png&#39;,
+ &#39;827Alunite.png&#39;,
+ &#39;148Actinolite.png&#39;,
+ &#39;662Alunite.png&#39;,
+ &#39;2714Chlorite.png&#39;,
+ &#39;142Actinolite.png&#39;,
+ &#39;229Actinolite.png&#39;,
+ &#39;702Alunite.png&#39;,
+ &#39;2651Chlorite.png&#39;,
+ &#39;108Actinolite.png&#39;,
+ &#39;130Actinolite.png&#39;,
+ &#39;205Actinolite.png&#39;,
+ &#39;189Actinolite.png&#39;,
+ &#39;837Alunite.png&#39;,
+ &#39;2748Chlorite.png&#39;,
+ &#39;201Actinolite.png&#39;,
+ &#39;932Alunite.png&#39;,
+ &#39;2731Chlorite.png&#39;,
+ &#39;2680Chlorite.png&#39;,
+ &#39;154Actinolite.png&#39;,
+ &#39;2614Chlorite.png&#39;,
+ &#39;2626Chlorite.png&#39;,
+ &#39;736Alunite.png&#39;,
+ &#39;124Actinolite.png&#39;,
+ &#39;120Actinolite.png&#39;,
+ &#39;2710Chlorite.png&#39;,
+ &#39;670Alunite.png&#39;,
+ &#39;868Alunite.png&#39;,
+ &#39;177Actinolite.png&#39;,
+ &#39;2620Chlorite.png&#39;,
+ &#39;874Alunite.png&#39;,
+ &#39;843Alunite.png&#39;,
+ &#39;821Alunite.png&#39;,
+ &#39;236Actinolite.png&#39;,
+ &#39;2645Chlorite.png&#39;,
+ &#39;992Alunite.png&#39;,
+ &#39;114Actinolite.png&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">spectrum_height</span><span class="p">,</span> <span class="n">spectrum_width</span><span class="p">))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
-<span class="c1">#     print(name)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Actinolite&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
     <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Alunite&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -13263,40 +13297,14 @@ During handling of the above exception, another exception occurred:
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-11-ed6d85c8574a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>spectra <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>zeros<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">(</span>num_samples<span class="ansi-blue-fg">,</span> spectrum_height<span class="ansi-blue-fg">,</span> spectrum_width<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> y <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> i <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">for</span> name <span class="ansi-green-fg">in</span> os<span class="ansi-blue-fg">.</span>listdir<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-red-fg">#     print(name)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;spectrum_height&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>158Actinolite.png
+833Alunite.png
+195Actinolite.png
+.DS_Store
+</pre>
 </div>
 </div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">spectra</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 
@@ -13306,11 +13314,36 @@ During handling of the above exception, another exception occurred:
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-12-ab11486aca33&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>spectra <span class="ansi-blue-fg">=</span> spectra<span class="ansi-blue-fg">.</span>reshape<span class="ansi-blue-fg">(</span>spectra<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> spectra<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">*</span>spectra<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-53-aa7443fc766a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span>         y<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>int<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg">     </span>img <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>directory<span class="ansi-blue-fg">,</span>name<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># os.path.join here, look into timeit, pickle file</span>
+<span class="ansi-green-intense-fg ansi-bold">     13</span>     spectra<span class="ansi-blue-fg">[</span>i<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> convertimg<span class="ansi-blue-fg">(</span>img<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     14</span>     i <span class="ansi-blue-fg">+=</span> <span class="ansi-cyan-fg">1</span>
 
-<span class="ansi-red-fg">NameError</span>: name &#39;spectra&#39; is not defined</pre>
+<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2133</span> <span class="ansi-blue-fg">@</span>docstring<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span>matplotlib<span class="ansi-blue-fg">.</span>image<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2134</span> <span class="ansi-green-fg">def</span> imread<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">,</span> format<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 2135</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> matplotlib<span class="ansi-blue-fg">.</span>image<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">,</span> format<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2136</span> 
+<span class="ansi-green-intense-fg ansi-bold">   2137</span> 
+
+<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1415</span>                              <span class="ansi-blue-fg">&#39;with Pillow installed matplotlib can handle &#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">   1416</span>                              &#39;more images&#39; % list(handlers))
+<span class="ansi-green-fg">-&gt; 1417</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> Image<span class="ansi-blue-fg">.</span>open<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> image<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1418</span>             <span class="ansi-green-fg">return</span> pil_to_array<span class="ansi-blue-fg">(</span>image<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1419</span> 
+
+<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/PIL/Image.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(fp, mode)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2820</span>     <span class="ansi-green-fg">for</span> message <span class="ansi-green-fg">in</span> accept_warnings<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2821</span>         warnings<span class="ansi-blue-fg">.</span>warn<span class="ansi-blue-fg">(</span>message<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2822</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">raise</span> IOError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;cannot identify image file %r&#34;</span> <span class="ansi-blue-fg">%</span> <span class="ansi-blue-fg">(</span>filename <span class="ansi-green-fg">if</span> filename <span class="ansi-green-fg">else</span> fp<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2823</span> 
+<span class="ansi-green-intense-fg ansi-bold">   2824</span> 
+
+<span class="ansi-red-fg">OSError</span>: cannot identify image file &#39;/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots/.DS_Store&#39;</pre>
 </div>
 </div>
 
@@ -13323,30 +13356,10 @@ During handling of the above exception, another exception occurred:
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">spectra</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[32]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(40, 124416)</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13356,8 +13369,7 @@ During handling of the above exception, another exception occurred:
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -13376,7 +13388,7 @@ During handling of the above exception, another exception occurred:
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(40, 1)</pre>
+<pre>(40, 124416)</pre>
 </div>
 
 </div>
@@ -13390,43 +13402,8 @@ During handling of the above exception, another exception occurred:
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># random.seed(0)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sample_indices = list(range(0, num_samples))</span>
-<span class="c1"># print(num_samples)</span>
-<span class="c1"># random.shuffle(sample_indices)</span>
-<span class="c1"># train_set_size = 3*(num_samples//5)</span>
-<span class="c1"># dev_set_size = (num_samples//5)</span>
-<span class="c1"># test_set_size= num_samples-dev_set_size - train_set_size</span>
-<span class="c1"># print(train_set_size)</span>
-<span class="c1"># print(test_set_size)</span>
-<span class="c1"># print(dev_set_size)</span>
-<span class="c1"># train_set_indices = sample_indices[:train_set_size]</span>
-<span class="c1"># dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]</span>
-<span class="c1"># test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]</span>
-<span class="c1"># print(train_set_indices)</span>
-<span class="c1"># print(test_set_indices)</span>
-<span class="c1"># print(dev_set_indices)</span>
-
-<span class="c1"># fi = open(&quot;indices.txt&quot;, &quot;r&quot;)</span>
-
-<span class="c1"># train_set = spectra[train_set_indices, :]</span>
-<span class="c1"># train_labels = y[train_set_indices, :]</span>
-<span class="c1"># dev_set = spectra[dev_set_indices, :]</span>
-<span class="c1"># dev_labels = y[dev_set_indices, :]</span>
-<span class="c1"># test_set = spectra[test_set_indices, :]</span>
-<span class="c1"># test_labels = y[test_set_indices, :]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -13439,19 +13416,15 @@ During handling of the above exception, another exception occurred:
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[34]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>40
-24
-8
-8
-[0, 27, 12, 21, 29, 15, 38, 34, 1, 20, 7, 5, 10, 13, 14, 37, 22, 39, 23, 17, 8, 35, 3, 33]
-[19, 25, 31, 32, 16, 2, 26, 24]
-[9, 4, 36, 6, 28, 18, 11, 30]
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(40, 1)</pre>
 </div>
+
 </div>
 
 </div>
@@ -13460,7 +13433,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla&quot;</span><span class="p">)</span>
@@ -13473,10 +13446,14 @@ During handling of the above exception, another exception occurred:
     
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">train_set_indices</span><span class="p">:</span>
         <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">test_set_indices</span><span class="p">:</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">dev_set_indices</span><span class="p">:</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">test_set_indices</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">dev_set_indices</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="n">train_set_indices</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">test_set_indices</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dev_set_indices</span><span class="p">)</span>
     
     <span class="n">train_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">train_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
@@ -13490,12 +13467,13 @@ During handling of the above exception, another exception occurred:
     <span class="n">test_labels</span> <span class="o">=</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
     <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
 
     <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="p">))</span>
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">spectra</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">y_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_new</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">),</span> <span class="p">))</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">spectra</span><span class="p">,</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_new</span><span class="p">)</span>
     <span class="c1"># clf.fit(train_set, train_labels)</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -13519,18 +13497,48 @@ During handling of the above exception, another exception occurred:
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-198e2167c4a7&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> 
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">for</span> i <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">     </span>train_set_indices <span class="ansi-blue-fg">=</span> ast<span class="ansi-blue-fg">.</span>literal_eval<span class="ansi-blue-fg">(</span>train_set_indices<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     test_set_indices <span class="ansi-blue-fg">=</span> ast<span class="ansi-blue-fg">.</span>literal_eval<span class="ansi-blue-fg">(</span>train_set_indices<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>     dev_set_indices <span class="ansi-blue-fg">=</span> ast<span class="ansi-blue-fg">.</span>literal_eval<span class="ansi-blue-fg">(</span>train_set_indices<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;train_set_indices&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 15, 30, 26, 24, 31, 8, 3, 5, 37, 23, 39, 18, 16, 25, 32, 27, 12, 33, 20, 19, 34, 14, 22]
+[35, 29, 4, 13, 36, 17, 7, 6]
+[9, 38, 2, 28, 11, 0, 21, 10]
+Accuracy: 1.0
+[11, 4, 38, 12, 20, 34, 36, 31, 14, 10, 15, 28, 9, 27, 16, 17, 19, 6, 33, 37, 25, 21, 35, 5]
+[29, 32, 18, 2, 24, 8, 7, 13]
+[23, 26, 22, 39, 3, 1, 30, 0]
+Accuracy: 0.75
+[33, 23, 11, 14, 4, 29, 36, 38, 6, 21, 15, 37, 39, 7, 10, 31, 22, 1, 17, 28, 27, 32, 35, 16]
+[12, 2, 34, 18, 9, 19, 5, 25]
+[30, 13, 24, 26, 8, 3, 0, 20]
+Accuracy: 0.875
+[19, 22, 20, 25, 18, 8, 13, 31, 35, 26, 6, 30, 33, 32, 24, 4, 10, 1, 7, 5, 15, 14, 0, 11]
+[12, 38, 36, 23, 29, 9, 28, 27]
+[3, 34, 39, 37, 17, 21, 2, 16]
+Accuracy: 0.75
+[35, 33, 31, 4, 8, 19, 6, 17, 20, 30, 10, 11, 7, 38, 12, 32, 37, 23, 27, 9, 3, 0, 18, 26]
+[39, 22, 36, 28, 16, 25, 14, 15]
+[34, 13, 2, 5, 29, 1, 24, 21]
+Accuracy: 1.0
+[13, 16, 39, 9, 37, 29, 38, 12, 8, 15, 5, 36, 10, 19, 33, 32, 18, 21, 27, 30, 11, 22, 2, 26]
+[1, 31, 4, 35, 23, 17, 25, 24]
+[34, 6, 3, 14, 20, 28, 7, 0]
+Accuracy: 0.75
+[28, 29, 10, 11, 13, 12, 0, 17, 34, 6, 5, 30, 35, 8, 31, 36, 37, 3, 18, 26, 22, 24, 7, 9]
+[32, 33, 15, 27, 23, 2, 21, 20]
+[25, 19, 16, 4, 1, 39, 38, 14]
+Accuracy: 1.0
+[6, 5, 31, 11, 37, 32, 2, 27, 30, 26, 38, 22, 9, 33, 12, 15, 14, 16, 8, 29, 28, 13, 39, 3]
+[7, 20, 1, 34, 23, 18, 10, 25]
+[0, 4, 17, 19, 21, 35, 24, 36]
+Accuracy: 1.0
+[1, 4, 22, 35, 5, 3, 38, 26, 27, 31, 28, 8, 32, 33, 17, 13, 6, 14, 23, 15, 10, 18, 36, 34]
+[0, 37, 20, 9, 16, 19, 12, 25]
+[11, 29, 24, 30, 7, 2, 39, 21]
+Accuracy: 1.0
+[21, 38, 9, 1, 22, 18, 3, 35, 28, 34, 30, 8, 15, 33, 16, 7, 25, 17, 14, 13, 32, 0, 6, 24]
+[26, 12, 31, 23, 10, 37, 36, 5]
+[2, 39, 27, 19, 11, 20, 29, 4]
+Accuracy: 1.0
+</pre>
 </div>
 </div>
 
@@ -13540,7 +13548,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train_labels = train_labels.flatten()</span>
@@ -13555,7 +13563,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.ensemble import RandomForestClassifier</span>
@@ -13569,7 +13577,7 @@ During handling of the above exception, another exception occurred:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.model_selection import train_test_split</span>
@@ -13584,48 +13592,10 @@ During handling of the above exception, another exception occurred:
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/sklearn/ensemble/forest.py:245: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
-  &#34;10 in version 0.20 to 100 in 0.22.&#34;, FutureWarning)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[38]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>RandomForestClassifier(bootstrap=True, class_weight=None, criterion=&#39;entropy&#39;,
-                       max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=10,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.metrics import accuracy_score</span>
@@ -13636,24 +13606,6 @@ During handling of the above exception, another exception occurred:
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Accuracy: 0.75
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 

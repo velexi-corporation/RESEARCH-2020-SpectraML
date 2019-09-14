@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[6]:
+# In[48]:
 
 
 import numpy as np
@@ -18,14 +18,7 @@ directory = os.path.join(directory, "plots")
 os.chdir(directory)
 
 
-# In[8]:
-
-
-# for i in range(10):
-#     print(random.randint(0, 1000))
-
-
-# In[9]:
+# In[49]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -34,7 +27,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[10]:
+# In[50]:
 
 
 def convertimg(img):
@@ -46,14 +39,31 @@ def convertimg(img):
     return newimg
 
 
-# In[11]:
+# In[51]:
+
+
+data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
+record_nums = data.iloc[0, :].astype(int).tolist()
+spectrum_names = data.iloc[1, :].tolist()
+y = data.iloc[2, :].astype(int).tolist()
+y = np.reshape(y, (len(y), 1))
+num_samples = len(y)
+
+
+# In[54]:
+
+
+os.listdir()
+
+
+# In[53]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
 y = []
 i = 0
 for name in os.listdir():
-#     print(name)
+    print(name)
     if name.find("Actinolite") != -1:
         y.append(int(0))
     elif name.find("Alunite") != -1:
@@ -65,61 +75,26 @@ for name in os.listdir():
     i += 1
 
 
-# In[12]:
+# In[32]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[32]:
+# In[33]:
 
 
 spectra.shape
 
 
-# In[33]:
+# In[34]:
 
 
 y = np.reshape(y, (len(y), 1))
 y.shape
 
 
-# In[34]:
-
-
-# random.seed(0)
-
-
-# In[35]:
-
-
-# sample_indices = list(range(0, num_samples))
-# print(num_samples)
-# random.shuffle(sample_indices)
-# train_set_size = 3*(num_samples//5)
-# dev_set_size = (num_samples//5)
-# test_set_size= num_samples-dev_set_size - train_set_size
-# print(train_set_size)
-# print(test_set_size)
-# print(dev_set_size)
-# train_set_indices = sample_indices[:train_set_size]
-# dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]
-# test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]
-# print(train_set_indices)
-# print(test_set_indices)
-# print(dev_set_indices)
-
-# fi = open("indices.txt", "r")
-
-# train_set = spectra[train_set_indices, :]
-# train_labels = y[train_set_indices, :]
-# dev_set = spectra[dev_set_indices, :]
-# dev_labels = y[dev_set_indices, :]
-# test_set = spectra[test_set_indices, :]
-# test_labels = y[test_set_indices, :]
-
-
-# In[7]:
+# In[42]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
@@ -132,10 +107,14 @@ for i in range(10):
     
     for j in train_set_indices:
         j = int(j)
-    for j in test_set_indices:
-        j = int(j)
-    for j in dev_set_indices:
-        j = int(j)
+    for k in test_set_indices:
+        k = int(k)
+    for m in dev_set_indices:
+        m = int(m)
+        
+    print(train_set_indices)
+    print(test_set_indices)
+    print(dev_set_indices)
     
     train_set = spectra[train_set_indices, :]
     train_labels = y[train_set_indices, :]
@@ -149,12 +128,13 @@ for i in range(10):
     test_labels = test_labels.flatten()
 
     from sklearn.ensemble import RandomForestClassifier
-    clf = RandomForestClassifier(bootstrap=True, criterion='entropy')
+    clf = RandomForestClassifier(n_estimators=100, bootstrap=True, criterion='entropy')
 
     from sklearn.model_selection import train_test_split
 
-    y = np.reshape(y, (len(y), ))
-    X_train, X_test, y_train, y_test = train_test_split(spectra, y, test_size=0.2, random_state=42)
+    y_new = np.copy(y)
+    y_new = np.reshape(y_new, (len(y_new), ))
+    X_train, X_test, y_train, y_test = train_test_split(spectra, y_new, test_size=0.2, stratify=y_new)
     # clf.fit(train_set, train_labels)
     clf.fit(X_train, y_train)
 
@@ -165,7 +145,7 @@ for i in range(10):
     print("Accuracy:", accuracy_score(y_test, preds))
 
 
-# In[36]:
+# In[24]:
 
 
 # train_labels = train_labels.flatten()
@@ -173,14 +153,14 @@ for i in range(10):
 # test_labels = test_labels.flatten()
 
 
-# In[37]:
+# In[25]:
 
 
 # from sklearn.ensemble import RandomForestClassifier
 # clf = RandomForestClassifier(bootstrap=True, criterion='entropy')
 
 
-# In[38]:
+# In[26]:
 
 
 # from sklearn.model_selection import train_test_split
@@ -191,7 +171,7 @@ for i in range(10):
 # clf.fit(X_train, y_train)
 
 
-# In[39]:
+# In[27]:
 
 
 # from sklearn.metrics import accuracy_score

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[90]:
+# In[35]:
 
 
 # environment set up
@@ -18,63 +18,70 @@ data_dir = os.environ['DATA_DIR']
 os.chdir(data_dir)
 
 
-# In[99]:
+# In[36]:
 
 
 stddata_path = os.path.join(data_dir,"Srikar-Standardized")
 metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|")
-metadata.head()
+# metadata.head()
 
 
-# In[100]:
+# In[37]:
 
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
 metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in ChapterS Soils and Mixtures later
-metadata.shape
+# metadata.shape
 
 
-# In[101]:
+# In[48]:
 
 
-record_nums = []
-y = []
-spectrum_names = []
-
-act = 0
-aln = 0
-chl = 0
-
-for i in range(metadata.shape[0]):
-    data = metadata.iloc[i, :]
-    if data[2].find("Actinolite") != -1: # if material name contains actinolite
-        record_nums.append(data[0])
-        y.append(int(0))
-        spectrum_names.append("Actinolite")
-        act += 1
-    elif data[2].find("Alun") != -1:
-        record_nums.append(data[0])
-        y.append(int(1))
-        spectrum_names.append("Alunite")
-        aln += 1
-    elif (data[2].find("Chlorit") != -1 or data[2].find("Chlor.") != -1 or data[2].find("Chlor+") != -1 or data[2].find("Chl.") != -1):
-        record_nums.append(data[0])
-        y.append(int(2))
-        spectrum_names.append("Chlorite")
-        chl += 1
-
+data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
+record_nums = data.iloc[0, :].astype(int).tolist()
+spectrum_names = data.iloc[1, :].tolist()
+y = data.iloc[2, :].astype(int).tolist()
 y = np.reshape(y, (len(y), 1))
-num_samples = len(record_nums)
-print(num_samples)
-print(len(y))
-print(type(y))
-print(act)
-print(aln)
-print(chl)
+num_samples = len(y)
 
 
-# In[102]:
+# In[49]:
+
+
+# act = 0
+# aln = 0
+# chl = 0
+
+# for i in range(metadata.shape[0]):
+#     data = metadata.iloc[i, :]
+#     if data[2].find("Actinolite") != -1: # if material name contains actinolite
+#         record_nums.append(data[0])
+#         y.append(int(0))
+#         spectrum_names.append("Actinolite")
+#         act += 1
+#     elif data[2].find("Alun") != -1:
+#         record_nums.append(data[0])
+#         y.append(int(1))
+#         spectrum_names.append("Alunite")
+#         aln += 1
+#     elif (data[2].find("Chlorit") != -1 or data[2].find("Chlor.") != -1 or data[2].find("Chlor+") != -1 or data[2].find("Chl.") != -1):
+#         record_nums.append(data[0])
+#         y.append(int(2))
+#         spectrum_names.append("Chlorite")
+#         chl += 1
+
+# y = np.reshape(y, (len(y), 1))
+# num_samples = len(record_nums)
+# print(num_samples)
+# print(len(y))
+# print(type(y))
+# print(act)
+# print(aln)
+# print(chl)
+
+
+# In[50]:
 
 
 spectrum_len = 500
@@ -82,7 +89,7 @@ spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[103]:
+# In[51]:
 
 
 num_neg = 0
@@ -102,7 +109,13 @@ for i in range(num_samples):
 print(num_neg)
 
 
-# In[111]:
+# In[52]:
+
+
+# type(spectra)
+
+
+# In[66]:
 
 
 # --- plot the classes
@@ -187,6 +200,8 @@ for i in range(num_samples):
         linewidth2[i2] = linewidth
         i2 +=1
 
+j = 0
+
 # plot each class-specific database separately
 # remove linewidth for all mixtures/minerals to be standard
 for i in range(i0):
@@ -197,7 +212,8 @@ for i in range(i0):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", mineral_names[0] + str(i+1) + ".png")
+    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[0] + ".png")
+    j += 1
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
@@ -213,7 +229,8 @@ for i in range(i1):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", mineral_names[1] + str(i+1) + ".png")
+    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[1] + ".png")
+    j += 1
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
@@ -229,7 +246,8 @@ for i in range(i2):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", mineral_names[2] + str(i+1) + ".png")
+    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[2] + ".png")
+    j += 1
     ax = fig.axes
     ax[0].axis('off')
     fig.savefig(path, format = "PNG")
@@ -238,71 +256,72 @@ for i in range(i2):
 # plt.show()
 
 
-# In[106]:
+# In[67]:
 
 
-num_neg = 0
-for file in os.listdir(stddata_path):
-    data = pd.read_csv(os.path.join(stddata_path,file))
-    if data.shape[1] == 2:
-        arr = data.iloc[:, 1].to_numpy()
-    if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
-        print(file)
-        num_neg += 1
-        continue
+# num_neg = 0
+# for file in os.listdir(stddata_path):
+#     data = pd.read_csv(os.path.join(stddata_path,file))
+#     if data.shape[1] == 2:
+#         arr = data.iloc[:, 1].to_numpy()
+#     if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
+#         print(file)
+#         num_neg += 1
+#         continue
+
 #     for j in range(len(arr)):
 #         if np.isnan(arr[j]):
 #             print(file)
 #             num_neg += 1
 #             break
-print(num_neg)
+# print(num_neg)
 
 
-# In[107]:
+# In[68]:
 
 
-metadata = metadata[metadata['value_type'] == "reflectance"]
-metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
-metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
-metadata.shape
+# metadata = metadata[metadata['value_type'] == "reflectance"]
+# metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+# metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
+# metadata.shape
 
-record_nums = []
-mineral_names = []
-for i in range(metadata.shape[0]):
-    data = metadata.iloc[i, :]
-    record_nums.append(data[0])
-    mineral_names.append(data[2])
-
-
-# In[108]:
+# record_nums = []
+# mineral_names = []
+# for i in range(metadata.shape[0]):
+#     data = metadata.iloc[i, :]
+#     record_nums.append(data[0])
+#     mineral_names.append(data[2])
 
 
-num_neg = 0
-print(len(record_nums))
-for i in range(len(record_nums)):
-    data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
-    if data.shape[1] == 2:
-        arr = data.iloc[:, 1].to_numpy()
-    if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
-        print(record_nums[i])
-        print(mineral_names[i])
-        num_neg += 1
-        continue
+# In[69]:
+
+
+# num_neg = 0
+# print(len(record_nums))
+# for i in range(len(record_nums)):
+#     data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
+#     if data.shape[1] == 2:
+#         arr = data.iloc[:, 1].to_numpy()
+#     if np.isnan(arr[0]) or np.isnan(arr[len(arr)-1]):
+#         print(record_nums[i])
+#         print(mineral_names[i])
+#         num_neg += 1
+#         continue
 #     for j in range(len(arr)):
 #         if np.isnan(arr[j]):
 #             print(file)
 #             num_neg += 1
 #             break
-print(num_neg)
+# print(num_neg)
 
 
-# In[109]:
+# In[70]:
 
 
 # os.listdir(stddata_path)
 
 
-# In[110]:
+# In[71]:
 
 
 # data = pd.read_csv(os.path.join(stddata_path,"211.csv"))

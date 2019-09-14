@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[27]:
 
 
 # environment set up
@@ -24,7 +24,7 @@ os.chdir(directory)
 # print(os.getcwd())
 
 
-# In[2]:
+# In[28]:
 
 
 stddata_path = os.path.join(directory,"Srikar-Standardized")
@@ -32,7 +32,7 @@ metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|
 metadata.head()
 
 
-# In[3]:
+# In[29]:
 
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
@@ -41,7 +41,7 @@ metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
 metadata.shape
 
 
-# In[4]:
+# In[30]:
 
 
 # def find_record(string):
@@ -49,7 +49,7 @@ metadata.shape
 #     return string[:ind]
 
 
-# In[5]:
+# In[31]:
 
 
 # data = metadata.iloc[0]
@@ -58,7 +58,7 @@ metadata.shape
 # metadata[metadata["material"].str.match("Chlor")].shape[0]
 
 
-# In[6]:
+# In[32]:
 
 
 record_nums = []
@@ -97,7 +97,7 @@ num_samples = len(record_nums)
 # print(chl)
 
 
-# In[7]:
+# In[33]:
 
 
 spectrum_len = 500
@@ -107,7 +107,7 @@ wavelengths = np.zeros((1,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[8]:
+# In[34]:
 
 
 # import shutil
@@ -120,7 +120,7 @@ wavelengths = np.zeros((1,spectrum_len))
 #     shutil.copy2(stddata_path+"/{}.csv".format(num), directory+"/Std_Chlorite")
 
 
-# In[9]:
+# In[35]:
 
 
 # num_neg = 0
@@ -143,7 +143,7 @@ wavelengths = np.zeros((1,spectrum_len))
 # print(spectra[43])
 
 
-# In[10]:
+# In[36]:
 
 
 # spectrum_len = 480
@@ -197,7 +197,7 @@ wavelengths = np.zeros((1,spectrum_len))
 #     i+=1
 
 
-# In[11]:
+# In[37]:
 
 
 # --- plot the classes
@@ -308,55 +308,59 @@ for i in range(num_samples):
 # plt.show()
 
 
-# In[12]:
+# In[38]:
 
 
 # random.seed(660)
 
 
-# In[ ]:
+# In[47]:
 
 
-os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
-fi = open("indices.txt", "r")
+# os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
+# fi = open("indices.txt", "r")
 
-for i in range(10):
-    train_set_indices = ast.literal_eval(fi.readline())
-    test_set_indices = ast.literal_eval(fi.readline())
-    dev_set_indices = ast.literal_eval(fi.readline())
+# for i in range(10):
+#     train_set_indices = ast.literal_eval(fi.readline())
+#     test_set_indices = ast.literal_eval(fi.readline())
+#     dev_set_indices = ast.literal_eval(fi.readline())
     
-    for j in train_set_indices:
-        j = int(j)
-    for j in test_set_indices:
-        j = int(j)
-    for j in dev_set_indices:
-        j = int(j)
-    
-    train_set = spectra[train_set_indices, :]
-    train_labels = y[train_set_indices, :]
-    dev_set = spectra[dev_set_indices, :]
-    dev_labels = y[dev_set_indices, :]
-    test_set = spectra[test_set_indices, :]
-    test_labels = y[test_set_indices, :]
+#     for j in train_set_indices:
+#         j = int(j)
+#     for j in test_set_indices:
+#         j = int(j)
+#     for j in dev_set_indices:
+#         j = int(j)
 
-    train_labels = train_labels.flatten()
-    dev_labels = dev_labels.flatten()
-    test_labels = test_labels.flatten()
-    
-    train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
-    dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
-    test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
+train_set_indices = [11, 4, 38, 12, 20, 34, 36, 31, 14, 10, 15, 28, 9, 27, 16, 17, 19, 6, 33, 37, 25, 21, 35, 5]
+test_set_indices = [29, 32, 18, 2, 24, 8, 7, 13]
+dev_set_indices = [23, 26, 22, 39, 3, 1, 30, 0]
 
-    train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
-    dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
-    test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+train_set = spectra[train_set_indices, :]
+train_labels = y[train_set_indices, :]
+dev_set = spectra[dev_set_indices, :]
+dev_labels = y[dev_set_indices, :]
+test_set = spectra[test_set_indices, :]
+test_labels = y[test_set_indices, :]
 
-    train_labels = to_categorical(train_labels)
-    dev_labels = to_categorical(dev_labels)
-    test_labels = to_categorical(test_labels)
+train_labels = train_labels.flatten()
+dev_labels = dev_labels.flatten()
+test_labels = test_labels.flatten()
+
+train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
+dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
+test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
+
+train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
+dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
+test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+
+train_labels = to_categorical(train_labels)
+dev_labels = to_categorical(dev_labels)
+test_labels = to_categorical(test_labels)
 
 
-# In[13]:
+# In[48]:
 
 
 # sample_indices = list(range(0, num_samples))
@@ -383,7 +387,7 @@ for i in range(10):
 # test_labels = y[test_set_indices, :]
 
 
-# In[14]:
+# In[49]:
 
 
 # train_labels = train_labels.flatten()
@@ -392,7 +396,7 @@ for i in range(10):
 # type(train_labels)
 
 
-# In[15]:
+# In[50]:
 
 
 # len(train_set)
@@ -400,7 +404,7 @@ for i in range(10):
 # print(test_set.shape)
 
 
-# In[16]:
+# In[51]:
 
 
 # train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -416,13 +420,13 @@ for i in range(10):
 # test_labels = to_categorical(test_labels)
 
 
-# In[17]:
+# In[52]:
 
 
 # print(dev_set)
 
 
-# In[217]:
+# In[53]:
 
 
 # random.seed()
@@ -441,7 +445,7 @@ model.add(Dense(3, activation='softmax'))
 print(model.summary())
 
 
-# In[218]:
+# In[54]:
 
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -453,20 +457,20 @@ print(train_labels.shape)
 model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[188]:
+# In[24]:
 
 
 y_pred = model.predict(test_set)
 y_pred
 
 
-# In[189]:
+# In[25]:
 
 
 test_labels
 
 
-# In[190]:
+# In[26]:
 
 
 model.evaluate(test_set, test_labels)
