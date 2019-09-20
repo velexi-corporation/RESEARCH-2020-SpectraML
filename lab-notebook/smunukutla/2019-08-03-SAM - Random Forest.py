@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[48]:
+# In[56]:
 
 
 import numpy as np
@@ -18,7 +18,7 @@ directory = os.path.join(directory, "plots")
 os.chdir(directory)
 
 
-# In[49]:
+# In[57]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -27,7 +27,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[50]:
+# In[58]:
 
 
 def convertimg(img):
@@ -39,7 +39,7 @@ def convertimg(img):
     return newimg
 
 
-# In[51]:
+# In[59]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -50,13 +50,14 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[54]:
+# In[67]:
 
 
-os.listdir()
+os.listdir().sort()
+print(sorted(os.listdir()))
 
 
-# In[53]:
+# In[69]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))

@@ -28,3 +28,4 @@ scikit-learn
 scipy
 seaborn
 tensorflow
+Pillow

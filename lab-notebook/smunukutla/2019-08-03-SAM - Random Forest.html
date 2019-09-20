@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13139,7 +13139,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
@@ -13155,7 +13155,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -13174,7 +13174,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -13192,10 +13192,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()))</span>
 </pre></div>
 
     </div>
@@ -13208,55 +13209,13 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[54]:</div>
+    <div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;158Actinolite.png&#39;,
- &#39;833Alunite.png&#39;,
- &#39;195Actinolite.png&#39;,
- &#39;.DS_Store&#39;,
- &#39;2660Chlorite.png&#39;,
- &#39;827Alunite.png&#39;,
- &#39;148Actinolite.png&#39;,
- &#39;662Alunite.png&#39;,
- &#39;2714Chlorite.png&#39;,
- &#39;142Actinolite.png&#39;,
- &#39;229Actinolite.png&#39;,
- &#39;702Alunite.png&#39;,
- &#39;2651Chlorite.png&#39;,
- &#39;108Actinolite.png&#39;,
- &#39;130Actinolite.png&#39;,
- &#39;205Actinolite.png&#39;,
- &#39;189Actinolite.png&#39;,
- &#39;837Alunite.png&#39;,
- &#39;2748Chlorite.png&#39;,
- &#39;201Actinolite.png&#39;,
- &#39;932Alunite.png&#39;,
- &#39;2731Chlorite.png&#39;,
- &#39;2680Chlorite.png&#39;,
- &#39;154Actinolite.png&#39;,
- &#39;2614Chlorite.png&#39;,
- &#39;2626Chlorite.png&#39;,
- &#39;736Alunite.png&#39;,
- &#39;124Actinolite.png&#39;,
- &#39;120Actinolite.png&#39;,
- &#39;2710Chlorite.png&#39;,
- &#39;670Alunite.png&#39;,
- &#39;868Alunite.png&#39;,
- &#39;177Actinolite.png&#39;,
- &#39;2620Chlorite.png&#39;,
- &#39;874Alunite.png&#39;,
- &#39;843Alunite.png&#39;,
- &#39;821Alunite.png&#39;,
- &#39;236Actinolite.png&#39;,
- &#39;2645Chlorite.png&#39;,
- &#39;992Alunite.png&#39;,
- &#39;114Actinolite.png&#39;]</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Actinolite108.png&#39;, &#39;Actinolite114.png&#39;, &#39;Actinolite120.png&#39;, &#39;Actinolite124.png&#39;, &#39;Actinolite130.png&#39;, &#39;Actinolite142.png&#39;, &#39;Actinolite148.png&#39;, &#39;Actinolite154.png&#39;, &#39;Actinolite158.png&#39;, &#39;Actinolite177.png&#39;, &#39;Actinolite189.png&#39;, &#39;Actinolite195.png&#39;, &#39;Actinolite201.png&#39;, &#39;Actinolite205.png&#39;, &#39;Actinolite229.png&#39;, &#39;Actinolite236.png&#39;, &#39;Alunite662.png&#39;, &#39;Alunite670.png&#39;, &#39;Alunite702.png&#39;, &#39;Alunite736.png&#39;, &#39;Alunite821.png&#39;, &#39;Alunite827.png&#39;, &#39;Alunite833.png&#39;, &#39;Alunite837.png&#39;, &#39;Alunite843.png&#39;, &#39;Alunite868.png&#39;, &#39;Alunite874.png&#39;, &#39;Alunite932.png&#39;, &#39;Alunite992.png&#39;, &#39;Chlorite2614.png&#39;, &#39;Chlorite2620.png&#39;, &#39;Chlorite2626.png&#39;, &#39;Chlorite2645.png&#39;, &#39;Chlorite2651.png&#39;, &#39;Chlorite2660.png&#39;, &#39;Chlorite2680.png&#39;, &#39;Chlorite2710.png&#39;, &#39;Chlorite2714.png&#39;, &#39;Chlorite2731.png&#39;, &#39;Chlorite2748.png&#39;]
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -13265,7 +13224,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">spectrum_height</span><span class="p">,</span> <span class="n">spectrum_width</span><span class="p">))</span>
@@ -13298,52 +13257,47 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>158Actinolite.png
-833Alunite.png
-195Actinolite.png
-.DS_Store
+<pre>Alunite992.png
+Actinolite189.png
+Actinolite201.png
+Actinolite229.png
+Actinolite177.png
+Chlorite2680.png
+Alunite833.png
+Alunite827.png
+Actinolite148.png
+Actinolite158.png
+Alunite837.png
+Chlorite2651.png
+Chlorite2645.png
+Chlorite2731.png
+Actinolite205.png
+Alunite821.png
+Alunite932.png
+Actinolite114.png
+Alunite702.png
+Chlorite2620.png
+Alunite662.png
+Alunite868.png
+Chlorite2626.png
+Alunite843.png
+Alunite670.png
+Actinolite108.png
+Actinolite120.png
+Chlorite2748.png
+Chlorite2614.png
+Alunite736.png
+Alunite874.png
+Actinolite130.png
+Actinolite124.png
+Chlorite2714.png
+Chlorite2660.png
+Actinolite142.png
+Actinolite195.png
+Actinolite154.png
+Actinolite236.png
+Chlorite2710.png
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-53-aa7443fc766a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span>         y<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>int<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg">     </span>img <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">(</span>os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>directory<span class="ansi-blue-fg">,</span>name<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span> <span class="ansi-red-fg"># os.path.join here, look into timeit, pickle file</span>
-<span class="ansi-green-intense-fg ansi-bold">     13</span>     spectra<span class="ansi-blue-fg">[</span>i<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> convertimg<span class="ansi-blue-fg">(</span>img<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span>     i <span class="ansi-blue-fg">+=</span> <span class="ansi-cyan-fg">1</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2133</span> <span class="ansi-blue-fg">@</span>docstring<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span>matplotlib<span class="ansi-blue-fg">.</span>image<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2134</span> <span class="ansi-green-fg">def</span> imread<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">,</span> format<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 2135</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> matplotlib<span class="ansi-blue-fg">.</span>image<span class="ansi-blue-fg">.</span>imread<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">,</span> format<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2136</span> 
-<span class="ansi-green-intense-fg ansi-bold">   2137</span> 
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">imread</span><span class="ansi-blue-fg">(fname, format)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1415</span>                              <span class="ansi-blue-fg">&#39;with Pillow installed matplotlib can handle &#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">   1416</span>                              &#39;more images&#39; % list(handlers))
-<span class="ansi-green-fg">-&gt; 1417</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> Image<span class="ansi-blue-fg">.</span>open<span class="ansi-blue-fg">(</span>fname<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> image<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1418</span>             <span class="ansi-green-fg">return</span> pil_to_array<span class="ansi-blue-fg">(</span>image<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1419</span> 
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/PIL/Image.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(fp, mode)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2820</span>     <span class="ansi-green-fg">for</span> message <span class="ansi-green-fg">in</span> accept_warnings<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   2821</span>         warnings<span class="ansi-blue-fg">.</span>warn<span class="ansi-blue-fg">(</span>message<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 2822</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">raise</span> IOError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;cannot identify image file %r&#34;</span> <span class="ansi-blue-fg">%</span> <span class="ansi-blue-fg">(</span>filename <span class="ansi-green-fg">if</span> filename <span class="ansi-green-fg">else</span> fp<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2823</span> 
-<span class="ansi-green-intense-fg ansi-bold">   2824</span> 
-
-<span class="ansi-red-fg">OSError</span>: cannot identify image file &#39;/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots/.DS_Store&#39;</pre>
 </div>
 </div>
 

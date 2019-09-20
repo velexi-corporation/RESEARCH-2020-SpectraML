@@ -69,7 +69,7 @@ act = 0
 aln = 0
 chl = 0
 
-for i in range(metadata.shape[0]):
+for i in range(metadata.shape[0]): # get to 10 minerals
     data = metadata.iloc[i, :]
     if data[2].find("Actinolite") != -1: # if material name contains actinolite
         record_nums.append(data[0])

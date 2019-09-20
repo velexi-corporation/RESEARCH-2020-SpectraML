@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[35]:
+# In[1]:
 
 
 # environment set up
@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import os
 import random
 import pandas as pd
+from spectra_ml.io_ import load_spectra_metadata
 
 # working folder
 # data_dir = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/"
@@ -18,15 +19,22 @@ data_dir = os.environ['DATA_DIR']
 os.chdir(data_dir)
 
 
-# In[36]:
+# In[2]:
 
 
 stddata_path = os.path.join(data_dir,"Srikar-Standardized")
-metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|")
-# metadata.head()
+metadata = load_spectra_metadata(os.path.join(stddata_path,"spectra-metadata.csv"))
 
 
-# In[37]:
+# In[3]:
+
+
+# stddata_path = os.path.join(data_dir,"Srikar-Standardized")
+# metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|", dtype={"spectrum_id":str})
+# metadata
+
+
+# In[4]:
 
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
@@ -35,18 +43,19 @@ metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in
 # metadata.shape
 
 
-# In[48]:
+# In[28]:
 
 
-data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
-record_nums = data.iloc[0, :].astype(int).tolist()
+data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",", dtype=str)
+record_nums = data.iloc[0, :].tolist() # keep it as a string to do zfill(5)
+# print(record_nums)
 spectrum_names = data.iloc[1, :].tolist()
 y = data.iloc[2, :].astype(int).tolist()
 y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[49]:
+# In[22]:
 
 
 # act = 0
@@ -81,7 +90,7 @@ num_samples = len(y)
 # print(chl)
 
 
-# In[50]:
+# In[23]:
 
 
 spectrum_len = 500
@@ -89,7 +98,7 @@ spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[51]:
+# In[24]:
 
 
 num_neg = 0
@@ -109,13 +118,13 @@ for i in range(num_samples):
 print(num_neg)
 
 
-# In[52]:
+# In[25]:
 
 
 # type(spectra)
 
 
-# In[66]:
+# In[27]:
 
 
 # --- plot the classes
@@ -212,7 +221,7 @@ for i in range(i0):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[0] + ".png")
+    path = os.path.join(data_dir, "plots", record_nums[j] + "-" + mineral_names[0] + ".png")
     j += 1
     ax = fig.axes
     ax[0].axis('off')
@@ -229,7 +238,7 @@ for i in range(i1):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[1] + ".png")
+    path = os.path.join(data_dir, "plots", record_nums[j] + "-" + mineral_names[1] + ".png")
     j += 1
     ax = fig.axes
     ax[0].axis('off')
@@ -246,7 +255,7 @@ for i in range(i2):
     plt.yticks([])
 #     fig.patch.set_visible(False)
 #     plt.show()
-    path = os.path.join(data_dir, "plots", str(record_nums[j]) + mineral_names[2] + ".png")
+    path = os.path.join(data_dir, "plots", record_nums[j] + "-" + mineral_names[2] + ".png")
     j += 1
     ax = fig.axes
     ax[0].axis('off')
@@ -256,7 +265,7 @@ for i in range(i2):
 # plt.show()
 
 
-# In[67]:
+# In[11]:
 
 
 # num_neg = 0
@@ -277,7 +286,7 @@ for i in range(i2):
 # print(num_neg)
 
 
-# In[68]:
+# In[12]:
 
 
 # metadata = metadata[metadata['value_type'] == "reflectance"]
@@ -293,7 +302,7 @@ for i in range(i2):
 #     mineral_names.append(data[2])
 
 
-# In[69]:
+# In[13]:
 
 
 # num_neg = 0
@@ -315,13 +324,13 @@ for i in range(i2):
 # print(num_neg)
 
 
-# In[70]:
+# In[14]:
 
 
 # os.listdir(stddata_path)
 
 
-# In[71]:
+# In[15]:
 
 
 # data = pd.read_csv(os.path.join(stddata_path,"211.csv"))
