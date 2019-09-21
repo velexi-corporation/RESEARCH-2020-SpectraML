@@ -115,7 +115,7 @@ for i in range(num_samples):
     if hasnegative:
         print(record_nums[i])
         num_neg += 1
-print(num_neg)
+# print(num_neg)
 
 
 # In[25]:

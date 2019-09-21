@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[56]:
+# In[68]:
 
 
 import numpy as np
@@ -13,21 +13,21 @@ import random
 import ast
 
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots"
-directory = os.environ['DATA_DIR']
-directory = os.path.join(directory, "plots")
-os.chdir(directory)
+data_dir = os.environ['DATA_DIR']
+data_dir = os.path.join(data_dir, "plots")
+os.chdir(data_dir)
 
 
-# In[57]:
+# In[69]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
-img = mpimg.imread(os.path.join(directory,os.listdir(os.getcwd())[0]))
+img = mpimg.imread(os.path.join(data_dir,os.listdir(os.getcwd())[0]))
 spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[58]:
+# In[70]:
 
 
 def convertimg(img):
@@ -39,63 +39,35 @@ def convertimg(img):
     return newimg
 
 
-# In[59]:
+# In[71]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
-record_nums = data.iloc[0, :].astype(int).tolist()
+record_nums = data.iloc[0, :].tolist()
 spectrum_names = data.iloc[1, :].tolist()
 y = data.iloc[2, :].astype(int).tolist()
 y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[67]:
-
-
-os.listdir().sort()
-print(sorted(os.listdir()))
-
-
-# In[69]:
+# In[72]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
-y = []
 i = 0
-for name in os.listdir():
-    print(name)
-    if name.find("Actinolite") != -1:
-        y.append(int(0))
-    elif name.find("Alunite") != -1:
-        y.append(int(1))
-    else:
-        y.append(int(2))
-    img = plt.imread(os.path.join(directory,name)) # os.path.join here, look into timeit, pickle file
+for num in record_nums:
+    img = plt.imread(os.path.join(data_dir,num+"-"+spectrum_names[i]+".png")) # os.path.join here, look into timeit, pickle file
     spectra[i] = convertimg(img)
     i += 1
 
 
-# In[32]:
+# In[73]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[33]:
-
-
-spectra.shape
-
-
-# In[34]:
-
-
-y = np.reshape(y, (len(y), 1))
-y.shape
-
-
-# In[42]:
+# In[74]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
@@ -113,9 +85,9 @@ for i in range(10):
     for m in dev_set_indices:
         m = int(m)
         
-    print(train_set_indices)
-    print(test_set_indices)
-    print(dev_set_indices)
+#     print(train_set_indices)
+#     print(test_set_indices)
+#     print(dev_set_indices)
     
     train_set = spectra[train_set_indices, :]
     train_labels = y[train_set_indices, :]
@@ -143,43 +115,8 @@ for i in range(10):
     # preds = clf.predict(test_set)
     # print("Accuracy:", accuracy_score(test_labels, preds))
     preds = clf.predict(X_test)
-    print("Accuracy:", accuracy_score(y_test, preds))
-
-
-# In[24]:
-
-
-# train_labels = train_labels.flatten()
-# dev_labels = dev_labels.flatten()
-# test_labels = test_labels.flatten()
-
-
-# In[25]:
-
-
-# from sklearn.ensemble import RandomForestClassifier
-# clf = RandomForestClassifier(bootstrap=True, criterion='entropy')
-
-
-# In[26]:
-
-
-# from sklearn.model_selection import train_test_split
-
-# y = np.reshape(y, (len(y), ))
-# X_train, X_test, y_train, y_test = train_test_split(spectra, y, test_size=0.2, random_state=42)
-# # clf.fit(train_set, train_labels)
-# clf.fit(X_train, y_train)
-
-
-# In[27]:
-
-
-# from sklearn.metrics import accuracy_score
-# # preds = clf.predict(test_set)
-# # print("Accuracy:", accuracy_score(test_labels, preds))
-# preds = clf.predict(X_test)
-# print("Accuracy:", accuracy_score(y_test, preds))
+#     print("Accuracy:", accuracy_score(y_test, preds))
+    print(accuracy_score(y_test, preds))
 
 
 # In[ ]:

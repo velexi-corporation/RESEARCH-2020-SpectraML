@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13127,9 +13127,9 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">ast</span>
 
 <span class="c1"># directory = &quot;/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots&quot;</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">]</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">]</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13139,11 +13139,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="n">spectrum_height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">spectrum_width</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -13155,7 +13155,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -13174,11 +13174,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">record_nums</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">record_nums</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">spectrum_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
@@ -13192,53 +13192,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;Actinolite108.png&#39;, &#39;Actinolite114.png&#39;, &#39;Actinolite120.png&#39;, &#39;Actinolite124.png&#39;, &#39;Actinolite130.png&#39;, &#39;Actinolite142.png&#39;, &#39;Actinolite148.png&#39;, &#39;Actinolite154.png&#39;, &#39;Actinolite158.png&#39;, &#39;Actinolite177.png&#39;, &#39;Actinolite189.png&#39;, &#39;Actinolite195.png&#39;, &#39;Actinolite201.png&#39;, &#39;Actinolite205.png&#39;, &#39;Actinolite229.png&#39;, &#39;Actinolite236.png&#39;, &#39;Alunite662.png&#39;, &#39;Alunite670.png&#39;, &#39;Alunite702.png&#39;, &#39;Alunite736.png&#39;, &#39;Alunite821.png&#39;, &#39;Alunite827.png&#39;, &#39;Alunite833.png&#39;, &#39;Alunite837.png&#39;, &#39;Alunite843.png&#39;, &#39;Alunite868.png&#39;, &#39;Alunite874.png&#39;, &#39;Alunite932.png&#39;, &#39;Alunite992.png&#39;, &#39;Chlorite2614.png&#39;, &#39;Chlorite2620.png&#39;, &#39;Chlorite2626.png&#39;, &#39;Chlorite2645.png&#39;, &#39;Chlorite2651.png&#39;, &#39;Chlorite2660.png&#39;, &#39;Chlorite2680.png&#39;, &#39;Chlorite2710.png&#39;, &#39;Chlorite2714.png&#39;, &#39;Chlorite2731.png&#39;, &#39;Chlorite2748.png&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">spectrum_height</span><span class="p">,</span> <span class="n">spectrum_width</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Actinolite&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-    <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Alunite&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">name</span><span class="p">))</span> <span class="c1"># os.path.join here, look into timeit, pickle file</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">record_nums</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="n">num</span><span class="o">+</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="n">spectrum_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span><span class="p">))</span> <span class="c1"># os.path.join here, look into timeit, pickle file</span>
     <span class="n">spectra</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
@@ -13247,67 +13207,10 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Alunite992.png
-Actinolite189.png
-Actinolite201.png
-Actinolite229.png
-Actinolite177.png
-Chlorite2680.png
-Alunite833.png
-Alunite827.png
-Actinolite148.png
-Actinolite158.png
-Alunite837.png
-Chlorite2651.png
-Chlorite2645.png
-Chlorite2731.png
-Actinolite205.png
-Alunite821.png
-Alunite932.png
-Actinolite114.png
-Alunite702.png
-Chlorite2620.png
-Alunite662.png
-Alunite868.png
-Chlorite2626.png
-Alunite843.png
-Alunite670.png
-Actinolite108.png
-Actinolite120.png
-Chlorite2748.png
-Chlorite2614.png
-Alunite736.png
-Alunite874.png
-Actinolite130.png
-Actinolite124.png
-Chlorite2714.png
-Chlorite2660.png
-Actinolite142.png
-Actinolite195.png
-Actinolite154.png
-Actinolite236.png
-Chlorite2710.png
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">spectra</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -13320,74 +13223,7 @@ Chlorite2710.png
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[33]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(40, 124416)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[34]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(40, 1)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla&quot;</span><span class="p">)</span>
@@ -13405,9 +13241,9 @@ Chlorite2710.png
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">dev_set_indices</span><span class="p">:</span>
         <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
         
-    <span class="nb">print</span><span class="p">(</span><span class="n">train_set_indices</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">test_set_indices</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">dev_set_indices</span><span class="p">)</span>
+<span class="c1">#     print(train_set_indices)</span>
+<span class="c1">#     print(test_set_indices)</span>
+<span class="c1">#     print(dev_set_indices)</span>
     
     <span class="n">train_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">train_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
@@ -13435,7 +13271,8 @@ Chlorite2710.png
     <span class="c1"># preds = clf.predict(test_set)</span>
     <span class="c1"># print(&quot;Accuracy:&quot;, accuracy_score(test_labels, preds))</span>
     <span class="n">preds</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+<span class="c1">#     print(&quot;Accuracy:&quot;, accuracy_score(y_test, preds))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13452,114 +13289,20 @@ Chlorite2710.png
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[1, 15, 30, 26, 24, 31, 8, 3, 5, 37, 23, 39, 18, 16, 25, 32, 27, 12, 33, 20, 19, 34, 14, 22]
-[35, 29, 4, 13, 36, 17, 7, 6]
-[9, 38, 2, 28, 11, 0, 21, 10]
-Accuracy: 1.0
-[11, 4, 38, 12, 20, 34, 36, 31, 14, 10, 15, 28, 9, 27, 16, 17, 19, 6, 33, 37, 25, 21, 35, 5]
-[29, 32, 18, 2, 24, 8, 7, 13]
-[23, 26, 22, 39, 3, 1, 30, 0]
-Accuracy: 0.75
-[33, 23, 11, 14, 4, 29, 36, 38, 6, 21, 15, 37, 39, 7, 10, 31, 22, 1, 17, 28, 27, 32, 35, 16]
-[12, 2, 34, 18, 9, 19, 5, 25]
-[30, 13, 24, 26, 8, 3, 0, 20]
-Accuracy: 0.875
-[19, 22, 20, 25, 18, 8, 13, 31, 35, 26, 6, 30, 33, 32, 24, 4, 10, 1, 7, 5, 15, 14, 0, 11]
-[12, 38, 36, 23, 29, 9, 28, 27]
-[3, 34, 39, 37, 17, 21, 2, 16]
-Accuracy: 0.75
-[35, 33, 31, 4, 8, 19, 6, 17, 20, 30, 10, 11, 7, 38, 12, 32, 37, 23, 27, 9, 3, 0, 18, 26]
-[39, 22, 36, 28, 16, 25, 14, 15]
-[34, 13, 2, 5, 29, 1, 24, 21]
-Accuracy: 1.0
-[13, 16, 39, 9, 37, 29, 38, 12, 8, 15, 5, 36, 10, 19, 33, 32, 18, 21, 27, 30, 11, 22, 2, 26]
-[1, 31, 4, 35, 23, 17, 25, 24]
-[34, 6, 3, 14, 20, 28, 7, 0]
-Accuracy: 0.75
-[28, 29, 10, 11, 13, 12, 0, 17, 34, 6, 5, 30, 35, 8, 31, 36, 37, 3, 18, 26, 22, 24, 7, 9]
-[32, 33, 15, 27, 23, 2, 21, 20]
-[25, 19, 16, 4, 1, 39, 38, 14]
-Accuracy: 1.0
-[6, 5, 31, 11, 37, 32, 2, 27, 30, 26, 38, 22, 9, 33, 12, 15, 14, 16, 8, 29, 28, 13, 39, 3]
-[7, 20, 1, 34, 23, 18, 10, 25]
-[0, 4, 17, 19, 21, 35, 24, 36]
-Accuracy: 1.0
-[1, 4, 22, 35, 5, 3, 38, 26, 27, 31, 28, 8, 32, 33, 17, 13, 6, 14, 23, 15, 10, 18, 36, 34]
-[0, 37, 20, 9, 16, 19, 12, 25]
-[11, 29, 24, 30, 7, 2, 39, 21]
-Accuracy: 1.0
-[21, 38, 9, 1, 22, 18, 3, 35, 28, 34, 30, 8, 15, 33, 16, 7, 25, 17, 14, 13, 32, 0, 6, 24]
-[26, 12, 31, 23, 10, 37, 36, 5]
-[2, 39, 27, 19, 11, 20, 29, 4]
-Accuracy: 1.0
+<pre>1.0
+0.875
+1.0
+0.875
+1.0
+0.75
+1.0
+1.0
+0.875
+0.75
 </pre>
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train_labels = train_labels.flatten()</span>
-<span class="c1"># dev_labels = dev_labels.flatten()</span>
-<span class="c1"># test_labels = test_labels.flatten()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.ensemble import RandomForestClassifier</span>
-<span class="c1"># clf = RandomForestClassifier(bootstrap=True, criterion=&#39;entropy&#39;)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.model_selection import train_test_split</span>
-
-<span class="c1"># y = np.reshape(y, (len(y), ))</span>
-<span class="c1"># X_train, X_test, y_train, y_test = train_test_split(spectra, y, test_size=0.2, random_state=42)</span>
-<span class="c1"># # clf.fit(train_set, train_labels)</span>
-<span class="c1"># clf.fit(X_train, y_train)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from sklearn.metrics import accuracy_score</span>
-<span class="c1"># # preds = clf.predict(test_set)</span>
-<span class="c1"># # print(&quot;Accuracy:&quot;, accuracy_score(test_labels, preds))</span>
-<span class="c1"># preds = clf.predict(X_test)</span>
-<span class="c1"># print(&quot;Accuracy:&quot;, accuracy_score(y_test, preds))</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 

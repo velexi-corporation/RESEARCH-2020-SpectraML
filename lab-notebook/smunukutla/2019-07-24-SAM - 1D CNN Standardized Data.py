@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[27]:
+# In[14]:
 
 
 # environment set up
@@ -15,89 +15,29 @@ import matplotlib.pyplot as plt
 import os
 import random
 import pandas as pd
+import ast
 
 # working folder
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data"
-directory = os.environ['DATA_DIR']
-os.chdir(directory)
+data_dir = os.environ['DATA_DIR']
+os.chdir(data_dir)
+stddata_path = os.path.join(data_dir,"Srikar-Standardized")
 
 # print(os.getcwd())
 
 
-# In[28]:
+# In[15]:
 
 
-stddata_path = os.path.join(directory,"Srikar-Standardized")
-metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|")
-metadata.head()
-
-
-# In[29]:
-
-
-metadata = metadata[metadata['value_type'] == "reflectance"]
-metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
-metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
-metadata.shape
-
-
-# In[30]:
-
-
-# def find_record(string):
-#     ind = string.find("|")
-#     return string[:ind]
-
-
-# In[31]:
-
-
-# data = metadata.iloc[0]
-# type(data)
-
-# metadata[metadata["material"].str.match("Chlor")].shape[0]
-
-
-# In[32]:
-
-
-record_nums = []
-y = []
-spectrum_names = []
-
-act = 0
-aln = 0
-chl = 0
-
-for i in range(metadata.shape[0]): # get to 10 minerals
-    data = metadata.iloc[i, :]
-    if data[2].find("Actinolite") != -1: # if material name contains actinolite
-        record_nums.append(data[0])
-        y.append(int(0))
-        spectrum_names.append("Actinolite")
-        act += 1
-    elif data[2].find("Alun") != -1:
-        record_nums.append(data[0])
-        y.append(int(1))
-        spectrum_names.append("Alunite")
-        aln += 1
-    elif (data[2].find("Chlorit") != -1 or data[2].find("Chlor.") != -1 or data[2].find("Chlor+") != -1 or data[2].find("Chl.") != -1):
-        record_nums.append(data[0])
-        y.append(int(2))
-        spectrum_names.append("Chlorite")
-        chl += 1
-
+data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
+record_nums = data.iloc[0, :].tolist()
+spectrum_names = data.iloc[1, :].tolist()
+y = data.iloc[2, :].astype(int).tolist()
 y = np.reshape(y, (len(y), 1))
-num_samples = len(record_nums)
-# print(num_samples)
-# print(len(y))
-# print(type(y))
-# print(act)
-# print(aln)
-# print(chl)
+num_samples = len(y)
 
 
-# In[33]:
+# In[16]:
 
 
 spectrum_len = 500
@@ -107,43 +47,17 @@ wavelengths = np.zeros((1,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[34]:
+# In[17]:
 
 
-# import shutil
-
-# for num in actinolite:
-#     shutil.copy2(stddata_path+"/{}.csv".format(num), directory+"/Std_Actinolite")
-# for num in alunite:
-#     shutil.copy2(stddata_path+"/{}.csv".format(num), directory+"/Std_Alunite")
-# for num in chlorite:
-#     shutil.copy2(stddata_path+"/{}.csv".format(num), directory+"/Std_Chlorite")
+for i in range(len(record_nums)):
+    data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
+    if i == 0:
+        wavelengths[i,:] = data.iloc[:, 0].to_numpy()
+    spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[35]:
-
-
-# num_neg = 0
-# for i in range(num_samples):
-#     hasnegative = False
-#     data = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(record_nums[i])))
-#     if i == 0:
-#         wavelengths[i,:] = data.iloc[:, 0].to_numpy()
-#     spectra[i,:] = data.iloc[:, 1].to_numpy()
-#     for j in range(spectrum_len):
-#         if spectra[i,j] < 0:
-#             hasnegative = True
-#             spectra[i,j] = 0
-#     if hasnegative:
-#         print(record_nums[i])
-#         num_neg += 1
-# print(num_neg)
-# wavelengths
-# print(record_nums[43])
-# print(spectra[43])
-
-
-# In[36]:
+# In[18]:
 
 
 # spectrum_len = 480
@@ -197,7 +111,7 @@ wavelengths = np.zeros((1,spectrum_len))
 #     i+=1
 
 
-# In[37]:
+# In[19]:
 
 
 # --- plot the classes
@@ -308,103 +222,71 @@ for i in range(num_samples):
 # plt.show()
 
 
-# In[38]:
+# In[40]:
 
 
-# random.seed(660)
+os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
+fi = open("indices.txt", "r")
 
-
-# In[47]:
-
-
-# os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
-# fi = open("indices.txt", "r")
-
-# for i in range(10):
-#     train_set_indices = ast.literal_eval(fi.readline())
-#     test_set_indices = ast.literal_eval(fi.readline())
-#     dev_set_indices = ast.literal_eval(fi.readline())
+for i in range(10):
+    train_set_indices = ast.literal_eval(fi.readline())
+    test_set_indices = ast.literal_eval(fi.readline())
+    dev_set_indices = ast.literal_eval(fi.readline())
     
-#     for j in train_set_indices:
-#         j = int(j)
-#     for j in test_set_indices:
-#         j = int(j)
-#     for j in dev_set_indices:
-#         j = int(j)
+    for j in train_set_indices:
+        j = int(j)
+    for k in test_set_indices:
+        k = int(k)
+    for m in dev_set_indices:
+        m = int(m)
+    
+    train_set = spectra[train_set_indices, :]
+    train_labels = y[train_set_indices, :]
+    dev_set = spectra[dev_set_indices, :]
+    dev_labels = y[dev_set_indices, :]
+    test_set = spectra[test_set_indices, :]
+    test_labels = y[test_set_indices, :]
 
-train_set_indices = [11, 4, 38, 12, 20, 34, 36, 31, 14, 10, 15, 28, 9, 27, 16, 17, 19, 6, 33, 37, 25, 21, 35, 5]
-test_set_indices = [29, 32, 18, 2, 24, 8, 7, 13]
-dev_set_indices = [23, 26, 22, 39, 3, 1, 30, 0]
+    train_labels = train_labels.flatten()
+    dev_labels = dev_labels.flatten()
+    test_labels = test_labels.flatten()
 
-train_set = spectra[train_set_indices, :]
-train_labels = y[train_set_indices, :]
-dev_set = spectra[dev_set_indices, :]
-dev_labels = y[dev_set_indices, :]
-test_set = spectra[test_set_indices, :]
-test_labels = y[test_set_indices, :]
+    train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
+    dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
+    test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
 
-train_labels = train_labels.flatten()
-dev_labels = dev_labels.flatten()
-test_labels = test_labels.flatten()
+    train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
+    dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
+    test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
 
-train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
-dev_set = np.reshape(dev_set, (dev_set.shape[0], spectrum_len, 1))
-test_set = np.reshape(test_set, (test_set.shape[0], spectrum_len, 1))
+    train_labels = to_categorical(train_labels)
+    dev_labels = to_categorical(dev_labels)
+    test_labels = to_categorical(test_labels)
+    
+    model = Sequential()
+    # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
+    model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
+    model.add(Conv1D(64, 25, activation='relu'))
+    model.add(MaxPooling1D(4)) # 108 by 64 so far
+    model.add(Conv1D(100, 25, activation='relu'))
+    model.add(Conv1D(100, 25, activation='relu'))
+    model.add(MaxPooling1D(4))
+    # model.add(Dropout(0.5))
+    # model.add(GlobalAveragePooling1D())
+    model.add(Flatten())
+    model.add(Dense(3, activation='softmax'))
+    
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
-dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
-test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+    BATCH_SIZE = 12
+    EPOCHS = 50
 
-train_labels = to_categorical(train_labels)
-dev_labels = to_categorical(dev_labels)
-test_labels = to_categorical(test_labels)
-
-
-# In[48]:
-
-
-# sample_indices = list(range(0, num_samples))
-# print(num_samples)
-# random.shuffle(sample_indices) # stratified sklearn split
-# train_set_size = 3*(num_samples//5)
-# dev_set_size = (num_samples//5)
-# test_set_size= num_samples-dev_set_size - train_set_size
-# print(train_set_size)
-# print(test_set_size)
-# print(dev_set_size)
-# train_set_indices = sample_indices[:train_set_size]
-# dev_set_indices = sample_indices[train_set_size: train_set_size+dev_set_size]
-# test_set_indices= sample_indices[train_set_size+dev_set_size: num_samples]
-# print(train_set_indices)
-# print(test_set_indices)
-# print(dev_set_indices)
-
-# train_set = spectra[train_set_indices, :]
-# train_labels = y[train_set_indices, :]
-# dev_set = spectra[dev_set_indices, :]
-# dev_labels = y[dev_set_indices, :]
-# test_set = spectra[test_set_indices, :]
-# test_labels = y[test_set_indices, :]
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
+    
+    model.evaluate(test_set, test_labels)
 
 
-# In[49]:
-
-
-# train_labels = train_labels.flatten()
-# dev_labels = dev_labels.flatten()
-# test_labels = test_labels.flatten()
-# type(train_labels)
-
-
-# In[50]:
-
-
-# len(train_set)
-# len(train_set[17])
-# print(test_set.shape)
-
-
-# In[51]:
+# In[38]:
 
 
 # train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -420,60 +302,54 @@ test_labels = to_categorical(test_labels)
 # test_labels = to_categorical(test_labels)
 
 
-# In[52]:
+# In[37]:
 
 
-# print(dev_set)
+# # random.seed()
+# model = Sequential()
+# # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
+# model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
+# model.add(Conv1D(64, 25, activation='relu'))
+# model.add(MaxPooling1D(4)) # 108 by 64 so far
+# model.add(Conv1D(100, 25, activation='relu'))
+# model.add(Conv1D(100, 25, activation='relu'))
+# model.add(MaxPooling1D(4))
+# # model.add(Dropout(0.5))
+# # model.add(GlobalAveragePooling1D())
+# model.add(Flatten())
+# model.add(Dense(3, activation='softmax'))
+# print(model.summary())
 
 
-# In[53]:
+# In[36]:
 
 
-# random.seed()
-model = Sequential()
-# model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
-model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
-model.add(Conv1D(64, 25, activation='relu'))
-model.add(MaxPooling1D(4)) # 108 by 64 so far
-model.add(Conv1D(100, 25, activation='relu'))
-model.add(Conv1D(100, 25, activation='relu'))
-model.add(MaxPooling1D(4))
-# model.add(Dropout(0.5))
-# model.add(GlobalAveragePooling1D())
-model.add(Flatten())
-model.add(Dense(3, activation='softmax'))
-print(model.summary())
+# model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+# BATCH_SIZE = 12
+# EPOCHS = 50
+
+# print(train_labels.shape)
+# model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[54]:
+# In[33]:
 
 
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-BATCH_SIZE = 12
-EPOCHS = 50
-
-print(train_labels.shape)
-model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
+# y_pred = model.predict(test_set)
+# y_pred
 
 
-# In[24]:
+# In[34]:
 
 
-y_pred = model.predict(test_set)
-y_pred
+# test_labels
 
 
-# In[25]:
+# In[35]:
 
 
-test_labels
-
-
-# In[26]:
-
-
-model.evaluate(test_set, test_labels)
+# model.evaluate(test_set, test_labels)
 
 
 # In[ ]:

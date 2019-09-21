@@ -7,8 +7,6 @@ data_dir = os.environ['DATA_DIR']
 stddata_path = os.path.join(data_dir,"Srikar-Standardized")
 metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|", dtype={"spectrum_id":str})
 
-print(type(metadata.iloc[300, :][0]))
-
 metadata = metadata[metadata['value_type'] == "reflectance"]
 metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in ChapterS Soils and Mixtures later
@@ -39,7 +37,6 @@ for i in range(metadata.shape[0]): # add dictionary/clean up metadata
         spectrum_names.append("Chlorite")
         chl += 1
 
-
 records_new = record_nums.copy()
 records_new.sort()
 
@@ -51,7 +48,6 @@ for i in records_new:
     names_new.append(spectrum_names[ind])
 
 record_nums = records_new.copy()
-print(record_nums[0])
 y = y_new.copy()
 spectrum_names = names_new.copy()
 
@@ -68,12 +64,3 @@ fi.close()
 # print(y)
 # y = np.reshape(y, (len(y), 1))
 num_samples = len(record_nums)
-
-# for i in range(10):
-#     sample_indices = list(range(0, num_samples))
-#
-#     train_set_indices, dev_and_test = train_test_split(sample_indices, test_size=0.4, stratify=y)
-#     dev_set_indices, test_set_indices = train_test_split(dev_and_test, test_size=0.5)
-#     print(train_set_indices)
-#     print(test_set_indices)
-#     print(dev_set_indices)
