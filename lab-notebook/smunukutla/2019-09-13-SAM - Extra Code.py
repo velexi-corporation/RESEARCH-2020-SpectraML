@@ -31,3 +31,35 @@
 # test_set = spectra[test_set_indices, :]
 # test_labels = y[test_set_indices, :]
 
+
+# In[ ]:
+
+
+# finding the mineral name
+
+# record_nums = []
+# y = []
+# spectrum_names = []
+
+# act = 0
+# aln = 0
+# chl = 0
+
+# for i in range(metadata.shape[0]): # add dictionary/clean up metadata
+#     data = metadata.iloc[i, :]
+#     if data[2].find("Actinolite") != -1: # if material name contains actinolite
+#         record_nums.append(data[0])
+#         y.append(int(0))
+#         spectrum_names.append("Actinolite")
+#         act += 1
+#     elif data[2].find("Alun") != -1:
+#         record_nums.append(data[0])
+#         y.append(int(1))
+#         spectrum_names.append("Alunite")
+#         aln += 1
+#     elif (data[2].find("Chlorit") != -1 or data[2].find("Chlor.") != -1 or data[2].find("Chlor+") != -1 or data[2].find("Chl.") != -1):
+#         record_nums.append(data[0])
+#         y.append(int(2))
+#         spectrum_names.append("Chlorite")
+#         chl += 1
+

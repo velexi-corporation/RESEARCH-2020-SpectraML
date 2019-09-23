@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[14]:
+# In[1]:
 
 
 # environment set up
@@ -26,7 +26,7 @@ stddata_path = os.path.join(data_dir,"Srikar-Standardized")
 # print(os.getcwd())
 
 
-# In[15]:
+# In[2]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -37,7 +37,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[16]:
+# In[3]:
 
 
 spectrum_len = 500
@@ -47,7 +47,7 @@ wavelengths = np.zeros((1,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[17]:
+# In[4]:
 
 
 for i in range(len(record_nums)):
@@ -57,7 +57,7 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[18]:
+# In[5]:
 
 
 # spectrum_len = 480
@@ -111,7 +111,7 @@ for i in range(len(record_nums)):
 #     i+=1
 
 
-# In[19]:
+# In[6]:
 
 
 # --- plot the classes
@@ -120,81 +120,81 @@ for i in range(len(record_nums)):
 # plot spectra names in legend
 # plot minerals and mixtures w diff line widths
 
-mineral_names = ["Actinolite", "Alunite", "Chlorite"]
+# mineral_names = ["Actinolite", "Alunite", "Chlorite"]
 
-# variables
-num0 = 0 #number of samples of class 0
-num1 = 0
-num2 = 0
+# # variables
+# num0 = 0 #number of samples of class 0
+# num1 = 0
+# num2 = 0
 
-mineral_linewidth = 1         # linewidth = 1 is default
-mixture_linewidth = 3         
+# mineral_linewidth = 1         # linewidth = 1 is default
+# mixture_linewidth = 3         
 
-# count the number of each class to make spectra0, spectra1, spectra2 databases
-for i in range(num_samples):
-    if y[i,0]== 0:
-        num0 += 1
-    elif y[i,0]== 1:
-        num1 += 1
-    elif y[i,0]== 2:
-        num2 += 1
+# # count the number of each class to make spectra0, spectra1, spectra2 databases
+# for i in range(num_samples):
+#     if y[i,0]== 0:
+#         num0 += 1
+#     elif y[i,0]== 1:
+#         num1 += 1
+#     elif y[i,0]== 2:
+#         num2 += 1
 
-# make class-specific databases spectra0, ...1, ...2
-spectra0 = np.zeros((num0,spectrum_len)) 
-spectra1 = np.zeros((num1,spectrum_len)) 
-spectra2 = np.zeros((num2,spectrum_len)) 
+# # make class-specific databases spectra0, ...1, ...2
+# spectra0 = np.zeros((num0,spectrum_len)) 
+# spectra1 = np.zeros((num1,spectrum_len)) 
+# spectra2 = np.zeros((num2,spectrum_len)) 
 
-labels0 = ["" for x in range(num0)]
-labels1 = ["" for x in range(num1)]
-labels2 = ["" for x in range(num2)]
+# labels0 = ["" for x in range(num0)]
+# labels1 = ["" for x in range(num1)]
+# labels2 = ["" for x in range(num2)]
 
-linewidth0 = np.zeros(num0)
-linewidth1 = np.zeros(num1)
-linewidth2 = np.zeros(num2)
+# linewidth0 = np.zeros(num0)
+# linewidth1 = np.zeros(num1)
+# linewidth2 = np.zeros(num2)
 
 
-# make counters for each database to place spectra
-i0 = 0
-i1 = 0
-i2 = 0
+# # make counters for each database to place spectra
+# i0 = 0
+# i1 = 0
+# i2 = 0
 
-# set linewidth for the spectrum 
-# populate class-specific databases spectra0, ...1, ...2
-for i in range(num_samples):
+# # set linewidth for the spectrum 
+# # populate class-specific databases spectra0, ...1, ...2
+# for i in range(num_samples):
     
-    # set linewidth
-    #testcode
-    #print(spectrum_categories)
-    #print(spectrum_categories[i])
+#     # set linewidth
+#     #testcode
+#     #print(spectrum_categories)
+#     #print(spectrum_categories[i])
     
-#     if spectrum_categories[i] == is_a_mineral:
-#         linewidth = mineral_linewidth
+# #     if spectrum_categories[i] == is_a_mineral:
+# #         linewidth = mineral_linewidth
+        
+# #         #testcode
+# #         #print('min')
+# #     else: 
+# #         linewidth = mixture_linewidth
+#     linewidth = 2
         
 #         #testcode
-#         #print('min')
-#     else: 
-#         linewidth = mixture_linewidth
-    linewidth = 2
-        
-        #testcode
-        #print('mix')
+#         #print('mix')
     
-    # populate matrices for making each class plot
-    if y[i,0]== 0:
-        spectra0[i0,:] = spectra[i,:]
-        labels0[i0] = spectrum_names[i]
-        linewidth0[i0] = linewidth
-        i0 +=1
-    elif y[i,0]== 1:
-        spectra1[i1,:] = spectra[i,:]
-        labels1[i1] = spectrum_names[i]
-        linewidth1[i1] = linewidth
-        i1 +=1
-    else:
-        spectra2[i2,:] = spectra[i,:]
-        labels2[i2] = spectrum_names[i]
-        linewidth2[i2] = linewidth
-        i2 +=1
+#     # populate matrices for making each class plot
+#     if y[i,0]== 0:
+#         spectra0[i0,:] = spectra[i,:]
+#         labels0[i0] = spectrum_names[i]
+#         linewidth0[i0] = linewidth
+#         i0 +=1
+#     elif y[i,0]== 1:
+#         spectra1[i1,:] = spectra[i,:]
+#         labels1[i1] = spectrum_names[i]
+#         linewidth1[i1] = linewidth
+#         i1 +=1
+#     else:
+#         spectra2[i2,:] = spectra[i,:]
+#         labels2[i2] = spectrum_names[i]
+#         linewidth2[i2] = linewidth
+#         i2 +=1
 
 # plot each class-specific database separately
 # for i in range(i0):
@@ -222,11 +222,13 @@ for i in range(num_samples):
 # plt.show()
 
 
-# In[40]:
+# In[10]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
 fi = open("indices.txt", "r")
+
+stats = []
 
 for i in range(10):
     train_set_indices = ast.literal_eval(fi.readline())
@@ -263,9 +265,9 @@ for i in range(10):
     dev_labels = to_categorical(dev_labels)
     test_labels = to_categorical(test_labels)
     
-    model = Sequential()
+    model = Sequential() # tf upgrading to 2.0, after that we need to specify the dtype/construct all layers at once
     # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
-    model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
+    model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1))) # optional: , dtype=tf.dtypes.float64
     model.add(Conv1D(64, 25, activation='relu'))
     model.add(MaxPooling1D(4)) # 108 by 64 so far
     model.add(Conv1D(100, 25, activation='relu'))
@@ -274,19 +276,23 @@ for i in range(10):
     # model.add(Dropout(0.5))
     # model.add(GlobalAveragePooling1D())
     model.add(Flatten())
-    model.add(Dense(3, activation='softmax'))
+    model.add(Dense(5, activation='softmax'))
     
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     BATCH_SIZE = 12
     EPOCHS = 50
 
-    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels))
     
-    model.evaluate(test_set, test_labels)
+    my_list = model.evaluate(test_set, test_labels, verbose=0)
+    
+    stats.append(my_list[1])
+
+print("1D CNN:", stats)
 
 
-# In[38]:
+# In[8]:
 
 
 # train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -302,7 +308,7 @@ for i in range(10):
 # test_labels = to_categorical(test_labels)
 
 
-# In[37]:
+# In[9]:
 
 
 # # random.seed()
@@ -321,7 +327,7 @@ for i in range(10):
 # print(model.summary())
 
 
-# In[36]:
+# In[10]:
 
 
 # model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -333,20 +339,20 @@ for i in range(10):
 # model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[33]:
+# In[11]:
 
 
 # y_pred = model.predict(test_set)
 # y_pred
 
 
-# In[34]:
+# In[12]:
 
 
 # test_labels
 
 
-# In[35]:
+# In[13]:
 
 
 # model.evaluate(test_set, test_labels)

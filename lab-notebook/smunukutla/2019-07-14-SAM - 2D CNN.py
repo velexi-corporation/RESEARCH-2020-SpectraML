@@ -11,9 +11,10 @@ import pandas as pd
 import os
 import random
 import ast
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+import tensorflow as tf
+import tensorflow.keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
 
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots"
 data_dir = os.environ['DATA_DIR']
@@ -21,7 +22,7 @@ data_dir = os.path.join(data_dir, "plots")
 os.chdir(data_dir)
 
 
-# In[2]:
+# In[5]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -30,7 +31,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[3]:
+# In[6]:
 
 
 def convertimg(img):
@@ -42,7 +43,7 @@ def convertimg(img):
     return newimg
 
 
-# In[4]:
+# In[7]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -53,7 +54,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[5]:
+# In[8]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -64,10 +65,10 @@ for num in record_nums:
     i += 1
 
 
-# In[ ]:
+# In[9]:
 
 
-spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
+spectra.shape
 
 
 # In[ ]:
@@ -75,8 +76,6 @@ spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
 fi = open("indices.txt", "r")
-
-stats = []
 
 for i in range(10):
     train_set_indices = ast.literal_eval(fi.readline())
@@ -104,23 +103,28 @@ for i in range(10):
     train_labels = train_labels.flatten()
     dev_labels = dev_labels.flatten()
     test_labels = test_labels.flatten()
+
     
-    clf = RandomForestClassifier(n_estimators=100, bootstrap=True, criterion='entropy')
-    
+    train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
+    dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
+    test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
+
+    train_labels = to_categorical(train_labels)
+    dev_labels = to_categorical(dev_labels)
+    test_labels = to_categorical(test_labels)
+
+    from sklearn.model_selection import train_test_split
+
+    y_new = np.copy(y)
+    y_new = np.reshape(y_new, (len(y_new), ))
+    X_train, X_test, y_train, y_test = train_test_split(spectra, y_new, test_size=0.2, stratify=y_new)
     # clf.fit(train_set, train_labels)
-    clf.fit(train_set, train_labels)
-    
+    clf.fit(X_train, y_train)
+
+    from sklearn.metrics import accuracy_score
     # preds = clf.predict(test_set)
     # print("Accuracy:", accuracy_score(test_labels, preds))
-    preds = clf.predict(test_set)
+    preds = clf.predict(X_test)
 #     print("Accuracy:", accuracy_score(y_test, preds))
-    stats.append(accuracy_score(test_labels, preds))
-
-print("Random Forest:", stats)
-
-
-# In[ ]:
-
-
-
+    print(accuracy_score(y_test, preds))
 
