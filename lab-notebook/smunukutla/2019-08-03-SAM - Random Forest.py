@@ -64,13 +64,13 @@ for num in record_nums:
     i += 1
 
 
-# In[ ]:
+# In[6]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[ ]:
+# In[7]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")

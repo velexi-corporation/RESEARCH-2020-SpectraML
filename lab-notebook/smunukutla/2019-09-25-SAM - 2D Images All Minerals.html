@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>2019-08-03-SAM - Random Forest</title>
+<title>2019-09-25-SAM - 2D Images All Minerals</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13115,23 +13115,21 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># environment set up</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">ast</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">spectra_ml.io_</span> <span class="k">import</span> <span class="n">load_spectra_metadata</span>
 
-<span class="c1"># directory = &quot;/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots&quot;</span>
+<span class="c1"># working folder</span>
+<span class="c1"># data_dir = &quot;/Users/Srikar/Desktop/Velexi/spectra-ml/data/&quot;</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">]</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 </pre></div>
 
@@ -13142,13 +13140,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">spectrum_height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">spectrum_width</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stddata_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="s2">&quot;Srikar-Standardized&quot;</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">load_spectra_metadata</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stddata_path</span><span class="p">,</span><span class="s2">&quot;spectra-metadata.csv&quot;</span><span class="p">))</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;value_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="o">~</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spectrometer_purity_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;NIC4&quot;</span><span class="p">)]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;raw_data_path&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;ChapterM&quot;</span><span class="p">)]</span>
 </pre></div>
 
     </div>
@@ -13158,29 +13158,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-    <span class="n">newimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-            <span class="n">row</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-            <span class="n">newimg</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mi">3</span>
-    <span class="k">return</span> <span class="n">newimg</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">record_nums</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">spectrum_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -13195,15 +13176,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">spectrum_height</span><span class="p">,</span> <span class="n">spectrum_width</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">record_nums</span><span class="p">:</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span><span class="n">num</span><span class="o">+</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="n">spectrum_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span><span class="p">))</span> <span class="c1"># os.path.join here, look into timeit, pickle file</span>
-    <span class="n">spectra</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectrum_len</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span><span class="n">spectrum_len</span><span class="p">))</span>
+<span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">spectrum_len</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13213,10 +13191,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">spectra</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stddata_path</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record_nums</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">wavelengths</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">spectra</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13226,53 +13208,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla&quot;</span><span class="p">)</span>
-<span class="n">fi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;indices.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-
-<span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">train_set_indices</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
-    <span class="n">test_set_indices</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
-    <span class="n">dev_set_indices</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
-    
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">train_set_indices</span><span class="p">:</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">test_set_indices</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">dev_set_indices</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-        
-<span class="c1">#     print(train_set_indices)</span>
-<span class="c1">#     print(test_set_indices)</span>
-<span class="c1">#     print(dev_set_indices)</span>
-    
-    <span class="n">train_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">dev_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">dev_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">dev_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">test_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span>
-
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">dev_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># clf.fit(train_set, train_labels)</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">)</span>
-    
-    <span class="c1"># preds = clf.predict(test_set)</span>
-    <span class="c1"># print(&quot;Accuracy:&quot;, accuracy_score(test_labels, preds))</span>
-    <span class="n">preds</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
-<span class="c1">#     print(&quot;Accuracy:&quot;, accuracy_score(y_test, preds))</span>
-    <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest:&quot;</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span>
 </pre></div>
 
     </div>
@@ -13285,15 +13224,40 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Random Forest: [0.7941176470588235, 0.7647058823529411, 0.6764705882352942, 0.7352941176470589, 0.7941176470588235, 0.6470588235294118, 0.6470588235294118, 0.6764705882352942, 0.7941176470588235, 0.6176470588235294]
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>167</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">spectra</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;plots&quot;</span><span class="p">,</span> <span class="n">record_nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">spectrum_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
