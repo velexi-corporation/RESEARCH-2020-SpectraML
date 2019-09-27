@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[15]:
 
 
 import numpy as np
@@ -21,7 +21,7 @@ data_dir = os.path.join(data_dir, "plots")
 os.chdir(data_dir)
 
 
-# In[2]:
+# In[16]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -30,7 +30,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[3]:
+# In[17]:
 
 
 def convertimg(img):
@@ -42,7 +42,7 @@ def convertimg(img):
     return newimg
 
 
-# In[4]:
+# In[18]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -53,7 +53,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[5]:
+# In[19]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -64,13 +64,13 @@ for num in record_nums:
     i += 1
 
 
-# In[6]:
+# In[20]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[7]:
+# In[21]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
@@ -116,7 +116,7 @@ for i in range(10):
 #     print("Accuracy:", accuracy_score(y_test, preds))
     stats.append(accuracy_score(test_labels, preds))
 
-print("Random Forest:", stats)
+print("Random Forest:", stats) # add averages of the accuracy
 
 
 # In[ ]:

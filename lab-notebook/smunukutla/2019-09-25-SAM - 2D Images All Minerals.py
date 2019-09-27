@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
+# In[15]:
 
 
 # environment set up
@@ -19,7 +19,7 @@ data_dir = os.environ['DATA_DIR']
 os.chdir(data_dir)
 
 
-# In[14]:
+# In[16]:
 
 
 stddata_path = os.path.join(data_dir,"Srikar-Standardized")
@@ -30,7 +30,7 @@ metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
 
 
-# In[15]:
+# In[17]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",", dtype=str)
@@ -41,7 +41,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[16]:
+# In[18]:
 
 
 spectrum_len = 500
@@ -49,7 +49,7 @@ spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[17]:
+# In[19]:
 
 
 for i in range(num_samples):
@@ -59,16 +59,16 @@ for i in range(num_samples):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[18]:
+# In[20]:
 
 
 num_samples
 
 
-# In[19]:
+# In[21]:
 
 
-linewidth = 2
+linewidth = 4
 for i in range(num_samples):
     fig = plt.figure()
     plt.plot(wavelengths[0,:], spectra[i,:], linewidth = linewidth, color='k')
