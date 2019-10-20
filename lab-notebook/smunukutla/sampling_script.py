@@ -26,11 +26,13 @@ frame['material'] = series.index
 
 # frame = frame[frame['count'] >= 12]
 
-frame = frame[:10]
+# frame = frame[:10]
 
-dictionary = {frame.iloc[:, 0].tolist()[i] : i for i in range(len(frame.iloc[:, 0].tolist()))}
+# frame = frame[frame['count'] >= 2]
 
-# dictionary = {"Actinolite": 0, "Alunite": 1, "Chlorite": 2, "Topaz": 3, "Olivine": 4}
+# dictionary = {frame.iloc[:, 0].tolist()[i] : i for i in range(len(frame.iloc[:, 0].tolist()))}
+
+dictionary = {"Actinolite": 0, "Alunite": 1, "Chlorite": 2, "Topaz": 3, "Olivine": 4}
 
 record_nums_old = []
 y_old = []
@@ -68,7 +70,7 @@ fi.close()
 # find the train test split
 num_samples = len(y)
 
-for i in range(10):
+for i in range(20):
     sample_indices = list(range(0, num_samples))
 
     train_set_indices, dev_and_test = train_test_split(sample_indices, test_size=0.4, stratify=y)

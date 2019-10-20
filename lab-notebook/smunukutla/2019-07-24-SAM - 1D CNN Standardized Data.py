@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[22]:
 
 
 # environment set up
@@ -16,6 +16,7 @@ import os
 import random
 import pandas as pd
 import ast
+from scipy import stats as st
 
 # working folder
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data"
@@ -26,7 +27,7 @@ stddata_path = os.path.join(data_dir,"Srikar-Standardized")
 # print(os.getcwd())
 
 
-# In[2]:
+# In[10]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -37,7 +38,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[3]:
+# In[11]:
 
 
 spectrum_len = 500
@@ -47,7 +48,7 @@ wavelengths = np.zeros((1,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[4]:
+# In[12]:
 
 
 for i in range(len(record_nums)):
@@ -57,7 +58,7 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[5]:
+# In[13]:
 
 
 # spectrum_len = 480
@@ -111,7 +112,7 @@ for i in range(len(record_nums)):
 #     i+=1
 
 
-# In[6]:
+# In[14]:
 
 
 # --- plot the classes
@@ -222,7 +223,7 @@ for i in range(len(record_nums)):
 # plt.show()
 
 
-# In[10]:
+# In[15]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
@@ -292,7 +293,7 @@ for i in range(10):
 print("1D CNN:", stats)
 
 
-# In[8]:
+# In[16]:
 
 
 # train_set = np.reshape(train_set, (train_set.shape[0], spectrum_len, 1))
@@ -308,7 +309,7 @@ print("1D CNN:", stats)
 # test_labels = to_categorical(test_labels)
 
 
-# In[9]:
+# In[17]:
 
 
 # # random.seed()
@@ -327,7 +328,7 @@ print("1D CNN:", stats)
 # print(model.summary())
 
 
-# In[10]:
+# In[18]:
 
 
 # model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -339,23 +340,29 @@ print("1D CNN:", stats)
 # model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels)) 
 
 
-# In[11]:
+# In[19]:
 
 
 # y_pred = model.predict(test_set)
 # y_pred
 
 
-# In[12]:
+# In[20]:
 
 
 # test_labels
 
 
-# In[13]:
+# In[21]:
 
 
 # model.evaluate(test_set, test_labels)
+
+
+# In[24]:
+
+
+print("1D CNN Results:", st.describe(stats))
 
 
 # In[ ]:

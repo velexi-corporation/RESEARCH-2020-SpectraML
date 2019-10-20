@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[15]:
+# In[1]:
 
 
 import numpy as np
@@ -14,6 +14,7 @@ import ast
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from scipy import stats as st
 
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots"
 data_dir = os.environ['DATA_DIR']
@@ -21,7 +22,7 @@ data_dir = os.path.join(data_dir, "plots")
 os.chdir(data_dir)
 
 
-# In[16]:
+# In[2]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -30,7 +31,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[17]:
+# In[3]:
 
 
 def convertimg(img):
@@ -42,7 +43,7 @@ def convertimg(img):
     return newimg
 
 
-# In[18]:
+# In[4]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -53,7 +54,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[19]:
+# In[5]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -64,13 +65,13 @@ for num in record_nums:
     i += 1
 
 
-# In[20]:
+# In[6]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[21]:
+# In[7]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
@@ -78,7 +79,7 @@ fi = open("indices.txt", "r")
 
 stats = []
 
-for i in range(10):
+for i in range(20):
     train_set_indices = ast.literal_eval(fi.readline())
     test_set_indices = ast.literal_eval(fi.readline())
     dev_set_indices = ast.literal_eval(fi.readline())
@@ -117,6 +118,18 @@ for i in range(10):
     stats.append(accuracy_score(test_labels, preds))
 
 print("Random Forest:", stats) # add averages of the accuracy
+
+
+# In[8]:
+
+
+stats
+
+
+# In[10]:
+
+
+print("Random Forest Results:", st.describe(stats))
 
 
 # In[ ]:

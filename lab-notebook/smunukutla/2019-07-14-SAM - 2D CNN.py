@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[32]:
 
 
 import numpy as np
@@ -14,7 +14,9 @@ import ast
 import tensorflow as tf
 import tensorflow.keras
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.utils import to_categorical
+from scipy import stats as st
 
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots"
 data_dir = os.environ['DATA_DIR']
@@ -22,7 +24,7 @@ data_dir = os.path.join(data_dir, "plots")
 os.chdir(data_dir)
 
 
-# In[5]:
+# In[33]:
 
 
 num_samples = len(os.listdir(os.getcwd()))
@@ -31,7 +33,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[6]:
+# In[34]:
 
 
 def convertimg(img):
@@ -43,7 +45,7 @@ def convertimg(img):
     return newimg
 
 
-# In[7]:
+# In[35]:
 
 
 data = pd.read_csv("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv", sep=",")
@@ -54,7 +56,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[8]:
+# In[36]:
 
 
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
@@ -65,17 +67,20 @@ for num in record_nums:
     i += 1
 
 
-# In[9]:
+# In[37]:
 
 
+spectra = spectra.reshape(spectra.shape[0], spectra.shape[1], spectra.shape[2], 1)
 spectra.shape
 
 
-# In[ ]:
+# In[38]:
 
 
 os.chdir("/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla")
 fi = open("indices.txt", "r")
+
+stats = []
 
 for i in range(10):
     train_set_indices = ast.literal_eval(fi.readline())
@@ -100,31 +105,36 @@ for i in range(10):
     test_set = spectra[test_set_indices, :]
     test_labels = y[test_set_indices, :]
 
-    train_labels = train_labels.flatten()
-    dev_labels = dev_labels.flatten()
-    test_labels = test_labels.flatten()
-
-    
-    train_labels = np.reshape(train_labels, (train_labels.shape[0], 1))
-    dev_labels = np.reshape(dev_labels, (dev_labels.shape[0], 1))
-    test_labels = np.reshape(test_labels, (test_labels.shape[0], 1))
-
     train_labels = to_categorical(train_labels)
     dev_labels = to_categorical(dev_labels)
     test_labels = to_categorical(test_labels)
+    
+    model = Sequential()
+    #add model layers
+    model.add(Conv2D(32, kernel_size=10, strides=(6,6), activation='relu', input_shape=(spectra.shape[1],spectra.shape[2], 1))) # finer features at the first layer
+    model.add(Conv2D(32, kernel_size=3, activation='relu')) # larger features at later layer
+    model.add(Flatten())
+    model.add(Dense(5, activation='softmax'))
+    
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    
+    model.fit(train_set, train_labels, validation_data=(dev_set, dev_labels), epochs=10, verbose=1)
+    
+    my_list = model.evaluate(test_set, test_labels, verbose=0)
+    
+    stats.append(my_list[1])
 
-    from sklearn.model_selection import train_test_split
+print("2D CNN:", stats)
 
-    y_new = np.copy(y)
-    y_new = np.reshape(y_new, (len(y_new), ))
-    X_train, X_test, y_train, y_test = train_test_split(spectra, y_new, test_size=0.2, stratify=y_new)
-    # clf.fit(train_set, train_labels)
-    clf.fit(X_train, y_train)
 
-    from sklearn.metrics import accuracy_score
-    # preds = clf.predict(test_set)
-    # print("Accuracy:", accuracy_score(test_labels, preds))
-    preds = clf.predict(X_test)
-#     print("Accuracy:", accuracy_score(y_test, preds))
-    print(accuracy_score(y_test, preds))
+# In[40]:
+
+
+print("2D CNN Results:", st.describe(stats))
+
+
+# In[ ]:
+
+
+
 

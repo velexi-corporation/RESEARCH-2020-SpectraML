@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13128,7 +13128,9 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">import</span> <span class="nn">tensorflow.keras</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="k">import</span> <span class="n">Convolution2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="k">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="k">import</span> <span class="n">to_categorical</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span> <span class="k">as</span> <span class="n">st</span>
 
 <span class="c1"># directory = &quot;/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots&quot;</span>
 <span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATA_DIR&#39;</span><span class="p">]</span>
@@ -13143,7 +13145,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()))</span>
@@ -13159,7 +13161,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertimg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -13178,7 +13180,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -13196,7 +13198,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">spectrum_height</span><span class="p">,</span> <span class="n">spectrum_width</span><span class="p">))</span>
@@ -13214,10 +13216,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">spectra</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -13230,13 +13233,13 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[37]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(40, 288, 432)</pre>
+<pre>(89, 288, 432, 1)</pre>
 </div>
 
 </div>
@@ -13247,11 +13250,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla&quot;</span><span class="p">)</span>
 <span class="n">fi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;indices.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">train_set_indices</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">fi</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
@@ -13276,33 +13281,298 @@ div#notebook {
     <span class="n">test_set</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">test_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test_set_indices</span><span class="p">,</span> <span class="p">:]</span>
 
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">dev_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-
-    
-    <span class="n">train_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_labels</span><span class="p">,</span> <span class="p">(</span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dev_labels</span><span class="p">,</span> <span class="p">(</span><span class="n">dev_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">test_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_labels</span><span class="p">,</span> <span class="p">(</span><span class="n">test_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
-
     <span class="n">train_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
     <span class="n">dev_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">dev_labels</span><span class="p">)</span>
     <span class="n">test_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+    <span class="c1">#add model layers</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1"># finer features at the first layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span> <span class="c1"># larger features at later layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">dev_set</span><span class="p">,</span> <span class="n">dev_labels</span><span class="p">),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">my_list</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-    <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2D CNN:&quot;</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+</pre></div>
 
-    <span class="n">y_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">y_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_new</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">),</span> <span class="p">))</span>
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">spectra</span><span class="p">,</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_new</span><span class="p">)</span>
-    <span class="c1"># clf.fit(train_set, train_labels)</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    </div>
+</div>
+</div>
 
-    <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
-    <span class="c1"># preds = clf.predict(test_set)</span>
-    <span class="c1"># print(&quot;Accuracy:&quot;, accuracy_score(test_labels, preds))</span>
-    <span class="n">preds</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="c1">#     print(&quot;Accuracy:&quot;, accuracy_score(y_test, preds))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 2s 31ms/sample - loss: 3.5133 - acc: 0.1887 - val_loss: 2.5468 - val_acc: 0.2222
+Epoch 2/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.4670 - acc: 0.2830 - val_loss: 2.4492 - val_acc: 0.0000e+00
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.0708 - acc: 0.1698 - val_loss: 1.5330 - val_acc: 0.3333
+Epoch 4/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.5420 - acc: 0.3962 - val_loss: 1.4674 - val_acc: 0.5000
+Epoch 5/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.3896 - acc: 0.6226 - val_loss: 1.3923 - val_acc: 0.4444
+Epoch 6/10
+53/53 [==============================] - 1s 13ms/sample - loss: 1.3846 - acc: 0.4717 - val_loss: 1.3052 - val_acc: 0.8889
+Epoch 7/10
+53/53 [==============================] - 1s 11ms/sample - loss: 1.1994 - acc: 0.9811 - val_loss: 1.2733 - val_acc: 0.7222
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1261 - acc: 0.7736 - val_loss: 1.1993 - val_acc: 0.6667
+Epoch 9/10
+53/53 [==============================] - 0s 8ms/sample - loss: 0.9952 - acc: 0.9245 - val_loss: 0.9433 - val_acc: 0.6111
+Epoch 10/10
+53/53 [==============================] - 1s 12ms/sample - loss: 0.8441 - acc: 0.8679 - val_loss: 0.8242 - val_acc: 0.6111
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 27ms/sample - loss: 4.0029 - acc: 0.3019 - val_loss: 10.5005 - val_acc: 0.1667
+Epoch 2/10
+53/53 [==============================] - 1s 11ms/sample - loss: 6.6576 - acc: 0.2075 - val_loss: 3.0894 - val_acc: 0.2778
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.6903 - acc: 0.2075 - val_loss: 2.2550 - val_acc: 0.3889
+Epoch 4/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.1882 - acc: 0.2830 - val_loss: 1.7107 - val_acc: 0.0556
+Epoch 5/10
+53/53 [==============================] - 1s 11ms/sample - loss: 1.6105 - acc: 0.1698 - val_loss: 1.4711 - val_acc: 0.5000
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.4209 - acc: 0.5283 - val_loss: 2.1168 - val_acc: 0.1667
+Epoch 7/10
+53/53 [==============================] - 1s 11ms/sample - loss: 1.7134 - acc: 0.2264 - val_loss: 1.3997 - val_acc: 0.3889
+Epoch 8/10
+53/53 [==============================] - 1s 10ms/sample - loss: 1.3727 - acc: 0.4528 - val_loss: 1.3540 - val_acc: 0.4444
+Epoch 9/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.2766 - acc: 0.5660 - val_loss: 1.2534 - val_acc: 0.3889
+Epoch 10/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.2722 - acc: 0.3019 - val_loss: 1.2045 - val_acc: 0.7778
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 25ms/sample - loss: 3.9262 - acc: 0.1321 - val_loss: 2.6165 - val_acc: 0.3333
+Epoch 2/10
+53/53 [==============================] - 0s 9ms/sample - loss: 2.3613 - acc: 0.3019 - val_loss: 1.5894 - val_acc: 0.2778
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.8996 - acc: 0.4717 - val_loss: 1.7491 - val_acc: 0.3333
+Epoch 4/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.7813 - acc: 0.3396 - val_loss: 1.6700 - val_acc: 0.1667
+Epoch 5/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.6107 - acc: 0.4151 - val_loss: 1.8905 - val_acc: 0.3889
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.5109 - acc: 0.5472 - val_loss: 1.3652 - val_acc: 0.7778
+Epoch 7/10
+53/53 [==============================] - 0s 9ms/sample - loss: 1.2903 - acc: 0.6981 - val_loss: 1.2297 - val_acc: 0.9444
+Epoch 8/10
+53/53 [==============================] - 1s 11ms/sample - loss: 1.1210 - acc: 0.7736 - val_loss: 1.2141 - val_acc: 0.4444
+Epoch 9/10
+53/53 [==============================] - 0s 9ms/sample - loss: 0.9558 - acc: 0.7925 - val_loss: 1.0713 - val_acc: 0.7778
+Epoch 10/10
+53/53 [==============================] - 0s 8ms/sample - loss: 0.8667 - acc: 0.8679 - val_loss: 1.0305 - val_acc: 0.6667
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 27ms/sample - loss: 3.4773 - acc: 0.2642 - val_loss: 4.3287 - val_acc: 0.2778
+Epoch 2/10
+53/53 [==============================] - 0s 9ms/sample - loss: 3.4565 - acc: 0.2642 - val_loss: 1.9224 - val_acc: 0.1111
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.9096 - acc: 0.0943 - val_loss: 1.5103 - val_acc: 0.6111
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.5757 - acc: 0.4151 - val_loss: 1.4189 - val_acc: 0.2778
+Epoch 5/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.4656 - acc: 0.3208 - val_loss: 1.4148 - val_acc: 0.3333
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.3994 - acc: 0.2830 - val_loss: 1.1849 - val_acc: 0.8333
+Epoch 7/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.2403 - acc: 0.6038 - val_loss: 1.1154 - val_acc: 0.6111
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1207 - acc: 0.5660 - val_loss: 1.0195 - val_acc: 0.8333
+Epoch 9/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.9553 - acc: 0.9245 - val_loss: 0.9324 - val_acc: 0.7222
+Epoch 10/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.8176 - acc: 0.8491 - val_loss: 0.7067 - val_acc: 0.8333
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 25ms/sample - loss: 3.0585 - acc: 0.1887 - val_loss: 1.6962 - val_acc: 0.3333
+Epoch 2/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.9563 - acc: 0.2075 - val_loss: 1.5572 - val_acc: 0.1667
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.5204 - acc: 0.2453 - val_loss: 1.3465 - val_acc: 0.6111
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.3686 - acc: 0.5660 - val_loss: 1.6983 - val_acc: 0.2222
+Epoch 5/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.5303 - acc: 0.3396 - val_loss: 1.0696 - val_acc: 0.6111
+Epoch 6/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.0713 - acc: 0.6792 - val_loss: 1.0292 - val_acc: 0.6667
+Epoch 7/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.0290 - acc: 0.5472 - val_loss: 0.8508 - val_acc: 0.8889
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.7469 - acc: 0.9623 - val_loss: 0.8752 - val_acc: 0.8333
+Epoch 9/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.6951 - acc: 0.9245 - val_loss: 0.7286 - val_acc: 0.8889
+Epoch 10/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.5325 - acc: 0.9623 - val_loss: 0.6217 - val_acc: 0.8333
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 25ms/sample - loss: 2.9334 - acc: 0.2264 - val_loss: 1.5372 - val_acc: 0.2222
+Epoch 2/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.4592 - acc: 0.3396 - val_loss: 1.4626 - val_acc: 0.5000
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.3560 - acc: 0.6415 - val_loss: 1.9207 - val_acc: 0.2222
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.5206 - acc: 0.4717 - val_loss: 1.3720 - val_acc: 0.7222
+Epoch 5/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.1862 - acc: 0.6792 - val_loss: 1.3235 - val_acc: 0.5000
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 0.9984 - acc: 0.7736 - val_loss: 1.2029 - val_acc: 0.6667
+Epoch 7/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.8573 - acc: 0.8868 - val_loss: 1.1225 - val_acc: 0.6667
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.7598 - acc: 0.9434 - val_loss: 1.3797 - val_acc: 0.3889
+Epoch 9/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.9988 - acc: 0.6038 - val_loss: 0.9923 - val_acc: 0.7778
+Epoch 10/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.4976 - acc: 1.0000 - val_loss: 0.9156 - val_acc: 0.6667
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 25ms/sample - loss: 2.1102 - acc: 0.2642 - val_loss: 2.4924 - val_acc: 0.2778
+Epoch 2/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.1331 - acc: 0.2453 - val_loss: 1.4806 - val_acc: 0.4444
+Epoch 3/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.4586 - acc: 0.4717 - val_loss: 1.9262 - val_acc: 0.2778
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.6210 - acc: 0.3585 - val_loss: 1.3509 - val_acc: 0.6111
+Epoch 5/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.3509 - acc: 0.6038 - val_loss: 1.2896 - val_acc: 0.7222
+Epoch 6/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1436 - acc: 0.6226 - val_loss: 1.2017 - val_acc: 0.4444
+Epoch 7/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.0341 - acc: 0.5849 - val_loss: 1.0642 - val_acc: 0.6667
+Epoch 8/10
+53/53 [==============================] - 0s 9ms/sample - loss: 0.8405 - acc: 0.9434 - val_loss: 0.9511 - val_acc: 0.7778
+Epoch 9/10
+53/53 [==============================] - 0s 9ms/sample - loss: 0.7066 - acc: 0.8679 - val_loss: 0.7832 - val_acc: 0.8333
+Epoch 10/10
+53/53 [==============================] - 1s 11ms/sample - loss: 0.5042 - acc: 1.0000 - val_loss: 0.7332 - val_acc: 0.8333
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 2s 34ms/sample - loss: 3.1227 - acc: 0.2453 - val_loss: 3.7736 - val_acc: 0.2222
+Epoch 2/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.5304 - acc: 0.2830 - val_loss: 1.7902 - val_acc: 0.1667
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.5456 - acc: 0.4151 - val_loss: 1.6650 - val_acc: 0.1667
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.5554 - acc: 0.2075 - val_loss: 1.5378 - val_acc: 0.3889
+Epoch 5/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.4181 - acc: 0.4151 - val_loss: 1.3730 - val_acc: 0.3889
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.2304 - acc: 0.7358 - val_loss: 1.3449 - val_acc: 0.4444
+Epoch 7/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.2228 - acc: 0.5283 - val_loss: 1.3341 - val_acc: 0.4444
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1361 - acc: 0.5849 - val_loss: 1.2808 - val_acc: 0.7222
+Epoch 9/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.0305 - acc: 0.8491 - val_loss: 1.1339 - val_acc: 0.5000
+Epoch 10/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.8577 - acc: 0.6792 - val_loss: 0.8934 - val_acc: 0.8889
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 1s 28ms/sample - loss: 3.9559 - acc: 0.2830 - val_loss: 5.7902 - val_acc: 0.2778
+Epoch 2/10
+53/53 [==============================] - 0s 7ms/sample - loss: 4.6347 - acc: 0.2642 - val_loss: 1.8259 - val_acc: 0.2222
+Epoch 3/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.9288 - acc: 0.2075 - val_loss: 1.9242 - val_acc: 0.1667
+Epoch 4/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.5824 - acc: 0.2453 - val_loss: 1.5084 - val_acc: 0.2778
+Epoch 5/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.4928 - acc: 0.3208 - val_loss: 1.4258 - val_acc: 0.4444
+Epoch 6/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.2743 - acc: 0.6226 - val_loss: 1.3789 - val_acc: 0.6111
+Epoch 7/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1884 - acc: 0.7358 - val_loss: 1.3565 - val_acc: 0.5556
+Epoch 8/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.0187 - acc: 0.6792 - val_loss: 1.1638 - val_acc: 0.6667
+Epoch 9/10
+53/53 [==============================] - 0s 7ms/sample - loss: 1.1374 - acc: 0.6226 - val_loss: 1.1692 - val_acc: 0.5556
+Epoch 10/10
+53/53 [==============================] - 0s 7ms/sample - loss: 0.8177 - acc: 0.7925 - val_loss: 0.9216 - val_acc: 0.8333
+Train on 53 samples, validate on 18 samples
+Epoch 1/10
+53/53 [==============================] - 2s 29ms/sample - loss: 4.0592 - acc: 0.1698 - val_loss: 5.1427 - val_acc: 0.3333
+Epoch 2/10
+53/53 [==============================] - 0s 9ms/sample - loss: 5.3410 - acc: 0.2075 - val_loss: 1.8797 - val_acc: 0.2222
+Epoch 3/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.3284 - acc: 0.2075 - val_loss: 2.4048 - val_acc: 0.3333
+Epoch 4/10
+53/53 [==============================] - 0s 8ms/sample - loss: 2.5699 - acc: 0.1509 - val_loss: 1.8468 - val_acc: 0.0000e+00
+Epoch 5/10
+53/53 [==============================] - 1s 10ms/sample - loss: 1.6034 - acc: 0.1321 - val_loss: 1.8425 - val_acc: 0.2222
+Epoch 6/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.8429 - acc: 0.2453 - val_loss: 1.5802 - val_acc: 0.3333
+Epoch 7/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.4694 - acc: 0.3962 - val_loss: 1.5843 - val_acc: 0.3333
+Epoch 8/10
+53/53 [==============================] - 1s 10ms/sample - loss: 1.3741 - acc: 0.5472 - val_loss: 1.3059 - val_acc: 0.7222
+Epoch 9/10
+53/53 [==============================] - 0s 8ms/sample - loss: 1.3334 - acc: 0.6981 - val_loss: 1.1668 - val_acc: 0.3889
+Epoch 10/10
+53/53 [==============================] - 0s 9ms/sample - loss: 1.2938 - acc: 0.5094 - val_loss: 1.1484 - val_acc: 0.8889
+2D CNN: [0.6111111, 0.5, 0.8333333, 0.5555556, 0.7777778, 0.8888889, 0.8888889, 1.0, 0.7222222, 0.7222222]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2D CNN Results:&quot;</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2D CNN Results: DescribeResult(nobs=10, minmax=(0.5, 1.0), mean=0.75, variance=0.025548697, skewness=-0.11802570521831512, kurtosis=-1.0313951316598593)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
