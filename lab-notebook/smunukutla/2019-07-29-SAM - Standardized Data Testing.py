@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[141]:
 
 
 # environment set up
@@ -16,55 +16,104 @@ import matplotlib.pyplot as plt
 import os
 import random
 import pandas as pd
-
-# working folder
-# directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data"
-directory = os.environ['DATA_DIR']
-os.chdir(directory)
-
-# print(os.getcwd())
+from spectra_ml.io_ import load_spectra_metadata
 
 
-# In[4]:
+# In[142]:
 
 
-stddata_path = os.path.join(directory,"Srikar-Standardized")
-metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|")
+spectrum_len = 500 # automate this
+parent_dir = os.environ['PWD']
+stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_len))
+os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
+
+
+# In[143]:
+
+
+metadata = load_spectra_metadata(os.path.join(stddata_path,"spectra-metadata.csv"))
+
+metadata = metadata[metadata['value_type'] == "reflectance"]
+metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
+
 metadata.head()
 
 
-# In[5]:
+# In[144]:
 
 
-metadata.iloc[327, 1]
-
-
-# In[6]:
-
-
-# metadata.columns
-metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
-# ~metadata['spectrometer_purity_code'].str.contains("NIC4")
-metadata.shape
-
-
-# In[7]:
-
-
+nan_records = set()
 x = 0
 for i in range(metadata.shape[0]):
-    if metadata.iloc[i, 1] == 'reflectance':
-        spectrum = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(metadata.iloc[i, 0])))
-        for j in range(spectrum.shape[0]):
-            if np.isnan(spectrum.iloc[j, 1]):
-                print(str(metadata.iloc[i, 3]) + " " + str(metadata.iloc[i, 0]) + " " + str(metadata.iloc[i, 2]))
-                x += 1
-                break
+    spectrum = pd.read_csv(os.path.join(stddata_path,"{}.csv".format(str(metadata.iloc[i, 0]))))
+    for j in range(spectrum.shape[0]):
+        if np.isnan(spectrum.iloc[j, 1]):
+            print(str(metadata.iloc[i, 3]) + " " + str(metadata.iloc[i, 0]) + " " + str(metadata.iloc[i, 2]))
+            nan_records.add(metadata.iloc[i, 0])
+            x += 1
+            break
 
 print(x)
 
 
-# In[8]:
+# In[146]:
+
+
+nan_records
+
+
+# In[149]:
+
+
+# for row in range(metadata.iloc[:, 0].shape[0]):
+#     print(metadata.index[row])
+#     print(metadata.iat[row, 0])
+
+
+# In[150]:
+
+
+def removenans(metadata, nan_set):
+#     cols = ['index', 'notnan']
+    indices = []
+    ret = []
+    for row in range(metadata.iloc[:, 0].shape[0]):
+        indices.append(metadata.index[row])
+        if metadata.iat[row, 0] in nan_set:
+            ret.append(False)
+        else:
+            ret.append(True)
+    ret = pd.Series(ret, index=indices)
+    return ret
+
+
+# In[153]:
+
+
+# for y in metadata:
+#     print(y)
+
+
+# In[154]:
+
+
+removenans(metadata, nan_records)
+
+
+# In[155]:
+
+
+metadata = metadata[removenans(metadata, nan_records)]
+
+
+# In[156]:
+
+
+metadata
+
+
+# In[157]:
 
 
 num_nic = 0

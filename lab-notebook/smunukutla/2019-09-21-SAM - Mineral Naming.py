@@ -15,29 +15,41 @@ import os
 import random
 import pandas as pd
 import ast
+from spectra_ml.io_ import load_spectra_metadata
 
-data_dir = os.environ['DATA_DIR']
-stddata_path = os.path.join(data_dir,"Srikar-Standardized")
-metadata = pd.read_csv(os.path.join(stddata_path,"spectra-metadata.csv"), sep="|", dtype={"spectrum_id":str})
+
+# In[2]:
+
+
+spectrum_len = 500 # automate this
+parent_dir = os.environ['PWD']
+stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_len))
+os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
+
+
+# In[3]:
+
+
+metadata = load_spectra_metadata(os.path.join(stddata_path,"spectra-metadata.csv"))
 
 metadata = metadata[metadata['value_type'] == "reflectance"]
 metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in ChapterS Soils and Mixtures later
 
 
-# In[2]:
+# In[4]:
 
 
 metadata.sort_values('material',inplace=True)
 
 
-# In[3]:
+# In[5]:
 
 
 print(metadata.to_string())
 
 
-# In[9]:
+# In[6]:
 
 
 names = []
@@ -64,7 +76,7 @@ frame['material'] = series.index
 # series
 frame.iloc[:, 0].tolist()
 
-frame
+print(frame.to_string())
 
 
 # In[7]:
@@ -72,6 +84,12 @@ frame
 
 dictionary = {frame.iloc[:, 0].tolist()[i] : i for i in range(len(frame.iloc[:, 0].tolist()))}
 dictionary
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:

@@ -13190,6 +13190,185 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># spectrum_len = 480</span>
+<span class="c1"># spectra = np.zeros((num_samples,spectrum_len))</span>
+
+<span class="c1"># spectrum_categories = np.zeros(num_samples)</span>
+<span class="c1"># first_record_of_mixtures_chapter = 11602</span>
+<span class="c1"># is_a_mineral = 1                                   # these numbers match the chapter numbers given by usgs</span>
+<span class="c1"># is_a_mixture = 2</span>
+<span class="c1"># spectrum_names = [&quot;&quot; for x in range(num_samples)]</span>
+
+<span class="c1"># y = np.zeros((num_samples, 1))</span>
+
+<span class="c1"># os.chdir(dataset)</span>
+
+<span class="c1"># i = 0</span>
+
+<span class="c1"># for filename in os.listdir(dataset):</span>
+<span class="c1">#     file_object  = open(filename, &#39;r&#39;).readlines()</span>
+<span class="c1"># #     strip off header, add to matrix &#39;spectra&#39;</span>
+<span class="c1">#     spectra[i,:] = file_object[1:]</span>
+
+<span class="c1"># #     label spectrum class, based on header</span>
+<span class="c1"># #     actinolite: 0, alunite: 1, chlorite: 2</span>
+<span class="c1">#     material_name = file_object[0]</span>
+    
+<span class="c1">#     spectrum_names[i] = material_name</span>
+    
+<span class="c1">#     start = &#39;Record=&#39;</span>
+<span class="c1">#     end = &#39;:&#39;</span>
+<span class="c1">#     record_number = int((material_name.split(start))[1].split(end)[0])</span>
+<span class="c1">#     # print(record_number)</span>
+<span class="c1">#     if record_number &lt; first_record_of_mixtures_chapter:</span>
+<span class="c1">#         spectrum_categories[i] = is_a_mineral</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         spectrum_categories[i] = is_a_mixture</span>
+
+<span class="c1"># #     print(material_name)</span>
+
+<span class="c1">#     if material_name.find(&#39;Actinolite&#39;,) != -1: # if material name contains actinolite</span>
+<span class="c1">#         y[i,0] = 0</span>
+<span class="c1">#     elif material_name.find(&#39;Alun&#39;,)!= -1:</span>
+<span class="c1">#         y[i,0] = 1</span>
+<span class="c1">#     else: # chlorite</span>
+<span class="c1">#         y[i,0] = 2</span>
+
+<span class="c1"># #     turn missing points into 0</span>
+<span class="c1">#     for j in range(spectrum_len):</span>
+<span class="c1">#         if spectra[i,j] &lt; 0:</span>
+<span class="c1">#             spectra[i,j] = 0</span>
+<span class="c1">#     i+=1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># --- plot the classes</span>
+
+<span class="c1"># plot each class in a separate plot</span>
+<span class="c1"># plot spectra names in legend</span>
+<span class="c1"># plot minerals and mixtures w diff line widths</span>
+
+<span class="c1"># mineral_names = [&quot;Actinolite&quot;, &quot;Alunite&quot;, &quot;Chlorite&quot;]</span>
+
+<span class="c1"># # variables</span>
+<span class="c1"># num0 = 0 #number of samples of class 0</span>
+<span class="c1"># num1 = 0</span>
+<span class="c1"># num2 = 0</span>
+
+<span class="c1"># mineral_linewidth = 1         # linewidth = 1 is default</span>
+<span class="c1"># mixture_linewidth = 3         </span>
+
+<span class="c1"># # count the number of each class to make spectra0, spectra1, spectra2 databases</span>
+<span class="c1"># for i in range(num_samples):</span>
+<span class="c1">#     if y[i,0]== 0:</span>
+<span class="c1">#         num0 += 1</span>
+<span class="c1">#     elif y[i,0]== 1:</span>
+<span class="c1">#         num1 += 1</span>
+<span class="c1">#     elif y[i,0]== 2:</span>
+<span class="c1">#         num2 += 1</span>
+
+<span class="c1"># # make class-specific databases spectra0, ...1, ...2</span>
+<span class="c1"># spectra0 = np.zeros((num0,spectrum_len)) </span>
+<span class="c1"># spectra1 = np.zeros((num1,spectrum_len)) </span>
+<span class="c1"># spectra2 = np.zeros((num2,spectrum_len)) </span>
+
+<span class="c1"># labels0 = [&quot;&quot; for x in range(num0)]</span>
+<span class="c1"># labels1 = [&quot;&quot; for x in range(num1)]</span>
+<span class="c1"># labels2 = [&quot;&quot; for x in range(num2)]</span>
+
+<span class="c1"># linewidth0 = np.zeros(num0)</span>
+<span class="c1"># linewidth1 = np.zeros(num1)</span>
+<span class="c1"># linewidth2 = np.zeros(num2)</span>
+
+
+<span class="c1"># # make counters for each database to place spectra</span>
+<span class="c1"># i0 = 0</span>
+<span class="c1"># i1 = 0</span>
+<span class="c1"># i2 = 0</span>
+
+<span class="c1"># # set linewidth for the spectrum </span>
+<span class="c1"># # populate class-specific databases spectra0, ...1, ...2</span>
+<span class="c1"># for i in range(num_samples):</span>
+    
+<span class="c1">#     # set linewidth</span>
+<span class="c1">#     #testcode</span>
+<span class="c1">#     #print(spectrum_categories)</span>
+<span class="c1">#     #print(spectrum_categories[i])</span>
+    
+<span class="c1"># #     if spectrum_categories[i] == is_a_mineral:</span>
+<span class="c1"># #         linewidth = mineral_linewidth</span>
+        
+<span class="c1"># #         #testcode</span>
+<span class="c1"># #         #print(&#39;min&#39;)</span>
+<span class="c1"># #     else: </span>
+<span class="c1"># #         linewidth = mixture_linewidth</span>
+<span class="c1">#     linewidth = 2</span>
+        
+<span class="c1">#         #testcode</span>
+<span class="c1">#         #print(&#39;mix&#39;)</span>
+    
+<span class="c1">#     # populate matrices for making each class plot</span>
+<span class="c1">#     if y[i,0]== 0:</span>
+<span class="c1">#         spectra0[i0,:] = spectra[i,:]</span>
+<span class="c1">#         labels0[i0] = spectrum_names[i]</span>
+<span class="c1">#         linewidth0[i0] = linewidth</span>
+<span class="c1">#         i0 +=1</span>
+<span class="c1">#     elif y[i,0]== 1:</span>
+<span class="c1">#         spectra1[i1,:] = spectra[i,:]</span>
+<span class="c1">#         labels1[i1] = spectrum_names[i]</span>
+<span class="c1">#         linewidth1[i1] = linewidth</span>
+<span class="c1">#         i1 +=1</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         spectra2[i2,:] = spectra[i,:]</span>
+<span class="c1">#         labels2[i2] = spectrum_names[i]</span>
+<span class="c1">#         linewidth2[i2] = linewidth</span>
+<span class="c1">#         i2 +=1</span>
+
+<span class="c1"># plot each class-specific database separately</span>
+<span class="c1"># for i in range(i0):</span>
+<span class="c1">#     fig = plt.figure()</span>
+<span class="c1">#     plt.plot(range(1, spectrum_len+1), spectra0[i,:], label = labels0[i], linewidth = linewidth0[i]) # remove linewidth for all mixtures/minerals to be standard</span>
+<span class="c1">#     plt.plot(wavelengths[0,:], spectra0[i,:]) # remove linewidth for all mixtures/minerals to be standard</span>
+<span class="c1">#     plt.xticks([])</span>
+<span class="c1">#     plt.yticks([])</span>
+<span class="c1">#     plt.show()</span>
+<span class="c1">#     path = &quot;/Users/Srikar/Desktop/Velexi/spectra-ml/lab-notebook/smunukutla/plots/&quot; + mineral_names[0] + str(i) + &quot;.png&quot;</span>
+<span class="c1">#     fig.savefig(path, format = &quot;PNG&quot;)</span>
+<span class="c1"># plt.legend(bbox_to_anchor=(1.1, 1.05))</span>
+<span class="c1"># plt.show()</span>
+
+<span class="c1"># for i in range(i1):</span>
+<span class="c1">#     plt.plot(range(1, spectrum_len+1), spectra1[i,:], label = labels1[i], linewidth = linewidth1[i])</span>
+<span class="c1">#     plt.plot(wavelengths[0,:], spectra1[i,:])</span>
+<span class="c1"># plt.legend(bbox_to_anchor=(1.1, 1.05))</span>
+<span class="c1"># plt.show()</span>
+
+<span class="c1"># for i in range(i2):</span>
+<span class="c1">#     plt.plot(range(1, spectrum_len+1), spectra2[i,:], label = labels2[i], linewidth = linewidth2[i])</span>
+<span class="c1">#     plt.plot(wavelengths[0,:], spectra2[i,:])</span>
+<span class="c1"># plt.legend(bbox_to_anchor=(1.1, 1.05))</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
     </div>
   </div>
 </body>
