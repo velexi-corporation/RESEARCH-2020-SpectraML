@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[21]:
+# In[1]:
 
 
 # environment set up
@@ -14,7 +14,7 @@ import pandas as pd
 from spectra_ml.io_ import load_spectra_metadata
 
 
-# In[22]:
+# In[2]:
 
 
 # working folder
@@ -25,7 +25,7 @@ data_dir = os.environ['DATA_DIR']
 stddata_path = os.path.join(data_dir, "StdData-" + str(spectrum_len))
 
 
-# In[23]:
+# In[3]:
 
 
 metadata = load_spectra_metadata(os.path.join(stddata_path,"spectra-metadata.csv"))
@@ -35,7 +35,7 @@ metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
 metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")]
 
 
-# In[24]:
+# In[4]:
 
 
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
@@ -47,14 +47,14 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[25]:
+# In[5]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[26]:
+# In[6]:
 
 
 for i in range(num_samples):
@@ -64,27 +64,27 @@ for i in range(num_samples):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[27]:
+# In[7]:
 
 
 num_samples
 
 
-# In[31]:
+# In[8]:
 
 
-# height = 1.5
-# width = 1.5*height
+height = 3
+width = 1.5*height
 linewidth = 4
-# figsize=(width, height), dpi=100
+# figsize=(width, height), dpi=96
 for i in range(num_samples):
-    fig = plt.figure()
+    fig = plt.figure(figsize=(width, height), dpi=60)
     plt.plot(wavelengths[0,:], spectra[i,:], linewidth = linewidth, color='k')
     plt.xticks([])
     plt.yticks([])
     ax = fig.axes
     ax[0].axis('off')
-    path = os.path.join(data_dir, "plots", record_nums[i] + "-" + spectrum_names[i] + ".png")
+    path = os.path.join(data_dir, "plots-" + str(spectrum_len), record_nums[i] + "-" + spectrum_names[i] + ".png")
     fig.savefig(path, format = "PNG")
     plt.close(fig)
 

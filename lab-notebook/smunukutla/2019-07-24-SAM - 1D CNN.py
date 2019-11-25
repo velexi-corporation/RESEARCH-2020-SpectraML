@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[26]:
+# In[1]:
 
 
 # environment set up
 import tensorflow as tf
 import tensorflow.keras
-from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Reshape, Conv1D, MaxPooling1D, Flatten, Dense, Dropout
 from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard
 from tensorflow.keras import metrics
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,9 +19,10 @@ import random
 import pandas as pd
 import ast
 from scipy import stats as st
+import time
 
 
-# In[27]:
+# In[2]:
 
 
 # working folder = "/Users/Srikar/Desktop/Velexi/spectra-ml/data"
@@ -31,7 +33,7 @@ stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_le
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[28]:
+# In[3]:
 
 
 # data extraction
@@ -44,7 +46,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[29]:
+# In[4]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
@@ -53,7 +55,7 @@ spectra = np.zeros((num_samples,spectrum_len))
 # y = np.zeros((num_samples, 1))
 
 
-# In[30]:
+# In[5]:
 
 
 for i in range(len(record_nums)):
@@ -63,13 +65,13 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[31]:
+# In[6]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[34]:
+# In[7]:
 
 
 fi = open("indices.txt", "r")
@@ -77,6 +79,8 @@ num_runs = int(fi.readline())
 num_minerals = int(fi.readline())
 
 stats = []
+
+init_time = time.time()
 
 for i in range(num_runs):
     train_set_indices = ast.literal_eval(fi.readline())
@@ -124,9 +128,9 @@ for i in range(num_runs):
     model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1))) # optional: , dtype=tf.dtypes.float64
     model.add(Conv1D(64, 25, activation='relu'))
     model.add(MaxPooling1D(4)) # 108 by 64 so far
-    model.add(Conv1D(100, 25, activation='relu'))
-    model.add(Conv1D(100, 25, activation='relu'))
-    model.add(MaxPooling1D(4))
+#     model.add(Conv1D(100, 25, activation='relu'))
+#     model.add(Conv1D(100, 25, activation='relu'))
+#     model.add(MaxPooling1D(4))
     # model.add(Dropout(0.5))
     # model.add(GlobalAveragePooling1D())
     model.add(Flatten())
@@ -135,9 +139,17 @@ for i in range(num_runs):
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     BATCH_SIZE = 32
-    EPOCHS = 25
+    EPOCHS = 80
+    
+    checkpointer = ModelCheckpoint(filepath="model.h5",
+                               verbose=0,
+                               save_best_only=True)
+    tensorboard = TensorBoard(log_dir='./logs',
+                          histogram_freq=0,
+                          write_graph=True,
+                          write_images=True)
 
-    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
+    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
     
     my_list = model.evaluate(test_set, test_labels, verbose=0)
 
@@ -162,9 +174,11 @@ for i in range(num_runs):
 
 # print("1D CNN:", stats)
 print("1D CNN Results:", st.describe(stats))
+total_seconds = time.time() - init_time
+print(total_seconds)
 
 
-# In[6]:
+# In[8]:
 
 
 # # random.seed()
@@ -181,6 +195,52 @@ print("1D CNN Results:", st.describe(stats))
 # model.add(Flatten())
 # model.add(Dense(3, activation='softmax'))
 # print(model.summary())
+
+
+# In[9]:
+
+
+loaded_model = load_model('model.h5')
+
+
+# In[10]:
+
+
+plt.plot(history['loss'])
+plt.plot(history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='upper right')
+
+
+# In[11]:
+
+
+plt.plot(history['loss'])
+plt.plot(history['val_loss'])
+plt.title('1D CNN loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='upper right')
+
+
+# In[13]:
+
+
+history
+
+
+# In[14]:
+
+
+model.save('1dcnn.h5')
+
+
+# In[18]:
+
+
+
 
 
 # In[ ]:

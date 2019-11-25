@@ -14,24 +14,26 @@ import random
 import ast
 import tensorflow as tf
 import tensorflow.keras
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, GlobalAveragePooling2D, Dropout
+from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard
 from tensorflow.keras.utils import to_categorical
 from scipy import stats as st
+import time
 
 
-# In[2]:
+# In[5]:
 
 
 spectrum_len = 500 # automate this
 data_dir = os.environ['DATA_DIR']
 parent_dir = os.environ['PWD']
 stddata_path = os.path.join(data_dir, "StdData-" + str(spectrum_len))
-plots_dir = os.path.join(data_dir, "plots")
+plots_dir = os.path.join(data_dir, "plots-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[3]:
+# In[6]:
 
 
 img = mpimg.imread(os.path.join(plots_dir, os.listdir(plots_dir)[0]))
@@ -39,7 +41,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[4]:
+# In[7]:
 
 
 def convertimg(img):
@@ -51,7 +53,7 @@ def convertimg(img):
     return newimg
 
 
-# In[5]:
+# In[8]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -62,9 +64,10 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[6]:
+# In[10]:
 
 
+start_time = time.time()
 spectra = np.zeros((num_samples, spectrum_height, spectrum_width))
 i = 0
 for num in record_nums:
@@ -72,21 +75,24 @@ for num in record_nums:
     spectra[i] = convertimg(img)
     i += 1
 
+end_time = time.time()
+print(end_time - start_time)
 
-# In[7]:
+
+# In[11]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1], spectra.shape[2], 1)
 spectra.shape
 
 
-# In[8]:
+# In[12]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[10]:
+# In[13]:
 
 
 fi = open("indices.txt", "r")
@@ -94,6 +100,8 @@ num_runs = int(fi.readline())
 num_minerals = int(fi.readline())
 
 stats = []
+
+init_time = time.time()
 
 for i in range(num_runs):
     train_set_indices = ast.literal_eval(fi.readline())
@@ -136,21 +144,65 @@ for i in range(num_runs):
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     
     BATCH_SIZE = 32
-    EPOCHS = 10
+    EPOCHS = 25
     
-    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=1, validation_data=(dev_set, dev_labels))
+    checkpointer = ModelCheckpoint(filepath="model.h5",
+                               verbose=0,
+                               save_best_only=True)
+    tensorboard = TensorBoard(log_dir='./logs',
+                          histogram_freq=0,
+                          write_graph=True,
+                          write_images=True)
+    
+    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
     
     my_list = model.evaluate(test_set, test_labels, verbose=0)
     
     stats.append(my_list[1])
 
 print("2D CNN Results:", st.describe(stats))
+total_seconds = time.time() - init_time
+print(total_seconds)
 
 
-# In[16]:
+# In[ ]:
 
 
-model.layers[3].output
+# model.layers[3].output
+
+
+# In[ ]:
+
+
+# loaded_model = load_model('model.h5')
+
+
+# In[ ]:
+
+
+plt.plot(history['loss'])
+plt.plot(history['val_loss'])
+plt.title('2D CNN loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='upper right')
+
+
+# In[ ]:
+
+
+plt.plot(history['acc'])
+plt.plot(history['val_acc'])
+plt.title('2D CNN accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'validation'], loc='lower right')
+
+
+# In[ ]:
+
+
+# model.save('2dcnn.h5')
 
 
 # In[ ]:

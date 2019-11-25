@@ -1,6 +1,35 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[6]:
+
+
+import os
+import pandas as pd
+import csv
+import numpy as np
+from sklearn.model_selection import train_test_split
+from spectra_ml.io_ import load_spectra_metadata
+
+spectrum_len = 500 # automate this
+data_dir = os.environ['DATA_DIR']
+stddata_path = os.path.join(data_dir, "StdData-" + str(spectrum_len))
+metadata = load_spectra_metadata(os.path.join(stddata_path,"spectra-metadata.csv"))
+
+
+
+metadata = metadata[metadata['value_type'] == "reflectance"]
+print(metadata.shape)
+metadata = metadata[~metadata['spectrometer_purity_code'].str.contains("NIC4")]
+metadata = metadata[metadata['raw_data_path'].str.contains("ChapterM")] # add in ChapterS Soils a
+
+
+# In[5]:
+
+
+metadata.shape
+
+
 # In[ ]:
 
 
