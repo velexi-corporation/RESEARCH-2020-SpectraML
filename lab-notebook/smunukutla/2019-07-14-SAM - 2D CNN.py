@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 # import libraries
@@ -22,7 +22,7 @@ from scipy import stats as st
 import time
 
 
-# In[5]:
+# In[13]:
 
 
 spectrum_len = 500 # automate this
@@ -33,7 +33,7 @@ plots_dir = os.path.join(data_dir, "plots-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[6]:
+# In[14]:
 
 
 img = mpimg.imread(os.path.join(plots_dir, os.listdir(plots_dir)[0]))
@@ -41,7 +41,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[7]:
+# In[15]:
 
 
 def convertimg(img):
@@ -53,7 +53,7 @@ def convertimg(img):
     return newimg
 
 
-# In[8]:
+# In[16]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -64,7 +64,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[10]:
+# In[17]:
 
 
 start_time = time.time()
@@ -79,20 +79,20 @@ end_time = time.time()
 print(end_time - start_time)
 
 
-# In[11]:
+# In[18]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1], spectra.shape[2], 1)
 spectra.shape
 
 
-# In[12]:
+# In[19]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[13]:
+# In[20]:
 
 
 fi = open("indices.txt", "r")
@@ -146,19 +146,20 @@ for i in range(num_runs):
     BATCH_SIZE = 32
     EPOCHS = 25
     
-    checkpointer = ModelCheckpoint(filepath="model.h5",
-                               verbose=0,
-                               save_best_only=True)
-    tensorboard = TensorBoard(log_dir='./logs',
-                          histogram_freq=0,
-                          write_graph=True,
-                          write_images=True)
+#     checkpointer = ModelCheckpoint(filepath="model.h5",
+#                                verbose=0,
+#                                save_best_only=True)
+#     tensorboard = TensorBoard(log_dir='./logs',
+#                           histogram_freq=0,
+#                           write_graph=True,
+#                           write_images=True)
     
-    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
+#     history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels))
     
-    my_list = model.evaluate(test_set, test_labels, verbose=0)
+    preds = model.evaluate(test_set, test_labels, verbose=0)
     
-    stats.append(my_list[1])
+    stats.append(preds[1])
 
 print("2D CNN Results:", st.describe(stats))
 total_seconds = time.time() - init_time

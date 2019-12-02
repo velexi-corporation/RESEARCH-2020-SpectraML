@@ -26,7 +26,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import time
 
 
-# In[2]:
+# In[12]:
 
 
 spectrum_len = 500 # automate this
@@ -37,7 +37,7 @@ plots_dir = os.path.join(data_dir, "plots-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[3]:
+# In[13]:
 
 
 img = mpimg.imread(os.path.join(plots_dir, os.listdir(plots_dir)[0]))
@@ -45,7 +45,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[4]:
+# In[14]:
 
 
 def convertimg(img):
@@ -57,7 +57,7 @@ def convertimg(img):
     return newimg
 
 
-# In[5]:
+# In[15]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -68,7 +68,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[6]:
+# In[16]:
 
 
 start_time = time.time()
@@ -83,26 +83,26 @@ end_time = time.time()
 print(end_time - start_time)
 
 
-# In[7]:
+# In[17]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1], spectra.shape[2], 1)
 spectra.shape
 
 
-# In[8]:
+# In[18]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[9]:
+# In[19]:
 
 
 spectra[[0, 1], :].shape
 
 
-# In[10]:
+# In[20]:
 
 
 # fi = open("indices.txt", "r")
@@ -158,7 +158,7 @@ spectra[[0, 1], :].shape
 # print("2D CNN + Random Forest Results:", st.describe(stats))
 
 
-# In[13]:
+# In[22]:
 
 
 fi = open("indices.txt", "r")
@@ -187,18 +187,10 @@ for i in range(10):
 #     print(dev_set_indices)
     
     train_set = spectra[train_set_indices, :]
-#     train_labels = y[train_set_indices, :]
-    dev_set = spectra[dev_set_indices, :]
-#     dev_labels = y[dev_set_indices, :]
-    test_set = spectra[test_set_indices, :]
-#     test_labels = y[test_set_indices, :]
-
-#     train_labels = to_categorical(train_labels)
-#     dev_labels = to_categorical(dev_labels)
-#     test_labels = to_categorical(test_labels) # take apart the input and the output
-    
     train_labels = y_cat[train_set_indices, :]
+    dev_set = spectra[dev_set_indices, :]
     dev_labels = y_cat[dev_set_indices, :]
+    test_set = spectra[test_set_indices, :]
     test_labels = y_cat[test_set_indices, :]
     
     model = Sequential()
@@ -214,24 +206,25 @@ for i in range(10):
 #     model.add(Dense(num_minerals*5, activation='relu'))
     
     model.add(Dense(num_minerals, activation='softmax'))
-    model.summary()
+#     model.summary()
     
     flatten_ind = 3
     
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     
     BATCH_SIZE = 32
-    EPOCHS = 10
+    EPOCHS = 20
     
-    checkpointer = ModelCheckpoint(filepath="model.h5",
-                               verbose=0,
-                               save_best_only=True)
-    tensorboard = TensorBoard(log_dir='./logs',
-                          histogram_freq=0,
-                          write_graph=True,
-                          write_images=True)
+#     checkpointer = ModelCheckpoint(filepath="model.h5",
+#                                verbose=0,
+#                                save_best_only=True)
+#     tensorboard = TensorBoard(log_dir='./logs',
+#                           histogram_freq=0,
+#                           write_graph=True,
+#                           write_images=True)
     
-    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard, EarlyStopping(monitor='val_acc', patience=5)]).history
+#     history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard, EarlyStopping(monitor='val_acc', patience=5)]).history
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(dev_set, dev_labels))
     
     FC_layer_model = Model(inputs=model.input, outputs=model.get_layer(index=flatten_ind).output)
 #     FC_layer_model.summary()
@@ -247,7 +240,7 @@ for i in range(10):
 #         print(FC_output.shape)
         features[p] = FC_output
     
-    np.save('features', features)
+#     np.save('features', features)
     
     feature_col = []
     for p in range(model.layers[flatten_ind].output.shape[1]):

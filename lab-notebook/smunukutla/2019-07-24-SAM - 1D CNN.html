@@ -13292,22 +13292,24 @@ div#notebook {
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_minerals</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
     
+    <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+    
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
     <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">32</span>
     <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">80</span>
     
-    <span class="n">checkpointer</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;model.h5&quot;</span><span class="p">,</span>
-                               <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                               <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s1">&#39;./logs&#39;</span><span class="p">,</span>
-                          <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                          <span class="n">write_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                          <span class="n">write_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#     checkpointer = ModelCheckpoint(filepath=&quot;model.h5&quot;,</span>
+<span class="c1">#                                verbose=0,</span>
+<span class="c1">#                                save_best_only=True)</span>
+<span class="c1">#     tensorboard = TensorBoard(log_dir=&#39;./logs&#39;,</span>
+<span class="c1">#                           histogram_freq=0,</span>
+<span class="c1">#                           write_graph=True,</span>
+<span class="c1">#                           write_images=True)</span>
 
-    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">dev_set</span><span class="p">,</span> <span class="n">dev_labels</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">,</span> <span class="n">tensorboard</span><span class="p">])</span><span class="o">.</span><span class="n">history</span>
-    
-    <span class="n">my_list</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">#     history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">dev_set</span><span class="p">,</span> <span class="n">dev_labels</span><span class="p">))</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">#     print(tf.keras.losses.categorical_crossentropy())</span>
     
@@ -13326,7 +13328,7 @@ div#notebook {
 <span class="c1">#     print(dev_labels[13])</span>
 <span class="c1">#     print(dev_set[13])</span>
     
-    <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preds</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># print(&quot;1D CNN:&quot;, stats)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1D CNN Results:&quot;</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>
@@ -13349,9 +13351,37 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>WARNING: Logging before flag parsing goes to stderr.
-W1107 00:57:41.506801 4321418560 deprecation.py:506] From /Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+W1125 14:39:27.043610 4625276352 deprecation.py:506] From /Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: &#34;sequential&#34;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d (Conv1D)              (None, 476, 64)           1664      
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 452, 64)           102464    
+_________________________________________________________________
+max_pooling1d (MaxPooling1D) (None, 113, 64)           0         
+_________________________________________________________________
+flatten (Flatten)            (None, 7232)              0         
+_________________________________________________________________
+dense (Dense)                (None, 10)                72330     
+=================================================================
+Total params: 176,458
+Trainable params: 176,458
+Non-trainable params: 0
+_________________________________________________________________
 </pre>
 </div>
 </div>
@@ -13365,12 +13395,12 @@ Call initializer instance with the dtype argument instead of passing it to the c
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-c9e7283d1ab5&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     74</span>                           write_images=True)
-<span class="ansi-green-intense-fg ansi-bold">     75</span> 
-<span class="ansi-green-fg">---&gt; 76</span><span class="ansi-red-fg">     </span>history <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train_set<span class="ansi-blue-fg">,</span> train_labels<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span>BATCH_SIZE<span class="ansi-blue-fg">,</span> epochs<span class="ansi-blue-fg">=</span>EPOCHS<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> validation_data<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span>dev_set<span class="ansi-blue-fg">,</span> dev_labels<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> callbacks<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span>checkpointer<span class="ansi-blue-fg">,</span> tensorboard<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>history
+<span class="ansi-green-fg">&lt;ipython-input-7-66f2ab5a9c3e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     76</span>                           write_images=True)
 <span class="ansi-green-intense-fg ansi-bold">     77</span> 
-<span class="ansi-green-intense-fg ansi-bold">     78</span>     my_list <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>evaluate<span class="ansi-blue-fg">(</span>test_set<span class="ansi-blue-fg">,</span> test_labels<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 78</span><span class="ansi-red-fg">     </span>history <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train_set<span class="ansi-blue-fg">,</span> train_labels<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span>BATCH_SIZE<span class="ansi-blue-fg">,</span> epochs<span class="ansi-blue-fg">=</span>EPOCHS<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> validation_data<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span>dev_set<span class="ansi-blue-fg">,</span> dev_labels<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> callbacks<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span>checkpointer<span class="ansi-blue-fg">,</span> tensorboard<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>history
+<span class="ansi-green-intense-fg ansi-bold">     79</span> 
+<span class="ansi-green-intense-fg ansi-bold">     80</span>     my_list <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>evaluate<span class="ansi-blue-fg">(</span>test_set<span class="ansi-blue-fg">,</span> test_labels<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_freq, max_queue_size, workers, use_multiprocessing, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">    778</span>           validation_steps<span class="ansi-blue-fg">=</span>validation_steps<span class="ansi-blue-fg">,</span>

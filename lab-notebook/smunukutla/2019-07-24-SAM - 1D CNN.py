@@ -136,22 +136,24 @@ for i in range(num_runs):
     model.add(Flatten())
     model.add(Dense(num_minerals, activation='softmax'))
     
+    model.summary()
+    
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     BATCH_SIZE = 32
     EPOCHS = 80
     
-    checkpointer = ModelCheckpoint(filepath="model.h5",
-                               verbose=0,
-                               save_best_only=True)
-    tensorboard = TensorBoard(log_dir='./logs',
-                          histogram_freq=0,
-                          write_graph=True,
-                          write_images=True)
+#     checkpointer = ModelCheckpoint(filepath="model.h5",
+#                                verbose=0,
+#                                save_best_only=True)
+#     tensorboard = TensorBoard(log_dir='./logs',
+#                           histogram_freq=0,
+#                           write_graph=True,
+#                           write_images=True)
 
-    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
-    
-    my_list = model.evaluate(test_set, test_labels, verbose=0)
+#     history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels))
+    preds = model.evaluate(test_set, test_labels, verbose=0)
 
 #     print(tf.keras.losses.categorical_crossentropy())
     
@@ -170,7 +172,7 @@ for i in range(num_runs):
 #     print(dev_labels[13])
 #     print(dev_set[13])
     
-    stats.append(my_list[1])
+    stats.append(preds[1])
 
 # print("1D CNN:", stats)
 print("1D CNN Results:", st.describe(stats))

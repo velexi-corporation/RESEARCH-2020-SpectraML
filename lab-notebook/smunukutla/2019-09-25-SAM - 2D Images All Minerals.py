@@ -70,13 +70,13 @@ for i in range(num_samples):
 num_samples
 
 
-# In[8]:
+# In[9]:
 
 
 height = 3
 width = 1.5*height
 linewidth = 4
-# figsize=(width, height), dpi=96
+# figsize=(width, height), dpi=96 default
 for i in range(num_samples):
     fig = plt.figure(figsize=(width, height), dpi=60)
     plt.plot(wavelengths[0,:], spectra[i,:], linewidth = linewidth, color='k')
