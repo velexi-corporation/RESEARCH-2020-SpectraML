@@ -13227,7 +13227,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;indices.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
@@ -13295,17 +13295,9 @@ div#notebook {
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
     <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">32</span>
-    <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">80</span>
-    
-    <span class="n">checkpointer</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;model.h5&quot;</span><span class="p">,</span>
-                               <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                               <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s1">&#39;./logs&#39;</span><span class="p">,</span>
-                          <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                          <span class="n">write_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                          <span class="n">write_images</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">10</span>
 
-    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">dev_set</span><span class="p">,</span> <span class="n">dev_labels</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">,</span> <span class="n">tensorboard</span><span class="p">])</span><span class="o">.</span><span class="n">history</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">dev_set</span><span class="p">,</span> <span class="n">dev_labels</span><span class="p">))</span>
     
     <span class="n">my_list</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
@@ -13347,60 +13339,10 @@ div#notebook {
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Logging before flag parsing goes to stderr.
-W1204 16:26:24.563110 4533767616 deprecation.py:506] From /Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
-Instructions for updating:
-Call initializer instance with the dtype argument instead of passing it to the constructor
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1D CNN Results: DescribeResult(nobs=20, minmax=(0.23529412, 0.5294118), mean=0.3588235, variance=0.0048807138, skewness=0.5057514309883118, kurtosis=0.24721743020412568)
+226.51012110710144
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-d5fbd574207b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     74</span>                           write_images=True)
-<span class="ansi-green-intense-fg ansi-bold">     75</span> 
-<span class="ansi-green-fg">---&gt; 76</span><span class="ansi-red-fg">     </span>history <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train_set<span class="ansi-blue-fg">,</span> train_labels<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span>BATCH_SIZE<span class="ansi-blue-fg">,</span> epochs<span class="ansi-blue-fg">=</span>EPOCHS<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> validation_data<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span>dev_set<span class="ansi-blue-fg">,</span> dev_labels<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> callbacks<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span>checkpointer<span class="ansi-blue-fg">,</span> tensorboard<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>history
-<span class="ansi-green-intense-fg ansi-bold">     77</span> 
-<span class="ansi-green-intense-fg ansi-bold">     78</span>     my_list <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>evaluate<span class="ansi-blue-fg">(</span>test_set<span class="ansi-blue-fg">,</span> test_labels<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_freq, max_queue_size, workers, use_multiprocessing, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    778</span>           validation_steps<span class="ansi-blue-fg">=</span>validation_steps<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    779</span>           validation_freq<span class="ansi-blue-fg">=</span>validation_freq<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 780</span><span class="ansi-red-fg">           steps_name=&#39;steps_per_epoch&#39;)
-</span><span class="ansi-green-intense-fg ansi-bold">    781</span> 
-<span class="ansi-green-intense-fg ansi-bold">    782</span>   def evaluate(self,
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_arrays.py</span> in <span class="ansi-cyan-fg">model_iteration</span><span class="ansi-blue-fg">(model, inputs, targets, sample_weights, batch_size, epochs, verbose, callbacks, val_inputs, val_targets, val_sample_weights, shuffle, initial_epoch, steps_per_epoch, validation_steps, validation_freq, mode, validation_in_fit, prepared_feed_values_from_dataset, steps_name, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    361</span> 
-<span class="ansi-green-intense-fg ansi-bold">    362</span>         <span class="ansi-red-fg"># Get outputs.</span>
-<span class="ansi-green-fg">--&gt; 363</span><span class="ansi-red-fg">         </span>batch_outs <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">(</span>ins_batch<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    364</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> isinstance<span class="ansi-blue-fg">(</span>batch_outs<span class="ansi-blue-fg">,</span> list<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    365</span>           batch_outs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>batch_outs<span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/backend.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, inputs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   3290</span> 
-<span class="ansi-green-intense-fg ansi-bold">   3291</span>     fetched = self._callable_fn(*array_vals,
-<span class="ansi-green-fg">-&gt; 3292</span><span class="ansi-red-fg">                                 run_metadata=self.run_metadata)
-</span><span class="ansi-green-intense-fg ansi-bold">   3293</span>     self<span class="ansi-blue-fg">.</span>_call_fetch_callbacks<span class="ansi-blue-fg">(</span>fetched<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span>len<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_fetches<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   3294</span>     output_structure = nest.pack_sequence_as(
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/client/session.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1456</span>         ret = tf_session.TF_SessionRunCallable(self._session._session,
-<span class="ansi-green-intense-fg ansi-bold">   1457</span>                                                self<span class="ansi-blue-fg">.</span>_handle<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1458</span><span class="ansi-red-fg">                                                run_metadata_ptr)
-</span><span class="ansi-green-intense-fg ansi-bold">   1459</span>         <span class="ansi-green-fg">if</span> run_metadata<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1460</span>           proto_data <span class="ansi-blue-fg">=</span> tf_session<span class="ansi-blue-fg">.</span>TF_GetBuffer<span class="ansi-blue-fg">(</span>run_metadata_ptr<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 

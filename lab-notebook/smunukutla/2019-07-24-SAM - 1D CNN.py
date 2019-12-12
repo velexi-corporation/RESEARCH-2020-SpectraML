@@ -125,8 +125,8 @@ for i in range(num_runs):
     
     model = Sequential() # tf upgrading to 2.0, after that we need to specify the dtype/construct all layers at once
     # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
-    model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1))) # optional: , dtype=tf.dtypes.float64
-    model.add(Conv1D(64, 25, activation='relu'))
+    model.add(Conv1D(32, 25, activation='relu', input_shape=(train_set.shape[1], 1))) # optional: , dtype=tf.dtypes.float64
+    model.add(Conv1D(32, 25, activation='relu'))
     model.add(MaxPooling1D(4)) # 108 by 64 so far
 #     model.add(Conv1D(100, 25, activation='relu'))
 #     model.add(Conv1D(100, 25, activation='relu'))
@@ -136,12 +136,12 @@ for i in range(num_runs):
     model.add(Flatten())
     model.add(Dense(num_minerals, activation='softmax'))
     
-    model.summary()
+#     model.summary()
     
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     BATCH_SIZE = 32
-    EPOCHS = 80
+    EPOCHS = 25
     
 #     checkpointer = ModelCheckpoint(filepath="model.h5",
 #                                verbose=0,
@@ -202,41 +202,41 @@ print(total_seconds)
 # In[9]:
 
 
-loaded_model = load_model('model.h5')
+# loaded_model = load_model('model.h5')
 
 
 # In[10]:
 
 
-plt.plot(history['loss'])
-plt.plot(history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'validation'], loc='upper right')
+# plt.plot(history['loss'])
+# plt.plot(history['val_loss'])
+# plt.title('model loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'validation'], loc='upper right')
 
 
 # In[11]:
 
 
-plt.plot(history['loss'])
-plt.plot(history['val_loss'])
-plt.title('1D CNN loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'validation'], loc='upper right')
+# plt.plot(history['loss'])
+# plt.plot(history['val_loss'])
+# plt.title('1D CNN loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'validation'], loc='upper right')
 
 
 # In[13]:
 
 
-history
+# history
 
 
 # In[14]:
 
 
-model.save('1dcnn.h5')
+# model.save('1dcnn.h5')
 
 
 # In[18]:

@@ -26,7 +26,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import time
 
 
-# In[12]:
+# In[2]:
 
 
 spectrum_len = 500 # automate this
@@ -37,7 +37,7 @@ plots_dir = os.path.join(data_dir, "plots-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[13]:
+# In[3]:
 
 
 img = mpimg.imread(os.path.join(plots_dir, os.listdir(plots_dir)[0]))
@@ -45,7 +45,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[14]:
+# In[4]:
 
 
 def convertimg(img):
@@ -57,7 +57,7 @@ def convertimg(img):
     return newimg
 
 
-# In[15]:
+# In[5]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -68,7 +68,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[16]:
+# In[6]:
 
 
 start_time = time.time()
@@ -83,26 +83,27 @@ end_time = time.time()
 print(end_time - start_time)
 
 
-# In[17]:
+# In[7]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1], spectra.shape[2], 1)
 spectra.shape
 
 
-# In[18]:
+# In[13]:
 
 
 y_cat = to_categorical(y)
+y_cat.shape
 
 
-# In[19]:
+# In[9]:
 
 
 spectra[[0, 1], :].shape
 
 
-# In[20]:
+# In[10]:
 
 
 # fi = open("indices.txt", "r")
@@ -158,7 +159,7 @@ spectra[[0, 1], :].shape
 # print("2D CNN + Random Forest Results:", st.describe(stats))
 
 
-# In[22]:
+# In[14]:
 
 
 fi = open("indices.txt", "r")
@@ -170,7 +171,7 @@ cnn_stats = []
 
 init_time = time.time()
 
-for i in range(10):
+for i in range(num_runs):
     train_set_indices = ast.literal_eval(fi.readline())
     test_set_indices = ast.literal_eval(fi.readline())
     dev_set_indices = ast.literal_eval(fi.readline())
@@ -195,12 +196,12 @@ for i in range(10):
     
     model = Sequential()
     #add model layers
-    model.add(Conv2D(64, kernel_size=7, strides=(5,5), activation='relu', input_shape=(spectra.shape[1],spectra.shape[2], 1))) # finer features at the first layer
+    model.add(Conv2D(32, kernel_size=10, strides=(6,6), activation='relu', input_shape=(spectra.shape[1],spectra.shape[2], 1))) # finer features at the first layer
 #     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Conv2D(32, kernel_size=3, activation='relu')) # larger features at later layer
 #     model.add(Conv2D(32, kernel_size=3, activation='relu'))
 #     model.add(Flatten())
-    model.add(Dropout(0.5))
+#     model.add(Dropout(0.5))
 #     model.add(Dense(num_minerals*5, activation='softmax', kernel_regularizer=regularizers.l2(0.0001)))
     model.add(Flatten())
 #     model.add(Dense(num_minerals*5, activation='relu'))
@@ -208,12 +209,12 @@ for i in range(10):
     model.add(Dense(num_minerals, activation='softmax'))
 #     model.summary()
     
-    flatten_ind = 3
+    flatten_ind = 2
     
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     
     BATCH_SIZE = 32
-    EPOCHS = 20
+    EPOCHS = 25
     
 #     checkpointer = ModelCheckpoint(filepath="model.h5",
 #                                verbose=0,
@@ -224,7 +225,7 @@ for i in range(10):
 #                           write_images=True)
     
 #     history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard, EarlyStopping(monitor='val_acc', patience=5)]).history
-    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(dev_set, dev_labels))
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels))
     
     FC_layer_model = Model(inputs=model.input, outputs=model.get_layer(index=flatten_ind).output)
 #     FC_layer_model.summary()

@@ -13281,8 +13281,8 @@ div#notebook {
     
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span> <span class="c1"># tf upgrading to 2.0, after that we need to specify the dtype/construct all layers at once</span>
     <span class="c1"># model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1"># optional: , dtype=tf.dtypes.float64</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1"># optional: , dtype=tf.dtypes.float64</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 108 by 64 so far</span>
 <span class="c1">#     model.add(Conv1D(100, 25, activation=&#39;relu&#39;))</span>
 <span class="c1">#     model.add(Conv1D(100, 25, activation=&#39;relu&#39;))</span>
@@ -13292,12 +13292,12 @@ div#notebook {
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_minerals</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
     
-    <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="c1">#     model.summary()</span>
     
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
     <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">32</span>
-    <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">25</span>
     
 <span class="c1">#     checkpointer = ModelCheckpoint(filepath=&quot;model.h5&quot;,</span>
 <span class="c1">#                                verbose=0,</span>
@@ -13351,7 +13351,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>WARNING: Logging before flag parsing goes to stderr.
-W1125 14:39:27.043610 4625276352 deprecation.py:506] From /Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+W1211 14:49:14.332623 4725050816 deprecation.py:506] From /Users/Srikar/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
 </pre>
@@ -13364,73 +13364,9 @@ Call initializer instance with the dtype argument instead of passing it to the c
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Model: &#34;sequential&#34;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-conv1d (Conv1D)              (None, 476, 64)           1664      
-_________________________________________________________________
-conv1d_1 (Conv1D)            (None, 452, 64)           102464    
-_________________________________________________________________
-max_pooling1d (MaxPooling1D) (None, 113, 64)           0         
-_________________________________________________________________
-flatten (Flatten)            (None, 7232)              0         
-_________________________________________________________________
-dense (Dense)                (None, 10)                72330     
-=================================================================
-Total params: 176,458
-Trainable params: 176,458
-Non-trainable params: 0
-_________________________________________________________________
+<pre>1D CNN Results: DescribeResult(nobs=20, minmax=(0.5, 0.7647059), mean=0.6014706, variance=0.004778274, skewness=0.3888928294181824, kurtosis=-0.02869078516654877)
+123.57975792884827
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-66f2ab5a9c3e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     76</span>                           write_images=True)
-<span class="ansi-green-intense-fg ansi-bold">     77</span> 
-<span class="ansi-green-fg">---&gt; 78</span><span class="ansi-red-fg">     </span>history <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>train_set<span class="ansi-blue-fg">,</span> train_labels<span class="ansi-blue-fg">,</span> batch_size<span class="ansi-blue-fg">=</span>BATCH_SIZE<span class="ansi-blue-fg">,</span> epochs<span class="ansi-blue-fg">=</span>EPOCHS<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> validation_data<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span>dev_set<span class="ansi-blue-fg">,</span> dev_labels<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> callbacks<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span>checkpointer<span class="ansi-blue-fg">,</span> tensorboard<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>history
-<span class="ansi-green-intense-fg ansi-bold">     79</span> 
-<span class="ansi-green-intense-fg ansi-bold">     80</span>     my_list <span class="ansi-blue-fg">=</span> model<span class="ansi-blue-fg">.</span>evaluate<span class="ansi-blue-fg">(</span>test_set<span class="ansi-blue-fg">,</span> test_labels<span class="ansi-blue-fg">,</span> verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_freq, max_queue_size, workers, use_multiprocessing, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    778</span>           validation_steps<span class="ansi-blue-fg">=</span>validation_steps<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    779</span>           validation_freq<span class="ansi-blue-fg">=</span>validation_freq<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 780</span><span class="ansi-red-fg">           steps_name=&#39;steps_per_epoch&#39;)
-</span><span class="ansi-green-intense-fg ansi-bold">    781</span> 
-<span class="ansi-green-intense-fg ansi-bold">    782</span>   def evaluate(self,
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_arrays.py</span> in <span class="ansi-cyan-fg">model_iteration</span><span class="ansi-blue-fg">(model, inputs, targets, sample_weights, batch_size, epochs, verbose, callbacks, val_inputs, val_targets, val_sample_weights, shuffle, initial_epoch, steps_per_epoch, validation_steps, validation_freq, mode, validation_in_fit, prepared_feed_values_from_dataset, steps_name, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    361</span> 
-<span class="ansi-green-intense-fg ansi-bold">    362</span>         <span class="ansi-red-fg"># Get outputs.</span>
-<span class="ansi-green-fg">--&gt; 363</span><span class="ansi-red-fg">         </span>batch_outs <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">(</span>ins_batch<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    364</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> isinstance<span class="ansi-blue-fg">(</span>batch_outs<span class="ansi-blue-fg">,</span> list<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    365</span>           batch_outs <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>batch_outs<span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/keras/backend.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, inputs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   3290</span> 
-<span class="ansi-green-intense-fg ansi-bold">   3291</span>     fetched = self._callable_fn(*array_vals,
-<span class="ansi-green-fg">-&gt; 3292</span><span class="ansi-red-fg">                                 run_metadata=self.run_metadata)
-</span><span class="ansi-green-intense-fg ansi-bold">   3293</span>     self<span class="ansi-blue-fg">.</span>_call_fetch_callbacks<span class="ansi-blue-fg">(</span>fetched<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span>len<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_fetches<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   3294</span>     output_structure = nest.pack_sequence_as(
-
-<span class="ansi-green-fg">~/Desktop/Programs/Virtual Environments/spectra-ml-env/lib/python3.7/site-packages/tensorflow/python/client/session.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1456</span>         ret = tf_session.TF_SessionRunCallable(self._session._session,
-<span class="ansi-green-intense-fg ansi-bold">   1457</span>                                                self<span class="ansi-blue-fg">.</span>_handle<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1458</span><span class="ansi-red-fg">                                                run_metadata_ptr)
-</span><span class="ansi-green-intense-fg ansi-bold">   1459</span>         <span class="ansi-green-fg">if</span> run_metadata<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1460</span>           proto_data <span class="ansi-blue-fg">=</span> tf_session<span class="ansi-blue-fg">.</span>TF_GetBuffer<span class="ansi-blue-fg">(</span>run_metadata_ptr<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 
@@ -13469,7 +13405,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">loaded_model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;model.h5&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># loaded_model = load_model(&#39;model.h5&#39;)</span>
 </pre></div>
 
     </div>
@@ -13505,12 +13441,12 @@ Call initializer instance with the dtype argument instead of passing it to the c
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plt.plot(history[&#39;loss&#39;])</span>
+<span class="c1"># plt.plot(history[&#39;val_loss&#39;])</span>
+<span class="c1"># plt.title(&#39;model loss&#39;)</span>
+<span class="c1"># plt.ylabel(&#39;loss&#39;)</span>
+<span class="c1"># plt.xlabel(&#39;epoch&#39;)</span>
+<span class="c1"># plt.legend([&#39;train&#39;, &#39;validation&#39;], loc=&#39;upper right&#39;)</span>
 </pre></div>
 
     </div>
@@ -13558,12 +13494,12 @@ Call initializer instance with the dtype argument instead of passing it to the c
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;1D CNN loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plt.plot(history[&#39;loss&#39;])</span>
+<span class="c1"># plt.plot(history[&#39;val_loss&#39;])</span>
+<span class="c1"># plt.title(&#39;1D CNN loss&#39;)</span>
+<span class="c1"># plt.ylabel(&#39;loss&#39;)</span>
+<span class="c1"># plt.xlabel(&#39;epoch&#39;)</span>
+<span class="c1"># plt.legend([&#39;train&#39;, &#39;validation&#39;], loc=&#39;upper right&#39;)</span>
 </pre></div>
 
     </div>
@@ -13611,7 +13547,7 @@ Call initializer instance with the dtype argument instead of passing it to the c
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">history</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># history</span>
 </pre></div>
 
     </div>
@@ -13963,7 +13899,7 @@ Call initializer instance with the dtype argument instead of passing it to the c
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;1dcnn.h5&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># model.save(&#39;1dcnn.h5&#39;)</span>
 </pre></div>
 
     </div>

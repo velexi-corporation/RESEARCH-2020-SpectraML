@@ -18,7 +18,7 @@ from scipy import stats as st
 import time
 
 
-# In[18]:
+# In[2]:
 
 
 # directory = "/Users/Srikar/Desktop/Velexi/spectra-ml/data/plots"
@@ -30,7 +30,7 @@ stddata_path = os.path.join(data_dir, "StdData-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[19]:
+# In[3]:
 
 
 img = mpimg.imread(os.path.join(plots_dir, os.listdir(plots_dir)[0]))
@@ -38,7 +38,7 @@ spectrum_height = img.shape[0]
 spectrum_width = img.shape[1]
 
 
-# In[20]:
+# In[4]:
 
 
 def convertimg(img):
@@ -50,7 +50,7 @@ def convertimg(img):
     return newimg
 
 
-# In[21]:
+# In[5]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -61,7 +61,7 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[22]:
+# In[6]:
 
 
 start_time = time.time()
@@ -76,13 +76,13 @@ end_time = time.time()
 print(end_time - start_time)
 
 
-# In[23]:
+# In[7]:
 
 
 spectra = spectra.reshape(spectra.shape[0], spectra.shape[1]*spectra.shape[2])
 
 
-# In[24]:
+# In[11]:
 
 
 fi = open("indices.txt", "r")
@@ -127,7 +127,10 @@ for i in range(num_runs):
 #     train_plus_dev_labels = train_plus_dev_labels.reshape(train_plus_dev_labels.shape[0],)
 #     print(train_plus_dev_labels.shape)
     
-    clf = RandomForestClassifier(n_estimators=100, max_depth=10, bootstrap=True, criterion='entropy')
+    iters = []
+    for(j in )
+    clf = RandomForestClassifier(n_estimators=100, max_depth=100, bootstrap=True, criterion='entropy')
+    # tune max_depth argument
     
     clf.fit(train_set, train_labels)
 #     clf.fit(train_plus_dev_set, train_plus_dev_labels)

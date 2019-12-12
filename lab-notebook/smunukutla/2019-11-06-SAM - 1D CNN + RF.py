@@ -71,7 +71,7 @@ for i in range(len(record_nums)):
 y_cat = to_categorical(y)
 
 
-# In[7]:
+# In[8]:
 
 
 fi = open("indices.txt", "r")
@@ -139,17 +139,9 @@ for i in range(num_runs):
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     BATCH_SIZE = 32
-    EPOCHS = 80
-    
-    checkpointer = ModelCheckpoint(filepath="model.h5",
-                               verbose=0,
-                               save_best_only=True)
-    tensorboard = TensorBoard(log_dir='./logs',
-                          histogram_freq=0,
-                          write_graph=True,
-                          write_images=True)
+    EPOCHS = 10
 
-    history = model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels), callbacks=[checkpointer, tensorboard]).history
+    model.fit(train_set, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0, validation_data=(dev_set, dev_labels))
     
     my_list = model.evaluate(test_set, test_labels, verbose=0)
 
