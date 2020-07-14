@@ -89,10 +89,10 @@ from sklearn.decomposition import DictionaryLearning
 model = DictionaryLearning(n_components=10, alpha=1, verbose=True)
 
 
-# In[15]:
+# In[17]:
 
 
-results = model.fit(data)
+results = model.fit_transform(data)
 
 
 # In[16]:
