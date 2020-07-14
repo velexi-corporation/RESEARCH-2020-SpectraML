@@ -183,17 +183,17 @@ print(total_seconds)
 # In[8]:
 
 
-# # random.seed()
+# random.seed()
 # model = Sequential()
-# # model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
+# model.add(Reshape((TIME_PERIODS, num_sensors), input_shape=(input_shape,)))
 # model.add(Conv1D(64, 25, activation='relu', input_shape=(train_set.shape[1], 1)))
 # model.add(Conv1D(64, 25, activation='relu'))
 # model.add(MaxPooling1D(4)) # 108 by 64 so far
 # model.add(Conv1D(100, 25, activation='relu'))
 # model.add(Conv1D(100, 25, activation='relu'))
 # model.add(MaxPooling1D(4))
-# # model.add(Dropout(0.5))
-# # model.add(GlobalAveragePooling1D())
+# model.add(Dropout(0.5))
+# model.add(GlobalAveragePooling1D())
 # model.add(Flatten())
 # model.add(Dense(3, activation='softmax'))
 # print(model.summary())
