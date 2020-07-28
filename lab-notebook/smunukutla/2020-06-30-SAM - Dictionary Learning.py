@@ -127,6 +127,12 @@ for row in results2:
     print(row)
 
 
+# In[43]:
+
+
+results.shape
+
+
 # In[ ]:
 
 
