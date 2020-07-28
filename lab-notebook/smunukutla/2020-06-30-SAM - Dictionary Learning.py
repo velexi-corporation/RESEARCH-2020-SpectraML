@@ -95,39 +95,39 @@ from sklearn.decomposition import DictionaryLearning
 model = DictionaryLearning(n_components=10, alpha=1, verbose=True)
 
 
-# In[33]:
+# In[44]:
 
 
-results = model.fit_transform(data)
+results = model.fit_transform(spectra)
 
 
-# In[37]:
+# In[45]:
 
 
 for row in results:
     print(row)
 
 
-# In[40]:
+# In[46]:
 
 
 model2 = DictionaryLearning(n_components=10, alpha=1, transform_algorithm='threshold', verbose=True)
 
 
-# In[41]:
+# In[47]:
 
 
-results2 = model2.fit_transform(data)
+results2 = model2.fit_transform(spectra)
 
 
-# In[42]:
+# In[48]:
 
 
 for row in results2:
     print(row)
 
 
-# In[43]:
+# In[49]:
 
 
 results.shape
