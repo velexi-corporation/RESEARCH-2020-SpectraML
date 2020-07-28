@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[19]:
 
 
 # environment set up
@@ -23,7 +23,7 @@ from scipy import stats as st
 directory = os.environ['DATA_DIR']
 
 
-# In[2]:
+# In[20]:
 
 
 spectrum_len = 500 # automate this
@@ -32,7 +32,7 @@ stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_le
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[3]:
+# In[21]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -43,13 +43,19 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[4]:
+# In[22]:
+
+
+data
+
+
+# In[23]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
 
 
-# In[5]:
+# In[24]:
 
 
 for i in range(len(record_nums)):
@@ -59,46 +65,66 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[6]:
+# In[26]:
 
 
 data
 
 
-# In[7]:
+# In[27]:
 
 
 spectra.shape
 
 
-# In[8]:
+# In[30]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[10]:
+# In[31]:
 
 
 from sklearn.decomposition import DictionaryLearning
 
 
-# In[14]:
+# In[32]:
 
 
 model = DictionaryLearning(n_components=10, alpha=1, verbose=True)
 
 
-# In[17]:
+# In[33]:
 
 
 results = model.fit_transform(data)
 
 
-# In[16]:
+# In[37]:
 
 
-results
+for row in results:
+    print(row)
+
+
+# In[40]:
+
+
+model2 = DictionaryLearning(n_components=10, alpha=1, transform_algorithm='threshold', verbose=True)
+
+
+# In[41]:
+
+
+results2 = model2.fit_transform(data)
+
+
+# In[42]:
+
+
+for row in results2:
+    print(row)
 
 
 # In[ ]:

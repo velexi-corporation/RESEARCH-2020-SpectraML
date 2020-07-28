@@ -27,16 +27,16 @@ from scipy import stats as st
 import time
 
 
-# In[2]:
+# In[45]:
 
 
-spectrum_len = 500 # automate this
+spectrum_len = 250 # automate this
 parent_dir = os.environ['PWD']
 stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[3]:
+# In[46]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -47,13 +47,13 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[4]:
+# In[47]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
 
 
-# In[5]:
+# In[48]:
 
 
 for i in range(len(record_nums)):
@@ -63,40 +63,41 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[6]:
+# In[49]:
 
 
 spectra.shape
 
 
-# In[7]:
+# In[50]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[8]:
+# In[51]:
 
 
 from sklearn.decomposition import FastICA
 
 
-# In[16]:
+# In[52]:
 
 
-model = FastICA(n_components=2)
+model = FastICA(n_components=3)
 
 
-# In[30]:
+# In[53]:
 
 
 results = model.fit_transform(data)
-
-
-# In[31]:
-
-
 results
+
+
+# In[54]:
+
+
+results.shape
 
 
 # In[19]:

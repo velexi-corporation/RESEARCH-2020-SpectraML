@@ -13115,7 +13115,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># environment set up</span>
@@ -13144,7 +13144,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectrum_len</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># automate this</span>
@@ -13160,7 +13160,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -13178,7 +13178,156 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[22]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>156</th>
+      <th>157</th>
+      <th>158</th>
+      <th>159</th>
+      <th>160</th>
+      <th>161</th>
+      <th>162</th>
+      <th>163</th>
+      <th>164</th>
+      <th>165</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00108</td>
+      <td>00114</td>
+      <td>00120</td>
+      <td>00124</td>
+      <td>00130</td>
+      <td>00142</td>
+      <td>00148</td>
+      <td>00154</td>
+      <td>00158</td>
+      <td>00177</td>
+      <td>...</td>
+      <td>10896</td>
+      <td>10917</td>
+      <td>10938</td>
+      <td>10946</td>
+      <td>10967</td>
+      <td>10988</td>
+      <td>11009</td>
+      <td>11030</td>
+      <td>11051</td>
+      <td>11072</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>Actinolite</td>
+      <td>...</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+      <td>Topaz</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 166 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span><span class="n">spectrum_len</span><span class="p">))</span>
@@ -13191,7 +13340,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">record_nums</span><span class="p">)):</span>
@@ -13208,7 +13357,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
@@ -13224,7 +13373,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -13571,7 +13720,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spectra</span><span class="o">.</span><span class="n">shape</span>
@@ -13587,7 +13736,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -13604,7 +13753,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_cat</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -13617,7 +13766,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">DictionaryLearning</span>
@@ -13630,7 +13779,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">DictionaryLearning</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13643,7 +13792,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -13663,7 +13812,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[dict_learning] .++++++++.+++++.+++.++.+.+.+.+.+.+..........................................................................................
+<pre>[dict_learning] .++++++++.+++++.++.+.+.+.+.+.+.+.+......................................................................
 </pre>
 </div>
 </div>
@@ -13674,10 +13823,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13690,20 +13840,2066 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>DictionaryLearning(alpha=1, code_init=None, dict_init=None,
-                   fit_algorithm=&#39;lars&#39;, max_iter=1000, n_components=10,
-                   n_jobs=None, positive_code=False, positive_dict=False,
-                   random_state=None, split_sign=False, tol=1e-08,
-                   transform_algorithm=&#39;omp&#39;, transform_alpha=None,
-                   transform_n_nonzero_coefs=None, verbose=True)</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0.         0.         0.         0.         0.         0.
+ 0.         0.93341548 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.93557111 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.93572659 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 0.9394848 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.94333666 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.94479684 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 0.9476311 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.95115894 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.95218099 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.95490055 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 0.9601147 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.96161373 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.96486329 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.96882141 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.97210493 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.97712963 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.97972111 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.98235334 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.98820372 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.98968906 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.99644349 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         0.99863169 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.00113177 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.00491868 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.00822914 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.01494312 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.01705697 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.02086176 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.02353178 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.0254468 0.        0.       ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.0295132 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.03204167 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.03531985 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.03781186 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.04172252 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.04459074 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.04672127 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.04973321 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.05333827 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.05591619 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.05949265 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.06313232 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.06691221 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.07226471 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.07543576 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.07844445 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.08104436 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.08670526 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.08929374 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.09405579 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.09980633 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.10442131 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.10841675 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.11242406 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.11926868 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.12278801 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.12666404 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.13216225 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.13588948 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.1374541 0.        0.       ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.1421985 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.14474743 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.14902643 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.15251542 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.15530664 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.1601983 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.16067425 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.16545296 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.16835467 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.17139452 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.17547126 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.18006383 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.18214183 0.         0.        ]
+[0.       0.       0.       0.       0.       0.       0.       1.186136
+ 0.       0.      ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.18893631 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.19378847 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.19567697 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.19889258 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.19907886 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.20210736 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.20537566 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.20957983 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.21056871 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.21246604 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.21635994 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.21937571 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.22121165 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.22353696 0.         0.        ]
+[0.        0.        0.        0.        0.        0.        0.
+ 1.2264099 0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.22982289 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.23241125 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 0.         1.23426645 0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.23559721 0.         0.         0.        ]
+[0.        0.        0.        0.        0.        0.        1.2391052
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 1.24156152 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.24714704 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.24887628 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.25010033 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.25413343 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.25721022 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.25999514 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.26329068 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.26570186 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.26730666 0.         0.         0.        ]
+[0.        0.        0.        0.        0.        0.        1.2686556
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 1.27108597 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.27493031 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.27689506 0.         0.         0.        ]
+[0.        0.        0.        0.        0.        0.        1.2784191
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         0.         0.
+ 1.27988623 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.28326003 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.28744059 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.29507872 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.30139011 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.30481665 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.30833495 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.31196961 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.31560428 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.31859033 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.32119477 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.32379921 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.32861636 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.33392481 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.33808824 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.33865178 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.33921532 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.34157561 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.34413866 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.34684015 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.34965227 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.35264219 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.35628851 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.35968316 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.36092587 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.36303748 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.36804946 0.         0.         0.        ]
+[0.         0.         0.         0.         0.         0.
+ 1.37182834 0.         0.         0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.37359088  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.37545612  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.37723896  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.38142026  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.38504541  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.38749258  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.39366656  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.39791666  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.40109901  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.40458234  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.40712329  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.41023781  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.41448601  0.        ]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.        -1.4156528  0.       ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.42005066  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.42539595  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.42554131  0.        ]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.        -1.4287721  0.       ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.43199387  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.43456962  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.43782147  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.44247422  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.44605659  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.45008364  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.45533041  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.45845934  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.46161252  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.46446162  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.46584797  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.46990304  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.47533809  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.47721638  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.48097288  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.48429713  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.48584858  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.48754246  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.49158634  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.49656037  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.49963197  0.        ]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.        -1.5040926  0.       ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.50619966  0.        ]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.        -1.5067594  0.       ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.51194507  0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.         -1.51550565  0.        ]
+[0.         0.         0.         0.         1.51815812 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.52068475 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.52496701 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.52923401 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.53195681 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.53440543 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.53723196 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.54286186 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.54574679 0.
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        1.5477131 0.        0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         1.54986409 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.55291159 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.55780344 0.
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        1.5615177 0.        0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         1.56368278 0.
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        1.5656952 0.        0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         1.56892787 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.57378023 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.57873615 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.58050936 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.58555891 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.58947484 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.59384329 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.59753709 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.60026567 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.60271746 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.60512817 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.60626384 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.61324762 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.61629424 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.61915533 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.62226448 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.62269955 0.
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        1.6285334 0.        0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         1.63437813 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.63667808 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.63819965 0.
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        1.6397225 0.        0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         1.64310368 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.64985481 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.65138168 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.65499303 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.65833981 0.
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         1.66187185 0.
+ 0.         0.         0.         0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.66384119]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.66481168]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.66752694]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.67059239]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.67366556]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.67674167]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.68121944]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.68533489]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.68773698]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.69050033]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.6939933]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.69713501]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.70111457]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.70274425]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.7043405]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.70528375]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.69133413]
+[ 0.          0.          0.         -1.64759921  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.66812342  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.69854967]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.72133412]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.73131569]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.73375332]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.7380972]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.74244015]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.7484578]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.75235203]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.75590756]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.76009699]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.7640831]
+[ 0.         0.         0.         0.         0.         0.
+  0.         0.         0.        -1.7683948]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.77033728]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.77551452]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.77880837]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.78205295]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.78636639]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.78974885]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.79244505]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.79590981]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.79939823]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.80214016]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.80604689]
+[ 0.          0.          0.          0.          0.          0.
+  0.          0.          0.         -1.81068913]
+[ 0.          0.          0.         -1.81271355  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.81705746  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.82174725  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.82421721  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.82808847  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.83248902  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.83489169  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.84004128  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.84458614  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.84821088  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.85184051  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.85442065  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.85710089  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.86129059  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.86604108  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.        0.        0.       -1.870698  0.        0.        0.
+  0.        0.        0.      ]
+[ 0.          0.          0.         -1.87326727  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.87633209  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.87994177  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.88310462  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         0.         0.        -1.8866434  0.         0.
+  0.         0.         0.         0.       ]
+[ 0.          0.          0.         -1.89207707  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.89560369  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.89761095  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.90129503  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.90491135  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.90795231  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.91166296  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.91575548  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.91905689  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.92235562  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.92565388  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.93008167  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.93485376  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.93841744  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.94117877  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.94290774  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.94512691  0.          0.
+  0.          0.          0.          0.        ]
+[ 0.          0.          0.         -1.94731651  0.          0.
+  0.          0.          0.          0.        ]
+[-1.94633319  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.9464135  0.         0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[-1.95158051  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.95736127  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.96463007  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.96962106  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.97143848  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.97508517  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.98026746  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.98362874  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.98609091  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.99006377  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.99442545  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-1.9970542  0.         0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[-1.99957454  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.00290637  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.00678504  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.01328196  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.01871289  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.02163971  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.02518851  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.02958077  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.03373196  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.03768608  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.0407672  0.         0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[-2.04342997  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.04791975  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.05286099  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.05727629  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.06165058  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.06578171  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.0698592  0.         0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[-2.07287817  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.07473444  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.07681582  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.08035423  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.08389264  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.08704851  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.09010337  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.09363177  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.09774274  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.10182353  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.10564879  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.10947405  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.11294217  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.11629932  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[-2.11945204  0.          0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[0.         0.         0.         0.         0.         2.12236485
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.12545269
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.12896395
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.13247521
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.13564083
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.13868167
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.14177694
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.14495663
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.14815088
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.15162611
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.15510135
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.15879625
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.16258239
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.16654067
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.17079992
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.17504669
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.17871634
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.18238599
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.18554109
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.18845232
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.19212131
+ 0.         0.         0.         0.        ]
+[0.        0.        0.        0.        0.        2.1972898 0.
+ 0.        0.        0.       ]
+[0.         0.         0.         0.         0.         2.20245829
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.20679004
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.21111585
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.21556289
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.22007515
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.22398005
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.22651725
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.22905445
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.23244525
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.23586721
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.24049668
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.24585985
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.25067362
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.25406988
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.25746615
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26030225
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26310044
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26552287
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26768833
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26844995
+ 0.         0.         0.         0.        ]
+[0.         0.         0.         0.         0.         2.26502581
+ 0.         0.         0.         0.        ]
+[ 0.         -2.26178707  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.24631987  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.22952456  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[0.         0.         2.20980031 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.19065376 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.        0.        2.1828104 0.        0.        0.        0.
+ 0.        0.        0.       ]
+[0.         0.         2.21434969 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[ 0.         -2.24836963  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.26898898  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.28740013  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.30032575  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.30853236  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.31590802  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.31984974  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.32379146  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.32538255  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.32656568  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.32645656  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.32510283  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.       -2.324475  0.        0.        0.        0.        0.
+  0.        0.        0.      ]
+[ 0.         -2.32747672  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.33047844  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.33702249  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.34432345  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.35042942  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.35524713  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.36012063  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.36534112  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.37056162  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.37430109  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.37766052  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.37987151  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.38069615  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.38199996  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.38716958  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.39233919  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.40088782  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.41045972  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.41803679  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.42291342  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.        -2.4277298  0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[ 0.         -2.43187286  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43601592  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43763919  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43837443  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43818062  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43657386  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.43556639  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.44506421  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.45456204  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.46029564  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.46450101  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.46875965  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.47310954  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.47740463  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.        -2.4796302  0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[ 0.         -2.48185577  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.48408152  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.48630735  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.48814144  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.48921627  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.        -2.4902911  0.         0.         0.         0.
+  0.         0.         0.         0.       ]
+[ 0.         -2.49210676  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.49392417  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.49793655  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.50310541  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.50769177  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.51099488  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.51429799  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.51770387  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[ 0.         -2.52111298  0.          0.          0.          0.
+  0.          0.          0.          0.        ]
+[0.        0.        2.5235578 0.        0.        0.        0.
+ 0.        0.        0.       ]
+[0.         0.         2.52559896 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.52829646 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.53264838 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.53700031 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.54127263 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.54551197 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.54975132 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.55308398 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.55520097 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.55731795 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.55943494 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.        0.        2.5618107 0.        0.        0.        0.
+ 0.        0.        0.       ]
+[0.         0.         2.56515799 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.56850529 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.57185258 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.57519988 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.57848662 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.58075877 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.58303093 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.58530308 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.58757523 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.58984738 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.59211953 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.59378687 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.59543242 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.59707797 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.59872352 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.60036907 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.60201462 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.60366018 0.         0.         0.
+ 0.         0.         0.         0.        ]
+[0.         0.         2.60435512 0.         0.         0.
+ 0.         0.         0.         0.        ]
+</pre>
+</div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model2</span> <span class="o">=</span> <span class="n">DictionaryLearning</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">transform_algorithm</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[dict_learning] .++++++++.++++.++++.+++.++.+.+.+.+......................................................................
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0. -0. -0.  0.  0.  0. -0. -0. -0.  0.]
+[-0.         -0.         -0.          0.00113422  0.          0.
+ -0.         -0.         -0.          0.        ]
+[-0.         -0.         -0.          0.00492108  0.          0.
+ -0.         -0.         -0.          0.        ]
+[-0.         -0.         -0.          0.00823148  0.          0.
+ -0.         -0.         -0.          0.        ]
+[-0.         -0.         -0.          0.01494545  0.          0.
+ -0.         -0.         -0.          0.        ]
+[-0.         -0.         -0.          0.01705923  0.          0.
+ -0.         -0.         -0.          0.        ]
+[-0.         -0.         -0.          0.02086397  0.          0.
+ -0.         -0.00061304 -0.          0.        ]
+[-0.         -0.         -0.          0.02353392  0.          0.
+ -0.         -0.00365545 -0.          0.        ]
+[-0.         -0.         -0.          0.02544887  0.          0.
+ -0.         -0.00600873 -0.          0.        ]
+[-0.         -0.         -0.          0.02951522  0.          0.
+ -0.         -0.0103257  -0.          0.        ]
+[-0.         -0.         -0.          0.03204363  0.          0.
+ -0.         -0.01323891 -0.          0.        ]
+[-0.         -0.         -0.          0.03532175  0.          0.
+ -0.         -0.01683643 -0.          0.        ]
+[-0.         -0.         -0.          0.03781369  0.          0.
+ -0.         -0.01971636 -0.          0.        ]
+[-0.         -0.         -0.          0.0417243   0.          0.
+ -0.         -0.02389118 -0.          0.        ]
+[-0.         -0.         -0.          0.04459246  0.          0.00346292
+ -0.         -0.02711449 -0.          0.        ]
+[-0.         -0.         -0.          0.04672292  0.          0.00631862
+ -0.         -0.02966448 -0.          0.        ]
+[-0.         -0.         -0.          0.0497348   0.          0.00991054
+ -0.         -0.03301899 -0.          0.        ]
+[-0.         -0.         -0.          0.05333981  0.          0.01399787
+ -0.         -0.03691487 -0.          0.        ]
+[-0.         -0.         -0.          0.05591766  0.          0.01722727
+ -0.         -0.03987322 -0.          0.        ]
+[-0.         -0.         -0.          0.05949407  0.          0.02129071
+ -0.         -0.04374299 -0.          0.        ]
+[-0.         -0.         -0.          0.06313368  0.          0.02540695
+ -0.         -0.04767045 -0.          0.        ]
+[-0.         -0.         -0.          0.06691352  0.          0.02964032
+ -0.00399557 -0.0517259  -0.          0.        ]
+[-0.         -0.         -0.          0.07226599  0.          0.03518725
+ -0.00955318 -0.05721677 -0.          0.        ]
+[-0.         -0.         -0.          0.07543698  0.          0.03891206
+ -0.01344455 -0.0607165  -0.          0.        ]
+[-0.         -0.         -0.          0.07844562  0.          0.04250127
+ -0.01721191 -0.06406804 -0.          0.        ]
+[-0.         -0.         -0.          0.08104545  0.          0.04574902
+ -0.02066703 -0.06704645 -0.          0.        ]
+[-0.         -0.         -0.          0.08670633  0.          0.05155355
+ -0.0264602  -0.07281881 -0.          0.        ]
+[-0.         -0.         -0.          0.08929475  0.0019922   0.05479177
+ -0.0299066  -0.0757868  -0.          0.        ]
+[-0.         -0.         -0.          0.09405676  0.00711969  0.0598455
+ -0.0350132  -0.08073873 -0.          0.        ]
+[-0.         -0.         -0.          0.09980728  0.0129344   0.0657249
+ -0.04087485 -0.08659291 -0.          0.        ]
+[-0.         -0.         -0.          0.10442222  0.01795964  0.0706558
+ -0.04586913 -0.0914106  -0.          0.        ]
+[-0.         -0.         -0.          0.10841761  0.02255415  0.0750692
+ -0.05039018 -0.09566279 -0.          0.        ]
+[-0.         -0.00455943 -0.          0.11242487  0.02715692  0.07949253
+ -0.05492031 -0.09992582 -0.          0.        ]
+[-0.         -0.01102932 -0.          0.11926948  0.03373227  0.08628578
+ -0.06161763 -0.10677863 -0.          0.        ]
+[-0.         -0.01535469 -0.          0.12278876  0.03799579  0.09030151
+ -0.06577503 -0.11059626 -0.          0.        ]
+[-0.         -0.01991009 -0.          0.12666474  0.04250728  0.09461518
+ -0.07020488 -0.11473946 -0.          0.        ]
+[-0.         -0.02551166 -0.          0.13216292  0.04814657  0.10028381
+ -0.07587378 -0.12036332 -0.          0.        ]
+[-0.         -0.0299711  -0.          0.1358901   0.05255462  0.10447319
+ -0.08018998 -0.12437071 -0.          0.0036541 ]
+[-0.         -0.03303585 -0.          0.13745464  0.05545916  0.1068562
+ -0.08285432 -0.12640416 -0.          0.00687814]
+[-0.         -0.03815128 -0.          0.14219901  0.06057438  0.1118952
+ -0.08794746 -0.13133998 -0.          0.01198029]
+[-0.         -0.04185082 -0.          0.14474787  0.06416324  0.11510037
+ -0.09136364 -0.13427187 -0.          0.01578571]
+[-0.         -0.04666611 -0.          0.14902683  0.0689549   0.11975064
+ -0.09610129 -0.13878289 -0.          0.02061297]
+[-0.         -0.0509719  -0.          0.15251576  0.07319732  0.12374102
+ -0.10023551 -0.14257282 -0.          0.02497362]
+[-0.         -0.05482769 -0.00062881  0.15530691  0.07695462  0.12714857
+ -0.10383675 -0.14572585 -0.          0.02892214]
+[-0.         -0.0600381  -0.0057832   0.16019855  0.08217222  0.13231057
+ -0.10904237 -0.15079609 -0.          0.03411127]
+[-0.         -0.06240074 -0.00857297  0.1606744   0.08431989  0.13378424
+ -0.11087516 -0.15183585 -0.          0.0366923 ]
+[-0.         -0.0675383  -0.01366688  0.16545308  0.08945896  0.1388519
+ -0.1159945  -0.15680299 -0.          0.04181472]
+[-0.         -0.07146535 -0.01775564  0.16835472  0.09329308  0.14235174
+ -0.11968014 -0.16005687 -0.          0.04582849]
+[-0.         -0.07548149 -0.02191839  0.17139451  0.09722324  0.14596697
+ -0.1234713  -0.16343685 -0.          0.04992387]
+[-0.         -0.08016633 -0.02663639  0.1754712   0.10187428  0.15044828
+ -0.12805446 -0.16776325 -0.          0.05463167]
+[-0.         -0.08518384 -0.03163061  0.18006373  0.10688394  0.15536046
+ -0.13303162 -0.17256048 -0.          0.05964414]
+[-0.         -0.08857968 -0.03527829  0.18214166  0.1101454   0.15817228
+ -0.13608809 -0.17506253 -0.          0.0631714 ]
+[-0.         -0.09321127 -0.03995207  0.18613579  0.11473904  0.16258463
+ -0.14060818 -0.17931357 -0.          0.06783044]
+[-0.00315156 -0.09707293 -0.04398654  0.18893603  0.11850266  0.16599978
+ -0.14421637 -0.1824749  -0.          0.07178432]
+[-0.00822126 -0.10225785 -0.04911978  0.19378815  0.1236928   0.17112878
+ -0.14939181 -0.18750908 -0.          0.07695012]
+[-0.01192569 -0.10553147 -0.05266597  0.19567657  0.12682251  0.17378232
+ -0.15230354 -0.18983815 -0.          0.08036546]
+[-0.01624148 -0.10966096 -0.05692283  0.19889213  0.13087487  0.17754435
+ -0.15622895 -0.19337856 -0.          0.08456464]
+[-0.01916174 -0.1118368  -0.05955749  0.19907831  0.13282115  0.17877608
+ -0.15784049 -0.19415392 -0.          0.08697459]
+[-0.02339133 -0.11584562 -0.06371416  0.20210676  0.13674343  0.18238183
+ -0.16162298 -0.19752354 -0.          0.09106326]
+[-0.02773139 -0.12000909 -0.06799923  0.20537499  0.14083242  0.18618787
+ -0.16558863 -0.20111204 -0.          0.09529356]
+[-0.03250258 -0.12477611 -0.07278547  0.20957912  0.14557205  0.19077563
+ -0.17026912 -0.20555475 -0.          0.10007663]
+[-0.03579258 -0.12746956 -0.07584992  0.21056791  0.14807632  0.19267773
+ -0.17249371 -0.2070627  -0.          0.10296062]
+[-0.03950107 -0.13074887 -0.07940084  0.21246517  0.15121217  0.19533865
+ -0.17541218 -0.20939983 -0.          0.10638118]
+[-4.41293303e-02 -1.35315797e-01 -8.40209288e-02  2.16359018e-01
+  1.55736096e-01  1.99667240e-01 -1.79855682e-01 -2.13559348e-01
+ -1.38464964e-04  1.10980986e-01]
+[-0.04835306 -0.13931641 -0.08817078  0.21937473  0.15964952  0.20326236
+ -0.18362845 -0.21691735 -0.00441613  0.11506214]
+[-0.05203327 -0.14255613 -0.09168882  0.22121059  0.16274269  0.20587199
+ -0.18650003 -0.21919844 -0.00823972  0.11844643]
+[-0.05593892 -0.14611145 -0.09546893  0.22353583  0.16617609  0.20889038
+ -0.18974541 -0.22192622 -0.01225166  0.12211977]
+[-0.06009685 -0.15001995 -0.0995423   0.22640871  0.16999021  0.2123662
+ -0.19340908 -0.22515385 -0.01647435  0.12611656]
+[-0.06450357 -0.15427674 -0.10390486  0.22982165  0.1741798   0.2162931
+ -0.19748525 -0.22887442 -0.02090489  0.13043233]
+[-0.0685304  -0.15800171 -0.10782583  0.23240994  0.17779607  0.21953122
+ -0.20093155 -0.2318423  -0.02501806  0.13426104]
+[-0.07221949 -0.16125385 -0.11135419  0.23426506  0.18090263  0.22215693
+ -0.20381785 -0.23414098 -0.02884907  0.13765671]
+[-0.07548484 -0.16391279 -0.11438999  0.23520036  0.18336971  0.22401436
+ -0.20600157 -0.23560009 -0.03232608  0.1405091 ]
+[-0.07978421 -0.1680193  -0.11862777  0.23838028  0.1873973   0.22774664
+ -0.20989976 -0.23910797 -0.03666694  0.14468724]
+[-0.08355278 -0.17138272 -0.12224853  0.24040795  0.19062382  0.23051648
+ -0.21291785 -0.24156414 -0.04056436  0.14818483]
+[-0.08890074 -0.17695718 -0.12770522  0.24586409  0.19623387  0.23615
+ -0.21855464 -0.24714963 -0.04578122  0.15370737]
+[-0.09230234 -0.17980686 -0.1308994   0.24709515  0.19890658  0.23825446
+ -0.22096427 -0.2488787  -0.04937206  0.15673445]
+[-0.09544895 -0.18229958 -0.13379718  0.2477727   0.20119447  0.2398966
+ -0.22295113 -0.25010256 -0.05274988  0.15943462]
+[-0.10001337 -0.18677713 -0.13834305  0.25152796  0.20562204  0.24410943
+ -0.22728876 -0.25413557 -0.05731215  0.16395256]
+[-0.1040951  -0.19057896 -0.14232784  0.25423544  0.20932118  0.2474471
+ -0.2308261  -0.25721224 -0.06147119  0.16785167]
+[-0.10802952 -0.19417456 -0.14614139  0.25662313  0.21279799  0.25051765
+ -0.23411918 -0.25999701 -0.06550716  0.17156189]
+[-0.11222167 -0.19813096 -0.15025453  0.25957029  0.21666375  0.25405551
+ -0.23783958 -0.26329245 -0.06975844  0.17560255]
+[-0.11596746 -0.20146248 -0.1538488   0.2615485   0.21985589  0.25678404
+ -0.2408199  -0.26570347 -0.07363682  0.17907092]
+[-0.11930625 -0.20422424 -0.15696997  0.26264322  0.2224338   0.25877462
+ -0.24312538 -0.26730809 -0.07717519  0.18201748]
+[-0.1225159  -0.2068052  -0.15994103  0.26345761  0.22481683  0.26053106
+ -0.24521676 -0.26865685 -0.08060568  0.18479846]
+[-0.12627138 -0.21015029 -0.16354656  0.26545684  0.22802358  0.26327715
+ -0.24821313 -0.27108707 -0.08449215  0.18827925]
+[-0.13074052 -0.21449446 -0.16798168  0.26900528  0.23230737  0.26731724
+ -0.2523928  -0.27493132 -0.08897483  0.19267505]
+[-0.13426098 -0.21751054 -0.17131404  0.27049437  0.23515945  0.26963722
+ -0.25499951 -0.2768959  -0.09266497  0.19585453]
+[-0.13755901 -0.22021523 -0.17438782  0.2715006   0.23767585  0.27155389
+ -0.25723741 -0.27841976 -0.09616929  0.19874882]
+[-0.14082831 -0.22287971 -0.17742822  0.27244448  0.2401489   0.27341849
+ -0.25942769 -0.27988671 -0.09964961  0.20160629]
+[-0.14505996 -0.2268914  -0.18158727  0.27547737  0.24407427  0.27702796
+ -0.26321358 -0.28326039 -0.10393388  0.20569759]
+[-0.1496988  -0.23147314 -0.18621965  0.27939419  0.24861416  0.28137574
+ -0.26767462 -0.28744087 -0.10855833  0.21031096]
+[-0.15608275 -0.23849793 -0.19288062  0.28709924  0.2557877   0.28888768
+ -0.27502916 -0.29507904 -0.11464069  0.21716178]
+[-0.16179707 -0.24458528 -0.19876318  0.29335067  0.26195065  0.29518548
+ -0.28127341 -0.30139042 -0.12016361  0.22315404]
+[-0.16605534 -0.24863424 -0.20295318  0.29644136  0.26591621  0.29884322
+ -0.28510345 -0.30481686 -0.12447013  0.22727948]
+[-0.17035991 -0.25274804 -0.207197    0.29963258  0.26995164  0.30258493
+ -0.28901026 -0.30833504 -0.12881533  0.23146429]
+[-0.17472322 -0.25694405 -0.21150911  0.30295129  0.27407572  0.30643313
+ -0.29301446 -0.3119696  -0.1332096   0.2357244 ]
+[-0.17908653 -0.26114007 -0.21582121  0.30627     0.27819979  0.31028133
+ -0.29701866 -0.31560416 -0.13760388  0.23998451]
+[-0.18312248 -0.26487779 -0.21975277  0.30887807  0.28182982  0.31353596
+ -0.30048007 -0.31859009 -0.14172466  0.2438249 ]
+[-0.18696581 -0.26834587 -0.22346044  0.31106803  0.28516916  0.31644136
+ -0.30362211 -0.32119439 -0.14568453  0.24741833]
+[-0.19080914 -0.27181395 -0.2271681   0.31325798  0.28850851  0.31934676
+ -0.30676416 -0.32379869 -0.1496444   0.25101177]
+[-0.19576928 -0.27684549 -0.23217398  0.31787227  0.29353329  0.3242771
+ -0.31175793 -0.32861578 -0.15453727  0.25603709]
+[-0.20097739 -0.28222418 -0.2374681   0.32302484  0.2989323   0.32965706
+ -0.31716286 -0.33392418 -0.1596373   0.26138033]
+[-0.20560758 -0.28679381 -0.24209043  0.32692288  0.30345913  0.33398915
+ -0.32160956 -0.33808752 -0.16425453  0.26598262]
+[-0.20842082 -0.28881983 -0.24460069  0.32687675  0.30524391  0.33502683
+ -0.32304366 -0.33865085 -0.16735384  0.26825535]
+[-0.21123406 -0.29084584 -0.24711094  0.32683063  0.30702869  0.33606451
+ -0.32447776 -0.33921418 -0.17045316  0.27052809]
+[-0.21495416 -0.29414141 -0.25067536  0.32875308  0.31018206  0.33874647
+ -0.32741549 -0.34157431 -0.17431008  0.27396353]
+[-0.2187766  -0.29758024 -0.25435874  0.33089769  0.31348988  0.34161399
+ -0.33052289 -0.34413722 -0.1782525   0.27753018]
+[-0.22266892 -0.3011169  -0.25812335  0.33319399  0.31690315  0.3446082
+ -0.33374616 -0.34683858 -0.1822533   0.28118643]
+[-0.22661707 -0.30473172 -0.26195285  0.33561148  0.32040068  0.34770365
+ -0.337062   -0.34965056 -0.18630074  0.28491425]
+[-0.23065497 -0.30847217 -0.26588668  0.33822379  0.32403366  0.35096182
+ -0.34052665 -0.35264035 -0.19042315  0.28875714]
+[-0.23502416 -0.31267642 -0.27020562  0.34155526  0.3281666   0.35482069
+ -0.34454059 -0.35628656 -0.19482233  0.29302479]
+[-0.23926633 -0.31670285 -0.27437691  0.34461101  0.33210786  0.35844924
+ -0.34834394 -0.3596811  -0.1991154   0.29712959]
+[-0.24242236 -0.31920876 -0.27728564  0.345309    0.33440997  0.36010846
+ -0.35034641 -0.36092362 -0.20250109  0.29984183]
+[-0.24601695 -0.32232861 -0.28070415  0.346959    0.33737392  0.36256284
+ -0.35307602 -0.36303507 -0.20625316  0.30311635]
+[-0.25107542 -0.32749781 -0.28582434  0.35178675  0.3425471   0.36767149
+ -0.35823285 -0.368047   -0.21122818  0.30826774]
+[-0.25551152 -0.33179573 -0.29022105  0.35526346  0.34678103  0.37165166
+ -0.36235773 -0.37182578 -0.21568326  0.31262118]
+[-0.25882341 -0.33451981 -0.29331094  0.35629977  0.34931833  0.37359346
+ -0.36461861 -0.37337709 -0.21919915  0.31553323]
+[-0.26209297 -0.33718465 -0.29635164  0.35724421  0.35179177  0.37545852
+ -0.36680932 -0.37484455 -0.22267969  0.31839103]
+[-0.26531708 -0.33978586 -0.2993395   0.35808999  0.35419662  0.37724117
+ -0.36892466 -0.37622196 -0.22612225  0.32119055]
+[-0.26986406 -0.34423901 -0.30386511  0.3618074   0.35859788  0.3814224
+ -0.3732334  -0.38022043 -0.23066996  0.32568615]
+[-0.2741043  -0.34826273 -0.30803415  0.36485895  0.36253622  0.38504744
+ -0.37703353 -0.38361114 -0.23496141  0.32978847]
+[-0.27769482 -0.3513769  -0.31144794  0.36650013  0.36549404  0.38749447
+ -0.37975641 -0.38571454 -0.23871009  0.33305778]
+[-0.28334086 -0.35736865 -0.31725113  0.37260334  0.37155395  0.39366846
+ -0.38588745 -0.39189064 -0.24417597  0.3389625 ]
+[-0.28792579 -0.36187492 -0.32182085  0.37640313  0.37601248  0.39791849
+ -0.3902591  -0.3959643  -0.24875539  0.34350675]
+[-0.2919218  -0.36555674 -0.32570599  0.37892452  0.37958224  0.40110071
+ -0.3936543  -0.39887111 -0.25284281  0.34729594]
+[-0.29608382 -0.36947096 -0.32978411  0.38180626  0.38340253  0.40458394
+ -0.39732474 -0.40210684 -0.25706892  0.35129797]
+[-0.29972607 -0.37265754 -0.33325803  0.38355972  0.38643842  0.40712474
+ -0.40013339 -0.40431272 -0.2608608   0.3546336 ]
+[-0.30368467 -0.37628699 -0.33709968  0.3859999   0.38995172  0.41023914
+ -0.40346656 -0.40714541 -0.26491697  0.35837482]
+[-0.30826855 -0.38079179 -0.34166818  0.38979741  0.39440867  0.41448726
+ -0.40783647 -0.41121699 -0.26949551  0.36291773]
+[-0.31115288 -0.38291733 -0.34426107  0.3899056   0.39630073  0.41565384
+ -0.40938844 -0.41192117 -0.27265421  0.36528161]
+[-0.31581931 -0.38753769 -0.34892553  0.39388231  0.40088226  0.42005164
+ -0.41389523 -0.41615631 -0.27730171  0.36993036]
+[-0.32100828 -0.39288959 -0.35419741  0.39899334  0.40625239  0.4253969
+ -0.41926842 -0.42142681 -0.28238576  0.37524907]
+[-0.32332925 -0.39422644 -0.35613543  0.3978786   0.40729424  0.425542
+ -0.4198863  -0.42101476 -0.28507382  0.37689065]
+[-0.32735197 -0.39794567 -0.36005163  0.40045799  0.41090432  0.42877267
+ -0.4233258  -0.4239745  -0.28918356  0.38071409]
+[-0.33136973 -0.40165793 -0.36396205  0.40302658  0.41450691  0.43199433
+ -0.42675705 -0.4269244  -0.29328915  0.38453116]
+[-0.33503117 -0.40487138 -0.36745828  0.4048217   0.41757175  0.43456993
+ -0.42959751 -0.42916831 -0.29709707  0.38789139]
+[-0.33906552 -0.40860686 -0.37138798  0.4074263   0.42119937  0.43782167
+ -0.43305627 -0.43215108 -0.30121651  0.39172974]
+[-0.34387252 -0.41342403 -0.37621585  0.41170817  0.42599304  0.44247436
+ -0.43779614 -0.43666475 -0.30598145  0.39655872]
+[-0.34808917 -0.41741472 -0.38035746  0.4147085   0.42989578  0.44605663
+ -0.44155716 -0.44000872 -0.3102532   0.40063079]
+[-0.35255107 -0.42174876 -0.38478418  0.41824124  0.43416865  0.4500836
+ -0.44572484 -0.44383862 -0.31472984  0.40501731]
+[-0.35768571 -0.42702459 -0.3899929   0.42323432  0.43945677  0.45533034
+ -0.45100794 -0.44900146 -0.31976849  0.41026635]
+[-0.36165226 -0.43066517 -0.39384379  0.42569175  0.44298207  0.45845914
+ -0.45435429 -0.45184989 -0.3238313   0.41401777]
+[-0.36563218 -0.43432447 -0.39771023  0.42817822  0.44652756  0.46161221
+ -0.45772281 -0.45472483 -0.32790528  0.41778633]
+[-0.36944439 -0.43774897 -0.40138172  0.43030061  0.44981993  0.46446117
+ -0.46081325 -0.45726745 -0.33183915  0.42133986]
+[-0.37244982 -0.44004404 -0.40411538  0.43067168  0.45189475  0.46584731
+ -0.46256601 -0.45821157 -0.33509902  0.42385901]
+[-0.37692718 -0.44439973 -0.40856006  0.43423797  0.45619095  0.46990231
+ -0.46675932 -0.46207211 -0.33958857  0.42826535]
+[-0.38216566 -0.44982093 -0.41388949  0.43945647  0.46163579  0.47533733
+ -0.4722146  -0.46744069 -0.34471398  0.43364753]
+[-0.38544242 -0.45249584 -0.41693855  0.44041653  0.46412009  0.47721545
+ -0.47441724 -0.46892242 -0.34820053  0.43651456]
+[-0.38975511 -0.45662098 -0.4211918   0.44362534  0.46816776  0.48097185
+ -0.47833749 -0.47245667 -0.3525525   0.44070976]
+[-0.39382939 -0.46041238 -0.42516793  0.44631664  0.47185564  0.48429599
+ -0.48186246 -0.47551855 -0.35670531  0.4445993 ]
+[-0.39692587 -0.46283492 -0.42800744  0.44688537  0.47406788  0.48584724
+ -0.4837662  -0.47664309 -0.36004126  0.44723519]
+[-0.40010093 -0.46536745 -0.43093827  0.44762465  0.47639869  0.48754094
+ -0.4858002  -0.47792329 -0.36344283  0.44997181]
+[-0.40457211 -0.46971449 -0.43537578  0.45117754  0.48068557  0.49158474
+ -0.48998327 -0.48177159 -0.36792723  0.45437024]
+[-0.40955632 -0.47477972 -0.44040963  0.45584407  0.48574667  0.49655873
+ -0.49501695 -0.48663637 -0.37284021  0.45942641]
+[-0.41349125 -0.47837603 -0.44422377  0.45823286  0.48922425  0.4996302
+ -0.49831087 -0.48942215 -0.3768766   0.46313729]
+[-0.41819229 -0.48304485 -0.44892846  0.46228471  0.49385802  0.50409077
+ -0.50287505 -0.49372588 -0.38155302  0.46783041]
+[-0.42159523 -0.48589641 -0.4521242   0.46351868  0.49653275  0.50619767
+ -0.50528691 -0.49545761 -0.38514498  0.47085922]
+[-0.42414475 -0.48755323 -0.45432789  0.46290006  0.49791952  0.50675716
+ -0.50628373 -0.4954984  -0.38802397  0.47279382]
+[-0.42924569 -0.49278188 -0.45949744  0.46782     0.50315679  0.51194281
+ -0.51151096 -0.50059447 -0.39303447  0.47799967]
+[-0.43345031 -0.49675575 -0.46362508  0.47079423  0.50704138  0.51550328
+ -0.51525205 -0.50391461 -0.39729617  0.48205632]
+[-0.43715357 -0.50002773 -0.46716992  0.47268013  0.51016934  0.5181547
+ -0.51816185 -0.50624137 -0.40113903  0.48547017]
+[-0.4406256  -0.50297601 -0.47044596  0.47406406  0.51294832  0.52038686
+ -0.52068825 -0.50810998 -0.4047887   0.48858754]
+[-0.44515655 -0.50740671 -0.47495294  0.47774669  0.51732539  0.52453902
+ -0.52497041 -0.5120767  -0.40932302  0.49306259]
+[-0.4496783  -0.51182454 -0.47944922  0.48140934  0.52168859  0.52867451
+ -0.52923732 -0.5160252  -0.41384966  0.49752585]
+[-0.45326865 -0.51493846 -0.48286281  0.48305013  0.52464613  0.5311212
+ -0.5319599  -0.51812824 -0.41759818  0.50079493]
+[-0.45669362 -0.51782086 -0.48608416  0.48433192  0.52735411  0.53326804
+ -0.53440828 -0.51990362 -0.42120855  0.50385198]
+[-0.46034654 -0.52102237 -0.48957048  0.48610854  0.53040609  0.53582819
+ -0.53723461 -0.52213064 -0.42500935  0.50720128]
+[-0.46569034 -0.52659101 -0.49502233  0.49155566  0.53600987  0.54145417
+ -0.54286452 -0.52770789 -0.43022273  0.51271849]
+[-0.46937848 -0.52984183 -0.4985496   0.49340874  0.53911502  0.54407819
+ -0.54574925 -0.53000471 -0.43405296  0.51611296]
+[-0.47251254 -0.53231698 -0.50143278  0.49405903  0.54138396  0.54569756
+ -0.54771528 -0.53120369 -0.43742029  0.51879703]
+[-0.475758   -0.53494807 -0.50444546  0.49495114  0.54382102  0.54751891
+ -0.54986602 -0.53262338 -0.44088069  0.52162391]
+[-0.47954419 -0.53833615 -0.5080867   0.49701706  0.54707413  0.5503207
+ -0.55291332 -0.53511446 -0.44479282  0.52514409]
+[-0.48444283 -0.5432816  -0.51302109  0.50149785  0.5520061   0.55513954
+ -0.55780513 -0.53980971 -0.44963432  0.53009056]
+[-0.48863119 -0.5472327  -0.51712982  0.50443678  0.55586614  0.55867053
+ -0.56151925 -0.54309762 -0.45388243  0.53412636]
+[-0.49188514 -0.54987568 -0.52015237  0.50534734  0.55831603  0.56050729
+ -0.56368408 -0.54453416 -0.45734993  0.53696415]
+[-0.49504701 -0.55238976 -0.52306788  0.506058    0.56062694  0.56217708
+ -0.56569622 -0.54578824 -0.46074049  0.53968387]
+[-0.4989449  -0.55593421 -0.52683896  0.50836638  0.56404861  0.5651814
+ -0.56892872 -0.54850063 -0.46474594  0.54334725]
+[-0.50381972 -0.56084631 -0.53174566  0.51279546  0.56894464  0.56995705
+ -0.57378104 -0.55314867 -0.46956753  0.54826318]
+[-0.508757   -0.56584585 -0.53672497  0.51736013  0.57393492  0.57484595
+ -0.57873691 -0.55792047 -0.47444131  0.55325919]
+[-0.51177459 -0.56815794 -0.53947276  0.51775759  0.5760281   0.57625415
+ -0.58050984 -0.55888868 -0.47771134  0.55579393]
+[-0.51676835 -0.57323655 -0.54451772  0.52244485  0.58110361  0.58124545
+ -0.58555935 -0.56377238 -0.4826323   0.56086235]
+[-0.52107835 -0.57735793 -0.54876785  0.52564784  0.58514723  0.58499699
+ -0.58947516 -0.56730131 -0.48698203  0.56505411]
+[-0.52566129 -0.58186143 -0.55333527  0.52944332  0.58960277  0.58924342
+ -0.59384352 -0.57137105 -0.49155979  0.56959582]
+[-0.5298373  -0.58579524 -0.55742965  0.53235546  0.59344419  0.59275202
+ -0.59753718 -0.5746345  -0.49579759  0.57361579]
+[-0.53343114 -0.58891404 -0.56084729  0.53400382  0.596407    0.59520504
+ -0.60026554 -0.57674446 -0.49954903  0.57688934]
+[-0.53685803 -0.59179912 -0.56407086  0.53528977  0.59911787  0.59735535
+ -0.6027171  -0.57852364 -0.50316099  0.57994885]
+[-0.54026013 -0.59464951 -0.56726563  0.53652193  0.60179133  0.59946074
+ -0.60512757 -0.58025371 -0.50675226  0.58297658]
+[-0.54289318 -0.59642327 -0.56956643  0.53608465  0.60330417  0.6001717
+ -0.6062629  -0.58046001 -0.50970104  0.58501829]
+[-0.54905359 -0.60313512 -0.57596754  0.54330444  0.61014036  0.60727833
+ -0.6132468  -0.58765527 -0.51559664  0.5915825 ]
+[-0.55283926 -0.60652247 -0.57960817  0.54536923  0.61339268  0.61007917
+ -0.61629323 -0.59014531 -0.51950834  0.595102  ]
+[-0.55651302 -0.60975316 -0.58311872  0.54719108  0.61647611  0.61267711
+ -0.61915412 -0.59241362 -0.52332654  0.59847803]
+[-0.5603364  -0.61319331 -0.58680319  0.54933773  0.61978535  0.61554633
+ -0.62226309 -0.5949784  -0.52726975  0.60204589]
+[-0.56254687 -0.61437548 -0.58861276  0.54798313  0.62066045  0.61549109
+ -0.62269776 -0.59434742 -0.5298655   0.6035458 ]
+[-0.56801369 -0.62011635 -0.59420762  0.5536973   0.62644989  0.62134013
+ -0.62853164 -0.60016842 -0.53518166  0.60922074]
+[-0.57348707 -0.62586639 -0.59981011  0.55942571  0.63224923  0.62720106
+ -0.6343764  -0.60600242 -0.5405033   0.6149041 ]
+[-0.57682237 -0.62862326 -0.60292722  0.56051285  0.63482188  0.62918532
+ -0.6366761  -0.60760013 -0.54403876  0.61784618]
+[-0.57968818 -0.63072287 -0.60549858  0.56058084  0.63668599  0.63031831
+ -0.63819736 -0.60826761 -0.54718199  0.62018631]
+[-0.58255477 -0.63282356 -0.60807084  0.56065051  0.63855127  0.63145271
+ -0.63971991 -0.60893663 -0.55032587  0.62252744]
+[-0.58654222 -0.6364934  -0.61194604  0.56315333  0.64210812  0.63461942
+ -0.64310091 -0.61182649 -0.55440614  0.62630566]
+[-0.59256231 -0.64300881 -0.61818403  0.57006851  0.64873254  0.64147163
+ -0.64985215 -0.61874371 -0.56018452  0.63268996]
+[-0.59543132 -0.64511289 -0.62075911  0.57014344  0.65060147  0.64261042
+ -0.65137871 -0.61941753 -0.56333042  0.6350342 ]
+[-0.59955761 -0.6489771  -0.62479569  0.57294763  0.65436785  0.64602886
+ -0.65498991 -0.62258247 -0.56752668  0.63899042]
+[-0.60352432 -0.6526179  -0.62864678  0.57540542  0.65789339  0.64915796
+ -0.65833653 -0.62543122 -0.57158962  0.64274204]
+[-0.60760277 -0.65641513 -0.63262775  0.57810577  0.66158757  0.65248967
+ -0.66186842 -0.62850138 -0.57574592  0.64663693]
+[-0.61072833 -0.65887837 -0.63550105  0.5787376   0.66384368  0.65409363
+ -0.66382035 -0.62968351 -0.57910615  0.6493101 ]
+[-0.61300183 -0.66014879 -0.6373839   0.57751984  0.66481391  0.65415268
+ -0.66435954 -0.62917743 -0.58175456  0.65089083]
+[-0.61643153 -0.66303781 -0.64061074  0.57881189  0.66752901  0.65630809
+ -0.66681576 -0.63096217 -0.58536887  0.65395393]
+[-0.62009329 -0.6662517  -0.64410734  0.5806077   0.67059434  0.65888426
+ -0.66965675 -0.63320671 -0.58917705  0.65731457]
+[-0.62376016 -0.66947274 -0.64760988  0.5824146   0.67366738  0.66146971
+ -0.67250622 -0.63546138 -0.59298951  0.66068177]
+[-0.62742898 -0.67269651 -0.65111468  0.58422573  0.67674335  0.66405868
+ -0.67535891 -0.6377199  -0.59680359  0.66405146]
+[-0.63202663 -0.67722059 -0.65569919  0.58805314  0.68122108  0.66833178
+ -0.67975166 -0.64181877 -0.60139363  0.66861202]
+[-0.63638418 -0.68140854 -0.6600046   0.59135934  0.68533646  0.67216954
+ -0.6837463  -0.64544192 -0.60578309  0.67286475]
+[-0.63960636 -0.68400705 -0.66299021  0.59220092  0.68773839  0.67394868
+ -0.68585844 -0.64681549 -0.60922404  0.67566179]
+[-0.64306792 -0.68694067 -0.66625409  0.59356214  0.69050158  0.67616187
+ -0.68836749 -0.64866337 -0.61286497  0.67876575]
+[-0.64701298 -0.69055116 -0.67008001  0.59597293  0.69399445  0.67925171
+ -0.69167821 -0.65146922 -0.61690982  0.68248961]
+[-0.65072527 -0.6938358  -0.67363535  0.59787844  0.69713604  0.68191952
+ -0.69460299 -0.65381389 -0.62076023  0.68591504]
+[-0.65499277 -0.69789769 -0.67783608  0.60098917  0.70111553  0.685594
+ -0.69844833 -0.65725862 -0.62507446  0.69005232]
+[-0.6577031  -0.69977963 -0.6802267   0.60071963  0.70274499  0.68644507
+ -0.69971179 -0.65761803 -0.62808779  0.6921931 ]
+[-0.66039127 -0.70163056 -0.68259157  0.60040201  0.70434102  0.68725598
+ -0.70093852 -0.65793355 -0.63108262  0.69430549]
+[-0.66264673 -0.70287571 -0.68445344  0.59914506  0.70528401  0.6872823
+ -0.70144778 -0.65739171 -0.63371596  0.69586308]
+[-0.65503325 -0.69030495 -0.67484333  0.57646496  0.69133322  0.66941466
+ -0.68559379 -0.637296   -0.6281046   0.68476751]
+[-0.62589357 -0.64759884 -0.64021049  0.50705654  0.64489603  0.61251658
+ -0.63404816 -0.5745493  -0.60450987  0.64607277]
+[-0.64192087 -0.66812373 -0.65808119  0.53569504  0.6666229   0.63751346
+ -0.65739191 -0.60129435 -0.61864845  0.66528752]
+[-0.66470591 -0.69810904 -0.68380731  0.57900301  0.69854826  0.67476322
+ -0.69194037 -0.64142888 -0.63843257  0.6931665 ]
+[-0.6814347  -0.71961597 -0.70249344  0.60916427  0.72133378  0.701032
+ -0.71644722 -0.66956381 -0.65315718  0.71328063]
+[-0.6896795  -0.72924584 -0.71131752  0.6209088   0.73131564  0.71191798
+ -0.72688716 -0.68088899 -0.66079412  0.72251729]
+[-0.69292522 -0.7318773  -0.7143305   0.62180148  0.73375309  0.71373981
+ -0.72903833 -0.68230921 -0.66425474  0.72534451]
+[-0.69743415 -0.73627717 -0.71881187  0.62543629  0.73809693  0.71785204
+ -0.73328397 -0.68623229 -0.66877066  0.72979132]
+[-0.70194245 -0.74067617 -0.72329252  0.62906975  0.74243982  0.72196314
+ -0.73752858 -0.69015413 -0.67328606  0.73423733]
+[-0.70756053 -0.74662878 -0.7290632   0.63511225  0.74845752  0.72808642
+ -0.74361325 -0.69627482 -0.67872858  0.7401062 ]
+[-0.71177148 -0.75061151 -0.7331982   0.63810023  0.75235167  0.73165837
+ -0.74736483 -0.69960751 -0.68299557  0.74417097]
+[-0.71575799 -0.75428003 -0.7370723   0.640601    0.7559071   0.73482338
+ -0.75074428 -0.7024955  -0.68707506  0.74794798]
+[-0.72016457 -0.75853662 -0.7414347   0.64401363  0.76009647  0.73875003
+ -0.75482022 -0.70621578 -0.69150547  0.75226357]
+[-0.72443641 -0.76260459 -0.74564048  0.64713379  0.76408251  0.74243239
+ -0.75867276 -0.70966912 -0.69582333  0.75640641]
+[-0.72892401 -0.7669746  -0.75009706  0.6507223   0.76839415  0.74650594
+ -0.76288304 -0.71354994 -0.70032144  0.76082587]
+[-0.73184162 -0.76914672 -0.75272863  0.65090273  0.77033643  0.74773285
+ -0.76449018 -0.71432005 -0.70350794  0.76323242]
+[-0.73690278 -0.77431968 -0.75785193  0.6557363   0.77551367  0.75284636
+ -0.76965145 -0.71933729 -0.70848521  0.76838726]
+[-0.74071589 -0.77774546 -0.76152447  0.65786066  0.77880741  0.75569697
+ -0.77274339 -0.72188171 -0.71241983  0.77194195]
+[-0.74449634 -0.78112551 -0.76515904  0.65991412  0.78205186  0.75848835
+ -0.77578118 -0.72436143 -0.71632717  0.77545477]
+[-0.7489851  -0.78549714 -0.76961697  0.66350515  0.78636525  0.76256401
+ -0.77999338 -0.72824454 -0.72082624  0.77987572]
+[-0.75285692 -0.78900511 -0.77335775  0.66575696  0.7897476   0.76552107
+ -0.78318267 -0.73090529 -0.72480992  0.78350568]
+[-0.75627399 -0.79187645 -0.77656991  0.6670216   0.79244364  0.76765358
+ -0.78561795 -0.73266501 -0.72841368  0.7865526 ]
+[-0.76020036 -0.79546077 -0.7803741   0.6693918   0.7959083   0.77070953
+ -0.78889767 -0.73543383 -0.73244292  0.7902525 ]
+[-0.7641424  -0.79906704 -0.78419651  0.67179604  0.79939662  0.77379391
+ -0.79220339 -0.73823371 -0.73648526  0.79397249]
+[-0.76758978 -0.8019808  -0.7874439   0.67312647  0.8021384   0.77598137
+ -0.79468891 -0.74005348 -0.74011434  0.79705826]
+[-0.77180901 -0.80597512 -0.79158852  0.67613242  0.80604504  0.77956834
+ -0.79845423 -0.74340257 -0.74438825  0.80113365]
+[-0.77651565 -0.81065178 -0.79629972  0.68019642  0.81068725  0.78403905
+ -0.80302769 -0.74771739 -0.74906934  0.80583395]
+[-0.77935524 -0.81271468 -0.7988406   0.68020749  0.81251179  0.7851245
+ -0.80450547 -0.74833292 -0.75219067  0.80814047]
+[-0.78382417 -0.81705856 -0.80327548  0.68375548  0.81679527  0.78916421
+ -0.8086848  -0.75217675 -0.75667318  0.812536  ]
+[-0.78854018 -0.82174833 -0.80799757  0.68783981  0.82145162  0.7936519
+ -0.81327379 -0.75651013 -0.7613621   0.81724831]
+[-0.79167045 -0.82421818 -0.81087636  0.68848189  0.82371485  0.79526441
+ -0.81523355 -0.75770161 -0.76472627  0.81992753]
+[-0.79580175 -0.82808939 -0.81491876  0.69129695  0.82748878  0.79869194
+ -0.81885306 -0.76087647 -0.76892671  0.82389017]
+[-0.80031114 -0.83248992 -0.81940068  0.69493277  0.83183331  0.80280501
+ -0.82309947 -0.76480047 -0.77344302  0.82833758]
+[-0.80339335 -0.83489246 -0.82222358  0.6954705   0.834024    0.80433036
+ -0.82497952 -0.7658967  -0.77676703  0.83095516]
+[-0.80843782 -0.84004206 -0.82732749  0.70026785  0.83917605  0.80941361
+ -0.83011313 -0.77088088 -0.78173036  0.8360886 ]
+[-0.8130503  -0.8445869  -0.83192923  0.70412745  0.84367616  0.8137136
+ -0.83453047 -0.77500914 -0.78633279  0.84066817]
+[-0.81700549 -0.84821158 -0.83576693  0.70656023  0.84718432  0.81682182
+ -0.83785798 -0.77783508 -0.79038611  0.84440503]
+[-0.82096417 -0.85184114 -0.83960868  0.70900058  0.85069775  0.81993636
+ -0.84119129 -0.78066792 -0.79444235  0.84814636]
+[-0.82417316 -0.85442118 -0.84257896  0.70981352  0.85307976  0.82169158
+ -0.84328155 -0.78201536 -0.79787227  0.85092649]
+[-0.82745365 -0.85710131 -0.84563235  0.71078168  0.85556969  0.82357646
+ -0.84549037 -0.78350446 -0.80136194  0.85379829]
+[-0.83181242 -0.86129097 -0.84993918  0.71409054  0.85968692  0.82741643
+ -0.84948705 -0.78713003 -0.80575242  0.85805259]
+[-0.83657179 -0.86604146 -0.85471168  0.71826901  0.86440871  0.83198276
+ -0.85414794 -0.79154933 -0.81047757  0.8628205 ]
+[-0.84126432 -0.87069835 -0.85940648  0.72230237  0.86902963  0.83642788
+ -0.858698   -0.79583619 -0.81514687  0.8675027 ]
+[-0.84446554 -0.87326752 -0.86236773  0.72309846  0.87139993  0.83816903
+ -0.86077539 -0.79716824 -0.81857031  0.87027288]
+[-0.84802075 -0.87633225 -0.86574047  0.72466297  0.87430445  0.84055201
+ -0.86343972 -0.79920167 -0.82228948  0.87349691]
+[-0.85196519 -0.87994187 -0.86956567  0.72707242  0.87779639  0.84364074
+ -0.86674941 -0.8020063  -0.82633382  0.87721998]
+[-0.85559043 -0.88310464 -0.87301982  0.72878896  0.8808066   0.8461507
+ -0.86952985 -0.80417849 -0.8301115   0.8805338 ]
+[-0.85948422 -0.88664336 -0.87678613  0.73108844  0.88422209  0.84914758
+ -0.87275556 -0.80688275 -0.83411352  0.88419193]
+[-0.86473162 -0.89207704 -0.88212593  0.73632629  0.88968039  0.85459877
+ -0.87822562 -0.812269   -0.83924637  0.88958554]
+[-0.86861672 -0.89560359 -0.88588215  0.73860692  0.89308277  0.8575799
+ -0.88143693 -0.81495606 -0.84324114  0.89323253]
+[-0.87141647 -0.89761072 -0.88837672  0.73853151  0.89484719  0.85859312
+ -0.88284865 -0.81549265 -0.84632918  0.89548797]
+[-0.87541405 -0.90129474 -0.89226369  0.74105631  0.89841932  0.8617782
+ -0.88624646 -0.81840258 -0.85041792  0.89927918]
+[-0.87936323 -0.904911   -0.89609439  0.74347604  0.90191841  0.86487551
+ -0.889564   -0.82121659 -0.85446621  0.90300832]
+[-0.8829014  -0.90795187 -0.89944732  0.74500356  0.90479722  0.8672276
+ -0.89220008 -0.82321626 -0.85817115  0.9062105 ]
+[-0.88691796 -0.91166246 -0.90335635  0.74756956  0.90839799  0.87044709
+ -0.89562935 -0.82616379 -0.86227574  0.91002604]
+[-0.89120731 -0.91575494 -0.90758248  0.75072771  0.91241045  0.87416119
+ -0.89951091 -0.8296518  -0.86660822  0.91419133]
+[-0.89493153 -0.91905627 -0.91115169  0.75265911  0.91557004  0.87685062
+ -0.90245547 -0.8320201  -0.87046859  0.91763205]
+[-0.89865384 -0.92235492 -0.91471867  0.75458636  0.91872674  0.87953658
+ -0.90539685 -0.83438461 -0.87432735  0.92107032]
+[-0.90237581 -0.92565311 -0.91828526  0.75651287  0.92188293  0.88222193
+ -0.90833768 -0.83674846 -0.87818584  0.92450816]
+[-0.90690466 -0.93008087 -0.92278979  0.76019093  0.92625683  0.88637028
+ -0.91261635 -0.840711   -0.8827184   0.92898051]
+[-0.91167946 -0.93485295 -0.92758023  0.76440288  0.93100191  0.89096457
+ -0.91730282 -0.84516087 -0.88745644  0.9337682 ]
+[-0.91559104 -0.93841657 -0.93136723  0.766741    0.93444425  0.89399372
+ -0.92055803 -0.8479004  -0.89147333  0.93744914]
+[-0.91892946 -0.9411778  -0.93448796  0.76783489  0.9370216   0.89598362
+ -0.9228629  -0.84950427 -0.89501138  0.94039521]
+[-0.92153041 -0.94290662 -0.93675144  0.76732794  0.938486    0.89663639
+ -0.92394501 -0.84964698 -0.89793335  0.94239577]
+[-0.92448154 -0.94512567 -0.93942198  0.76758113  0.94047887  0.89792407
+ -0.92560773 -0.85048351 -0.90114786  0.9448453 ]
+[-0.92741154 -0.94731514 -0.94206795  0.76778846  0.94243985  0.89917345
+ -0.92723542 -0.85127817 -0.90434471  0.94726773]
+[-0.92772382 -0.94583997 -0.94167102  0.76231335  0.9404503   0.89567649
+ -0.9245228  -0.84688622 -0.90535469  0.94633394]
+[-0.92882694 -0.94547192 -0.94219336  0.75855494  0.93965422  0.89361344
+ -0.92312141 -0.84406118 -0.90702533  0.94641409]
+[-0.9338976  -0.95065818 -0.94732771  0.76340913  0.9448458   0.89874417
+ -0.92829843 -0.84909724 -0.91201053  0.95158111]
+[-0.93944698 -0.95651462 -0.95301854  0.76930252  0.95075984  0.90474291
+ -0.93426921 -0.85508183 -0.91739567  0.95736191]
+[-0.946157   -0.96399589 -0.96005854  0.77771539  0.95842547  0.91284607
+ -0.94216438 -0.86336606 -0.92375042  0.96463078]
+[-0.95109037 -0.96898995 -0.96503329  0.78227156  0.96340985  0.91772788
+ -0.94711377 -0.8681301  -0.92862093  0.96962178]
+[-0.9535484  -0.9705187  -0.96713064  0.78145436  0.96465856  0.91812151
+ -0.94795891 -0.86798963 -0.9314235   0.97143909]
+[-0.95743324 -0.97404488 -0.97088655  0.78373442  0.96806054  0.92110216
+ -0.95116978 -0.87067617 -0.93541804  0.97508575]
+[-0.96251582 -0.97924783 -0.97603476  0.78861449  0.97327011  0.92625451
+ -0.95636657 -0.87573586 -0.94041321  0.98026805]
+[-0.96617804 -0.98246237 -0.97953189  0.7904113   0.97633613  0.92883152
+ -0.95920832 -0.8779813  -0.94422177  0.98362928]
+[-0.96913896 -0.98469514 -0.98221382  0.79068577  0.97834379  0.93013698
+ -0.96088729 -0.87883725 -0.94744447  0.98609137]
+[-0.97327821 -0.98857747 -0.98626546  0.79351807  0.98212971  0.93357891
+ -0.96451997 -0.88202785 -0.95165155  0.99006419]
+[-0.97772072 -0.99288437 -0.99066963  0.79700872  0.98637331  0.93757072
+ -0.9686555  -0.88581934 -0.95611199  0.99442585]
+[-0.98081158 -0.99529903 -0.9935026   0.79756523  0.98857706  0.93911176
+ -0.9705499  -0.88693273 -0.95944323  0.99705453]
+[-0.98381788 -0.99759532 -0.99623727  0.79793819  0.99065319  0.94049949
+ -0.97230411 -0.88787857 -0.96270383  0.99957479]
+[-0.98745713 -1.0007777  -0.9997077   0.79968514  0.99368455  0.94303485
+ -0.97510778 -0.89007851 -0.96649321  1.00290657]
+[-0.9915229  -1.00455718 -1.00367394  0.80235796  0.99735959  0.94634357
+ -0.97861864 -0.89312354 -0.97063891  1.00678521]
+[-0.99763088 -1.01119562 -1.01001409  0.80946393  1.00411664  0.95335512
+ -0.98551559 -0.9002149  -0.9764907   1.01328219]
+[-1.00290739 -1.01667006 -1.01538773  0.81476498  1.00961887  0.9588591
+ -0.99103393 -0.90565883 -0.98164788  1.01871313]
+[-1.00623074 -1.0194102  -1.01849095  0.81582618  1.01217348  0.96082169
+ -0.99331381 -0.90723286 -0.98517335  1.02163989]
+[-1.01003922 -1.0228295  -1.02215811  0.8179405   1.01546024  0.9636639
+ -0.99639809 -0.90976812 -0.98910411  1.02518865]
+[-1.01450559 -1.02716978 -1.02659     0.82148291  1.01973984  0.96769895
+ -1.00057315 -0.91360686 -0.99358447  1.02958088]
+[-1.01878392 -1.03124684 -1.03080333  0.82461716  1.02373567  0.97139308
+ -1.00443646 -0.91707306 -0.99790775  1.03373205]
+[-1.02290855 -1.03510872 -1.03483798  0.82741775  1.02749954  0.97480852
+ -1.00804491 -0.92023471 -1.00210263  1.03768614]
+[-1.02635225 -1.03801734 -1.0380811   0.8287402   1.03023578  0.97698932
+ -1.01052435 -0.9220472  -1.00572864  1.04076721]
+[-1.02946964 -1.04046914 -1.04094491  0.82935431  1.03247957  0.97857847
+ -1.01246275 -0.92321315 -1.00908205  1.0434299 ]
+[-1.03401207 -1.04491592 -1.04546523  0.83306185  1.03687396  0.98275144
+ -1.01676394 -0.92720261 -1.01362596  1.04791966]
+[-1.03890664 -1.04985567 -1.05039488  0.8375338   1.04179979  0.9875629
+ -1.02164899 -0.93188978 -1.01846405  1.05286091]
+[-1.04339098 -1.05422111 -1.05484767  0.84111522  1.04610651  0.99163054
+ -1.02585386 -0.93576413 -1.02295943  1.05727619]
+[-1.04784333 -1.05854178 -1.05926328  0.84462722  1.05036496  0.99564019
+ -1.0300057  -0.93957512 -1.02742809  1.06165047]
+[-1.05210602 -1.06259694 -1.06345842  0.84772751  1.05433718  0.99930595
+ -1.03384306 -0.94301031 -1.0317383   1.06578157]
+[-1.05632687 -1.06659352 -1.06760492  0.85073698  1.05824627  1.00289585
+ -1.03761106 -0.94636261 -1.03601356  1.06985903]
+[-1.05972209 -1.06943428 -1.07079169  0.85195419  1.06090934  1.00498875
+ -1.04001012 -0.94807905 -1.03959907  1.07287794]
+[-1.06221043 -1.07100544 -1.07292426  0.85120277  1.06220379  1.00543732
+ -1.0409055  -0.94799862 -1.04242695  1.07473411]
+[-1.06487435 -1.07282242 -1.07526094  0.85083251  1.06376322  1.00620426
+ -1.04209202 -0.94826609 -1.04540152  1.0768154 ]
+[-1.06867473 -1.07623037 -1.07891868  0.85292922  1.06703774  1.00903177
+ -1.04516285 -0.95078528 -1.04932551  1.08035377]
+[-1.07247511 -1.07963832 -1.08257641  0.85502594  1.07031226  1.01185929
+ -1.04823368 -0.95330447 -1.0532495   1.08389213]
+[-1.07597711 -1.08262856 -1.0858873   0.85647496  1.07313649  1.0141458
+ -1.05080978 -0.95523248 -1.05692422  1.08704794]
+[-1.07940033 -1.0855085  -1.08910661  0.85775294  1.07584181  1.01628946
+ -1.05325525 -0.95700438 -1.06053312  1.09010274]
+[-1.0831929  -1.08890552 -1.09275527  0.85983271  1.07910455  1.01910282
+ -1.05631314 -0.9595081  -1.06445058  1.0936311 ]
+[-1.08743987 -1.09293866 -1.09693213  0.86289887  1.08305305  1.02274007
+ -1.06012444 -0.96291215 -1.06874766  1.09774204]
+[-1.09166329 -1.09693885 -1.10108163  0.86591391  1.08696601  1.02633464
+ -1.06389669 -0.96626954 -1.07302506  1.1018228 ]
+[-1.09568741 -1.10066002 -1.10499944  0.86849632  1.09057819  1.02956783
+ -1.06733849 -0.96923204 -1.07713597  1.10564803]
+[-1.09971153 -1.10438119 -1.10891726  0.87107872  1.09419037  1.03280102
+ -1.0707803  -0.97219454 -1.08124687  1.10947326]
+[-1.10345708 -1.10771239 -1.11251126  0.87305643  1.09738216  1.03552913
+ -1.07376022 -0.97460512 -1.08512506  1.11294133]
+[-1.10711608 -1.11092241 -1.11600465  0.87484625  1.10044332  1.0381003
+ -1.07659664 -0.97684419 -1.08893094  1.11629843]
+[-1.11061563 -1.11390921 -1.11931269  0.87628993  1.10326384  1.04038236
+ -1.07916867 -0.97876732 -1.0926036   1.1194511 ]
+[-1.11389515 -1.11658799 -1.12236496  0.87725598  1.1057523   1.04226548
+ -1.08137588 -0.98025451 -1.09609246  1.12232166]
+[-1.11720525 -1.11930958 -1.12545279  0.87828843  1.10828692  1.04420405
+ -1.08363381 -0.9818023  -1.09960686  1.12523144]
+[-1.12087962 -1.12254112 -1.12896404  0.88011161  1.11137128  1.04680309
+ -1.08649571 -0.98407182 -1.10342558  1.12860824]
+[-1.12455399 -1.12577267 -1.1324753   0.88193479  1.11445563  1.04940213
+ -1.0893576  -0.98634135 -1.10724429  1.13198505]
+[-1.12793102 -1.12858795 -1.13564091  0.88311251  1.11709125  1.05146204
+ -1.09172649 -0.98802173 -1.11081461  1.13498063]
+[-1.1312007  -1.13125295 -1.13868175  0.8840572   1.11956486  1.05332731
+ -1.09391739 -0.98948942 -1.11429524  1.13783857]
+[-1.13451721 -1.1339835  -1.14177701  0.88510354  1.12210915  1.05527749
+ -1.09618593 -0.99104989 -1.11781499  1.14075655]
+[-1.13790633 -1.13681572 -1.14495669  0.88630753  1.12476302  1.05735934
+ -1.09857488 -0.99275425 -1.12139541  1.14376764]
+[-1.14130799 -1.13966549 -1.14815094  0.88753872  1.12743582  1.05946391
+ -1.10098461 -0.99448344 -1.1249863   1.1467948 ]
+[-1.14495136 -1.14285364 -1.15162617  0.88929461  1.13047339  1.06200675
+ -1.10379511 -0.99669155 -1.12877912  1.15013187]
+[-1.14859474 -1.14604179 -1.15510139  0.89105051  1.13351097  1.06454959
+ -1.10660562 -0.99889966 -1.13257195  1.15346894]
+[-1.15242709 -1.1494945  -1.15879629  0.89321664  1.13683375  1.06743508
+ -1.10972946 -1.00148221 -1.13652265  1.1570483 ]
+[-1.15633793 -1.15305708 -1.16258242  0.89555313  1.14027497  1.07046287
+ -1.11298343 -1.00422025 -1.14053891  1.16072828]
+[-1.16039686 -1.15682699 -1.16654071  0.8982111   1.14393968  1.07375918
+ -1.11648295 -1.00725173 -1.1446789   1.16459814]
+[-1.16471469 -1.16095934 -1.17079995  0.9014311   1.14799513  1.07752493
+ -1.12041176 -1.01079619 -1.14903518  1.16879995]
+[-1.1690218  -1.16507668 -1.17504672  0.90462781  1.15203439  1.08127123
+ -1.12432277 -1.01431939 -1.1533825   1.17298801]
+[-1.17283243 -1.16849897 -1.17871637  0.90674676  1.15532437  1.08411732
+ -1.12741058 -1.01685888 -1.15731504  1.17653951]
+[-1.17664305 -1.17192126 -1.18238601  0.90886571  1.15861435  1.08696341
+ -1.1304984  -1.01939837 -1.16124759  1.180091  ]
+[-1.18001103 -1.17472388 -1.18554111  0.9100238   1.16123632  1.08900692
+ -1.13285229 -1.02106084 -1.16481034  1.18307499]
+[-1.1831692  -1.17723278 -1.18845232  0.91072644  1.16354166  1.09067002
+ -1.1348583  -1.02230759 -1.16819782  1.18578997]
+[-1.18697927 -1.18065428 -1.19212131  0.91284418  1.16683079  1.09351509
+ -1.13794519 -1.02484597 -1.1721299   1.18934075]
+[-1.1920793  -1.18588166 -1.19728981  0.91776214  1.17206669  1.09869908
+ -1.14317091 -1.02994024 -1.17713964  1.19454543]
+[-1.19717933 -1.19110904 -1.2024583   0.92268009  1.17730259  1.10388308
+ -1.14839664 -1.0350345  -1.18214938  1.1997501 ]
+[-1.20155954 -1.19532871 -1.20679004  0.92603548  1.18145217  1.10776191
+ -1.15242885 -1.03870254 -1.18655777  1.20403188]
+[-1.20593464 -1.19954124 -1.21111585  0.92937979  1.18559404  1.11163149
+ -1.1564526  -1.04236046 -1.19096189  1.20830711]
+[-1.21041403 -1.20389977 -1.21556289  0.93295049  1.1898933   1.11569017
+ -1.16064928 -1.04622503 -1.19545314  1.21271605]
+[-1.21494952 -1.20833683 -1.22007515  0.93664297  1.19427723  1.11985057
+ -1.16493897 -1.05020074 -1.19999125  1.21719692]
+[-1.21896253 -1.21204244 -1.22398005  0.93920125  1.19787264  1.12306361
+ -1.16836234 -1.05314123 -1.20409288  1.2210079 ]
+[-1.22179895 -1.2141009  -1.22651724  0.93920543  1.19969239  1.12414331
+ -1.16983487 -1.05375047 -1.20721155  1.22331035]
+[-1.22463536 -1.21615936 -1.22905443  0.93920961  1.20151214  1.12522301
+ -1.17130739 -1.05435971 -1.21033023  1.2256128 ]
+[-1.2282061  -1.21924582 -1.23244522  0.94080782  1.20444009  1.12763414
+ -1.17399746 -1.0564239  -1.21406237  1.22885674]
+[-1.23180365 -1.22236982 -1.23586718  0.94246425  1.20740852  1.1300939
+ -1.17673198 -1.05854122 -1.21781691  1.23213505]
+[-1.23643998 -1.22694805 -1.24049665  0.94637562  1.21194462  1.13443713
+ -1.18118887 -1.06271673 -1.22243926  1.23674521]
+[-1.24170748 -1.23240988 -1.24585982  0.95165712  1.21743326  1.13992477
+ -1.18669227 -1.06814281 -1.22758891  1.2421646 ]
+[-1.24650236 -1.23721007 -1.25067359  0.95591266  1.22220864  1.14455547
+ -1.19141203 -1.07263246 -1.23234372  1.24697803]
+[-1.2500778  -1.24030312 -1.25406985  0.95752109  1.2251437   1.14697514
+ -1.1941099  -1.07470597 -1.23607979  1.250228  ]
+[-1.25365324 -1.24339617 -1.25746611  0.95912952  1.22807875  1.14939481
+ -1.19680777 -1.07677948 -1.23981586  1.25347797]
+[-1.2567468  -1.24581461 -1.26030221  0.95969189  1.23028657  1.15094074
+ -1.19870665 -1.07789821 -1.24314936  1.25611011]
+[-1.25980773 -1.24818738 -1.26310039  0.96018345  1.23244516  1.15242753
+ -1.20055144 -1.07895231 -1.2464556   1.25870042]
+[-1.26254541 -1.25010761 -1.26552281  0.9599733   1.2341159   1.1533282
+ -1.20186025 -1.07936592 -1.24949179  1.26087628]
+[-1.26506203 -1.25171837 -1.26768825  0.95928326  1.23545302  1.15382805
+ -1.20280252 -1.07934152 -1.2523433   1.2627687 ]
+[-1.26637097 -1.25163846 -1.26844986  0.95597166  1.23496758  1.15213819
+ -1.20174241 -1.0769243  -1.2541859   1.26311275]
+[-1.26407903 -1.24651753 -1.26502569  0.94484338  1.22904783  1.14391935
+ -1.19471183 -1.06737245 -1.25302025  1.25884003]
+[-1.26178709 -1.24139661 -1.26160151  0.93371509  1.22312809  1.13570051
+ -1.18768125 -1.0578206  -1.25185461  1.25456731]
+[-1.24631988 -1.21783111 -1.24286198  0.89398638  1.19732479  1.1035928
+ -1.15880533 -1.02216388 -1.2396821   1.23340231]
+[-1.22952455 -1.19240634 -1.2225786   0.85137465  1.16951716  1.069077
+ -1.12772733 -0.9838757  -1.22640007  1.21053451]
+[-1.2087579  -1.16142194 -1.19767882  0.80014209  1.13571617  1.02736054
+ -1.09006464 -0.9377189  -1.20980031  1.18257499]
+[-1.18494271 -1.12616979 -1.16923533  0.74229188  1.09731447  0.98011661
+ -1.04734731 -0.88552189 -1.19065376  1.15070689]
+[-1.1746575  -1.10985878 -1.15651952  0.71381208  1.07933163  0.95740469
+ -1.02706344 -0.86013255 -1.18281039  1.13618584]
+[-1.21151356 -1.15954266 -1.19860225  0.78766495  1.13249237  1.02016746
+ -1.08494245 -0.92814675 -1.2143497   1.18210556]
+[-1.24836963 -1.20922654 -1.24068497  0.86151781  1.18565311  1.08293024
+ -1.14282145 -0.99616095 -1.245889    1.22802528]
+[-1.26898898 -1.23618002 -1.26389363  0.90012459  1.2143101   1.11625325
+ -1.17377908 -1.03200448 -1.26386386  1.25312759]
+[-1.28740014 -1.26004216 -1.2845354   0.93393789  1.23963459  1.14557246
+ -1.20107541 -1.0634728  -1.27999396  1.27539873]
+[-1.30032576 -1.27622489 -1.29880061  0.95584336  1.25668053  1.1649455
+ -1.2192764  -1.08407232 -1.29154133  1.29063675]
+[-1.30853237 -1.28580129 -1.30758029  0.96750499  1.26660475  1.17576222
+ -1.22965301 -1.09532183 -1.29914637  1.29982444]
+[-1.31590803 -1.29421442 -1.31539405  0.9773628   1.27527494  1.1850723
+ -1.23865185 -1.10492492 -1.30605721  1.30794674]
+[-1.31984975 -1.29782023 -1.31921608  0.97976634  1.27876277  1.18815609
+ -1.24195704 -1.10772416 -1.31009928  1.31166633]
+[-1.32379147 -1.30142605 -1.32303812  0.98216988  1.2822506   1.19123988
+ -1.24526222 -1.1105234  -1.31414135  1.31538591]
+[-1.32538256 -1.30174113 -1.3241277   0.97947075  1.28219096  1.1900616
+ -1.24466992 -1.10866522 -1.31621965  1.3160917 ]
+[-1.32656569 -1.30148509 -1.32474306  0.97588603  1.28151564  1.18814363
+ -1.2434012  -1.10599871 -1.31795715  1.31627444]
+[-1.32645657 -1.29941997 -1.32385627  0.96949613  1.27889011  1.18388258
+ -1.23998986 -1.1007718  -1.31861506  1.31480035]
+[-1.32510283 -1.29561247 -1.32152269  0.96040446  1.27438626  1.17736486
+ -1.23451487 -1.09307886 -1.31823321  1.31173052]
+[-1.324475   -1.2928212  -1.32003293  0.95288858  1.27097792  1.17216332
+ -1.23024348 -1.08682421 -1.31845779  1.30959139]
+[-1.32747672 -1.29511108 -1.32276228  0.9532516   1.27304714  1.17354274
+ -1.23199009 -1.08776098 -1.32171457  1.31210578]
+[-1.33047844 -1.29740095 -1.32549162  0.95361462  1.27511636  1.17492216
+ -1.2337367  -1.08869775 -1.32497134  1.31462018]
+[-1.33702249 -1.30464987 -1.33233869  0.9616672   1.28253152  1.1827244
+ -1.24135668 -1.09665312 -1.33118744  1.32167626]
+[-1.34432345 -1.31295842 -1.34006561  0.97136285  1.29108896  1.19189902
+ -1.25023167 -1.1061082  -1.33803587  1.32970279]
+[-1.35042942 -1.31959405 -1.34640344  0.97846447  1.29784298  1.19890694
+ -1.2571253  -1.11319559 -1.34388599  1.3361972 ]
+[-1.35524714 -1.32442621 -1.35124376  0.98276959  1.30265283  1.20357905
+ -1.26188293 -1.11773048 -1.34865988  1.34103991]
+[-1.36012064 -1.32933646 -1.35614892  0.9871958   1.30754685  1.20835231
+ -1.26673305 -1.12237591 -1.35348038  1.34595414]
+[-1.36534113 -1.33473248 -1.36145744  0.99237525  1.31296455  1.21375472
+ -1.27215851 -1.12770885 -1.35859075  1.35131327]
+[-1.37056162 -1.3401285  -1.36676596  0.99755471  1.31838225  1.21915713
+ -1.27758396 -1.1330418  -1.36370113  1.35667239]
+[-1.37430109 -1.34345118 -1.37035289  0.9995192   1.32156485  1.22187421
+ -1.2805538  -1.1354403  -1.36757423  1.36013266]
+[-1.37766053 -1.34624183 -1.37349806  1.00065873  1.32417392  1.22390222
+ -1.28289352 -1.13708583 -1.37112985  1.36310568]
+[-1.37987151 -1.34742472 -1.37530823  0.99930524  1.32504979  1.22384791
+ -1.28332904 -1.13645587 -1.37372602  1.36460625]
+[-1.38069615 -1.34666682 -1.37550686  0.99494233  1.32383346  1.22127993
+ -1.28146592 -1.13307907 -1.37516403  1.36432937]
+[-1.38199996 -1.34657972 -1.37626251  0.99161958  1.32334027  1.21958077
+ -1.2803973  -1.13065168 -1.37700234  1.36466683]
+[-1.38716958 -1.35190452 -1.38151189  0.99668859  1.32868119  1.22489093
+ -1.2857384  -1.13588382 -1.38207021  1.36996072]
+[-1.39233919 -1.35722931 -1.38676127  1.0017576   1.3340221   1.23020109
+ -1.2910795  -1.14111595 -1.38713808  1.37525462]
+[-1.40088782 -1.36728452 -1.39593852  1.01416166  1.34446248  1.24163795
+ -1.3020232  -1.15304311 -1.39502885  1.38488081]
+[-1.41045973 -1.37877225 -1.40630526  1.028787    1.35644714  1.25493017
+ -1.31466354 -1.16699774 -1.40377447  1.39581896]
+[-1.4180368  -1.38746734 -1.41435315  1.03908204  1.36542129  1.26460543
+ -1.32399634 -1.1769999  -1.41085357  1.40419951]
+[-1.42291343 -1.39238198 -1.41926195  1.04351505  1.37032005  1.26938437
+ -1.32885165 -1.18165153 -1.41567668  1.40911776]
+[-1.42772981 -1.39721226 -1.42410071  1.04781727  1.37512787  1.27405406
+ -1.33360707 -1.18618378 -1.42044946  1.41395876]
+[-1.43187287 -1.40109994 -1.42815679  1.05065786  1.37891955  1.2775029
+ -1.33724608 -1.18938194 -1.42465972  1.41793648]
+[-1.43601593 -1.40498762 -1.43221287  1.05349846  1.38271123  1.28095175
+ -1.34088509 -1.19258011 -1.42886999  1.4219142 ]
+[-1.4376392  -1.40534775 -1.43333986  1.05086918  1.38270016  1.27983182
+ -1.34034615 -1.19078568 -1.43097518  1.42266125]
+[-1.43837443 -1.40446468 -1.43343457  1.04631219  1.3813489   1.27710174
+ -1.3383348  -1.18723174 -1.4323385   1.42226974]
+[-1.43818062 -1.40228101 -1.43244933  1.03973846  1.37859556  1.27268715
+ -1.33478303 -1.18183703 -1.43292567  1.42068707]
+[-1.43657386 -1.39811929 -1.42982163  1.03009753  1.37370985  1.26571065
+ -1.32888852 -1.17364276 -1.43233243  1.41729283]
+[-1.43556638 -1.39479653 -1.42789055  1.02175752  1.36972856  1.25982075
+ -1.32398765 -1.16663589 -1.43223985  1.41466695]
+[-1.44506421 -1.40618056 -1.43817119  1.03622207  1.38160144  1.27297866
+ -1.33650517 -1.18044375 -1.44092359  1.42551013]
+[-1.45456204 -1.41756459 -1.44845182  1.05068662  1.39347431  1.28613657
+ -1.34902269 -1.19425161 -1.44960733  1.43635331]
+[-1.46029564 -1.42367893 -1.4543568   1.05697991  1.39966636  1.29246932
+ -1.35529891 -1.2006012  -1.45514637  1.4423703 ]
+[-1.46450101 -1.42765385 -1.45848531  1.05995577  1.40355209  1.29603116
+ -1.35904124 -1.20392283 -1.45940869  1.44642792]
+[-1.46875965 -1.43170332 -1.46267573  1.06304725  1.40751819  1.29968956
+ -1.36287188 -1.20734998 -1.46371551  1.45055382]
+[-1.47310954 -1.43588055 -1.46697224  1.06633683  1.41162201  1.30351343
+ -1.36685383 -1.21095796 -1.46809857  1.45479673]
+[-1.47740463 -1.43998106 -1.47120504  1.06950745  1.41564313  1.30723794
+ -1.37074491 -1.21445734 -1.47243585  1.45896937]
+[-1.4796302  -1.44118438 -1.47303216  1.06818562  1.41654102  1.30721007
+ -1.37120462 -1.21385629 -1.47504422  1.46048864]
+[-1.48185577 -1.44238769 -1.47485929  1.0668638   1.4174389   1.30718221
+ -1.37166433 -1.21325523 -1.47765258  1.46200791]
+[-1.48408151 -1.44359125 -1.47668662  1.06554236  1.41833706  1.30715466
+ -1.37212433 -1.21265452 -1.48026109  1.46352741]
+[-1.48630735 -1.44479493 -1.47851405  1.06422111  1.41923535  1.30712727
+ -1.37258447 -1.21205398 -1.48286968  1.46504702]
+[-1.48814143 -1.44545019 -1.4798861   1.06204946  1.41954242  1.30638958
+ -1.37239507 -1.21067725 -1.48515099  1.46606436]
+[-1.48921626 -1.44504253 -1.48037556  1.05822964  1.41870366  1.30427524
+ -1.37094679 -1.20779616 -1.486798    1.46610824]
+[-1.49029109 -1.44463487 -1.48086503  1.05440983  1.4178649   1.30216089
+ -1.3694985  -1.20491507 -1.48844501  1.46615213]
+[-1.49210675 -1.44526434 -1.48221567  1.05219819  1.41814417  1.3013898
+ -1.36927856 -1.20350184 -1.49071093  1.46714585]
+[-1.49392416 -1.44589625 -1.48356833  1.04999034  1.41842608  1.30062187
+ -1.36906151 -1.20209207 -1.49297831  1.46814181]
+[-1.49793653 -1.44960098 -1.4874725   1.05254725  1.42202054  1.30383377
+ -1.37248384 -1.2050313  -1.4970794   1.47195198]
+[-1.5031054  -1.45492472 -1.492721    1.05761463  1.42736032  1.30914257
+ -1.37782369 -1.21026195 -1.50214665  1.47724491]
+[-1.50769176 -1.459433   -1.49729239  1.06141754  1.43182102  1.3133952
+ -1.38219772 -1.21433845 -1.50672726  1.481791  ]
+[-1.51099487 -1.4621448  -1.50037208  1.0624348   1.43434508  1.31532108
+ -1.38444405 -1.21587238 -1.51023582  1.4846918 ]
+[-1.51429797 -1.4648566  -1.50345177  1.06345205  1.43686914  1.31724696
+ -1.38669037 -1.2174063  -1.51374438  1.48759261]
+[-1.51770385 -1.46771227 -1.50665092  1.0646924   1.4395483   1.31935919
+ -1.38910709 -1.21914385 -1.51733879  1.49062517]
+[-1.52111296 -1.47057247 -1.50985383  1.06593977  1.44223234  1.32147727
+ -1.39152918 -1.2208878  -1.52093591  1.49366189]
+[-1.52335474 -1.47179846 -1.51169979  1.06465312  1.44315468  1.32147879
+ -1.39201575 -1.22031885 -1.52355781  1.49520194]
+[-1.52490136 -1.47205128 -1.51273768  1.06185745  1.44302792  1.32021987
+ -1.39134972 -1.21837254 -1.52559897  1.49585071]
+[-1.52723362 -1.47340396 -1.51468884  1.06076724  1.44408683  1.32038547
+ -1.39198634 -1.21798289 -1.52829647  1.49750678]
+[-1.53154624 -1.47752902 -1.51894202  1.06397591  1.44813441  1.32414176
+ -1.39590649 -1.22151701 -1.53264839  1.5017019 ]
+[-1.53585886 -1.48165407 -1.5231952   1.06718459  1.45218199  1.32789805
+ -1.39982664 -1.22505114 -1.53700031  1.50589702]
+[-1.5400762  -1.48564574 -1.52733762  1.07018642  1.45608576  1.33148158
+ -1.40358881 -1.22839647 -1.54127264  1.50996998]
+[-1.54425406 -1.48958214 -1.53143415  1.07310257  1.45992997  1.33499353
+ -1.40728553 -1.2316636  -1.54551198  1.51399232]
+[-1.54843193 -1.49351854 -1.53553068  1.07601872  1.46377417  1.33850549
+ -1.41098225 -1.23493072 -1.54975132  1.51801467]
+[-1.55152448 -1.49593558 -1.53836562  1.07657891  1.46598048  1.34004961
+ -1.41287946 -1.23604746 -1.55308398  1.52064552]
+[-1.55316187 -1.49631548 -1.53950902  1.07398029  1.46599071  1.33895527
+ -1.41236393 -1.23428101 -1.55520097  1.52141067]
+[-1.55479926 -1.49669537 -1.54065243  1.07138166  1.46600094  1.33786094
+ -1.4118484  -1.23251455 -1.55731796  1.52217583]
+[-1.55643665 -1.49707527 -1.54179583  1.06878303  1.46601117  1.33676661
+ -1.41133287 -1.2307481  -1.55943495  1.52294098]
+[-1.55838379 -1.49788879 -1.5432993   1.0668568   1.46648886  1.3362339
+ -1.41133092 -1.22959537 -1.5618107   1.52410327]
+[-1.56149386 -1.50033035 -1.5461546   1.06745502  1.46872161  1.33780978
+ -1.41325719 -1.23074682 -1.565158    1.52675658]
+[-1.56460393 -1.50277191 -1.5490099   1.06805325  1.47095435  1.33938566
+ -1.41518345 -1.23189827 -1.56850529  1.52940989]
+[-1.567714   -1.50521347 -1.5518652   1.06865147  1.47318709  1.34096154
+ -1.41710971 -1.23304973 -1.57185258  1.5320632 ]
+[-1.57082408 -1.50765504 -1.5547205   1.0692497   1.47541983  1.34253742
+ -1.41903597 -1.23420118 -1.57519988  1.53471651]
+[-1.57386168 -1.50999514 -1.55749155  1.0696906   1.4775432   1.3439819
+ -1.42084207 -1.23520903 -1.57848662  1.5372769 ]
+[-1.5756848  -1.51063505 -1.55885086  1.06749515  1.47783373  1.34322433
+ -1.42063449 -1.23381058 -1.58075878  1.53828019]
+[-1.57750792 -1.51127496 -1.56021017  1.0652997   1.47812426  1.34246676
+ -1.42042692 -1.23241213 -1.58303093  1.53928347]
+[-1.57933104 -1.51191486 -1.56156947  1.06310426  1.47841479  1.34170919
+ -1.42021934 -1.23101368 -1.58530308  1.54028675]
+[-1.58115416 -1.51255477 -1.56292878  1.06090881  1.47870532  1.34095162
+ -1.42001177 -1.22961522 -1.58757523  1.54129004]
+[-1.58297728 -1.51319468 -1.56428808  1.05871337  1.47899585  1.34019405
+ -1.41980419 -1.22821677 -1.58984738  1.54229332]
+[-1.5848004  -1.51383459 -1.56564739  1.05651792  1.47928638  1.33943648
+ -1.41959661 -1.22681832 -1.59211953  1.54329661]
+[-1.58589956 -1.51346099 -1.56616513  1.05275091  1.47848433  1.33736624
+ -1.41818866 -1.22398542 -1.59378687  1.54337168]
+[-1.58697263 -1.51305088 -1.56665256  1.04892729  1.47764293  1.33524872
+ -1.41673747 -1.22110087 -1.59543242  1.54341331]
+[-1.58804571 -1.51264077 -1.56713999  1.04510367  1.47680152  1.3331312
+ -1.41528627 -1.21821631 -1.59707797  1.54345495]
+[-1.58911879 -1.51223066 -1.56762742  1.04128006  1.47596012  1.33101368
+ -1.41383508 -1.21533175 -1.59872352  1.54349659]
+[-1.59019186 -1.51182055 -1.56811485  1.03745644  1.47511871  1.32889616
+ -1.41238389 -1.21244719 -1.60036907  1.54353822]
+[-1.59126494 -1.51141045 -1.56860228  1.03363282  1.47427731  1.32677863
+ -1.4109327  -1.20956264 -1.60201462  1.54357986]
+[-1.59233802 -1.51100034 -1.56908971  1.0298092   1.4734359   1.32466111
+ -1.40948151 -1.20667808 -1.60366017  1.5436215 ]
+[-1.59227321 -1.50899726 -1.56825443  1.02351551  1.47087725  1.32048043
+ -1.40614364 -1.20153897 -1.60435511  1.54220423]
+</pre>
+</div>
 </div>
 
 </div>
