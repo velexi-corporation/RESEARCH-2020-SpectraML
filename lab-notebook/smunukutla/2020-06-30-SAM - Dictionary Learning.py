@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
+# In[42]:
 
 
 # environment set up
@@ -23,7 +23,7 @@ from scipy import stats as st
 directory = os.environ['DATA_DIR']
 
 
-# In[20]:
+# In[43]:
 
 
 spectrum_len = 500 # automate this
@@ -32,7 +32,7 @@ stddata_path = os.path.join(os.environ['DATA_DIR'], "StdData-" + str(spectrum_le
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[21]:
+# In[44]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -43,19 +43,19 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[22]:
+# In[45]:
 
 
 data
 
 
-# In[23]:
+# In[46]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
 
 
-# In[24]:
+# In[47]:
 
 
 for i in range(len(record_nums)):
@@ -65,72 +65,185 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[26]:
-
-
-data
-
-
-# In[27]:
-
-
-spectra.shape
-
-
-# In[30]:
+# In[48]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[31]:
+# In[8]:
+
+
+data.head(5)
+
+
+# In[9]:
+
+
+spectra.shape
+
+
+# In[10]:
+
+
+spectra
+
+
+# In[11]:
+
+
+y_cat = to_categorical(y)
+
+
+# In[12]:
 
 
 from sklearn.decomposition import DictionaryLearning
 
 
-# In[32]:
+# In[13]:
 
 
 model = DictionaryLearning(n_components=10, alpha=1, verbose=True)
 
 
-# In[44]:
+# In[14]:
 
 
 results = model.fit_transform(spectra)
 
 
-# In[45]:
+# In[15]:
 
 
-for row in results:
-    print(row)
+results.shape
 
 
-# In[46]:
+# In[16]:
+
+
+print(results)
+
+
+# In[17]:
 
 
 model2 = DictionaryLearning(n_components=10, alpha=1, transform_algorithm='threshold', verbose=True)
 
 
-# In[47]:
+# In[18]:
 
 
 results2 = model2.fit_transform(spectra)
 
 
-# In[48]:
+# In[19]:
 
 
-for row in results2:
-    print(row)
+results2.shape
+
+
+# In[20]:
+
+
+print(results2)
+
+
+# In[21]:
+
+
+model.get_params()
+
+
+# In[22]:
+
+
+print(model.components_)
+
+
+# In[23]:
+
+
+model.components_.shape
+
+
+# In[24]:
+
+
+print(model2.components_)
+
+
+# In[25]:
+
+
+model2.components_.shape
+
+
+# In[ ]:
+
+
+approximate with the training data
+run transform on the training data to find the reconstructed spectra
+
+166 x 10 X 10 x 500
+
+approximation of an integral
+
+thresholding is bad to get coefficients
+
+
+# In[26]:
+
+
+results.dot(model.components_)
+
+
+# In[27]:
+
+
+dist = np.linalg.norm(results.dot(model.components_) - spectra)
+
+
+# In[28]:
+
+
+# max(results.dot(model.components_) - spectra, key=max)
+
+
+# In[29]:
+
+
+dist
+
+
+# In[30]:
+
+
+dist2 = np.linalg.norm(results2.dot(model2.components_) - spectra)
+
+
+# In[31]:
+
+
+dist2
+
+
+# In[39]:
+
+
+model.transform(spectra)
+
+
+# In[40]:
+
+
+results
 
 
 # In[49]:
 
 
-results.shape
+np.linalg.norm(model.transform(spectra) - results)
 
 
 # In[ ]:
