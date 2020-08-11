@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[86]:
+# In[1]:
 
 
 # environment set up
@@ -20,7 +20,7 @@ import ast
 from scipy import stats as st
 
 
-# In[87]:
+# In[2]:
 
 
 spectrum_len = 500 # automate this
@@ -32,7 +32,7 @@ stddata_path = os.path.join(data_dir, "StdData-" + str(spectrum_len))
 os.chdir(os.path.join(parent_dir, "lab-notebook", "smunukutla"))
 
 
-# In[88]:
+# In[3]:
 
 
 data = pd.read_csv("data.csv", sep=",")
@@ -43,26 +43,26 @@ y = np.reshape(y, (len(y), 1))
 num_samples = len(y)
 
 
-# In[89]:
+# In[4]:
 
 
 num_samples
 
 
-# In[90]:
+# In[5]:
 
 
 data
 
 
-# In[91]:
+# In[6]:
 
 
 spectra = np.zeros((num_samples,spectrum_len))
 wavelengths = np.zeros((1,spectrum_len))
 
 
-# In[92]:
+# In[7]:
 
 
 for i in range(len(record_nums)):
@@ -72,124 +72,126 @@ for i in range(len(record_nums)):
     spectra[i,:] = data.iloc[:, 1].to_numpy()
 
 
-# In[93]:
+# In[8]:
 
 
 type(spectra)
 
 
-# In[94]:
+# In[9]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[95]:
+# In[10]:
 
 
 data.head(5)
 
 
-# In[96]:
+# In[11]:
 
 
 spectra.shape
 
 
-# In[97]:
+# In[12]:
 
 
 spectra
 
 
-# In[98]:
+# In[13]:
 
 
 y_cat = to_categorical(y)
 
 
-# In[99]:
+# In[14]:
 
 
 from sklearn.decomposition import DictionaryLearning
 
 
-# In[100]:
+# In[15]:
 
 
 model = DictionaryLearning(n_components=10, alpha=1, verbose=True)
 
 
-# In[101]:
+# In[16]:
 
 
-atoms = model.fit_transform(spectra)
+dictionary = model.fit_transform(spectra)
 
 
-# In[102]:
+# In[17]:
 
 
-atoms.shape
+dictionary.shape
 
 
-# In[103]:
+# In[18]:
 
 
-print(atoms)
+print(dictionary)
 
 
-# In[104]:
+# In[19]:
 
 
 model2 = DictionaryLearning(n_components=10, alpha=1, transform_algorithm='threshold', verbose=True)
 
 
-# In[105]:
+# In[20]:
 
 
-atoms2 = model2.fit_transform(spectra)
+dictionary2 = model2.fit_transform(spectra)
 
 
-# In[106]:
+# In[21]:
 
 
-atoms2.shape
+dictionary2.shape
 
 
-# In[107]:
+# In[22]:
 
 
-print(atoms2)
+print(dictionary2)
 
 
-# In[108]:
+# In[23]:
 
 
 model.get_params()
 
 
-# In[109]:
+# In[24]:
 
 
-print(model.components_)
+atoms = model.components_
+print(atoms)
 
 
-# In[110]:
+# In[25]:
 
 
-model.components_.shape
+atoms.shape
 
 
-# In[111]:
+# In[26]:
 
 
-print(model2.components_)
+atoms2 = model2.components_
+print(atoms2)
 
 
-# In[112]:
+# In[27]:
 
 
-model2.components_.shape
+atoms2.shape
 
 
 # approximate with the training data
@@ -207,27 +209,27 @@ model2.components_.shape
 # 
 # L2 norm / number of points
 # 
-# model.transform(spectra) is the same thing as atoms
+# model.transform(spectra) is the same thing as dictionary
 
-# In[113]:
-
-
-reconstructed_spectra = atoms.dot(model.components_)
+# In[28]:
 
 
-# In[114]:
+reconstructed_spectra = dictionary.dot(atoms)
+
+
+# In[29]:
 
 
 reconstructed_spectra
 
 
-# In[115]:
+# In[30]:
 
 
 reconstructed_spectra.shape
 
 
-# In[116]:
+# In[31]:
 
 
 distances = []
@@ -235,19 +237,25 @@ for i in range(len(spectra)):
     distances.append(np.linalg.norm(spectra[i] - reconstructed_spectra[i]))
 
 
-# In[132]:
+# In[32]:
 
 
 distances
 
 
-# In[118]:
+# In[33]:
 
 
-reconstructed_spectra2 = atoms2.dot(model2.components_)
+reconstructed_spectra2 = dictionary2.dot(atoms2)
 
 
-# In[119]:
+# In[34]:
+
+
+reconstructed_spectra2
+
+
+# In[35]:
 
 
 distances2 = []
@@ -255,25 +263,25 @@ for i in range(len(spectra)):
     distances2.append(np.linalg.norm(spectra[i] - reconstructed_spectra2[i]))
 
 
-# In[120]:
+# In[36]:
 
 
 distances2
 
 
-# In[121]:
+# In[37]:
 
 
 reconstructed_spectra
 
 
-# In[122]:
+# In[38]:
 
 
 spectra
 
 
-# In[140]:
+# In[39]:
 
 
 height = 3
@@ -294,6 +302,80 @@ for index in lst:
 # path = os.path.join(data_dir, "plots-" + str(spectrum_len), record_nums[i] + "-" + spectrum_names[i] + ".png")
 # fig.savefig(path, format = "PNG")
 # plt.close(fig)
+
+
+# In[40]:
+
+
+height = 3
+width = 1.5*height
+linewidth = 4
+lst = [35, 49, 137, 127, 108, 40, 72, 33, 29, 64, 127, 11, 98, 86, 8, 74, 85, 55, 17, 61]
+for index in lst:
+    fig = plt.figure(figsize=(width, height), dpi=60)
+    plt.plot(wavelengths[0,:], reconstructed_spectra2[index,:], linewidth = linewidth, color='k')
+    plt.xticks([])
+    plt.yticks([])
+    ax = fig.axes
+    ax[0].axis('off')
+    print("Reconstructed Spectra2:", index)
+    plt.show()
+
+
+# In[45]:
+
+
+num_zero = 0
+for row in atoms:
+    done = False
+    for col in row:
+        if col == 0 and not done:
+            num_zero += 1
+            done = True
+            print(row)
+num_zero
+
+
+# In[46]:
+
+
+num_zero = 0
+for row in atoms2:
+    done = False
+    for col in row:
+        if col == 0 and not done:
+            num_zero += 1
+            done = True
+            print(row)
+num_zero
+
+
+# In[47]:
+
+
+num_zero = 0
+for row in dictionary:
+    done = False
+    for col in row:
+        if col == 0 and not done:
+            num_zero += 1
+            done = True
+            print(row)
+num_zero
+
+
+# In[48]:
+
+
+num_zero = 0
+for row in dictionary2:
+    done = False
+    for col in row:
+        if col == 0 and not done:
+            num_zero += 1
+            done = True
+            print(row)
+num_zero
 
 
 # In[ ]:
