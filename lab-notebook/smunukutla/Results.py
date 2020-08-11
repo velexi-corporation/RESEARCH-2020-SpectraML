@@ -20,6 +20,8 @@
 # 
 # Fully Connected ANN Results: DescribeResult(nobs=20, minmax=(0.44117647, 0.7647059), mean=0.62647057, variance=0.006201056, skewness=-0.5996153354644775, kurtosis=0.13958413460101404)
 # 75.08602714538574
+# 
+# Dictionary Learning Results: 
 
 # In[ ]:
 
